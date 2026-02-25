@@ -374,7 +374,7 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   background-repeat:no-repeat;
   background-position:center;
   background-size: cover;
-  opacity: .95;
+  opacity: 1; filter: contrast(1.05) saturate(1.05);
   transform: translateZ(0);
   background-attachment: fixed; /* parallax-ish */
 }

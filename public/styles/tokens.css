@@ -226,3 +226,162 @@ body{
 .btnSecondary:hover{
   background: rgba(40,72,48,0.06);
 }
+/* ===== Premium Look: Architektur + Finance ===== */
+
+main{ padding: 34px 0 60px; }
+
+/* Hero */
+.hero{
+  position: relative;
+  border-radius: 22px;
+  padding: 44px 34px;
+  overflow: hidden;
+  background:
+    radial-gradient(900px 380px at 12% 8%, rgba(216,120,8,.16), rgba(216,120,8,0) 55%),
+    radial-gradient(900px 420px at 92% 18%, rgba(40,72,48,.14), rgba(40,72,48,0) 60%),
+    linear-gradient(180deg, #ffffff 0%, #f6f9f6 100%);
+  border: 1px solid rgba(40,72,48,0.10);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.06);
+}
+
+.heroGrid{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 22px;
+  align-items: start;
+}
+@media (max-width: 900px){
+  .hero{ padding: 30px 18px; }
+  .heroGrid{ grid-template-columns: 1fr; }
+}
+
+/* Blueprint/Grid overlay */
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    linear-gradient(rgba(40,72,48,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(40,72,48,.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(closest-side at 20% 15%, rgba(0,0,0,.95), rgba(0,0,0,0) 62%);
+  pointer-events:none;
+}
+
+/* Finance line overlay (SVG data uri) */
+.hero::after{
+  content:"";
+  position:absolute; inset:-40px -40px -40px -40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='420' viewBox='0 0 1200 420'%3E%3Cpath d='M0 290 C140 240, 220 340, 360 290 C500 240, 560 180, 690 220 C820 260, 930 140, 1030 180 C1110 210, 1160 160, 1200 140' fill='none' stroke='%23284830' stroke-width='3' stroke-opacity='.14'/%3E%3Cpath d='M0 330 C160 300, 260 360, 420 330 C580 300, 620 260, 760 280 C900 300, 980 220, 1200 250' fill='none' stroke='%23D87808' stroke-width='3' stroke-opacity='.18'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px top 40px;
+  background-size: 1100px auto;
+  pointer-events:none;
+  opacity: .9;
+}
+
+/* Text */
+.kicker{
+  color: rgba(40,72,48,.85);
+  font-weight: 700;
+  letter-spacing: .3px;
+  margin-bottom: 10px;
+}
+
+h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary); }
+.lead{ font-size: 18px; line-height: 1.55; color: rgba(20,35,24,.86); margin: 0; max-width: 62ch; }
+@media (max-width: 900px){
+  h1{ font-size: 34px; }
+  .lead{ font-size: 17px; }
+}
+
+/* Panel/Card */
+.panel{
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(40,72,48,0.10);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.05);
+}
+
+/* Section styling */
+.section{
+  padding: 42px 0;
+}
+.sectionAlt{
+  background: #ffffff;
+  border-top: 1px solid rgba(40,72,48,0.08);
+  border-bottom: 1px solid rgba(40,72,48,0.08);
+}
+.sectionTitle{
+  font-size: 24px;
+  margin: 0 0 10px;
+  color: var(--c-primary);
+}
+.muted{ color: rgba(40,72,48,.70); }
+
+.cards{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 14px;
+}
+@media (max-width: 900px){
+  .cards{ grid-template-columns: 1fr; }
+}
+.card{
+  background: #fff;
+  border: 1px solid rgba(40,72,48,0.10);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.04);
+}
+.card h3{ margin: 0 0 8px; color: var(--c-primary); font-size: 18px; }
+.card p{ margin: 0; color: rgba(20,35,24,.82); line-height: 1.5; }
+
+/* Buttons */
+.btnRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px; }
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: var(--c-accent);
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 14px 34px rgba(216,120,8,.22);
+}
+.btn:hover{ text-decoration:none; transform: translateY(-1px); box-shadow: 0 18px 38px rgba(216,120,8,.26); }
+.btnSecondary{
+  background: rgba(255,255,255,.75);
+  border: 1px solid rgba(40,72,48,.20);
+  color: var(--c-primary);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.05);
+}
+.btnSecondary:hover{ background: rgba(40,72,48,.06); }
+
+/* Parallax section (desktop) */
+.parallax{
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(40,72,48,0.10);
+  background:
+    radial-gradient(900px 380px at 15% 30%, rgba(216,120,8,.12), rgba(216,120,8,0) 55%),
+    linear-gradient(180deg, #ffffff 0%, #f6f9f6 100%);
+  position: relative;
+}
+.parallaxBg{
+  position:absolute; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900'%3E%3Cpath d='M0 620 C220 520, 320 760, 520 640 C700 540, 820 420, 980 480 C1120 520, 1240 320, 1400 380 C1500 420, 1560 360, 1600 320' fill='none' stroke='%23284830' stroke-width='4' stroke-opacity='.12'/%3E%3Cpath d='M0 700 C260 650, 360 780, 620 720 C880 660, 980 560, 1220 600 C1400 630, 1500 560, 1600 590' fill='none' stroke='%23D87808' stroke-width='4' stroke-opacity='.16'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size: cover;
+  opacity: .95;
+  transform: translateZ(0);
+  background-attachment: fixed; /* parallax-ish */
+}
+@media (max-width: 900px){
+  .parallaxBg{ background-attachment: scroll; } /* mobile fallback */
+}
+.parallaxInner{
+  position: relative;
+  padding: 34px 24px;
+}

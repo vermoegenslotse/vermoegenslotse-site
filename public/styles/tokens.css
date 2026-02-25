@@ -508,3 +508,12 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   position: relative;
   z-index: 2;
 }
+/* --- Zoho form frame polish --- */
+.formFrame{
+  height: 560px;
+  width: 100%;
+  border: none;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}

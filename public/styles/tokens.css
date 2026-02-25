@@ -517,3 +517,34 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   background: #fff;
   box-shadow: 0 12px 30px rgba(0,0,0,0.06);
 }
+/* --- Testimonials marquee --- */
+.testimonials{
+  margin-top: 12px;
+  overflow: hidden;
+}
+.testimonialsTrack{
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+@keyframes marquee{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-50%); }
+}
+.tCard{
+  min-width: 320px;
+  max-width: 420px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(40,72,48,0.10);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+  color: rgba(20,35,24,0.86);
+  line-height: 1.45;
+  white-space: normal;
+}
+@media (max-width: 900px){
+  .testimonialsTrack{ animation-duration: 44s; }
+  .tCard{ min-width: 280px; }
+}

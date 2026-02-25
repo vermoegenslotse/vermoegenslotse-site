@@ -144,5 +144,54 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </div>
   </section>
+<section class="section sectionAlt">
+  <h2 class="sectionTitle">Vertrauen & Bewertungen</h2>
+  <p class="muted">
+    Vermögenslotse ist die Marke. Die Beratung erfolgt auf Basis der Christian Gradt Consulting.
+  </p>
 
+  <div class="trustGrid">
+    <div class="card">
+      <h3>Christian Gradt Consulting</h3>
+      <img src="/images/cgc-logo.png" alt="Christian Gradt Consulting" class="cgcLogo" loading="lazy" />
+      <p class="muted" style="margin-top:10px;">
+        Strukturberatung & Umsetzung – produktunabhängig, mit integrierter Risiko-Perspektive.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>ProvenExpert</h3>
+      <div id="proSealWidget"></div>
+
+      <script is:inline>
+        window.loadProSeal = function(){
+          window.provenExpert.proSeal({
+            widgetId: "de268325-2eef-447c-9058-570a06970d50",
+            language:"de-DE",
+            usePageLanguage: false,
+            bannerColor: "#D87808",
+            textColor: "#FFFFFF",
+            showBackPage: true,
+            showReviews: true,
+            hideDate: true,
+            hideName: false,
+            googleStars: true,
+            displayReviewerLastName: false,
+            embeddedSelector: "#proSealWidget"
+          })
+        };
+        window.addEventListener(
+          "load",
+          function () {
+            var script = document.createElement('script');
+            script.src = "https://s.provenexpert.net/seals/proseal-v2.js";
+            script.onload = loadProSeal;
+            document.head.appendChild(script);
+          },
+          false
+        );
+      </script>
+    </div>
+  </div>
+</section>
 </BaseLayout>

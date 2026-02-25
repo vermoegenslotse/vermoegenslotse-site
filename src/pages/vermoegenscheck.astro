@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const CHECK_URL = "https://vermögens-check.vermögenslotse.de/";
+const BOOKING_URL = "https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002";
+---
+
+<BaseLayout title="Vermögenscheck – Vermögenslotse">
+  <section>
+    <div class="heroGrid">
+      <div>
+        <div class="kicker">Strategischer Einstieg</div>
+        <h1>Der erste Schritt ist Klarheit. Nicht Rendite.</h1>
+        <p class="lead">
+          Der Vermögenscheck ist keine Produktshow. Er ist eine strukturierte Standortbestimmung:
+          Wie belastbar ist Ihre Vermögensarchitektur – und wo fehlen Rahmen, Funktion und Führung?
+        </p>
+
+        <div class="btnRow">
+          <a class="btn" href={CHECK_URL} target="_blank" rel="noopener">
+            Vermögenscheck jetzt durchführen
+          </a>
+          <a class="btn btnSecondary" href={BOOKING_URL} target="_blank" rel="noopener">
+            Termin reservieren
+          </a>
+        </div>
+      </div>
+
+      <aside class="panel">
+        <h2>Was Sie aus dem Check mitnehmen</h2>
+        <ul class="bullets">
+          <li>Ob Ihr Depot eine Architektur besitzt – oder nur Positionen</li>
+          <li>Ob Risiko und Funktion sauber getrennt sind</li>
+          <li>Ob Makro-Rahmen und Anlageinstrumente zusammenpassen</li>
+          <li>Wo typische Strukturfehler entstehen – und warum</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section>
+    <h2>Wofür der Vermögenscheck gedacht ist</h2>
+    <p>
+      Der Vermögenscheck ist der Einstieg in eine strategische Vermögensführung. Er ordnet Komplexität,
+      schafft eine erste Struktur und bildet die Grundlage für ein anschließendes Strukturgespräch.
+    </p>
+    <div class="panel">
+      <h2>Wofür er nicht gedacht ist</h2>
+      <ul class="bullets">
+        <li>kein Performance-Vergleich und kein „Top-10“-Ranking</li>
+        <li>keine schnelle Optimierungsfantasie</li>
+        <li>keine reine Produktempfehlung</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Für wen es besonders sinnvoll ist</h2>
+    <ul class="bullets">
+      <li>Unternehmer und Privatanleger, die ihr Vermögen strukturiert führen möchten</li>
+      <li>Bestandsdepots ab ca. 250.000 € Depotvolumen (Orientierungsgröße)</li>
+      <li>Anleger, die Entscheidungen künftig im Rahmen einer Strategie treffen wollen</li>
+    </ul>
+
+    <p class="muted">
+      Hinweis: Wenn Ihr Depot darunter liegt, kann der Check trotzdem sinnvoll sein – entscheidend ist die
+      Komplexität und Ihr Anspruch an Struktur und Steuerung.
+    </p>
+  </section>
+
+  <section>
+    <h2>Nächster Schritt</h2>
+    <p>
+      Starten Sie mit dem Vermögenscheck. Wenn die Ergebnisse vorliegen, klären wir im Strukturgespräch,
+      was davon relevant ist – und welche Architektur zu Ihren Zielen passt.
+    </p>
+
+    <div class="btnRow">
+      <a class="btn" href={CHECK_URL} target="_blank" rel="noopener">
+        Vermögenscheck starten
+      </a>
+      <a class="btn btnSecondary" href={BOOKING_URL} target="_blank" rel="noopener">
+        Direkt Termin buchen
+      </a>
+    </div>
+  </section>
+</BaseLayout>

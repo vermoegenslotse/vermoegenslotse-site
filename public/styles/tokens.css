@@ -93,3 +93,57 @@ section:last-of-type{ border-bottom: none; }
   color: var(--c-primary);
 }
 .btnSecondary:hover{ text-decoration: none; }
+/* --- Layout Struktur --- */
+
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.siteHeader{
+  border-bottom: 1px solid #e5e5e5;
+  padding: 18px 0;
+  background: #ffffff;
+}
+
+.headerInner{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a{
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--c-primary);
+}
+
+.mainNav a{
+  margin-left: 20px;
+  font-weight: 500;
+  color: var(--c-primary);
+}
+
+.mainNav a:hover{
+  text-decoration: underline;
+}
+
+.siteFooter{
+  border-top: 1px solid #e5e5e5;
+  padding: 20px 0;
+  margin-top: 40px;
+  font-size: 14px;
+  color: var(--c-muted);
+}
+
+.footerInner{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerLinks a{
+  margin-left: 15px;
+  color: var(--c-muted);
+}

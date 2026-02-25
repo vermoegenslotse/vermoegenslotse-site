@@ -103,7 +103,7 @@ section:last-of-type{ border-bottom: none; }
 
 .siteHeader{
   border-bottom: 1px solid #e5e5e5;
-  padding: 18px 0;
+  padding: 22px 0;
   background: #ffffff;
 }
 
@@ -120,8 +120,8 @@ section:last-of-type{ border-bottom: none; }
 }
 
 .mainNav a{
-  margin-left: 20px;
-  font-weight: 500;
+  margin-left: 16px;
+  font-weight: 600;
   color: var(--c-primary);
 }
 

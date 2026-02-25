@@ -147,3 +147,28 @@ section:last-of-type{ border-bottom: none; }
   margin-left: 15px;
   color: var(--c-muted);
 }
+/* --- Header/Nav Polish --- */
+.siteHeader{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+}
+
+.mainNav a{
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+.mainNav a:hover{
+  text-decoration: none;
+  background: rgba(0,0,0,.04);
+}
+
+/* --- Buttons besser sichtbar --- */
+.btn{
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+.btnSecondary{
+  background: rgba(0,0,0,.02);
+}

@@ -1,33 +1,44 @@
 ---
 const { title = "Vermögenslotse" } = Astro.props;
 ---
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="de">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <link rel="stylesheet" href="/styles/tokens.css" />
   </head>
+
   <body>
-    <header class="wrap header">
-      <a class="brand" href="/">Vermögenslotse</a>
-      <nav class="nav">
-        <a href="/impressum">Impressum</a>
-        <a href="/datenschutz">Datenschutz</a>
-      </nav>
+    <header class="siteHeader">
+      <div class="container headerInner">
+        <div class="logo">
+          <a href="/">Vermögenslotse</a>
+        </div>
+
+        <nav class="mainNav">
+          <a href="/">Start</a>
+          <a href="/vermoegenscheck">Vermögenscheck</a>
+          <a href="/impressum">Rechtliches</a>
+        </nav>
+      </div>
     </header>
 
-    <main class="wrap">
+    <main class="container">
       <slot />
     </main>
 
-    <footer class="wrap footer">
-      <div class="muted">
-        © {new Date().getFullYear()} Vermögenslotse · Rechtsträger: Christian Gradt Consulting
-      </div>
-      <div class="muted">
-        <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
+    <footer class="siteFooter">
+      <div class="container footerInner">
+        <div>
+          © {new Date().getFullYear()} Vermögenslotse
+        </div>
+        <div class="footerLinks">
+          <a href="/impressum">Impressum</a>
+          <a href="/datenschutz">Datenschutz</a>
+        </div>
       </div>
     </footer>
   </body>

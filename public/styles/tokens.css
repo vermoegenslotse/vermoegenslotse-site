@@ -172,3 +172,57 @@ section:last-of-type{ border-bottom: none; }
 .btnSecondary{
   background: rgba(0,0,0,.02);
 }
+/* --- Brand Integration --- */
+
+/* Hintergrund subtiler Kontrast */
+body{
+  background: #f8faf8;
+}
+
+/* Header */
+.siteHeader{
+  border-bottom: 1px solid rgba(40,72,48,0.12);
+}
+
+/* Logo stärker */
+.logo a{
+  color: var(--c-primary);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+/* Navigation Hover */
+.mainNav a:hover{
+  background: rgba(40,72,48,0.08);
+}
+
+/* Hero Panel */
+.panel{
+  background: #ffffff;
+  border: 1px solid rgba(40,72,48,0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+/* Primary Button */
+.btn{
+  background: var(--c-accent);
+  border: none;
+  color: #ffffff;
+  transition: all .2s ease;
+}
+
+.btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(216,120,8,0.25);
+}
+
+/* Secondary Button */
+.btnSecondary{
+  background: transparent;
+  border: 1px solid var(--c-primary);
+  color: var(--c-primary);
+}
+
+.btnSecondary:hover{
+  background: rgba(40,72,48,0.06);
+}

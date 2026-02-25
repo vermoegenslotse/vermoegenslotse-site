@@ -429,3 +429,34 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 .sectionDark > *{
   position: relative;
 }
+/* --- Hero photo --- */
+.heroPhotoWrap{
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(40,72,48,0.10);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.08);
+  background: #fff;
+}
+.heroPhoto{
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* --- Trust section --- */
+.trustGrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 14px;
+}
+@media (max-width: 900px){
+  .trustGrid{ grid-template-columns: 1fr; }
+}
+.cgcLogo{
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  display: block;
+}

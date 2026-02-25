@@ -597,3 +597,24 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   display: block;
   border: 4px solid rgba(216,120,8,0.28); /* dezenter Marken-Akzent */
 }
+/* --- Full width testimonials --- */
+.fullWidthSection{
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 34px 0;
+  background: transparent;
+}
+
+.testimonialsContainer{
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* bestehender grüner Rahmen bleibt – optional etwas kräftiger */
+.fullBleedBox{
+  border: 6px solid var(--c-primary);
+  border-radius: 28px;
+  padding: 24px;
+  background: #ffffff;
+}

@@ -34,3 +34,62 @@ a:hover{ text-decoration:underline; }
 .btn{ display:inline-block; padding:10px 14px; border-radius:12px; background:var(--c-accent); color:#fff; font-weight:600; }
 .btn:hover{ text-decoration:none; filter:brightness(0.98); }
 .btnOutline{ background:transparent; border:1px solid var(--c-primary); color:var(--c-primary); }
+/* --- Startseite Layout --- */
+h1{ font-size: 42px; line-height: 1.1; margin: 0 0 12px; }
+h2{ font-size: 22px; line-height: 1.25; margin: 0 0 10px; }
+p{ margin: 0 0 12px; }
+section{ padding: 26px 0; border-bottom: 1px solid #e7e7e7; }
+section:last-of-type{ border-bottom: none; }
+
+.heroGrid{
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 18px;
+  align-items: start;
+}
+@media (max-width: 900px){
+  h1{ font-size: 34px; }
+  .heroGrid{ grid-template-columns: 1fr; }
+}
+
+.kicker{
+  color: var(--c-muted);
+  font-weight: 600;
+  letter-spacing: .2px;
+  margin-bottom: 10px;
+}
+
+.panel{
+  background: var(--c-surface);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.bullets{
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+.bullets li{ margin: 6px 0; }
+
+.btnRow{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.btn{
+  display: inline-block;
+  padding: 11px 16px;
+  border-radius: 12px;
+  background: var(--c-accent);
+  color: #fff;
+  font-weight: 700;
+}
+.btn:hover{ text-decoration: none; filter: brightness(.98); }
+
+.btnSecondary{
+  background: transparent;
+  border: 1px solid var(--c-primary);
+  color: var(--c-primary);
+}
+.btnSecondary:hover{ text-decoration: none; }

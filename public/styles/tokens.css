@@ -487,3 +487,6 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   height: auto;
   display: block;
 }
+.logoImg{
+  height: 48px;
+}

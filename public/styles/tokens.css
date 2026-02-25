@@ -493,3 +493,18 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 .hero{
   border-left: 6px solid var(--c-accent);
 }
+/* --- Fix: Hero overlays behind content (image stays in front) --- */
+.hero{ position: relative; }
+.hero::before, .hero::after{
+  z-index: 0;
+}
+.hero > *{
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure photo is above any local overlays */
+.heroPhotoWrap{
+  position: relative;
+  z-index: 2;
+}

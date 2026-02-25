@@ -526,7 +526,7 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   display: flex;
   gap: 12px;
   width: max-content;
-  animation: marquee 32s linear infinite;
+  animation: marquee 80s linear infinite;
 }
 @keyframes marquee{
   from{ transform: translateX(0); }

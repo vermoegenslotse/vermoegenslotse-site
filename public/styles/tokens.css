@@ -653,3 +653,23 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   margin: 18px 0 10px 0;
   display: block;
 }
+.recognitionGrid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 24px;
+}
+@media (max-width: 900px){
+  .recognitionGrid{
+    grid-template-columns: 1fr;
+  }
+}
+
+.recognitionItem{
+  padding: 20px;
+  border-radius: 18px;
+  background: #f6f9f6;
+  border: 1px solid rgba(40,72,48,0.12);
+  font-weight: 500;
+  line-height: 1.5;
+}

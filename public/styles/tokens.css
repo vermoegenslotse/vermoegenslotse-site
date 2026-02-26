@@ -488,7 +488,9 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   display: block;
 }
 .logoImg{
-  height: 68px;
+  height: 120px;
+  width: auto;
+  display: block;
 }
 .hero{
   border-left: 6px solid var(--c-accent);

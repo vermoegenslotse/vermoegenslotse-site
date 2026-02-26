@@ -647,3 +647,9 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   from{ transform: translateX(0); }
   to{ transform: translateX(-50%); }
 }
+.heroBrandLogo{
+  height: 95px;
+  width: auto;
+  margin: 18px 0 10px 0;
+  display: block;
+}

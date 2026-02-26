@@ -693,3 +693,6 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   margin-top: 14px;
   color: rgba(20,35,24,.85);
 }
+.btnRow{
+  margin-top: 36px;
+}

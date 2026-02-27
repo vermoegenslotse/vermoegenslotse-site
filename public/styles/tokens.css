@@ -1055,3 +1055,12 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 .heroBusiness .kickerOnDark{
   color: rgba(255,255,255,0.72) !important;
 }
+/* Unternehmer-Hero: Primary Button erzwingen */
+.heroBusiness .btnPrimary{
+  background: var(--c-accent) !important;
+  color: #fff !important;
+  border: 1px solid rgba(216,120,8,0.35) !important;
+}
+.heroBusiness .btnPrimary:hover{
+  background: #c96a06 !important; /* leicht dunkler als Accent */
+}

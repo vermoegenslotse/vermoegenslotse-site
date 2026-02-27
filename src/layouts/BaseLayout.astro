@@ -22,7 +22,7 @@ const { title = "Vermögenslotse" } = Astro.props;
         <nav class="mainNav">
           <a href="/">Start</a>
           <a href="/vermoegenscheck">Vermögenscheck</a>
-          <a href="/impressum">Rechtliches</a>
+          <a href="/recht/impressum">Rechtliches</a>
         </nav>
       </div>
     </header>
@@ -37,9 +37,12 @@ const { title = "Vermögenslotse" } = Astro.props;
           © {new Date().getFullYear()} Vermögenslotse
         </div>
         <div class="footerLinks">
-          <a href="/impressum">Impressum</a>
-          <a href="/datenschutz">Datenschutz</a>
-        </div>
+  <a href="/recht/impressum">Impressum</a>
+  <a href="/recht/datenschutz">Datenschutz</a>
+  <a href="/recht/transparenz">Transparenz</a>
+  <a href="/recht/nachhaltigkeit">Nachhaltigkeit</a>
+  <a href="/recht/erstinformation">Erstinformation</a>
+</div>
       </div>
     </footer>
   </body>

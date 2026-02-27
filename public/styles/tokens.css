@@ -705,3 +705,18 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 .btnRow{
   margin-top: 36px;
 }
+.trustLogosRow{
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(40,72,48,0.10);
+}
+
+.trustLogo{
+  height: 44px;
+  width: auto;
+  display: block;
+  opacity: 0.95;
+}

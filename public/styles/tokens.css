@@ -440,10 +440,19 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 .heroPhotoWrap{
   position: relative;
   border-radius: 22px;
-  overflow: hidden;
-  border: 1px solid rgba(40,72,48,0.12);
-  box-shadow: 0 25px 70px rgba(0,0,0,0.12);
-  background: linear-gradient(180deg, #ffffff 0%, #f3f7f3 100%);
+  overflow: visible; /* wichtig für Drop-Shadow */
+  background: transparent;     /* kein weißer Kasten */
+  border: none;                /* kein Rahmen */
+  box-shadow: none;            /* Shadow kommt über das Bild selbst */
+}
+
+/* Das Bild selbst bekommt die Tiefe */
+.heroPhoto{
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;         /* wichtig bei freigestelltem PNG */
+  filter: drop-shadow(0 26px 55px rgba(0,0,0,0.18));
 }
 
 /* leichte Tiefenwirkung */

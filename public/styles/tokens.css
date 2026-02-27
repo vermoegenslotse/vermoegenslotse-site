@@ -942,4 +942,19 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 .heroBusiness .heroBizTitle .accentWord{
   color: var(--c-accent) !important;
 }
-
+.storyBox{
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(40,72,48,0.12);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+}
+.storyBox h3{
+  margin: 0 0 8px;
+}
+.storyBox p{
+  margin: 0;
+  color: rgba(20,35,24,0.86);
+  line-height: 1.7;
+}

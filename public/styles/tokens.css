@@ -958,3 +958,19 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   color: rgba(20,35,24,0.86);
   line-height: 1.7;
 }
+.heroPrivate{
+  padding: 64px 0 40px;
+}
+
+.heroPrivateTitle{
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.heroPrivateLead{
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 65ch;
+  color: rgba(20,35,24,0.86);
+}

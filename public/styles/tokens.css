@@ -920,3 +920,5 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 .personaBtnDark:hover{
   background: #1f3a27;
 }
+.personaSwitch{ text-align: left; }
+.personaButtons{ justify-content: flex-start; }

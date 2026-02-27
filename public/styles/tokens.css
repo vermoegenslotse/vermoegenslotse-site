@@ -727,3 +727,151 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   margin-top: 14px;
   opacity: 0.98;
 }
+/* Unternehmerseite – businessiger Hero */
+.sectionDark{
+  background: linear-gradient(180deg, rgba(40,72,48,0.96), rgba(40,72,48,0.88));
+  color: rgba(255,255,255,0.92);
+  padding: 64px 0;
+}
+
+.heroBusiness .container{ max-width: 1100px; }
+
+.heroBizGrid{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 26px;
+  align-items: start;
+}
+@media (max-width: 900px){
+  .heroBizGrid{ grid-template-columns: 1fr; }
+}
+
+.kickerOnDark{
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 10px;
+}
+
+.heroBizTitle{
+  font-size: clamp(34px, 4.2vw, 52px);
+  line-height: 1.12;
+  margin: 0 0 12px;
+  letter-spacing: -0.6px;
+}
+
+.heroBizLead{
+  font-size: 1.15rem;
+  line-height: 1.65;
+  max-width: 62ch;
+  margin: 0 0 18px;
+  color: rgba(255,255,255,0.84);
+}
+
+.btnRowBiz{ margin-top: 18px; }
+
+.btnGhostOnDark{
+  display: inline-block;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.92);
+  text-decoration: none;
+}
+.btnGhostOnDark:hover{
+  border-color: rgba(255,255,255,0.6);
+}
+
+.jumpLinks{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.jumpLinks a{
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.78);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255,255,255,0.28);
+}
+.jumpLinks a:hover{
+  color: rgba(255,255,255,0.95);
+  border-bottom-color: rgba(255,255,255,0.55);
+}
+
+.heroBizSide .heroBizCard{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.bizBullets{
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,0.84);
+}
+.bizBullets li{ margin: 8px 0; }
+
+/* Risikoebenen */
+.twoLevelGrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 16px;
+}
+@media (max-width: 900px){
+  .twoLevelGrid{ grid-template-columns: 1fr; }
+}
+
+.levelCard{
+  background: #fff;
+  border: 1px solid rgba(40,72,48,0.12);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.levelCardStrong{
+  border-color: rgba(216,120,8,0.35);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+}
+
+.noteBox{
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(40,72,48,0.06);
+  border: 1px solid rgba(40,72,48,0.14);
+  color: rgba(20,35,24,0.88);
+}
+
+/* Steps */
+.stepsGrid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+@media (max-width: 900px){
+  .stepsGrid{ grid-template-columns: 1fr; }
+}
+
+.stepCard{
+  background: #fff;
+  border: 1px solid rgba(40,72,48,0.12);
+  border-radius: 18px;
+  padding: 18px;
+}
+.stepNo{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  background: rgba(216,120,8,0.12);
+  border: 1px solid rgba(216,120,8,0.25);
+  margin-bottom: 10px;
+}

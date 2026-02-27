@@ -1064,3 +1064,14 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 .heroBusiness .btnPrimary:hover{
   background: #c96a06 !important; /* leicht dunkler als Accent */
 }
+/* Unternehmer-Hero: Buttons müssen wie Buttons aussehen */
+.heroBusiness .btnRowBiz a{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 44px !important;
+  padding: 12px 22px !important;
+  border-radius: 999px !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}

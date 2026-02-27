@@ -1022,3 +1022,36 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   font-size: 0.95rem;
   color: rgba(20,35,24,0.65);
 }
+/* Unternehmer-Hero Buttons sauber ausrichten */
+.heroBusiness .btnRowBiz{
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.heroBusiness .btnRowBiz a{
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 520px){
+  .heroBusiness .btnRowBiz{
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+.heroBusiness,
+.heroBusiness p,
+.heroBusiness .heroBizLead,
+.heroBusiness .kickerOnDark{
+  color: rgba(255,255,255,0.88) !important;
+}
+
+.heroBusiness .heroBizTitle{
+  color: #F4F6F4 !important;
+}
+.heroBusiness .kickerOnDark{
+  color: rgba(255,255,255,0.72) !important;
+}

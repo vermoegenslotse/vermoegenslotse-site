@@ -878,37 +878,49 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 .accentWord{
   color: var(--c-accent);
 }
+/* Persona-Switch: mehr Präsenz */
 .personaSwitch{
-  margin-top: 36px;
+  margin-top: 22px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(40,72,48,0.06);
+  border: 1px solid rgba(40,72,48,0.14);
   text-align: center;
 }
 
 .personaLabel{
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
+  font-size: 1.05rem;          /* vorher zu klein */
+  font-weight: 800;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(40,72,48,0.65);
-  margin-bottom: 10px;
+  color: rgba(40,72,48,0.88);
+  margin-bottom: 12px;
 }
 
 .personaButtons{
   display: inline-flex;
   gap: 14px;
+  justify-content: center;
+  align-items: center;
 }
 
 .personaBtn{
-  padding: 10px 20px;
+  padding: 12px 22px;          /* größer */
   border-radius: 999px;
-  border: 1px solid rgba(40,72,48,0.2);
+  border: 1px solid rgba(40,72,48,0.22);
   text-decoration: none;
   color: var(--c-primary);
-  font-weight: 600;
+  font-weight: 800;
+  font-size: 1.02rem;
   background: #fff;
-  transition: all 0.2s ease;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
 }
 
 .personaBtn:hover{
   background: rgba(40,72,48,0.06);
+  transform: translateY(-1px);
+  border-color: rgba(40,72,48,0.35);
 }
 
 .personaBtnDark{

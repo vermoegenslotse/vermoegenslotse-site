@@ -720,4 +720,10 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   display: block;
   opacity: 0.95;
 }
-.cgcBadgeLogo{ height: 110px; }
+.cgcBadgeLogo{
+  height: 90px;          /* mindestens doppelt so groß */
+  width: auto;
+  display: block;
+  margin-top: 14px;
+  opacity: 0.98;
+}

@@ -974,3 +974,51 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   max-width: 65ch;
   color: rgba(20,35,24,0.86);
 }
+.ctaProcess{
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.processGrid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+@media (max-width: 900px){
+  .processGrid{
+    grid-template-columns: 1fr;
+  }
+}
+
+.processStep{
+  background: #fff;
+  border: 1px solid rgba(40,72,48,0.12);
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.05);
+}
+
+.processIcon{
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  background: rgba(216,120,8,0.12);
+  border: 1px solid rgba(216,120,8,0.25);
+}
+
+.centerText{
+  text-align: center;
+}
+
+.subtleText{
+  font-size: 0.95rem;
+  color: rgba(20,35,24,0.65);
+}

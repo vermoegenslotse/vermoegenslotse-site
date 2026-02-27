@@ -1,1 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
 
+<BaseLayout title="Kontakt | Vermögenslotse">
+  <section class="section">
+    <h1>Kontakt</h1>
+    <p class="lead">
+      Nutzen Sie das Formular oder reservieren Sie direkt einen Termin.
+    </p>
+
+    <div class="btnRow" style="margin-bottom:18px;">
+      <a class="btn" href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002" target="_blank" rel="noopener">
+        Termin buchen
+      </a>
+      <a class="btn btnSecondary" href="/vermoegenscheck">Vermögenscheck starten</a>
+    </div>
+
+    <!-- Zoho Kontaktformular iframe -->
+    <div class="card" style="padding:0; overflow:hidden;">
+      <iframe aria-label="Kontaktformular Webseite"
+        frameborder="0"
+        style="height:560px;width:100%;border:none;"
+        src="https://forms.zohopublic.eu/christiangradtconsulting1/form/KontaktformularWebseite/formperma/z_qlpRbnytGmlwB7RQ0mBGYk-cGr-aMSjsLx5HnM2pI">
+      </iframe>
+    </div>
+  </section>
+</BaseLayout>

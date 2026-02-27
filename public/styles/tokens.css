@@ -878,3 +878,45 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 .accentWord{
   color: var(--c-accent);
 }
+.personaSwitch{
+  margin-top: 36px;
+  text-align: center;
+}
+
+.personaLabel{
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(40,72,48,0.65);
+  margin-bottom: 10px;
+}
+
+.personaButtons{
+  display: inline-flex;
+  gap: 14px;
+}
+
+.personaBtn{
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(40,72,48,0.2);
+  text-decoration: none;
+  color: var(--c-primary);
+  font-weight: 600;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.personaBtn:hover{
+  background: rgba(40,72,48,0.06);
+}
+
+.personaBtnDark{
+  background: var(--c-primary);
+  color: #fff;
+  border-color: var(--c-primary);
+}
+
+.personaBtnDark:hover{
+  background: #1f3a27;
+}

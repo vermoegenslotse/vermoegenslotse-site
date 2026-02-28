@@ -1146,8 +1146,15 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 }
 
 .benefitCard{
-  background: #fff;
-  padding: 22px;
+  background: rgba(40,72,48,0.06); /* sehr dezentes Grün */
+  padding: 24px;
   border-radius: 18px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  border: 1px solid rgba(40,72,48,0.08);
+  transition: 0.2s ease;
+}
+
+.benefitCard:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 26px 60px rgba(0,0,0,0.08);
 }

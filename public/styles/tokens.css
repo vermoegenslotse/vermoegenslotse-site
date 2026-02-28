@@ -1075,3 +1075,21 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   text-decoration: none !important;
   font-weight: 600 !important;
 }
+.heroCheckGrid{
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 900px){
+  .heroCheckGrid{
+    grid-template-columns: 1fr;
+  }
+}
+
+.heroCheckImage img{
+  width: 100%;
+  border-radius: 22px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+}

@@ -1190,3 +1190,27 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   border-radius: 18px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.12);
 }
+.recognitionItem{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  padding:16px 18px;
+  background: linear-gradient(135deg, rgba(40,72,48,0.05), rgba(40,72,48,0.02));
+  border-radius:14px;
+  margin-bottom:14px;
+  font-weight:500;
+}
+
+.checkIcon{
+  background:#284830;
+  color:white;
+  font-weight:700;
+  font-size:14px;
+  width:24px;
+  height:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  flex-shrink:0;
+}

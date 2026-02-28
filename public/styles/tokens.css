@@ -1126,3 +1126,28 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 .checkNegative .checkIcon{
   color: #c23b3b;
 }
+.benefitGrid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1000px){
+  .benefitGrid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px){
+  .benefitGrid{
+    grid-template-columns: 1fr;
+  }
+}
+
+.benefitCard{
+  background: #fff;
+  padding: 22px;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}

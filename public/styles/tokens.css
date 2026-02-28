@@ -1214,3 +1214,9 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   border-radius:50%;
   flex-shrink:0;
 }
+.splitGrid{
+  display:grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}

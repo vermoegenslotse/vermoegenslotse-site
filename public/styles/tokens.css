@@ -1177,9 +1177,16 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 }
 
 .splitVisual img{
-  width: 100%;
+  width: 85%;
+  max-width: 520px;
   height: auto;
-  border-radius: 22px;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.12);
-  border: 1px solid rgba(40,72,48,0.10);
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+.splitVisual img{
+  width: 85%;
+  max-width: 520px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
 }

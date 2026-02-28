@@ -1,87 +1,112 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const CHECK_URL = "https://vermögens-check.vermögenslotse.de/";
-const BOOKING_URL = "https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002";
 ---
 
-<BaseLayout title="Vermögenscheck – Vermögenslotse">
-  <section>
-    <div class="heroGrid">
-      <div>
-        <div class="kicker">Strategischer Einstieg</div>
-        <h1>Der erste Schritt ist Klarheit. Nicht Rendite.</h1>
-        <p class="lead">
-          Der Vermögenscheck ist keine Produktshow. Er ist eine strukturierte Standortbestimmung:
-          Wie belastbar ist Ihre Vermögensarchitektur – und wo fehlen Rahmen, Funktion und Führung?
-        </p>
+<BaseLayout title="Vermögenscheck | Vermögenslotse">
+  <section class="section">
+    <div class="kicker">Struktur statt Produkt-Pingpong</div>
 
-        <div class="btnRow">
-          <a class="btn" href={CHECK_URL} target="_blank" rel="noopener">
-            Vermögenscheck jetzt durchführen
-          </a>
-          <a class="btn btnSecondary" href={BOOKING_URL} target="_blank" rel="noopener">
-            Termin reservieren
-          </a>
+    <h1>Vermögenscheck – der strukturierte Einstieg</h1>
+
+    <p class="lead">
+      Für vermögende Privatanleger und Unternehmer, die ihr Vermögen nicht nur „haben“, sondern strategisch
+      führen möchten – mit klarer Logik, priorisierten Risiken und einem Rahmen, der zum makroökonomischen Umfeld passt.
+    </p>
+
+    <div class="cardsGrid" style="margin-top:22px;">
+      <div class="card">
+        <h3>Wofür der Vermögenscheck gedacht ist</h3>
+        <ul class="bullets">
+          <li>Sie möchten Klarheit über Ihre Struktur – nicht nur über einzelne Produkte.</li>
+          <li>Sie wollen Entscheidungen wieder begründen können (Ziel, Risiko, Umfeld).</li>
+          <li>Sie suchen einen nächsten Schritt, der Sinn ergibt – ohne Verkaufsdruck.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Wofür er nicht gedacht ist</h3>
+        <ul class="bullets">
+          <li>„Schnell mal drüberschauen“ ohne Zielbild und ohne Bereitschaft zur Struktur.</li>
+          <li>Vergleich von Einzelfonds/ETFs ohne Gesamtarchitektur.</li>
+          <li>Ein Ergebnis, das ohne Kontext als „Anlagetipp“ missverstanden werden könnte.</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="section sectionAlt" style="margin-top:24px;">
+      <h2 class="sectionTitle">So funktioniert es</h2>
+
+      <div class="stepsGrid">
+        <div class="stepCard">
+          <div class="stepNo">1</div>
+          <h3>Kurze Eingaben</h3>
+          <p>Sie beantworten ein paar Fragen zur Struktur, Zielsetzung und Ausgangslage (ca. 2–3 Minuten).</p>
+        </div>
+
+        <div class="stepCard">
+          <div class="stepNo">2</div>
+          <h3>E-Mail bestätigen (DOI)</h3>
+          <p>
+            Damit wir Ihnen das Ergebnis rechtssicher zustellen dürfen, bestätigen Sie Ihre E-Mail-Adresse per Klick
+            (Double Opt-in).
+          </p>
+        </div>
+
+        <div class="stepCard">
+          <div class="stepNo">3</div>
+          <h3>Ergebnis & nächster Schritt</h3>
+          <p>
+            Sie erhalten eine strukturierte Einordnung – inklusive Hinweis, welcher nächste Schritt für Sie sinnvoll ist
+            (optional: Orientierungsgespräch).
+          </p>
         </div>
       </div>
 
-      <aside class="panel">
-        <h2>Was Sie aus dem Check mitnehmen</h2>
-        <ul class="bullets">
-          <li>Ob Ihr Depot eine Architektur besitzt – oder nur Positionen</li>
-          <li>Ob Risiko und Funktion sauber getrennt sind</li>
-          <li>Ob Makro-Rahmen und Anlageinstrumente zusammenpassen</li>
-          <li>Wo typische Strukturfehler entstehen – und warum</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+      <div class="noteBox" style="margin-top:18px;">
+        <strong>Transparenz:</strong> Wir nutzen Ihre E-Mail ausschließlich zur Bereitstellung des Vermögenscheck-Ergebnisses.
+        Kein Newsletter, kein Verteiler. Widerruf jederzeit möglich.
+      </div>
+    </section>
 
-  <section>
-    <h2>Wofür der Vermögenscheck gedacht ist</h2>
-    <p>
-      Der Vermögenscheck ist der Einstieg in eine strategische Vermögensführung. Er ordnet Komplexität,
-      schafft eine erste Struktur und bildet die Grundlage für ein anschließendes Strukturgespräch.
-    </p>
-    <div class="panel">
-      <h2>Wofür er nicht gedacht ist</h2>
+    <section class="section" style="margin-top:18px;">
+      <h2 class="sectionTitle">Was Sie konkret erhalten</h2>
       <ul class="bullets">
-        <li>kein Performance-Vergleich und kein „Top-10“-Ranking</li>
-        <li>keine schnelle Optimierungsfantasie</li>
-        <li>keine reine Produktempfehlung</li>
+        <li>eine erste strukturierte Einordnung Ihrer Vermögensarchitektur</li>
+        <li>Hinweise auf typische Schwachstellen und Klumpenrisiken</li>
+        <li>eine Priorisierung: Was ist wirklich relevant – und was nur Rauschen?</li>
+        <li>eine klare Empfehlung für den nächsten sinnvollen Schritt (ohne Produktdruck)</li>
       </ul>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <h2>Für wen es besonders sinnvoll ist</h2>
-    <ul class="bullets">
-      <li>Unternehmer und Privatanleger, die ihr Vermögen strukturiert führen möchten</li>
-      <li>Bestandsdepots ab ca. 250.000 € Depotvolumen (Orientierungsgröße)</li>
-      <li>Anleger, die Entscheidungen künftig im Rahmen einer Strategie treffen wollen</li>
-    </ul>
+    <section class="section sectionAlt" style="margin-top:18px;">
+      <h2 class="sectionTitle">Bevor Sie starten</h2>
+      <p class="lead">
+        Der Vermögenscheck ist bewusst kein Massen-Tool. Er ist ein Einstieg in eine strukturierte Vermögensführung.
+        Wenn das zu Ihnen passt, starten Sie jetzt – Sie werden auf eine gesicherte Analyse-Seite weitergeleitet.
+      </p>
 
-    <p class="muted">
-      Hinweis: Wenn Ihr Depot darunter liegt, kann der Check trotzdem sinnvoll sein – entscheidend ist die
-      Komplexität und Ihr Anspruch an Struktur und Steuerung.
+      <div class="btnRow" style="margin-top:18px;">
+        <a class="btn"
+           href="https://vermcheck.zoholandingpage.eu/7-blinde-flecken/"
+           rel="noopener">
+          Vermögenscheck jetzt durchführen
+        </a>
+
+        <a class="btn btnSecondary"
+           href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
+           target="_blank"
+           rel="noopener">
+          Orientierungsgespräch buchen
+        </a>
+      </div>
+
+      <p style="margin-top:10px; color: rgba(20,35,24,0.65); font-size:0.95rem;">
+        Hinweis: Der Start-Button leitet auf Ihre Vermögenscheck-Seite weiter und startet den DOI-Prozess (E-Mail-Bestätigung).
+      </p>
+    </section>
+
+    <p style="margin-top:16px; color: rgba(20,35,24,0.6); font-size:0.92rem;">
+      Rechtliches: <a href="/recht/datenschutz">Datenschutz</a> · <a href="/recht/erstinformation">Erstinformation</a>
     </p>
-  </section>
-
-  <section>
-    <h2>Nächster Schritt</h2>
-    <p>
-      Starten Sie mit dem Vermögenscheck. Wenn die Ergebnisse vorliegen, klären wir im Strukturgespräch,
-      was davon relevant ist – und welche Architektur zu Ihren Zielen passt.
-    </p>
-
-    <div class="btnRow">
-      <a class="btn" href={CHECK_URL} target="_blank" rel="noopener">
-        Vermögenscheck starten
-      </a>
-      <a class="btn btnSecondary" href={BOOKING_URL} target="_blank" rel="noopener">
-        Direkt Termin buchen
-      </a>
-    </div>
   </section>
 </BaseLayout>

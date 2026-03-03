@@ -1345,3 +1345,207 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   text-decoration: underline;
   text-underline-offset: 6px;
 }
+/* ------------------------------
+   Modern Sections (Startseiten-Rhythmus)
+------------------------------ */
+
+.section {
+  padding: 3.2rem 0;
+}
+
+.section--alt {
+  background: rgba(0,0,0,0.02);
+  border-top: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.section--hero {
+  padding: 3.4rem 0 2.6rem;
+}
+
+.sectionInner {
+  display: block;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  opacity: 0.65;
+}
+
+.h1 {
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.h2 {
+  margin: 0 0 0.8rem;
+  letter-spacing: -0.01em;
+}
+
+.h3 {
+  margin: 0 0 0.4rem;
+}
+
+.lead {
+  margin: 0;
+  max-width: 70ch;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  opacity: 0.9;
+}
+
+/* Media */
+.mediaCard {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.02);
+}
+
+.mediaCard--soft {
+  background: rgba(0,0,0,0.015);
+}
+
+.mediaCard img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Pills */
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+}
+
+.metaPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.6);
+  font-weight: 600;
+  font-size: 0.9rem;
+  opacity: 0.92;
+}
+
+/* Cards */
+.cards3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.cards2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .cards3, .cards2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  padding: 1.1rem 1.1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.65);
+}
+
+.card p {
+  margin: 0.5rem 0 0;
+  line-height: 1.7;
+}
+
+.miniList {
+  margin: 0.7rem 0 0 1.1rem;
+}
+
+.miniList li {
+  margin: 0.35rem 0;
+}
+
+/* Quote */
+.quoteBlock {
+  padding: 1.4rem 1.4rem;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.02);
+}
+
+.quoteBlock--center {
+  text-align: center;
+}
+
+.quote {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.55;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.quoteSub {
+  margin: 0.7rem 0 0;
+  opacity: 0.85;
+  line-height: 1.7;
+}
+
+/* Big number block */
+.bigNumber {
+  padding: 1.3rem 1.3rem;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.7);
+}
+
+.bigNumberTop {
+  font-weight: 700;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+}
+
+.bigNumberMain {
+  margin-top: 0.6rem;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.bigNumberSub {
+  margin-top: 0.4rem;
+  opacity: 0.85;
+  line-height: 1.7;
+}
+
+/* CTA alignment (works with your existing .btn) */
+.cta-row--center {
+  justify-content: center;
+}

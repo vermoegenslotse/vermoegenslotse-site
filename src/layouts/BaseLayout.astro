@@ -1,5 +1,6 @@
 ---
-const { title = "Vermögenslotse" } = Astro.props;
+const path = Astro.url.pathname;
+const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
 ---
 
 <!DOCTYPE html>
@@ -19,10 +20,6 @@ const { title = "Vermögenslotse" } = Astro.props;
     <img src="/images/vermoegenslotse-logo.png" alt="Vermögenslotse" class="logoImg" />
   </a>
 </div>
- ---
-const path = Astro.url.pathname;
-const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
----
 
 <nav class="site-nav" aria-label="Hauptnavigation">
   <a class={isActive("/") ? "active" : ""} href="/">Start</a>

@@ -1,4 +1,10 @@
 ---
+type Props = {
+  title?: string;
+};
+
+const { title = "Vermögenslotse" } = Astro.props;
+
 const path = Astro.url.pathname;
 const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
 ---

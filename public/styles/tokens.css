@@ -1265,10 +1265,11 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   opacity: 0.9;
 }
 
-.site-nav a:hover {
+.site-nav a.active {
   opacity: 1;
   text-decoration: underline;
   text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
 }
 
 .site-nav a.active {

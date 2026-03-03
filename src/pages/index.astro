@@ -5,7 +5,29 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <BaseLayout title="Vermögenslotse – Strategische Vermögensarchitektur">
 
       <section class="hero">
-    <div class="heroGrid">
+    <section class="section">
+  <h2 class="sectionTitle">Drei Regeln, die Komplexität reduzieren</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Positionsgrößen (5–15%)</h3>
+      <p>Richtwert für Wirkung ohne strukturelles Klumpenrisiko.</p>
+    </div>
+    <div class="card">
+      <h3>Echte Diversifikation</h3>
+      <p>Mehrere Ertragsquellen statt Fonds-Sammlung ohne Systemfunktion.</p>
+    </div>
+    <div class="card">
+      <h3>Regelbasierte Steuerung</h3>
+      <p>Belastungsrahmen (Drawdown) statt Reaktion auf Schlagzeilen.</p>
+    </div>
+  </div>
+
+  <p class="muted" style="margin-top:10px;">
+    Vertiefung: <a href="/so-arbeite-ich">So arbeite ich</a>
+  </p>
+</section>
+<div class="heroGrid">
       <div>
         <div class="kicker">Architektur + Kapitalmarktlogik</div>
 
@@ -15,15 +37,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <h1 class="heroTitle">
   Klare Vermögensarchitektur<br />
-  <span class="heroTitleSub">für planbare Rendite & weniger Risiko</span>
+  <span class="heroTitleSub">für planbarere Entscheidungen & weniger Überraschungen</span>
 </h1>
         <p class="lead">
   Mehr Struktur. Mehr Kontrolle. Mehr Klarheit für Ihr Vermögen.<br />
   Sie haben Vermögen aufgebaut. Doch ist es strategisch geführt – oder nur verteilt?
 </p>
 <p class="heroExplanation">
-  Wir analysieren, ordnen und strukturieren Ihr Depot so, dass es zu Ihren Zielen,
-  Ihrem Risikoempfinden und dem makroökonomischen Umfeld passt.
+Wir machen aus „Positionen“ ein System: klare Rollen, sinnvolle Gewichtungen,
+echte Diversifikation – und definierte Belastungsgrenzen statt Bauchgefühl.
 </p>
 
         <div class="btnRow">
@@ -59,9 +81,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <li>Kapitaltöpfe statt Produkt-Sammlung</li>
       <li>Unternehmerisches Risiko integriert</li>
     </ul>
-    <p class="muted" style="margin-top:10px;">
+    <p class="muted" style="margin-top:12px;">
       Keine Produktshow. Kein „Top-10“. Sondern Struktur.
     </p>
+<p class="muted" style="margin-top:12px;">
+  In der Regel sinnvoll ab 250.000 € strukturiertem Anlagevermögen.
+</p>
   </aside>
 </div>
   </section>
@@ -70,23 +95,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <div class="testimonialsContainer">
     <h2 class="sectionTitle" style="text-align:center;">Stimmen meiner Mandanten</h2>
 
-    <div class="testimonials">
-      <div class="testimonialsTrack">
-        <div class="tCard">„Dank der Beratung von Christian Gradt habe ich erstmals eine klare Struktur in meine Altersvorsorge gebracht – ohne komplizierte Produkte,sondern mit einer nachvollziehbaren Strategie.“  Kunde, Stuttgart</div>
-        <div class="tCard">„Besonders schätze ich die ruhige, empathische Art. Ich habe das Gefühl, wirklich verstanden zu werden – und keine Standardlösung von der Stange zu bekommen.“  Unternehmer, Region Stuttgart</div>
-        <div class="tCard">Sehr kompetent, sehr zuverlässig, hat immer Zeit. Ich schätze Herrn Gradt sehr als Berater! Kunde, Stuttgart</div>
-        <div class="tCard">"Herr Gradt besitzt ein umfassendes Wissen über diverse Geldanlagen. Innerhalb von 24 Stunden erhält man eine detaillierte Antwort. Insofern kann ich ihn gerne weiter empfehlen."  Unternehmer, Region Stuttgart</div>
-        <div class="tCard">„Durch den Ansatz, Sachwerte mit klassischen Anlagen zu kombinieren, fühle ich mich heute deutlich sicherer. Mein Depot ist stabiler und planbarer.“  Mandantin, Esslingen</div>
-        <div class="tCard">„Ich kenne Herrn Gradt mittlerweile seit über 20 Jahren. Ehrlichkeit, Zuverlässigkeit und eine sehr gute Betreuung sind seine Markenzeichen. Empfehlungsrate 100 % !"   Unternehmer Waiblingen</div>
-
-        <!-- Duplicate for seamless loop -->
-        <div class="tCard">„Dank der Beratung von Christian Gradt habe ich erstmals eine klare Struktur in meine Altersvorsorge gebracht – ohne komplizierte Produkte,sondern mit einer nachvollziehbaren Strategie.“ Kunde, Stuttgart</div>
-        <div class="tCard">„Besonders schätze ich die ruhige, empathische Art. Ich habe das Gefühl, wirklich verstanden zu werden – und keine Standardlösung von der Stange zu bekommen.“ Unternehmer, Region Stuttgart</div>
-        <div class="tCard">Sehr kompetent, sehr zuverlässig, hat immer Zeit. Ich schätze Herrn Gradt sehr als Berater! Kunde, Stuttgart</div>
-        <div class="tCard">"Herr Gradt besitzt ein umfassendes Wissen über diverse Geldanlagen. Innerhalb von 24 Stunden erhält man eine detaillierte Antwort. Insofern kann ich ihn gerne weiter empfehlen." Unternehmer, Region Stuttgart</div>
-        <div class="tCard">„Durch den Ansatz, Sachwerte mit klassischen Anlagen zu kombinieren, fühle ich mich heute deutlich sicherer. Mein Depot ist stabiler und planbarer.“ Mandantin, Esslingen</div>
-        <div class="tCard">„Ich kenne Herrn Gradt mittlerweile seit über 20 Jahren. Ehrlichkeit, Zuverlässigkeit und eine sehr gute Betreuung sind seine Markenzeichen. Empfehlungsrate 100 % !    Unternehmer Waiblingen“</div>
-
+    <div class="cardsGrid" style="margin-top:18px;">
+      <div class="card">
+        <h3>Unternehmer, 52</h3>
+        <p class="muted">„Endlich ein Regelwerk statt Einzelentscheidungen. Weniger Komplexität, mehr Steuerbarkeit.“</p>
+      </div>
+      <div class="card">
+        <h3>Privatanlegerin, 49</h3>
+        <p class="muted">„Ich verstehe mein Risiko – weil es in Euro erklärt wurde, nicht nur in Prozent.“</p>
+      </div>
+      <div class="card">
+        <h3>Unternehmerpaar, 58</h3>
+        <p class="muted">„Ruhiger in der Entnahmephase durch klare Module und eine nachvollziehbare Struktur.“</p>
+      </div>
+      <div class="card">
+        <h3>Selbstständiger, 46</h3>
+        <p class="muted">„Keine Produktshow. Sondern Architektur: Rolle, Risiko, nächste Schritte.“</p>
       </div>
     </div>
 
@@ -276,6 +300,20 @@ dass sie ihre finanzielle Zukunft sicher und planbar gestalten können.
   <p class="muted">
     Vermögenslotse ist die Marke. Die Beratung erfolgt auf Basis der Christian Gradt Consulting.
   </p>
+
+<section class="section sectionAlt">
+  <h2 class="sectionTitle">Risikoprüfung als zweite Ebene</h2>
+  <p class="lead">
+    Vermögensführung endet nicht bei Kapitalanlagen.
+  </p>
+  <p class="muted">
+    Als berufener Sachverständiger für das Versicherungswesen (BVSV) betrachte ich die Risikostruktur rund um Ihre Vermögensziele:
+    Haftungslogik, Absicherung, Annahmen – systemisch, dokumentiert, nicht produktgetrieben.
+  </p>
+  <div class="btnRow" style="margin-top:14px;">
+    <a class="btn btnSecondary" href="/ueber-mich">Mehr dazu: Über mich</a>
+  </div>
+</section>
 
   <div class="trustGrid">
     <div class="card">

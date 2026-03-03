@@ -1268,3 +1268,80 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 .site-nav a:hover {
   opacity: 1;
 }
+/* ---------------------------------------
+   Page Layout (ruhig, magazinartig)
+---------------------------------------- */
+
+.page {
+  padding: 2.4rem 0 3.2rem;
+}
+
+.pageHeader {
+  margin-bottom: 1.6rem;
+}
+
+.pageHeader h1 {
+  margin: 0 0 0.6rem;
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  margin: 0;
+  max-width: 70ch;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  opacity: 0.9;
+}
+
+.content {
+  max-width: 80ch;
+}
+
+.content p {
+  line-height: 1.75;
+  margin: 0.9rem 0;
+}
+
+.content h2 {
+  margin: 2.2rem 0 0.6rem;
+  letter-spacing: -0.01em;
+}
+
+.content ul {
+  margin: 0.8rem 0 1rem 1.1rem;
+}
+
+.content li {
+  margin: 0.35rem 0;
+}
+
+/* ruhiger Abschluss-Satz (falls genutzt) */
+.closing {
+  margin-top: 2rem;
+  font-weight: 600;
+}
+
+/* CTA */
+.cta-row {
+  margin-top: 2.2rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.btn:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}

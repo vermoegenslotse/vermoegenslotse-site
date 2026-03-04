@@ -1720,3 +1720,42 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
     max-width: 110px;
   }
 }
+.bookingGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+  margin-top: 22px;
+}
+
+.bookingCard {
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.65);
+  padding: 18px 18px;
+}
+
+.bookingCardAlt {
+  background: rgba(0,0,0,0.02);
+}
+
+.bookingHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bookingBadge {
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.7);
+}
+
+@media (max-width: 900px) {
+  .bookingGrid {
+    grid-template-columns: 1fr;
+  }
+}

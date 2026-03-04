@@ -1798,3 +1798,9 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
     grid-template-columns: 1fr;
   }
 }
+.site-nav a:last-child {
+  background: #D87808;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+}

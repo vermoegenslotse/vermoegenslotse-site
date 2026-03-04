@@ -6,28 +6,41 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <!-- Hero -->
   <section class="section heroPrivate">
-    <div class="container">
-      <div class="heroPrivateInner">
-        <div>
-          <div class="kicker">Kapitalarchitektur für vermögende Privatanleger</div>
-          <h1 class="heroPrivateTitle">
-            Ihr Vermögen verdient eine klare Struktur – nicht nur gute Produkte.
-          </h1>
-          <p class="heroPrivateLead">
-            Viele Depots sind gewachsen. Doch sind sie strategisch geführt – oder nur verteilt?
-            Wir schaffen Klarheit, priorisieren Risiken und entwickeln eine belastbare Steuerungslogik.
-          </p>
+  <div class="container">
+    <div class="heroGrid">
+      <div>
+        <div class="kicker">Kapitalarchitektur für vermögende Privatanleger</div>
 
-          <div class="btnRow">
-            <a class="btn" href="/vermoegenscheck">Vermögenscheck starten</a>
-            <a class="btn btnSecondary" href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002" target="_blank" rel="noopener">
-              Termin buchen
-            </a>
-          </div>
+        <h1 class="heroTitle">
+          Ihr Vermögen verdient eine klare Struktur –<br />
+          <span class="heroTitleSub">nicht nur gute Produkte</span>
+        </h1>
+
+        <p class="lead">
+          Viele Depots sind gewachsen. Doch sind sie strategisch geführt – oder nur verteilt?<br />
+          Wir schaffen Klarheit, priorisieren Risiken und entwickeln eine belastbare Steuerungslogik.
+        </p>
+
+        <!-- CTA reduziert: nur 1, der zweite kommt unten im Terminblock -->
+        <div class="btnRow" style="margin-top:18px;">
+          <a class="btn" href="/vermoegenscheck">Vermögenscheck starten</a>
         </div>
+
+        <p class="muted" style="margin-top:12px;">
+          Oder: starten Sie direkt mit einem kurzen Orientierungsgespräch (siehe unten).
+        </p>
+      </div>
+
+      <div class="splitVisual">
+        <img
+          src="/images/private-hero.png"
+          alt="Vermögensarchitektur für Privatanleger"
+          loading="eager"
+        />
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Recognition -->
   <section class="section">

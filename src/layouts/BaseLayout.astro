@@ -54,5 +54,30 @@ const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWit
 </div>
       </div>
     </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const reveals = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealVisible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+  reveals.forEach((el) => {
+    observer.observe(el);
+  });
+
+});
+</script>
   </body>
 </html>

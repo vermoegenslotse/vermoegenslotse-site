@@ -1,1 +1,74 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
 
+<BaseLayout title="Kapital-Guide – Vermögenslotse">
+  <section class="section section--hero">
+    <div class="container sectionInner grid2">
+      <div>
+        <p class="eyebrow">Kostenloser Guide</p>
+        <h1 class="h1">Kapital-Guide: Die häufigsten Strukturfehler in Depots</h1>
+        <p class="lead">
+          Kurz, klar, umsetzbar: woran Sie typische Architekturfehler erkennen – und welche Fragen Sie sich (und Ihrem Depot) stellen sollten.
+        </p>
+
+        <div class="personaSwitch personaSwitch--guide">
+          <div class="personaLabel">Wählen Sie Ihre Version</div>
+          <div class="personaButtons">
+            <a class="personaBtn personaBtnDark" href="/downloads/kapital-guide-unternehmer.pdf" target="_blank" rel="noopener">
+              Unternehmer (PDF)
+            </a>
+            <a class="personaBtn" href="/downloads/kapital-guide-privatanleger.pdf" target="_blank" rel="noopener">
+              Privatanleger (PDF)
+            </a>
+          </div>
+        </div>
+
+        <ul class="miniList" style="margin-top:18px;">
+          <li>Warum „viele Positionen“ keine Diversifikation ist</li>
+          <li>Welche Rollen ein Depot braucht – und welche oft fehlen</li>
+          <li>Wie Sie Risiko in Euro greifbar machen</li>
+          <li>Wie Sie Komplexität reduzieren, ohne „alles umzuschichten“</li>
+        </ul>
+
+        <div class="btnRow" style="margin-top:18px;">
+          <a class="btn btnSecondary" href="/so-arbeite-ich">So arbeite ich</a>
+          <a class="btn" href="/vermoegenscheck">Vermögenscheck starten</a>
+        </div>
+      </div>
+
+      <figure class="mediaCard">
+        <img src="/images/kapital-guide-cover.webp" alt="Kapital-Guide – Cover" loading="lazy" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container sectionInner">
+      <h2 class="h2">Für wen ist der Guide?</h2>
+      <div class="cards2">
+        <div class="card">
+          <h3 class="h3">Unternehmer</h3>
+          <p>Mit Fokus auf Trennung privat/betrieblich, Liquiditätslogik, Haftungs- und Risikopuffer.</p>
+        </div>
+        <div class="card">
+          <h3 class="h3">Privatanleger</h3>
+          <p>Mit Fokus auf klare Depotrollen, Risiko in Euro, Entnahme- und Lebensphasenlogik.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container sectionInner">
+      <div class="quoteBlock quoteBlock--center">
+        <p class="quote">„Ein Depot bildet Vermögenswerte ab. Ein Plan definiert Parameter, Rollen und Belastungsgrenzen.“</p>
+        <p class="quoteSub">Wenn Sie das Prinzip vertiefen möchten: Starten Sie mit dem Vermögenscheck.</p>
+      </div>
+
+      <div class="cta-row cta-row--center">
+        <a class="btn" href="/vermoegenscheck">Vermögenscheck starten</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -15,25 +15,7 @@ const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWit
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", function () {
-    const reveals = document.querySelectorAll(".reveal");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("revealVisible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    reveals.forEach((el) => observer.observe(el));
-  });
-</script>
     <link rel="stylesheet" href="/styles/tokens.css" />
   </head>
 
@@ -120,6 +102,25 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+</script>
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealVisible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    reveals.forEach((el) => observer.observe(el));
+  });
 </script>
   </body>
 </html>

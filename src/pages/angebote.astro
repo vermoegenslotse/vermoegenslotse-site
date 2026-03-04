@@ -2,85 +2,247 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Angebote & Preise | Vermögenslotse">
-  <!-- Optional: noindex für diese Seite -->
+<BaseLayout title="Angebote & Rahmen | Vermögenslotse">
   <head>
     <meta name="robots" content="noindex, nofollow" />
   </head>
 
-  <section class="section">
-    <h1 class="sectionTitle">Angebote & Preise (Richtwerte)</h1>
+  <!-- Intro -->
+  <section class="section reveal">
+    <div class="kicker">Transparenz & Mandatslogik</div>
+
+    <h1 class="heroTitle">
+      Angebote & Rahmen<br />
+      <span class="heroTitleSub">klar, nachvollziehbar, ohne Produktlogik</span>
+    </h1>
+
     <p class="lead">
-      Diese Seite ist bewusst nicht öffentlich verlinkt. Die Beträge sind Richtwerte und hängen von Ihrer Depot- und
-      Struktur-Komplexität ab.
+      Diese Seite ist bewusst nicht öffentlich verlinkt.
+      Sie ist für Interessenten gedacht, die nach einem Erstkontakt einen transparenten Überblick
+      über Leistungsumfang, Ablauf und Rahmenbedingungen wünschen.
     </p>
 
-    <div class="card" style="margin-top:18px;">
-      <h2 style="margin:0 0 10px;">Mandatslogik</h2>
-      <p class="muted" style="margin:0;">
-        Wir starten mit der Finanz-Cockpit-Inventur. Danach entscheiden Sie in Ruhe:
-        (1) selbst umsetzen, (2) gemeinsam umsetzen und laufend steuern, oder (3) nichts ändern.
-      </p>
-      <p class="muted" style="margin:10px 0 0;">
-        Wenn wir gemeinsam steuern, wird die Inventur angerechnet: <strong>100% (30 Tage)</strong> / <strong>50% (60 Tage)</strong>.
-      </p>
+    <p class="muted" style="margin-top:12px;">
+      Wichtig: Die genannten Beträge sind Richtwerte. Der konkrete Umfang hängt davon ab,
+      wie viele Bausteine bereits vorhanden sind (Depots, Versicherungen, Beteiligungen, Immobilien),
+      wie stark private und betriebliche Themen verzahnt sind und welche Ziele im Vordergrund stehen.
+    </p>
+  </section>
+
+  <!-- Mandatslogik -->
+  <section class="section sectionAlt reveal">
+    <h2 class="sectionTitle">Wie die Zusammenarbeit grundsätzlich funktioniert</h2>
+
+    <div class="cardsGrid" style="margin-top:18px;">
+      <div class="card">
+        <h3>Schritt 1: Orientierung</h3>
+        <p class="muted">
+          Wir klären, ob Ihr Anliegen zu meinem Ansatz passt: Struktur statt Produktliste.
+          Sie bekommen eine erste Einordnung – ohne Verkaufsdruck.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Schritt 2: Inventur / Standortbestimmung</h3>
+        <p class="muted">
+          Wir machen aus „vielen Positionen“ wieder ein verständliches System:
+          Was habe ich? Wozu dient es? Wo sind echte Risiken? Was ist nur Komplexität?
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Schritt 3: Entscheidung</h3>
+        <p class="muted">
+          Danach entscheiden Sie frei: (a) selbst umsetzen, (b) gemeinsam umsetzen und laufend steuern,
+          oder (c) erst einmal nichts ändern.
+        </p>
+      </div>
+    </div>
+
+    <div class="noteBox" style="margin-top:18px;">
+      <strong>Anrechnung der Inventur:</strong><br />
+      Wenn Sie nach der Inventur in eine laufende Zusammenarbeit wechseln, wird die Inventur angerechnet:
+      <strong>100% bei Beauftragung innerhalb von 30 Tagen</strong>, danach <strong>50% innerhalb von 60 Tagen</strong>.
     </div>
   </section>
 
-  <section class="section sectionAlt">
-    <h2 class="sectionTitle">1) Finanz-Cockpit Inventur</h2>
-    <p class="muted">Einmalig. Fix. Transparent. Ergebnis: Übersicht, Leitplanken, 90-Tage-Plan.</p>
+  <!-- Orientierungsgespräch -->
+  <section class="section reveal">
+    <h2 class="sectionTitle">1) Orientierungsgespräch (20 Minuten)</h2>
+
+    <p class="muted">
+      Das Orientierungsgespräch ist der Einstieg für Menschen, die sich erst einmal ein Bild machen möchten.
+      Wir klären, ob es bei Ihnen um „Struktur“ geht – oder um etwas anderes.
+    </p>
+
+    <div class="cardsGrid" style="margin-top:18px;">
+      <div class="card">
+        <h3>Worum es geht</h3>
+        <ul class="bullets">
+          <li>Kennenlernen und Erwartungsabgleich</li>
+          <li>Grobe Einordnung Ihrer Situation</li>
+          <li>Welche Daten wären für den nächsten Schritt sinnvoll?</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Was Sie danach haben</h3>
+        <ul class="bullets">
+          <li>eine klare Empfehlung für den nächsten Schritt</li>
+          <li>eine erste Priorität („was ist wirklich wichtig?“)</li>
+          <li>Orientierung, ob Vermögenscheck / Strategiegespräch sinnvoll ist</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Rahmen</h3>
+        <p class="muted">
+          Kostenlos & unverbindlich.
+        </p>
+      </div>
+    </div>
+
+    <div class="btnRow" style="margin-top:18px;">
+      <a class="btn"
+         href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
+         target="_blank"
+         rel="noopener">
+        Orientierungsgespräch buchen
+      </a>
+      <a class="btn btnSecondary" href="/kontakt">
+        Kontakt
+      </a>
+    </div>
+  </section>
+
+  <!-- Inventur -->
+  <section class="section sectionAlt reveal">
+    <h2 class="sectionTitle">2) Finanz-Cockpit Inventur (Standortbestimmung)</h2>
+
+    <p class="muted">
+      Das ist der Schritt, in dem aus Ihrem Ist-Zustand wieder eine verständliche Struktur wird.
+      Viele Anleger haben „viel“ – aber kein klares System: keine Rollenverteilung, keine Prioritäten,
+      keine belastbaren Grenzen für Risiko und keine klare Logik für Entscheidungen.
+    </p>
+
+    <div class="card" style="margin-top:18px;">
+      <h3>Was Sie am Ende in der Hand haben</h3>
+      <ul class="bullets" style="margin:0;">
+        <li><strong>Struktur-Übersicht:</strong> Welche Bausteine existieren und welche Funktion erfüllen sie?</li>
+        <li><strong>Risikobild in Klartext:</strong> Klumpenrisiken, Abhängigkeiten, Schwachstellen – priorisiert.</li>
+        <li><strong>Steuerungslogik:</strong> Welche Regeln gelten für Aufbau oder Entnahme?</li>
+        <li><strong>90-Tage-Plan:</strong> Konkrete nächste Schritte in sinnvoller Reihenfolge.</li>
+      </ul>
+    </div>
+
+    <p class="muted" style="margin-top:14px;">
+      Welches Paket passt, hängt vor allem von der Komplexität ab (Anzahl Depots/Anbieter, Produktmix,
+      Altverträge, Immobilien-/Unternehmerkontext, Generationenfragen).
+    </p>
 
     <div class="cardsGrid" style="margin-top:18px;">
       <div class="card">
         <h3>Basis</h3>
-        <p class="muted">Für überschaubare Komplexität (1 Depot / 1–2 Anbieter).</p>
+        <p class="muted">
+          Für überschaubare Komplexität (z. B. ein Depot, wenige Bausteine, klare Ziele).
+        </p>
         <p style="font-size:1.25rem; margin-top:10px;"><strong>1.490 €</strong></p>
       </div>
 
       <div class="card">
         <h3>Komplex <span class="badge" style="margin-left:8px;">meistgewählt</span></h3>
-        <p class="muted">Für produktübergreifenden Mix, mehrere Depots/Altlasten.</p>
+        <p class="muted">
+          Für mehrere Bausteine/Anbieter, gewachsenes Depot, Altlasten oder Entnahmeplanung.
+        </p>
         <p style="font-size:1.25rem; margin-top:10px;"><strong>2.490 €</strong></p>
       </div>
 
       <div class="card">
         <h3>Premium</h3>
-        <p class="muted">Für Multi-Depot / Family / Unternehmernähe und hohe Komplexität.</p>
+        <p class="muted">
+          Für sehr hohe Komplexität (Multi-Depot/Family, Unternehmernähe, größere Übertragungs- und Strukturfragen).
+        </p>
         <p style="font-size:1.25rem; margin-top:10px;"><strong>3.490 €</strong></p>
       </div>
     </div>
 
-    <div class="btnRow" style="margin-top:22px;">
+    <div class="noteBox" style="margin-top:18px;">
+      <strong>Wichtig:</strong><br />
+      Die Inventur ist bewusst produktunabhängig. Sie bekommen zuerst Struktur und Entscheidungslogik.
+      Erst danach sprechen wir – wenn überhaupt – über Umsetzung.
+    </div>
+
+    <div class="btnRow" style="margin-top:18px;">
       <a class="btn btnSecondary" href="/vermoegenscheck">Vermögenscheck (Kurzqualifizierung)</a>
-      <a class="btn" href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002" target="_blank" rel="noopener">
+      <a class="btn"
+         href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
+         target="_blank"
+         rel="noopener">
         Orientierungsgespräch buchen
       </a>
     </div>
   </section>
 
-  <section class="section">
-    <h2 class="sectionTitle">2) Laufende Steuerung (Mandat)</h2>
-    <div class="card">
-      <ul class="bullets" style="margin:0;">
-        <li><strong>0,75% p.a. + MwSt.</strong>, quartalsweise abgerechnet</li>
-        <li><strong>Mindestjahresfee: 1.950 € p.a. + MwSt.</strong></li>
-        <li>Degressiv ab 750k (0,60% / 0,45%)</li>
-      </ul>
-      <p class="muted" style="margin-top:12px;">
-        Sie bezahlen nicht fürs Produkt, sondern für Strukturführung: Regeln, Reviews, Anpassung bei Lebensereignissen
-        und ein System, das auch in Stressphasen trägt.
-      </p>
+  <!-- Laufendes Mandat -->
+  <section class="section reveal">
+    <h2 class="sectionTitle">3) Laufende Steuerung (Mandat)</h2>
+
+    <p class="muted">
+      Manche Mandanten möchten nach der Inventur nicht „allein weiterlaufen“, sondern ein System,
+      das dauerhaft trägt: klare Regeln, regelmäßige Reviews und Anpassungen, wenn sich Märkte
+      oder Lebenssituationen verändern.
+    </p>
+
+    <div class="cardsGrid" style="margin-top:18px;">
+      <div class="card">
+        <h3>Leistungslogik</h3>
+        <ul class="bullets">
+          <li>Regelbasierte Strukturführung statt Einzel-Entscheidungen</li>
+          <li>Prioritäten, Rebalancing-Logik, Belastungsgrenzen</li>
+          <li>Reviews bei Ereignissen (Ruhestand, Verkauf Firma, Erbe, etc.)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Vergütungsrahmen</h3>
+        <ul class="bullets">
+          <li><strong>0,75% p.a. + MwSt.</strong> (quartalsweise)</li>
+          <li><strong>Mindestjahresfee: 1.950 € p.a. + MwSt.</strong></li>
+          <li>Degressiv ab 750k: <strong>0,60%</strong> / <strong>0,45%</strong></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Was Sie davon haben</h3>
+        <p class="muted">
+          Sie bezahlen nicht „für Produkte“, sondern für eine Steuerungslogik:
+          Klarheit, Kontrolle, Struktur – und weniger Überraschungen in Stressphasen.
+        </p>
+      </div>
     </div>
+
+    <p class="muted" style="margin-top:12px;">
+      Transparenz & Vergütung im Detail finden Sie auch hier: <a href="/recht/transparenz">Transparenz</a>.
+    </p>
   </section>
 
-  <section class="section sectionAlt">
-    <h2 class="sectionTitle">Kontakt</h2>
+  <!-- Abschluss -->
+  <section class="section sectionAlt reveal">
+    <h2 class="sectionTitle">Nächster Schritt</h2>
+    <p class="lead">
+      Wenn Sie unsicher sind, starten Sie mit dem Orientierungsgespräch.
+      Wenn Sie bereits Klarheit wollen, nutzen Sie den Vermögenscheck.
+    </p>
+
     <div class="btnRow">
-      <a class="btn btnSecondary" href="/kontakt">Kontaktformular</a>
-      <a class="btn" href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002" target="_blank" rel="noopener">
-        Termin buchen
+      <a class="btn"
+         href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
+         target="_blank"
+         rel="noopener">
+        Orientierungsgespräch buchen
       </a>
+      <a class="btn btnSecondary" href="/vermoegenscheck">Vermögenscheck</a>
+      <a class="btn btnSecondary" href="/kontakt">Kontakt</a>
     </div>
   </section>
 </BaseLayout>

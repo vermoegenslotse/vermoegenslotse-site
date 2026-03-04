@@ -105,48 +105,53 @@ In der Regel sinnvoll ab 250.000 € strukturiertem Anlagevermögen.
 
 <section class="sectionAlt fullWidthSection">
   <div class="testimonialsContainer">
+
     <h2 class="sectionTitle" style="text-align:center;">Stimmen meiner Mandanten</h2>
 
-    <div class="cardsGrid" style="margin-top:18px;">
-      <div class="card">
-        <h3>Unternehmer, 52</h3>
+    <div class="testimonialsGrid">
+
+      <div class="testimonialsCards">
+
+        <div class="card">
+          <h3>Unternehmer, 52</h3>
+          <p class="muted">
+            „Endlich ein Regelwerk statt Einzelentscheidungen. Ich weiß jetzt, wann gehandelt wird – und wann nicht.“
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Privatanlegerin, 49</h3>
+          <p class="muted">
+            „Ich verstehe mein Risiko, weil wir es in Euro definiert haben. Das macht Entscheidungen deutlich ruhiger.“
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Unternehmerpaar, 58</h3>
+          <p class="muted">
+            „Ruhiger in der Entnahmephase durch klare Module und eine nachvollziehbare Steuerungslogik.“
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Selbstständiger, 46</h3>
+          <p class="muted">
+            „Keine Produktshow. Sondern Architektur: Rollen, Risiken, Prioritäten – und ein System, das ich verstehe.“
+          </p>
+        </div>
+
+      </div>
+
+      <div class="testimonialsTrust">
+
         <p class="muted">
-          „Endlich ein Regelwerk statt Einzelentscheidungen. Ich weiß jetzt, wann gehandelt wird – und wann nicht.“
+          Verifizierte Bewertungen über ProvenExpert
         </p>
-      </div>
 
-      <div class="card">
-        <h3>Privatanlegerin, 49</h3>
-        <p class="muted">
-          „Ich verstehe mein Risiko, weil wir es in Euro definiert haben. Das macht Entscheidungen deutlich ruhiger.“
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Unternehmerpaar, 58</h3>
-        <p class="muted">
-          „Ruhiger in der Entnahmephase durch klare Module und eine nachvollziehbare Steuerungslogik.“
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Selbstständiger, 46</h3>
-        <p class="muted">
-          „Keine Produktshow. Sondern Architektur: Rollen, Risiken, Prioritäten – und ein System, das ich verstehe.“
-        </p>
-      </div>
-    </div>
-
-    <div class="trustRow" style="margin-top:16px;">
-      <div class="trustRowLeft">
-        <p class="muted" style="margin:0;">
-          Verifizierte Bewertungen über ProvenExpert.
-        </p>
-      </div>
-
-      <div class="trustRowRight">
         <div id="proSealWidgetTop"></div>
+
       </div>
+
     </div>
 
     <script is:inline>
@@ -170,23 +175,21 @@ In der Regel sinnvoll ab 250.000 € strukturiertem Anlagevermögen.
       window.addEventListener(
         "load",
         function () {
-          // Script nur einmal laden (falls weiter unten noch ein Widget existiert)
           if (!document.querySelector('script[src="https://s.provenexpert.net/seals/proseal-v2.js"]')) {
             var script = document.createElement('script');
             script.src = "https://s.provenexpert.net/seals/proseal-v2.js";
             script.onload = loadProSealTop;
             document.head.appendChild(script);
           } else {
-            // Script ist schon da -> direkt initialisieren
             loadProSealTop();
           }
         },
         false
       );
     </script>
+
   </div>
 </section>
-
 <section class="section">
   <h2 class="sectionTitle">Vielleicht erkennen Sie sich hier wieder</h2>
 

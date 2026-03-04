@@ -110,25 +110,80 @@ In der Regel sinnvoll ab 250.000 € strukturiertem Anlagevermögen.
     <div class="cardsGrid" style="margin-top:18px;">
       <div class="card">
         <h3>Unternehmer, 52</h3>
-        <p class="muted">„Endlich ein Regelwerk statt Einzelentscheidungen. Weniger Komplexität, mehr Steuerbarkeit.“</p>
+        <p class="muted">
+          „Endlich ein Regelwerk statt Einzelentscheidungen. Ich weiß jetzt, wann gehandelt wird – und wann nicht.“
+        </p>
       </div>
+
       <div class="card">
         <h3>Privatanlegerin, 49</h3>
-        <p class="muted">„Ich verstehe mein Risiko – weil es in Euro erklärt wurde, nicht nur in Prozent.“</p>
+        <p class="muted">
+          „Ich verstehe mein Risiko, weil wir es in Euro definiert haben. Das macht Entscheidungen deutlich ruhiger.“
+        </p>
       </div>
+
       <div class="card">
         <h3>Unternehmerpaar, 58</h3>
-        <p class="muted">„Ruhiger in der Entnahmephase durch klare Module und eine nachvollziehbare Struktur.“</p>
+        <p class="muted">
+          „Ruhiger in der Entnahmephase durch klare Module und eine nachvollziehbare Steuerungslogik.“
+        </p>
       </div>
+
       <div class="card">
         <h3>Selbstständiger, 46</h3>
-        <p class="muted">„Keine Produktshow. Sondern Architektur: Rolle, Risiko, nächste Schritte.“</p>
+        <p class="muted">
+          „Keine Produktshow. Sondern Architektur: Rollen, Risiken, Prioritäten – und ein System, das ich verstehe.“
+        </p>
       </div>
     </div>
 
-    <p class="muted" style="text-align:center; margin-top:12px;">
-      Weitere Bewertungen über ProvenExpert.
-    </p>
+    <div class="trustRow" style="margin-top:16px;">
+      <div class="trustRowLeft">
+        <p class="muted" style="margin:0;">
+          Verifizierte Bewertungen über ProvenExpert.
+        </p>
+      </div>
+
+      <div class="trustRowRight">
+        <div id="proSealWidgetTop"></div>
+      </div>
+    </div>
+
+    <script is:inline>
+      window.loadProSealTop = function(){
+        window.provenExpert.proSeal({
+          widgetId: "de268325-2eef-447c-9058-570a06970d50",
+          language:"de-DE",
+          usePageLanguage: false,
+          bannerColor: "#D87808",
+          textColor: "#FFFFFF",
+          showBackPage: true,
+          showReviews: true,
+          hideDate: true,
+          hideName: false,
+          googleStars: true,
+          displayReviewerLastName: false,
+          embeddedSelector: "#proSealWidgetTop"
+        })
+      };
+
+      window.addEventListener(
+        "load",
+        function () {
+          // Script nur einmal laden (falls weiter unten noch ein Widget existiert)
+          if (!document.querySelector('script[src="https://s.provenexpert.net/seals/proseal-v2.js"]')) {
+            var script = document.createElement('script');
+            script.src = "https://s.provenexpert.net/seals/proseal-v2.js";
+            script.onload = loadProSealTop;
+            document.head.appendChild(script);
+          } else {
+            // Script ist schon da -> direkt initialisieren
+            loadProSealTop();
+          }
+        },
+        false
+      );
+    </script>
   </div>
 </section>
 

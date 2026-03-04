@@ -23,12 +23,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <!-- CTA reduziert: nur 1, der zweite kommt unten im Terminblock -->
         <div class="btnRow" style="margin-top:18px;">
-          <a class="btn" href="/vermoegenscheck">Vermögenscheck starten</a>
-        </div>
+  <a class="btn btnSecondary"
+     href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
+     target="_blank"
+     rel="noopener">
+    Orientierungsgespräch buchen
+  </a>
+</div>
 
-        <p class="muted" style="margin-top:12px;">
-          Oder: starten Sie direkt mit einem kurzen Orientierungsgespräch (siehe unten).
-        </p>
+<p class="muted" style="margin-top:12px;">
+  Der Vermögenscheck ist der nächste Schritt, wenn klar ist, worum es geht – und welche Daten sinnvoll sind.
+</p>
       </div>
 
       <div class="splitVisual">
@@ -87,16 +92,70 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <!-- Lösung -->
   <section class="section reveal">
-    <h2 class="sectionTitle">Was Sie konkret erhalten</h2>
+  <h2 class="sectionTitle">Was Sie konkret erhalten</h2>
+  <p class="muted">
+    Keine Produktliste, sondern eine klare Architektur: Übersicht, Prioritäten, nächste Schritte.
+  </p>
 
-    <ul class="bullets">
-      <li>Eine strukturierte Übersicht Ihrer aktuellen Vermögensarchitektur</li>
-      <li>Identifizierte Klumpenrisiken und Schwachstellen</li>
-      <li>Ein priorisierter Maßnahmenplan</li>
-      <li>Eine klare Steuerungslogik für Aufbau oder Entnahmephase</li>
-      <li>Optional: Generationen- und Übertragungsstrategie</li>
-    </ul>
-  </section>
+  <div class="benefitGrid" style="margin-top:18px;">
+    <div class="benefitCard">
+      <h4>Struktur-Überblick</h4>
+      <p>Eine geordnete Sicht auf Ihr Vermögen – Rollen, Gewichtungen, Abhängigkeiten.</p>
+    </div>
+
+    <div class="benefitCard">
+      <h4>Risiken priorisiert</h4>
+      <p>Klumpenrisiken und Schwachstellen – nach Relevanz sortiert, nicht nach Schlagzeilen.</p>
+    </div>
+
+    <div class="benefitCard">
+      <h4>Handlungsplan</h4>
+      <p>Konkrete nächste Schritte – verständlich, ohne Produktdruck.</p>
+    </div>
+
+    <div class="benefitCard">
+      <h4>Steuerungslogik</h4>
+      <p>Ein Rahmen für Aufbau oder Entnahmephase – damit Entscheidungen wieder begründet sind.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:22px;">Optionaler Einstieg: Kapital-Guide</h3>
+  <p class="muted" style="margin-top:8px;">
+    Wenn Sie zuerst einen strukturierten Überblick wollen – ohne Termin – starten Sie hier:
+  </p>
+
+  <div class="leadMagnetGrid" style="margin-top:14px;">
+    <div class="card">
+      <h3>Kapital-Guide für Privatanleger</h3>
+      <p class="muted">
+        Für alle, die ihr Depot verstehen, Risiken greifbar machen und die nächsten Schritte einordnen wollen –
+        in Klartext statt Finanzsprech.
+      </p>
+      <div class="btnRow" style="margin-top:12px;">
+        <a class="btn btnSecondary" href="/downloads/kapital-guide-privatanleger.pdf" target="_blank" rel="noopener">
+          Guide herunterladen
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Kapital-Guide für Unternehmer</h3>
+      <p class="muted">
+        Für Unternehmer, die Kapitalarchitektur und Umfeldrisiken zusammen denken wollen –
+        inklusive zweiter Risikoebene und Prioritätenlogik.
+      </p>
+      <div class="btnRow" style="margin-top:12px;">
+        <a class="btn btnSecondary" href="/downloads/kapital-guide-unternehmer.pdf" target="_blank" rel="noopener">
+          Guide herunterladen
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <p class="muted" style="margin-top:12px;">
+    Oder Sie gehen direkt den nächsten Schritt: <a href="/vermoegenscheck">Vermögenscheck</a>.
+  </p>
+</section>
 
   <!-- Prozess -->
   <section class="section sectionAlt reveal">

@@ -1687,3 +1687,36 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   margin-top: 12px;
   opacity: 0.95;
 }
+.riskBlock {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.25rem;
+  align-items: center;
+  margin-top: 10px;
+  padding: 14px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.02);
+}
+
+.riskBadgeLogo {
+  width: 120px;
+  max-width: 120px;
+  height: auto;
+  display: block;
+  opacity: 0.98;
+}
+
+@media (max-width: 900px) {
+  .riskBlock {
+    grid-template-columns: 1fr;
+  }
+  .riskBlockBadge {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .riskBadgeLogo {
+    width: 110px;
+    max-width: 110px;
+  }
+}

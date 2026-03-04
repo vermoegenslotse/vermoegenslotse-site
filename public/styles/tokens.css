@@ -1815,3 +1815,27 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
     grid-template-columns: 1fr;
   }
 }
+.heroPrivate {
+  background: linear-gradient(180deg, rgba(216,120,8,0.06), rgba(255,255,255,0));
+  border-radius: 18px;
+}
+
+.heroPrivate .kicker {
+  opacity: 0.85;
+}
+
+.heroPrivate .heroTitleSub {
+  color: var(--accent, #D87808);
+}
+.heroPrivate {
+  background: linear-gradient(180deg, rgba(216,120,8,0.06), rgba(255,255,255,0));
+  border-radius: 18px;
+}
+
+.heroPrivate .kicker {
+  opacity: 0.85;
+}
+
+.heroPrivate .heroTitleSub {
+  color: var(--accent, #D87808);
+}

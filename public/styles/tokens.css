@@ -1607,3 +1607,35 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 .heroExplanation {
   margin-bottom: 8px;
 }
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-top: 24px;
+}
+
+.testimonialsCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.testimonialsTrust {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+
+  .testimonialsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonialsCards {
+    grid-template-columns: 1fr;
+  }
+
+}

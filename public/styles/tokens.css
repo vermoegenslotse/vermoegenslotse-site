@@ -1588,3 +1588,16 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   padding: 6px 12px;
   border-radius: 6px;
 }
+.trustRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.trustRowRight {
+  display: flex;
+  justify-content: center;
+}

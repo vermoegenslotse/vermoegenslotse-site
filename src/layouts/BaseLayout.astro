@@ -41,19 +41,42 @@ const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWit
     </main>
 
     <footer class="siteFooter">
-      <div class="container footerInner">
-        <div>
-          © {new Date().getFullYear()} Vermögenslotse
-        </div>
-        <div class="footerLinks">
-  <a href="/recht/impressum">Impressum</a>
-  <a href="/recht/datenschutz">Datenschutz</a>
-  <a href="/recht/transparenz">Transparenz</a>
-  <a href="/recht/nachhaltigkeit">Nachhaltigkeit</a>
-  <a href="/recht/erstinformation">Erstinformation</a>
-</div>
-      </div>
-    </footer>
+  <div class="container footerGrid">
+
+    <div>
+      <strong>Vermögenslotse</strong><br />
+      Christian Gradt Consulting
+      <p class="muted" style="margin-top:8px;">
+        Strategische Vermögensarchitektur für Unternehmer und Privatanleger.
+      </p>
+    </div>
+
+    <div>
+      <strong>Navigation</strong>
+      <ul class="footerLinks">
+        <li><a href="/">Start</a></li>
+        <li><a href="/ueber-mich">So denke ich</a></li>
+        <li><a href="/so-arbeite-ich">So arbeite ich</a></li>
+        <li><a href="/vermoegenscheck">Vermögenscheck</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <strong>Rechtliches</strong>
+      <ul class="footerLinks">
+        <li><a href="/recht/impressum">Impressum</a></li>
+        <li><a href="/recht/datenschutz">Datenschutz</a></li>
+        <li><a href="/recht/transparenz">Transparenz</a></li>
+        <li><a href="/recht/nachhaltigkeit">Nachhaltigkeit</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footerBottom">
+    © {new Date().getFullYear()} Christian Gradt Consulting
+  </div>
+</footer>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 

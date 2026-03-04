@@ -1,1 +1,86 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
 
+<BaseLayout title="Angebote & Preise | Vermögenslotse">
+  <!-- Optional: noindex für diese Seite -->
+  <head>
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+
+  <section class="section">
+    <h1 class="sectionTitle">Angebote & Preise (Richtwerte)</h1>
+    <p class="lead">
+      Diese Seite ist bewusst nicht öffentlich verlinkt. Die Beträge sind Richtwerte und hängen von Ihrer Depot- und
+      Struktur-Komplexität ab.
+    </p>
+
+    <div class="card" style="margin-top:18px;">
+      <h2 style="margin:0 0 10px;">Mandatslogik</h2>
+      <p class="muted" style="margin:0;">
+        Wir starten mit der Finanz-Cockpit-Inventur. Danach entscheiden Sie in Ruhe:
+        (1) selbst umsetzen, (2) gemeinsam umsetzen und laufend steuern, oder (3) nichts ändern.
+      </p>
+      <p class="muted" style="margin:10px 0 0;">
+        Wenn wir gemeinsam steuern, wird die Inventur angerechnet: <strong>100% (30 Tage)</strong> / <strong>50% (60 Tage)</strong>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section sectionAlt">
+    <h2 class="sectionTitle">1) Finanz-Cockpit Inventur</h2>
+    <p class="muted">Einmalig. Fix. Transparent. Ergebnis: Übersicht, Leitplanken, 90-Tage-Plan.</p>
+
+    <div class="cardsGrid" style="margin-top:18px;">
+      <div class="card">
+        <h3>Basis</h3>
+        <p class="muted">Für überschaubare Komplexität (1 Depot / 1–2 Anbieter).</p>
+        <p style="font-size:1.25rem; margin-top:10px;"><strong>1.490 €</strong></p>
+      </div>
+
+      <div class="card">
+        <h3>Komplex <span class="badge" style="margin-left:8px;">meistgewählt</span></h3>
+        <p class="muted">Für produktübergreifenden Mix, mehrere Depots/Altlasten.</p>
+        <p style="font-size:1.25rem; margin-top:10px;"><strong>2.490 €</strong></p>
+      </div>
+
+      <div class="card">
+        <h3>Premium</h3>
+        <p class="muted">Für Multi-Depot / Family / Unternehmernähe und hohe Komplexität.</p>
+        <p style="font-size:1.25rem; margin-top:10px;"><strong>3.490 €</strong></p>
+      </div>
+    </div>
+
+    <div class="btnRow" style="margin-top:22px;">
+      <a class="btn btnSecondary" href="/vermoegenscheck">Vermögenscheck (Kurzqualifizierung)</a>
+      <a class="btn" href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002" target="_blank" rel="noopener">
+        Orientierungsgespräch buchen
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="sectionTitle">2) Laufende Steuerung (Mandat)</h2>
+    <div class="card">
+      <ul class="bullets" style="margin:0;">
+        <li><strong>0,75% p.a. + MwSt.</strong>, quartalsweise abgerechnet</li>
+        <li><strong>Mindestjahresfee: 1.950 € p.a. + MwSt.</strong></li>
+        <li>Degressiv ab 750k (0,60% / 0,45%)</li>
+      </ul>
+      <p class="muted" style="margin-top:12px;">
+        Sie bezahlen nicht fürs Produkt, sondern für Strukturführung: Regeln, Reviews, Anpassung bei Lebensereignissen
+        und ein System, das auch in Stressphasen trägt.
+      </p>
+    </div>
+  </section>
+
+  <section class="section sectionAlt">
+    <h2 class="sectionTitle">Kontakt</h2>
+    <div class="btnRow">
+      <a class="btn btnSecondary" href="/kontakt">Kontaktformular</a>
+      <a class="btn" href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002" target="_blank" rel="noopener">
+        Termin buchen
+      </a>
+    </div>
+  </section>
+</BaseLayout>

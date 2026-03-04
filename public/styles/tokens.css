@@ -1582,3 +1582,9 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 .structuredList li {
   margin: 0.65rem 0;
 }
+.navHighlight {
+  background: #0e6b53;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+}

@@ -1804,3 +1804,14 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   padding: 8px 14px;
   border-radius: 6px;
 }
+.leadMagnetGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .leadMagnetGrid {
+    grid-template-columns: 1fr;
+  }
+}

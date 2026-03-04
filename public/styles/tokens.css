@@ -1639,3 +1639,40 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   }
 
 }
+.leadMagnet {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 1.5rem;
+  margin: 1.6rem 0 1.2rem;
+  padding: 1.2rem 1.2rem;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.02);
+}
+
+.leadMagnetVisual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leadMagnetVisual img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.6);
+}
+
+@media (max-width: 900px) {
+  .leadMagnet {
+    grid-template-columns: 1fr;
+  }
+  .leadMagnetVisual {
+    justify-content: flex-start;
+  }
+  .leadMagnetVisual img {
+    max-width: 220px;
+  }
+}

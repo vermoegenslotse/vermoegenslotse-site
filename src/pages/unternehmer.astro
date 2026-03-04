@@ -20,9 +20,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
 
           <div class="btnRow btnRowBiz">
-            <a class="btnPrimary" href="/vermoegenscheck">Vermögenscheck starten</a>
-            <a class="btnGhostOnDark" href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002" target="_blank" rel="noreferrer">Termin reservieren</a>
-          </div>
+  <a class="btnGhostOnDark"
+     href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
+     target="_blank"
+     rel="noreferrer">
+    Orientierungsgespräch reservieren
+  </a>
+</div>
+
+<p class="muted" style="margin-top:12px; opacity:0.9;">
+  Der Vermögenscheck folgt nach dem Überblick – wenn klar ist, worum es geht.
+</p>
 
           <div class="jumpLinks">
             <a href="#risikoebene2">Riskoebene 2</a>
@@ -158,9 +166,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
 
     <div class="btnRow" style="margin-top:22px;">
-      <a class="btnPrimary" href="/vermoegenscheck">Vermögenscheck starten</a>
-      <a class="btnSecondary" href="/recht/transparenz">Transparenz & Vergütung</a>
-    </div>
+  <a class="btnPrimary" href="/vermoegenscheck">Vermögenscheck starten</a>
+</div>
+
+<p class="muted" style="margin-top:10px;">
+  Transparenz & Vergütung: <a href="/recht/transparenz">hier</a>.
+</p>
   </section>
 
   <!-- Ablauf -->
@@ -206,40 +217,82 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
-<section class="section sectionAlt ctaProcess">
+<section class="section sectionAlt ctaProcess reveal">
   <div class="container">
 
-    <h2 class="sectionTitle">Buchen Sie jetzt ein Orientierungsgespräch</h2>
+    <h2 class="sectionTitle">Der nächste Schritt</h2>
     <p class="lead centerText">
-      Kostenlos und unverbindlich.
+      Wählen Sie das Gespräch, das zu Ihrer Situation passt.
     </p>
 
-    <div class="processGrid">
+    <div class="bookingGrid">
 
-      <div class="processStep">
-        <div class="processIcon">1</div>
-        <h3>Termin eintragen</h3>
-        <p>Sie wählen einen passenden Zeitpunkt für ein erstes Gespräch.</p>
+      <div class="bookingCard">
+        <div class="bookingHeader">
+          <div class="bookingBadge">20 Minuten</div>
+          <h3>Orientierungsgespräch</h3>
+        </div>
+
+        <p class="muted">
+          Kennenlernen, Status-Quo grob einordnen und klären,
+          ob die Unternehmer-Logik (Ebene 1 + Ebene 2) für Sie passt.
+        </p>
+
+        <ul class="bullets" style="margin-top:12px;">
+          <li>kurzer Überblick: Ziele, Struktur, Komplexität</li>
+          <li>erste Einordnung der Umfeldrisiken</li>
+          <li>nächster sinnvoller Schritt</li>
+        </ul>
+
+        <div class="btnRow" style="margin-top:16px;">
+          <a class="btn"
+             href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
+             target="_blank"
+             rel="noopener">
+            Orientierungsgespräch buchen
+          </a>
+        </div>
+
+        <p class="subtleText" style="margin-top:10px;">
+          Kostenlos & unverbindlich.
+        </p>
       </div>
 
-      <div class="processStep">
-        <div class="processIcon">2</div>
-        <h3>Fragen & Ziele klären</h3>
-        <p>Wir besprechen Ihre aktuelle Situation und Ihre Prioritäten.</p>
-      </div>
+      <div class="bookingCard bookingCardAlt">
+        <div class="bookingHeader">
+          <div class="bookingBadge">60 Minuten</div>
+          <h3>Strategiegespräch</h3>
+        </div>
 
-      <div class="processStep">
-        <div class="processIcon">3</div>
-        <h3>Struktur entwickeln</h3>
-        <p>Sie erhalten eine klare Einschätzung und die nächsten sinnvollen Schritte.</p>
+        <p class="muted">
+          Für Unternehmer, die ihre Situation konkret analysieren wollen.
+          Voraussetzung: die relevanten Unterlagen liegen vor (z. B. Depotübersicht, Liquiditätslogik, ggf. Gesellschafts-/Haftungskontext).
+        </p>
+
+        <ul class="bullets" style="margin-top:12px;">
+          <li>Struktur- & Risikologik (greifbar in Euro)</li>
+          <li>Architektur-Vorschlag & Prioritätenplan</li>
+          <li>Option: Risk-Check-Integration (BVSV)</li>
+        </ul>
+
+        <div class="btnRow" style="margin-top:16px;">
+          <a class="btn btnSecondary"
+             href="HIER_DEIN_60MIN_ZOHO_LINK"
+             target="_blank"
+             rel="noopener">
+            Strategiegespräch buchen
+          </a>
+        </div>
+
+        <p class="subtleText" style="margin-top:10px;">
+          Sinnvoll, wenn die Daten vorliegen.
+        </p>
       </div>
 
     </div>
 
-    <div class="btnRow centerText" style="margin-top:28px;">
-      <a class="btn" href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002" target="_blank" rel="noopener">
-        Orientierungsgespräch buchen
-      </a>
+    <div class="centerText" style="margin-top:18px;">
+      <a class="btn btnSecondary" href="/kontakt">Kontakt</a>
     </div>
 
     <p class="centerText subtleText" style="margin-top:12px;">

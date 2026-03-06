@@ -1844,3 +1844,7 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   height: auto;
   max-width: 520px;
 }
+.mediaCard {
+  display: flex;
+  justify-content: center;
+}

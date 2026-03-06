@@ -1,1 +1,4 @@
+User-agent: *
+Allow: /
 
+Sitemap: https://vermögenslotse.de/sitemap.xml

@@ -1884,7 +1884,7 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 
 .visualStack img {
   width: 100%;
-  max-width: 520px;
+  max-width: 600px;
   height: auto;
   border-radius: 16px;
 }

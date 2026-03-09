@@ -57,6 +57,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
 
       <div>
+        <div class="retirementHeroVisual mediaCard mediaCard--soft">
+          <img
+            src="/images/ihr-vermoegen-in-sicheren-bahnen.png"
+            alt="Ihr Vermögen in sicheren Bahnen – systematisch zu Ihrem Anlageziel"
+            loading="eager"
+          />
+        </div>
+
         <aside class="panel retirementInfoPanel">
           <h2 class="sectionTitle">Worum es hier geht</h2>
 
@@ -533,6 +541,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     .retirementMetric h3 {
       margin-top: 0;
       color: var(--c-primary);
+    }
+
+    .retirementHeroVisual {
+      margin-bottom: 1rem;
+      padding: 0.6rem;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(40,72,48,0.10);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.06);
+    }
+
+    .retirementHeroVisual img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 18px;
     }
 
     .retirementInfoPanel {

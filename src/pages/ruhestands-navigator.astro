@@ -180,7 +180,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
           <div class="retirementFieldGrid retirementFieldGrid2">
             <label class="retirementField">
-              <span>Erwartete durchschnittliche Rendite p. a.</span>
+              <span>Erwartete Rendite in der Ansparphase p. a.</span>
               <div class="retirementRangeTop">
                 <span class="subtleText">in %</span>
                 <strong data-range-output="expectedReturn">5.0 %</strong>
@@ -197,8 +197,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               <input id="taxRate" type="range" min="0" max="35" step="0.01" value="26.38" />
             </label>
           </div>
+
+          <div class="retirementFieldGrid retirementFieldGrid2">
+            <label class="retirementField">
+              <span>Erwartete Rendite in der Ruhestandsphase p. a.</span>
+              <div class="retirementRangeTop">
+                <span class="subtleText">in %</span>
+                <strong data-range-output="retirementReturn">3.0 %</strong>
+              </div>
+              <input id="retirementReturn" type="range" min="0" max="8" step="0.1" value="3" />
+            </label>
+
+            <label class="retirementField">
+              <span>Inflation in der Ruhestandsphase p. a.</span>
+              <div class="retirementRangeTop">
+                <span class="subtleText">in %</span>
+                <strong data-range-output="retirementInflation">2.0 %</strong>
+              </div>
+              <input id="retirementInflation" type="range" min="0" max="6" step="0.1" value="2" />
+            </label>
+          </div>
         </div>
       </div>
+
+      <div class="retirementResultsColumn">
+        <div class="panel retirementResultsPanel">
 
       <div class="retirementResultsColumn">
         <div class="panel retirementResultsPanel">
@@ -220,6 +243,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <div class="retirementMetric card">
               <p class="subtleText">Zusätzlicher monatlicher Handlungsbedarf</p>
               <h3 id="metricMonthlyNeed">–</h3>
+            </div>
+            <div class="retirementMetric card">
+              <p class="subtleText">Erwartetes Vermögen zum Ruhestart</p>
+              <h3 id="metricExpectedWealth">–</h3>
+            </div>
+            <div class="retirementMetric card">
+              <p class="subtleText">Kapitallücke zum Ruhestart</p>
+              <h3 id="metricCapitalGap">–</h3>
+            </div>
+            <div class="retirementMetric card">
+              <p class="subtleText">Kapitalreichweite</p>
+              <h3 id="metricCoverageYears">–</h3>
+            </div>
+            <div class="retirementMetric card">
+              <p class="subtleText">Ruhestandsphase modelliert mit</p>
+              <h3 id="metricRetirementAssumptions">–</h3>
             </div>
           </div>
 
@@ -385,6 +424,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       "pensionIncrease",
       "expectedReturn",
       "taxRate",
+      "retirementReturn",
+      "retirementInflation",
     ];
 
     const inputs = ids.map((id) => el(id)).filter(Boolean);
@@ -412,7 +453,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         if (!source) return;
         const value = parseNum(source.value);
 
-        if (["inflationRate", "pensionIncrease", "expectedReturn"].includes(source.id)) {
+        if (["inflationRate", "pensionIncrease", "expectedReturn", "retirementReturn", "retirementInflation"].includes(source.id)) {
           node.textContent = formatPercent(value, 1);
         } else if (source.id === "taxRate") {
           node.textContent = formatPercent(value, 2);
@@ -436,6 +477,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       const pensionIncrease = parseNum(el("pensionIncrease")?.value) / 100;
       const expectedReturn = parseNum(el("expectedReturn")?.value) / 100;
       const taxRate = parseNum(el("taxRate")?.value) / 100;
+      const retirementReturn = parseNum(el("retirementReturn")?.value) / 100;
+      const retirementInflation = parseNum(el("retirementInflation")?.value) / 100;
 
       const yearsToRetirement = Math.max(0, retirementAge - currentAge);
       const yearsInRetirement = Math.max(0, lifeExpectancy - retirementAge);
@@ -449,16 +492,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       const futurePrivatePension = privatePension * Math.pow(1 + pensionIncrease, yearsToRetirement);
       const gapAtRetirement = Math.max(0, futureDesiredIncome - futureStatePension - futurePrivatePension);
 
-      const netReturnAnnual = Math.max(0, expectedReturn * (1 - taxRate));
+      const netReturnAnnual = Math.max(0, retirementReturn * (1 - taxRate));
       const monthlyNetReturn = netReturnAnnual / 12;
       const monthlyGrossReturn = expectedReturn / 12;
+      const monthlyGapGrowth = retirementInflation / 12;
 
       let requiredCapital = 0;
       if (monthsInRetirement > 0 && gapAtRetirement > 0) {
-        if (monthlyNetReturn > 0) {
-          requiredCapital = gapAtRetirement * ((1 - Math.pow(1 + monthlyNetReturn, -monthsInRetirement)) / monthlyNetReturn);
+        if (monthlyNetReturn > 0 && Math.abs(monthlyNetReturn - monthlyGapGrowth) > 0.000001) {
+          requiredCapital = gapAtRetirement * ((1 - Math.pow((1 + monthlyGapGrowth) / (1 + monthlyNetReturn), monthsInRetirement)) / (monthlyNetReturn - monthlyGapGrowth));
+        } else if (monthlyNetReturn > 0) {
+          requiredCapital = (gapAtRetirement * monthsInRetirement) / (1 + monthlyNetReturn);
         } else {
-          requiredCapital = gapAtRetirement * monthsInRetirement;
+          let rollingGap = gapAtRetirement;
+          for (let i = 0; i < monthsInRetirement; i++) {
+            requiredCapital += rollingGap;
+            rollingGap *= 1 + monthlyGapGrowth;
+          }
         }
       }
 
@@ -467,7 +517,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         futureValueCurrentSavings = currentSavings * Math.pow(1 + monthlyGrossReturn, monthsToRetirement);
       }
 
-      const additionalCapitalNeeded = Math.max(0, requiredCapital - futureValueCurrentSavings);
+      const expectedWealthAtRetirement = futureValueCurrentSavings;
+      const capitalGap = Math.max(0, requiredCapital - expectedWealthAtRetirement);
+      const additionalCapitalNeeded = capitalGap;
 
       let monthlySavingsRequired = 0;
       if (monthsToRetirement > 0 && additionalCapitalNeeded > 0) {

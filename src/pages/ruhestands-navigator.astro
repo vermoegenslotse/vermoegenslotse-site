@@ -1,1 +1,852 @@
+---
+// Astro page: Ruhestands-Navigator
+// Lege diese Datei unter src/pages/ruhestands-navigator.astro ab.
+// Der Rechner läuft vollständig clientseitig ohne Datenübertragung.
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ruhestands-Navigator | Vermögenslotse</title>
+    <meta
+      name="description"
+      content="Berechnen Sie Ihre Versorgungslücke, Ihren Kapitalbedarf und den möglichen Handlungsbedarf für den Ruhestand."
+    />
+    <style>
+      :root {
+        --bg: #f7f5ef;
+        --surface: #ffffff;
+        --surface-soft: #f1ede3;
+        --text: #18342d;
+        --muted: #5e6f68;
+        --border: #d9d4c7;
+        --accent: #23493f;
+        --accent-2: #b08d57;
+        --danger: #9b3d2f;
+        --success: #2f6b4f;
+        --shadow: 0 12px 32px rgba(24, 52, 45, 0.08);
+        --radius: 22px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: linear-gradient(180deg, #fbfaf6 0%, var(--bg) 100%);
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 72px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 24px;
+        align-items: stretch;
+        margin-bottom: 28px;
+      }
+
+      .hero-card,
+      .info-card,
+      .calc-card,
+      .result-card,
+      .cta-card {
+        background: rgba(255,255,255,0.9);
+        border: 1px solid rgba(217, 212, 199, 0.9);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(8px);
+      }
+
+      .hero-card {
+        padding: 32px;
+        background:
+          radial-gradient(circle at top right, rgba(176,141,87,0.14), transparent 28%),
+          linear-gradient(145deg, #fff 0%, #f7f3ea 100%);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(35, 73, 63, 0.08);
+        color: var(--accent);
+        font-size: 0.86rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        margin: 0 0 14px;
+        font-size: clamp(2rem, 4vw, 3.35rem);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+      }
+
+      .hero p {
+        margin: 0;
+        font-size: 1.05rem;
+        color: var(--muted);
+        max-width: 64ch;
+      }
+
+      .hero-points {
+        display: grid;
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .hero-point {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: rgba(255,255,255,0.7);
+        border: 1px solid rgba(35, 73, 63, 0.08);
+      }
+
+      .hero-point strong { display: block; margin-bottom: 2px; }
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, var(--accent-2), #d6bc8a);
+        flex: 0 0 auto;
+        margin-top: 6px;
+      }
+
+      .info-card {
+        padding: 28px;
+        background: linear-gradient(180deg, #23493f 0%, #1b3c33 100%);
+        color: #f5f2ea;
+      }
+
+      .info-card h2 {
+        margin: 0 0 12px;
+        font-size: 1.45rem;
+      }
+
+      .info-card p,
+      .info-card li {
+        color: rgba(245, 242, 234, 0.86);
+      }
+
+      .info-card ul {
+        margin: 16px 0 0;
+        padding-left: 18px;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .calc-card,
+      .result-card,
+      .cta-card {
+        padding: 24px;
+      }
+
+      .section-title {
+        margin: 0 0 18px;
+        font-size: 1.35rem;
+      }
+
+      .groups {
+        display: grid;
+        gap: 18px;
+      }
+
+      .group {
+        padding: 18px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: linear-gradient(180deg, #fff 0%, #fcfbf8 100%);
+      }
+
+      .group h3 {
+        margin: 0 0 14px;
+        font-size: 1rem;
+      }
+
+      .fields {
+        display: grid;
+        gap: 14px;
+      }
+
+      .field-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .hint {
+        font-size: 0.82rem;
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      input[type="number"],
+      input[type="range"] {
+        width: 100%;
+      }
+
+      input[type="number"] {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 14px 16px;
+        font-size: 1rem;
+        color: var(--text);
+        background: #fff;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      input[type="number"]:focus {
+        border-color: rgba(35, 73, 63, 0.5);
+        box-shadow: 0 0 0 4px rgba(35, 73, 63, 0.08);
+      }
+
+      .range-row {
+        display: grid;
+        gap: 8px;
+      }
+
+      .range-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        font-weight: 700;
+      }
+
+      .range-value {
+        color: var(--accent);
+      }
+
+      input[type="range"] {
+        appearance: none;
+        background: transparent;
+      }
+
+      input[type="range"]::-webkit-slider-runnable-track {
+        height: 8px;
+        background: linear-gradient(90deg, rgba(35, 73, 63, 0.9), rgba(176, 141, 87, 0.9));
+        border-radius: 999px;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        appearance: none;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid var(--accent);
+        margin-top: -7px;
+        box-shadow: 0 3px 10px rgba(24, 52, 45, 0.18);
+      }
+
+      .metric-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+
+      .metric {
+        padding: 18px;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, #fff 0%, #faf7f1 100%);
+      }
+
+      .metric-label {
+        margin: 0 0 10px;
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .metric-value {
+        margin: 0;
+        font-size: clamp(1.25rem, 2.6vw, 1.9rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .summary,
+      .warning-box,
+      .chart-card {
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px;
+        background: linear-gradient(180deg, #fff 0%, #fcfbf8 100%);
+      }
+
+      .stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      .summary h3,
+      .warning-box h3,
+      .chart-card h3,
+      .cta-card h3 {
+        margin: 0 0 10px;
+        font-size: 1rem;
+      }
+
+      .summary p,
+      .warning-box p,
+      .cta-card p,
+      .chart-caption {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .warning-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .warning-item {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: var(--surface-soft);
+      }
+
+      .bars {
+        display: grid;
+        gap: 14px;
+      }
+
+      .bar-row {
+        display: grid;
+        gap: 8px;
+      }
+
+      .bar-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      .bar-track {
+        height: 14px;
+        background: #ece8dd;
+        border-radius: 999px;
+        overflow: hidden;
+      }
+
+      .bar-fill {
+        height: 100%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        width: 0%;
+        transition: width 0.45s ease;
+      }
+
+      .cta-card {
+        margin-top: 18px;
+        background: linear-gradient(180deg, #fff 0%, #f8f5ee 100%);
+      }
+
+      .cta-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 12px 18px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 800;
+        transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 10px 24px rgba(35, 73, 63, 0.18);
+      }
+
+      .btn-secondary {
+        background: rgba(35, 73, 63, 0.08);
+        color: var(--accent);
+      }
+
+      .mini-note {
+        margin-top: 14px;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      .disclaimer {
+        margin-top: 22px;
+        padding: 16px 18px;
+        border-radius: 16px;
+        background: rgba(176, 141, 87, 0.08);
+        border: 1px solid rgba(176, 141, 87, 0.2);
+        color: #6e5837;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 980px) {
+        .hero,
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page { width: min(100% - 20px, 1180px); padding-top: 18px; }
+        .hero-card,
+        .info-card,
+        .calc-card,
+        .result-card,
+        .cta-card { padding: 18px; }
+        .field-grid-2,
+        .metric-grid { grid-template-columns: 1fr; }
+        h1 { font-size: 2rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div class="hero-card">
+          <div class="eyebrow">Ruhestandsplanung mit Substanz</div>
+          <h1>Ruhestands‑Navigator</h1>
+          <p>
+            Berechnen Sie Ihre Versorgungslücke, Ihren Kapitalbedarf und den möglichen
+            Handlungsbedarf für den Ruhestand – als erste Orientierung, nicht als Produktrechner.
+          </p>
+
+          <div class="hero-points">
+            <div class="hero-point">
+              <span class="dot"></span>
+              <div>
+                <strong>Versorgungslücke sichtbar machen</strong>
+                Der Rechner zeigt, welche monatliche Lücke heute und zum Ruhestandsbeginn entstehen kann.
+              </div>
+            </div>
+            <div class="hero-point">
+              <span class="dot"></span>
+              <div>
+                <strong>Zielkapital abschätzen</strong>
+                Sie sehen, welches Kapital rechnerisch erforderlich wäre, um diese Lücke zu tragen.
+              </div>
+            </div>
+            <div class="hero-point">
+              <span class="dot"></span>
+              <div>
+                <strong>Handlungsbedarf einordnen</strong>
+                Aus vorhandenem Vermögen und Zeit bis zum Ruhestand ergibt sich ein monatlicher Orientierungswert.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="info-card">
+          <h2>Worum es hier geht</h2>
+          <p>
+            Viele Vermögensstrukturen sehen auf den ersten Blick solide aus. Entscheidend ist jedoch,
+            ob sie im Ruhestand planbar tragen.
+          </p>
+          <ul>
+            <li>Inflation verändert Kaufkraft oft stärker als erwartet.</li>
+            <li>Eine Versorgungslücke ist nicht nur eine Renditefrage, sondern vor allem eine Strukturfrage.</li>
+            <li>Die Qualität der Entnahmestrategie entscheidet mit darüber, wie lange Vermögen trägt.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="layout">
+        <div class="calc-card">
+          <h2 class="section-title">Ihre Eingaben</h2>
+
+          <div class="groups">
+            <section class="group">
+              <h3>Ihre Eckdaten</h3>
+              <div class="fields">
+                <div class="field-grid-2">
+                  <label>
+                    <span>Aktuelles Alter</span>
+                    <div class="range-row">
+                      <div class="range-top">
+                        <span class="hint">Jahre</span>
+                        <span class="range-value" data-range-output="currentAge">45</span>
+                      </div>
+                      <input id="currentAge" type="range" min="18" max="75" step="1" value="45" />
+                    </div>
+                  </label>
+
+                  <label>
+                    <span>Gewünschtes Ruhestandsalter</span>
+                    <div class="range-row">
+                      <div class="range-top">
+                        <span class="hint">Jahre</span>
+                        <span class="range-value" data-range-output="retirementAge">67</span>
+                      </div>
+                      <input id="retirementAge" type="range" min="50" max="80" step="1" value="67" />
+                    </div>
+                  </label>
+                </div>
+
+                <label>
+                  <span>Angenommene Lebenserwartung</span>
+                  <div class="range-row">
+                    <div class="range-top">
+                      <span class="hint">Jahre</span>
+                      <span class="range-value" data-range-output="lifeExpectancy">90</span>
+                    </div>
+                    <input id="lifeExpectancy" type="range" min="70" max="105" step="1" value="90" />
+                  </div>
+                </label>
+              </div>
+            </section>
+
+            <section class="group">
+              <h3>Ihr Einkommensziel im Ruhestand</h3>
+              <div class="fields">
+                <label>
+                  <span>Gewünschte monatliche Ausgaben im Ruhestand</span>
+                  <input id="desiredIncome" type="number" min="0" step="100" value="4500" inputmode="decimal" />
+                </label>
+
+                <div class="field-grid-2">
+                  <label>
+                    <span>Erwartete gesetzliche Rente pro Monat</span>
+                    <input id="statePension" type="number" min="0" step="50" value="1800" inputmode="decimal" />
+                  </label>
+
+                  <label>
+                    <span>Sonstige sichere Renteneinkünfte pro Monat</span>
+                    <input id="privatePension" type="number" min="0" step="50" value="500" inputmode="decimal" />
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <section class="group">
+              <h3>Ihr vorhandenes Vermögen</h3>
+              <div class="fields">
+                <label>
+                  <span>Bereits vorhandenes Kapital</span>
+                  <input id="currentSavings" type="number" min="0" step="1000" value="150000" inputmode="decimal" />
+                </label>
+              </div>
+            </section>
+
+            <section class="group">
+              <h3>Annahmen für die Modellrechnung</h3>
+              <div class="fields">
+                <div class="field-grid-2">
+                  <label>
+                    <span>Inflation p. a.</span>
+                    <div class="range-row">
+                      <div class="range-top">
+                        <span class="hint">in %</span>
+                        <span class="range-value" data-range-output="inflationRate">2.0 %</span>
+                      </div>
+                      <input id="inflationRate" type="range" min="0" max="6" step="0.1" value="2" />
+                    </div>
+                  </label>
+
+                  <label>
+                    <span>Rentenanpassung p. a.</span>
+                    <div class="range-row">
+                      <div class="range-top">
+                        <span class="hint">in %</span>
+                        <span class="range-value" data-range-output="pensionIncrease">1.5 %</span>
+                      </div>
+                      <input id="pensionIncrease" type="range" min="0" max="5" step="0.1" value="1.5" />
+                    </div>
+                  </label>
+                </div>
+
+                <div class="field-grid-2">
+                  <label>
+                    <span>Erwartete durchschnittliche Rendite p. a.</span>
+                    <div class="range-row">
+                      <div class="range-top">
+                        <span class="hint">in %</span>
+                        <span class="range-value" data-range-output="expectedReturn">5.0 %</span>
+                      </div>
+                      <input id="expectedReturn" type="range" min="0" max="10" step="0.1" value="5" />
+                    </div>
+                  </label>
+
+                  <label>
+                    <span>Steuerbelastung auf Kapitalerträge</span>
+                    <div class="range-row">
+                      <div class="range-top">
+                        <span class="hint">in %</span>
+                        <span class="range-value" data-range-output="taxRate">26.38 %</span>
+                      </div>
+                      <input id="taxRate" type="range" min="0" max="35" step="0.01" value="26.38" />
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div>
+          <section class="result-card">
+            <h2 class="section-title">Ihre Ruhestands‑Prognose</h2>
+
+            <div class="metric-grid">
+              <article class="metric">
+                <p class="metric-label">Versorgungslücke heute</p>
+                <p class="metric-value" id="metricGapToday">–</p>
+              </article>
+              <article class="metric">
+                <p class="metric-label">Versorgungslücke zum Ruhestandsbeginn</p>
+                <p class="metric-value" id="metricGapRetirement">–</p>
+              </article>
+              <article class="metric">
+                <p class="metric-label">Zielkapital zum Ruhestandsbeginn</p>
+                <p class="metric-value" id="metricRequiredCapital">–</p>
+              </article>
+              <article class="metric">
+                <p class="metric-label">Zusätzlicher monatlicher Handlungsbedarf</p>
+                <p class="metric-value" id="metricMonthlyNeed">–</p>
+              </article>
+            </div>
+
+            <div class="stack">
+              <section class="summary">
+                <h3>Einordnung</h3>
+                <p id="summaryText"></p>
+              </section>
+
+              <section class="warning-box">
+                <h3>Was viele Anleger unterschätzen</h3>
+                <div class="warning-list">
+                  <div class="warning-item"><span class="dot"></span><div>Inflation verändert die reale Kaufkraft stärker, als viele erwarten.</div></div>
+                  <div class="warning-item"><span class="dot"></span><div>Eine Versorgungslücke ist nicht nur eine Renditefrage, sondern vor allem eine Strukturfrage.</div></div>
+                  <div class="warning-item"><span class="dot"></span><div>Die Qualität der Entnahmestrategie entscheidet mit darüber, wie lange Vermögen trägt.</div></div>
+                </div>
+              </section>
+
+              <section class="chart-card">
+                <h3>Versorgungslücke im Vergleich</h3>
+                <div class="bars">
+                  <div class="bar-row">
+                    <div class="bar-head"><span>Heute</span><span id="barLabelToday">–</span></div>
+                    <div class="bar-track"><div class="bar-fill" id="barToday"></div></div>
+                  </div>
+                  <div class="bar-row">
+                    <div class="bar-head"><span>Zum Ruhestandsbeginn</span><span id="barLabelRetirement">–</span></div>
+                    <div class="bar-track"><div class="bar-fill" id="barRetirement"></div></div>
+                  </div>
+                </div>
+                <p class="chart-caption" id="chartCaption"></p>
+              </section>
+            </div>
+          </section>
+
+          <section class="cta-card">
+            <h3>Nächster sinnvoller Schritt</h3>
+            <p>
+              Diese Modellrechnung ersetzt keine individuelle Planung. Sie kann jedoch sichtbar machen,
+              ob zwischen Vermögen, Einkommensziel und Ruhestandszeitraum strategischer Handlungsbedarf besteht.
+            </p>
+
+            <div class="cta-actions">
+              <a class="btn btn-primary" href="/kontakt">Orientierungsgespräch vereinbaren</a>
+              <a class="btn btn-secondary" href="/kontakt">Individuelle Analyse anfragen</a>
+            </div>
+
+            <p class="mini-note">
+              Tipp: Platziere hier bei Bedarf direkt Deinen Terminlink oder das Kontaktformular der bestehenden Seite.
+            </p>
+          </section>
+        </div>
+      </section>
+
+      <section class="disclaimer">
+        Die Berechnung ist eine vereinfachte Modellrechnung. Nicht berücksichtigt werden u. a. individuelle Steuersituationen,
+        Produktkosten, Änderungen des Rentenrechts, Erbschaften, Immobilienerträge oder besondere Entnahmestrategien.
+      </section>
+    </main>
+
+    <script>
+      const el = (id) => document.getElementById(id);
+
+      const ids = [
+        "currentAge",
+        "retirementAge",
+        "lifeExpectancy",
+        "desiredIncome",
+        "statePension",
+        "privatePension",
+        "currentSavings",
+        "inflationRate",
+        "pensionIncrease",
+        "expectedReturn",
+        "taxRate",
+      ];
+
+      const inputs = ids.map((id) => el(id));
+
+      function parseNum(value) {
+        const num = Number(value);
+        return Number.isFinite(num) ? num : 0;
+      }
+
+      function formatCurrency(value) {
+        return new Intl.NumberFormat("de-DE", {
+          style: "currency",
+          currency: "EUR",
+          maximumFractionDigits: 0,
+        }).format(Math.max(0, value));
+      }
+
+      function formatPercent(value, digits = 1) {
+        return `${Number(value).toFixed(digits).replace(".", ",")} %`;
+      }
+
+      function updateRangeOutputs() {
+        document.querySelectorAll("[data-range-output]").forEach((node) => {
+          const source = el(node.dataset.rangeOutput);
+          if (!source) return;
+          const value = parseNum(source.value);
+          if (["inflationRate", "pensionIncrease", "expectedReturn"].includes(source.id)) {
+            node.textContent = formatPercent(value, 1);
+          } else if (source.id === "taxRate") {
+            node.textContent = formatPercent(value, 2);
+          } else {
+            node.textContent = `${Math.round(value)}`;
+          }
+        });
+      }
+
+      function calculate() {
+        updateRangeOutputs();
+
+        const currentAge = parseNum(el("currentAge").value);
+        const retirementAge = parseNum(el("retirementAge").value);
+        const lifeExpectancy = parseNum(el("lifeExpectancy").value);
+        const desiredIncome = parseNum(el("desiredIncome").value);
+        const statePension = parseNum(el("statePension").value);
+        const privatePension = parseNum(el("privatePension").value);
+        const currentSavings = parseNum(el("currentSavings").value);
+        const inflationRate = parseNum(el("inflationRate").value) / 100;
+        const pensionIncrease = parseNum(el("pensionIncrease").value) / 100;
+        const expectedReturn = parseNum(el("expectedReturn").value) / 100;
+        const taxRate = parseNum(el("taxRate").value) / 100;
+
+        const yearsToRetirement = Math.max(0, retirementAge - currentAge);
+        const yearsInRetirement = Math.max(0, lifeExpectancy - retirementAge);
+        const monthsToRetirement = yearsToRetirement * 12;
+        const monthsInRetirement = yearsInRetirement * 12;
+
+        const gapToday = Math.max(0, desiredIncome - statePension - privatePension);
+
+        const futureDesiredIncome = desiredIncome * Math.pow(1 + inflationRate, yearsToRetirement);
+        const futureStatePension = statePension * Math.pow(1 + pensionIncrease, yearsToRetirement);
+        const futurePrivatePension = privatePension * Math.pow(1 + pensionIncrease, yearsToRetirement);
+        const gapAtRetirement = Math.max(0, futureDesiredIncome - futureStatePension - futurePrivatePension);
+
+        const netReturnAnnual = Math.max(0, expectedReturn * (1 - taxRate));
+        const monthlyNetReturn = netReturnAnnual / 12;
+        const monthlyGrossReturn = expectedReturn / 12;
+
+        let requiredCapital = 0;
+        if (monthsInRetirement > 0 && gapAtRetirement > 0) {
+          if (monthlyNetReturn > 0) {
+            requiredCapital = gapAtRetirement * ((1 - Math.pow(1 + monthlyNetReturn, -monthsInRetirement)) / monthlyNetReturn);
+          } else {
+            requiredCapital = gapAtRetirement * monthsInRetirement;
+          }
+        }
+
+        let futureValueCurrentSavings = currentSavings;
+        if (monthsToRetirement > 0 && currentSavings > 0 && monthlyGrossReturn > 0) {
+          futureValueCurrentSavings = currentSavings * Math.pow(1 + monthlyGrossReturn, monthsToRetirement);
+        }
+
+        const additionalCapitalNeeded = Math.max(0, requiredCapital - futureValueCurrentSavings);
+
+        let monthlySavingsRequired = 0;
+        if (monthsToRetirement > 0 && additionalCapitalNeeded > 0) {
+          if (monthlyGrossReturn > 0) {
+            const annuityFactor = (Math.pow(1 + monthlyGrossReturn, monthsToRetirement) - 1) / monthlyGrossReturn;
+            monthlySavingsRequired = annuityFactor > 0 ? additionalCapitalNeeded / annuityFactor : 0;
+          } else {
+            monthlySavingsRequired = additionalCapitalNeeded / monthsToRetirement;
+          }
+        }
+
+        el("metricGapToday").textContent = formatCurrency(gapToday);
+        el("metricGapRetirement").textContent = formatCurrency(gapAtRetirement);
+        el("metricRequiredCapital").textContent = formatCurrency(requiredCapital);
+        el("metricMonthlyNeed").textContent = formatCurrency(monthlySavingsRequired);
+
+        const summary = yearsToRetirement === 0
+          ? `Sie befinden sich rechnerisch bereits im Ruhestand. Unter den gewählten Annahmen ergibt sich aktuell eine monatliche Versorgungslücke von rund ${formatCurrency(gapAtRetirement)}. Um diese Lücke über etwa ${yearsInRetirement} Jahre auszugleichen, wäre ein Kapital von rund ${formatCurrency(requiredCapital)} erforderlich.`
+          : `In voraussichtlich ${yearsToRetirement} Jahren beginnt Ihr Ruhestand. Unter den gewählten Annahmen entsteht dann eine monatliche Versorgungslücke von rund ${formatCurrency(gapAtRetirement)}. Um diese Lücke über einen Zeitraum von etwa ${yearsInRetirement} Jahren auszugleichen, wäre zum Ruhestandsbeginn ein Kapital von rund ${formatCurrency(requiredCapital)} erforderlich. Ausgehend von Ihrem heutigen Vermögen ergibt sich daraus ein zusätzlicher monatlicher Handlungsbedarf von rund ${formatCurrency(monthlySavingsRequired)}.`;
+
+        el("summaryText").textContent = summary;
+
+        const maxGap = Math.max(gapToday, gapAtRetirement, 1);
+        const widthToday = Math.min(100, (gapToday / maxGap) * 100);
+        const widthRet = Math.min(100, (gapAtRetirement / maxGap) * 100);
+
+        el("barToday").style.width = `${widthToday}%`;
+        el("barRetirement").style.width = `${widthRet}%`;
+        el("barLabelToday").textContent = formatCurrency(gapToday);
+        el("barLabelRetirement").textContent = formatCurrency(gapAtRetirement);
+        el("chartCaption").textContent = `Die Vergleichsgrafik zeigt, wie sich die monatliche Versorgungslücke von heute bis zum Ruhestandsbeginn unter den gewählten Annahmen verändern kann.`;
+      }
+
+      inputs.forEach((input) => {
+        input.addEventListener("input", calculate);
+        input.addEventListener("change", calculate);
+      });
+
+      calculate();
+    </script>
+  </body>
+</html>
 

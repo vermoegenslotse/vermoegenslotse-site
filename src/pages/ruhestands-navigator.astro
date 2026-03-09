@@ -531,14 +531,45 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         }
       }
 
+      function calculateCoverageYears(startCapital, startGapMonthly, monthlyReturn, monthlyInflationGap, maxMonths) {
+        if (startGapMonthly <= 0) return maxMonths / 12;
+        let capital = startCapital;
+        let gap = startGapMonthly;
+        let monthsCovered = 0;
+
+        for (let i = 0; i < maxMonths; i++) {
+          if (capital <= 0) break;
+          capital = capital * (1 + monthlyReturn) - gap;
+          if (capital < 0) break;
+          monthsCovered += 1;
+          gap = gap * (1 + monthlyInflationGap);
+        }
+
+        return monthsCovered / 12;
+      }
+
+      const coverageYears = calculateCoverageYears(
+        expectedWealthAtRetirement,
+        gapAtRetirement,
+        monthlyNetReturn,
+        monthlyGapGrowth,
+        monthsInRetirement
+      );
+
       el("metricGapToday").textContent = formatCurrency(gapToday);
       el("metricGapRetirement").textContent = formatCurrency(gapAtRetirement);
       el("metricRequiredCapital").textContent = formatCurrency(requiredCapital);
       el("metricMonthlyNeed").textContent = formatCurrency(monthlySavingsRequired);
+      el("metricExpectedWealth").textContent = formatCurrency(expectedWealthAtRetirement);
+      el("metricCapitalGap").textContent = capitalGap > 0 ? formatCurrency(capitalGap) : "Keine rechnerische Lücke";
+      el("metricCoverageYears").textContent = gapAtRetirement <= 0
+        ? `${yearsInRetirement} Jahre+`
+        : `${coverageYears.toFixed(1).replace(".", ",")} Jahre`;
+      el("metricRetirementAssumptions").textContent = `${formatPercent(retirementReturn * 100, 1)} / ${formatPercent(retirementInflation * 100, 1)}`;
 
       const summary = yearsToRetirement === 0
-        ? `Sie befinden sich rechnerisch bereits im Ruhestand. Unter den gewählten Annahmen ergibt sich aktuell eine monatliche Versorgungslücke von rund ${formatCurrency(gapAtRetirement)}. Um diese Lücke über etwa ${yearsInRetirement} Jahre auszugleichen, wäre ein Kapital von rund ${formatCurrency(requiredCapital)} erforderlich.`
-        : `In voraussichtlich ${yearsToRetirement} Jahren beginnt Ihr Ruhestand. Unter den gewählten Annahmen entsteht dann eine monatliche Versorgungslücke von rund ${formatCurrency(gapAtRetirement)}. Um diese Lücke über einen Zeitraum von etwa ${yearsInRetirement} Jahren auszugleichen, wäre zum Ruhestandsbeginn ein Kapital von rund ${formatCurrency(requiredCapital)} erforderlich. Ausgehend von Ihrem heutigen Vermögen ergibt sich daraus ein zusätzlicher monatlicher Handlungsbedarf von rund ${formatCurrency(monthlySavingsRequired)}.`;
+        ? `Sie befinden sich rechnerisch bereits im Ruhestand. Unter den gewählten Annahmen ergibt sich aktuell eine monatliche Versorgungslücke von rund ${formatCurrency(gapAtRetirement)}. Um diese Lücke über etwa ${yearsInRetirement} Jahre auszugleichen, wäre ein Kapital von rund ${formatCurrency(requiredCapital)} erforderlich. Ihr derzeit angesetztes Kapital würde diese Lücke rechnerisch etwa ${coverageYears.toFixed(1).replace(".", ",")} Jahre tragen.`
+        : `In voraussichtlich ${yearsToRetirement} Jahren beginnt Ihr Ruhestand. Unter den gewählten Annahmen entsteht dann eine monatliche Versorgungslücke von rund ${formatCurrency(gapAtRetirement)}. Um diese Lücke über einen Zeitraum von etwa ${yearsInRetirement} Jahren auszugleichen, wäre zum Ruhestandsbeginn ein Kapital von rund ${formatCurrency(requiredCapital)} erforderlich. Ausgehend von Ihrem heutigen Vermögen könnten bis dahin rechnerisch rund ${formatCurrency(expectedWealthAtRetirement)} aufgebaut sein${capitalGap > 0 ? ` – daraus ergibt sich eine Kapitallücke von rund ${formatCurrency(capitalGap)}` : ` – damit wäre das Zielkapital rechnerisch erreicht`}. Der zusätzliche monatliche Handlungsbedarf liegt bei rund ${formatCurrency(monthlySavingsRequired)}.`;
 
       el("summaryText").textContent = summary;
 

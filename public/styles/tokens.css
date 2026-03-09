@@ -1871,3 +1871,8 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   line-height: 1.7;
   margin: 0;
 }
+.splitVisual img {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+}

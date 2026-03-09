@@ -87,6 +87,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <p class="lead">
       Geben Sie Ihre Eckdaten ein. Die Berechnung läuft vollständig clientseitig in Ihrem Browser.
     </p>
+    <p class="muted" style="margin-top:10px;">
+      Hinweis: Alle Beträge werden als vereinfachte Modellwerte in Euro gerechnet. Der Rechner dient der ersten Einordnung – nicht der individuellen Ruhestandsplanung im rechtlichen oder steuerlichen Sinn.
+    </p>
 
     <div class="retirementLayout">
       <div class="retirementFormColumn">
@@ -129,6 +132,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="retirementFieldGrid">
             <label class="retirementField">
               <span>Gewünschte monatliche Ausgaben im Ruhestand</span>
+              <small class="retirementHelp">Monatswert in Euro – als heutiger Zielwert vor Ruhestandsbeginn.</small>
               <input id="desiredIncome" type="number" min="0" step="100" value="4500" inputmode="decimal" />
             </label>
           </div>
@@ -136,11 +140,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="retirementFieldGrid retirementFieldGrid2">
             <label class="retirementField">
               <span>Erwartete gesetzliche Rente pro Monat</span>
+              <small class="retirementHelp">Monatswert in Euro auf Basis Ihrer heutigen Erwartung.</small>
               <input id="statePension" type="number" min="0" step="50" value="1800" inputmode="decimal" />
             </label>
 
             <label class="retirementField">
               <span>Sonstige sichere Renteneinkünfte pro Monat</span>
+              <small class="retirementHelp">Zum Beispiel betriebliche Renten, private Rentenzahlungen oder ähnliche fixe Zuflüsse.</small>
               <input id="privatePension" type="number" min="0" step="50" value="500" inputmode="decimal" />
             </label>
           </div>
@@ -151,6 +157,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="retirementFieldGrid">
             <label class="retirementField">
               <span>Bereits vorhandenes Kapital</span>
+              <small class="retirementHelp">Investierbares Vermögen, das für die Ruhestandsplanung grundsätzlich zur Verfügung steht.</small>
               <input id="currentSavings" type="number" min="0" step="1000" value="150000" inputmode="decimal" />
             </label>
           </div>

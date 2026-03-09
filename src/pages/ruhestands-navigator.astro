@@ -160,7 +160,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <h3>Annahmen für die Modellrechnung</h3>
           <div class="retirementFieldGrid retirementFieldGrid2">
             <label class="retirementField">
-              <span>Inflation p. a.</span>
+              <span>Inflation bis zum Ruhestand p. a.</span>
+              <small class="retirementHelp">Wie stark die gewünschten Ausgaben bis zum Ruhestandsbeginn rechnerisch steigen.</small>
               <div class="retirementRangeTop">
                 <span class="subtleText">in %</span>
                 <strong data-range-output="inflationRate">2.0 %</strong>
@@ -169,7 +170,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </label>
 
             <label class="retirementField">
-              <span>Rentenanpassung p. a.</span>
+              <span>Rentenanpassung bis zum Ruhestand p. a.</span>
+              <small class="retirementHelp">Vereinfachte Annahme, wie sich gesetzliche und sonstige sichere Renten bis zum Ruhestand entwickeln.</small>
               <div class="retirementRangeTop">
                 <span class="subtleText">in %</span>
                 <strong data-range-output="pensionIncrease">1.5 %</strong>
@@ -181,6 +183,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="retirementFieldGrid retirementFieldGrid2">
             <label class="retirementField">
               <span>Erwartete Rendite in der Ansparphase p. a.</span>
+              <small class="retirementHelp">Durchschnittliche Modellannahme für den Vermögensaufbau bis zum Ruhestandsbeginn.</small>
               <div class="retirementRangeTop">
                 <span class="subtleText">in %</span>
                 <strong data-range-output="expectedReturn">5.0 %</strong>
@@ -190,6 +193,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
             <label class="retirementField">
               <span>Steuerbelastung auf Kapitalerträge</span>
+              <small class="retirementHelp">Vereinfachte Steuerannahme für die Modellrechnung in der Ruhestandsphase.</small>
               <div class="retirementRangeTop">
                 <span class="subtleText">in %</span>
                 <strong data-range-output="taxRate">26.38 %</strong>
@@ -201,6 +205,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="retirementFieldGrid retirementFieldGrid2">
             <label class="retirementField">
               <span>Erwartete Rendite in der Ruhestandsphase p. a.</span>
+              <small class="retirementHelp">Welche durchschnittliche Wirkung des Vermögens nach Rentenbeginn unterstellt werden soll.</small>
               <div class="retirementRangeTop">
                 <span class="subtleText">in %</span>
                 <strong data-range-output="retirementReturn">3.0 %</strong>
@@ -210,6 +215,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
             <label class="retirementField">
               <span>Inflation in der Ruhestandsphase p. a.</span>
+              <small class="retirementHelp">Damit wird modelliert, dass die Versorgungslücke im Ruhestand weiter wachsen kann.</small>
               <div class="retirementRangeTop">
                 <span class="subtleText">in %</span>
                 <strong data-range-output="retirementInflation">2.0 %</strong>
@@ -219,9 +225,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
         </div>
       </div>
-
-      <div class="retirementResultsColumn">
-        <div class="panel retirementResultsPanel">
 
       <div class="retirementResultsColumn">
         <div class="panel retirementResultsPanel">
@@ -265,11 +268,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="retirementSummary card">
             <h3>Einordnung</h3>
             <p id="summaryText" class="muted"></p>
+            <div class="retirementStatus" id="retirementStatus"></div>
           </div>
 
           <div class="retirementWarning card">
             <h3>Was viele Anleger unterschätzen</h3>
-            <ul class="bullets">
+            <ul class="bullets" id="warningList">
               <li>Inflation verändert die reale Kaufkraft stärker, als viele erwarten.</li>
               <li>Eine Versorgungslücke ist nicht nur eine Renditefrage, sondern vor allem eine Strukturfrage.</li>
               <li>Die Qualität der Entnahmestrategie entscheidet mit darüber, wie lange Vermögen trägt.</li>
@@ -447,6 +451,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       return `${Number(value).toFixed(digits).replace(".", ",")} %`;
     }
 
+    function formatYears(value) {
+      return `${Number(value).toFixed(1).replace(".", ",")} Jahre`;
+    }
+
     function updateRangeOutputs() {
       document.querySelectorAll("[data-range-output]").forEach((node) => {
         const source = el(node.dataset.rangeOutput);
@@ -461,6 +469,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           node.textContent = `${Math.round(value)}`;
         }
       });
+    }
+
+    function calculateCoverageYears(startCapital, startGapMonthly, monthlyReturn, monthlyInflationGap, maxMonths) {
+      if (startGapMonthly <= 0) return maxMonths / 12;
+      let capital = startCapital;
+      let gap = startGapMonthly;
+      let monthsCovered = 0;
+
+      for (let i = 0; i < maxMonths; i++) {
+        if (capital <= 0) break;
+        capital = capital * (1 + monthlyReturn) - gap;
+        if (capital < 0) break;
+        monthsCovered += 1;
+        gap = gap * (1 + monthlyInflationGap);
+      }
+
+      return monthsCovered / 12;
     }
 
     function calculate() {
@@ -519,33 +544,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       const expectedWealthAtRetirement = futureValueCurrentSavings;
       const capitalGap = Math.max(0, requiredCapital - expectedWealthAtRetirement);
-      const additionalCapitalNeeded = capitalGap;
 
       let monthlySavingsRequired = 0;
-      if (monthsToRetirement > 0 && additionalCapitalNeeded > 0) {
+      if (monthsToRetirement > 0 && capitalGap > 0) {
         if (monthlyGrossReturn > 0) {
           const annuityFactor = (Math.pow(1 + monthlyGrossReturn, monthsToRetirement) - 1) / monthlyGrossReturn;
-          monthlySavingsRequired = annuityFactor > 0 ? additionalCapitalNeeded / annuityFactor : 0;
+          monthlySavingsRequired = annuityFactor > 0 ? capitalGap / annuityFactor : 0;
         } else {
-          monthlySavingsRequired = additionalCapitalNeeded / monthsToRetirement;
+          monthlySavingsRequired = capitalGap / monthsToRetirement;
         }
-      }
-
-      function calculateCoverageYears(startCapital, startGapMonthly, monthlyReturn, monthlyInflationGap, maxMonths) {
-        if (startGapMonthly <= 0) return maxMonths / 12;
-        let capital = startCapital;
-        let gap = startGapMonthly;
-        let monthsCovered = 0;
-
-        for (let i = 0; i < maxMonths; i++) {
-          if (capital <= 0) break;
-          capital = capital * (1 + monthlyReturn) - gap;
-          if (capital < 0) break;
-          monthsCovered += 1;
-          gap = gap * (1 + monthlyInflationGap);
-        }
-
-        return monthsCovered / 12;
       }
 
       const coverageYears = calculateCoverageYears(
@@ -562,16 +569,47 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       el("metricMonthlyNeed").textContent = formatCurrency(monthlySavingsRequired);
       el("metricExpectedWealth").textContent = formatCurrency(expectedWealthAtRetirement);
       el("metricCapitalGap").textContent = capitalGap > 0 ? formatCurrency(capitalGap) : "Keine rechnerische Lücke";
-      el("metricCoverageYears").textContent = gapAtRetirement <= 0
-        ? `${yearsInRetirement} Jahre+`
-        : `${coverageYears.toFixed(1).replace(".", ",")} Jahre`;
+      el("metricCoverageYears").textContent = gapAtRetirement <= 0 ? `${yearsInRetirement} Jahre+` : formatYears(coverageYears);
       el("metricRetirementAssumptions").textContent = `${formatPercent(retirementReturn * 100, 1)} / ${formatPercent(retirementInflation * 100, 1)}`;
 
       const summary = yearsToRetirement === 0
-        ? `Sie befinden sich rechnerisch bereits im Ruhestand. Unter den gewählten Annahmen ergibt sich aktuell eine monatliche Versorgungslücke von rund ${formatCurrency(gapAtRetirement)}. Um diese Lücke über etwa ${yearsInRetirement} Jahre auszugleichen, wäre ein Kapital von rund ${formatCurrency(requiredCapital)} erforderlich. Ihr derzeit angesetztes Kapital würde diese Lücke rechnerisch etwa ${coverageYears.toFixed(1).replace(".", ",")} Jahre tragen.`
+        ? `Sie befinden sich rechnerisch bereits im Ruhestand. Unter den gewählten Annahmen ergibt sich aktuell eine monatliche Versorgungslücke von rund ${formatCurrency(gapAtRetirement)}. Um diese Lücke über etwa ${yearsInRetirement} Jahre auszugleichen, wäre ein Kapital von rund ${formatCurrency(requiredCapital)} erforderlich. Ihr derzeit angesetztes Kapital würde diese Lücke rechnerisch etwa ${formatYears(coverageYears)} tragen.`
         : `In voraussichtlich ${yearsToRetirement} Jahren beginnt Ihr Ruhestand. Unter den gewählten Annahmen entsteht dann eine monatliche Versorgungslücke von rund ${formatCurrency(gapAtRetirement)}. Um diese Lücke über einen Zeitraum von etwa ${yearsInRetirement} Jahren auszugleichen, wäre zum Ruhestandsbeginn ein Kapital von rund ${formatCurrency(requiredCapital)} erforderlich. Ausgehend von Ihrem heutigen Vermögen könnten bis dahin rechnerisch rund ${formatCurrency(expectedWealthAtRetirement)} aufgebaut sein${capitalGap > 0 ? ` – daraus ergibt sich eine Kapitallücke von rund ${formatCurrency(capitalGap)}` : ` – damit wäre das Zielkapital rechnerisch erreicht`}. Der zusätzliche monatliche Handlungsbedarf liegt bei rund ${formatCurrency(monthlySavingsRequired)}.`;
 
       el("summaryText").textContent = summary;
+
+      const statusEl = el("retirementStatus");
+      const warningList = el("warningList");
+
+      if (gapAtRetirement <= 0) {
+        statusEl.innerHTML = `<div class="statusBadge statusGood">Die Modellrechnung zeigt aktuell keine rechnerische Versorgungslücke zum Ruhestandsbeginn.</div>`;
+        warningList.innerHTML = `
+          <li>Auch ohne rechnerische Lücke bleibt die Struktur der Entnahmephase entscheidend.</li>
+          <li>Liquidität, Sicherheitsbausteine und Schwankungstoleranz sollten dennoch sauber geplant sein.</li>
+          <li>Die Modellrechnung ersetzt keine individuelle Prüfung von Steuern, Produktkosten und realen Zahlungsströmen.</li>
+        `;
+      } else if (coverageYears < Math.max(8, yearsInRetirement * 0.5)) {
+        statusEl.innerHTML = `<div class="statusBadge statusAlert">Die aktuelle Konstellation deutet auf spürbaren strategischen Handlungsbedarf hin.</div>`;
+        warningList.innerHTML = `
+          <li>Die Kapitalreichweite ist im Verhältnis zur geplanten Ruhestandsdauer eher kurz.</li>
+          <li>Neben zusätzlichem Vermögensaufbau kann auch die Entnahmestruktur entscheidend sein.</li>
+          <li>Gerade in der Ruhestandsphase wirken Rendite, Inflation und Reihenfolge der Marktjahre besonders stark.</li>
+        `;
+      } else if (capitalGap > 0) {
+        statusEl.innerHTML = `<div class="statusBadge statusMedium">Die Richtung stimmt, aber es bleibt eine rechnerische Kapitallücke bis zum Ruhestandsbeginn.</div>`;
+        warningList.innerHTML = `
+          <li>Die Modellrechnung zeigt einen grundsätzlich tragfähigen Kurs – aber noch keinen vollständigen Puffer.</li>
+          <li>Entscheidend ist, wie Vermögen, Zeitachse und spätere Entnahmephase zusammenspielen.</li>
+          <li>Schon moderate Anpassungen bei Aufbau, Struktur oder Zielgröße können die Tragfähigkeit verbessern.</li>
+        `;
+      } else {
+        statusEl.innerHTML = `<div class="statusBadge statusGood">Das Zielkapital wäre unter den aktuellen Annahmen rechnerisch erreichbar.</div>`;
+        warningList.innerHTML = `
+          <li>Auch bei erreichter Zielgröße bleibt die Robustheit der Vermögensstruktur entscheidend.</li>
+          <li>Ein tragfähiger Ruhestand entsteht nicht nur aus Kapitalhöhe, sondern aus Steuerbarkeit und Reservebildung.</li>
+          <li>Die Modellrechnung ist eine Orientierung – keine Aussage über konkrete Produkte oder Garantien.</li>
+        `;
+      }
 
       const maxGap = Math.max(gapToday, gapAtRetirement, 1);
       const widthToday = Math.min(100, (gapToday / maxGap) * 100);
@@ -685,6 +723,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       color: var(--c-primary);
     }
 
+    .retirementHelp {
+      display: block;
+      margin-top: -0.1rem;
+      color: rgba(40,72,48,0.68);
+      font-size: 0.86rem;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
     .retirementField input[type="number"] {
       width: 100%;
       padding: 0.95rem 1rem;
@@ -741,7 +788,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
     .retirementMetric h3 {
-      font-size: clamp(1.25rem, 2.2vw, 1.85rem);
+      font-size: clamp(1.2rem, 2.1vw, 1.8rem);
       line-height: 1.15;
       letter-spacing: -0.02em;
       margin-bottom: 0;
@@ -777,6 +824,37 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     #chartCaption {
       margin-top: 1rem;
+    }
+
+    .retirementStatus {
+      margin-top: 1rem;
+    }
+
+    .statusBadge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.7rem 0.95rem;
+      border-radius: 999px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .statusGood {
+      background: rgba(40,72,48,0.10);
+      border: 1px solid rgba(40,72,48,0.18);
+      color: var(--c-primary);
+    }
+
+    .statusMedium {
+      background: rgba(216,120,8,0.10);
+      border: 1px solid rgba(216,120,8,0.22);
+      color: #9a5406;
+    }
+
+    .statusAlert {
+      background: rgba(168,58,37,0.10);
+      border: 1px solid rgba(168,58,37,0.20);
+      color: #8f2f1f;
     }
 
     @media (max-width: 980px) {

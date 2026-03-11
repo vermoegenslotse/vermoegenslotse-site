@@ -1,1 +1,967 @@
 
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VermCheck – 9 Fragen, Score, Auswertung & 14-Tage-Plan</title>
+  <meta name="description" content="Interaktiver VermCheck mit Score 0–9: 9 Fragen, Auswertung, Handlungsfelder und 14-Tage-Aktionsplan. Ergebnis als PDF speichern oder per E-Mail anfordern (DOI)." />
+
+  <style>
+    :root{
+      /* Brand */
+      --green-900:#22491a;
+      --green-600:#618636;
+      --sage-300:#9dae98;
+      --orange:#ef8216;
+      --beige:#f4f4f4;
+
+      /* UI */
+      --text:#102014;
+      --muted:#425246;
+      --card:#ffffff;
+      --line:rgba(16,32,20,.12);
+      --shadow: 0 14px 40px rgba(0,0,0,.10);
+      --radius: 18px;
+      --max: 1120px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 10% 0%, rgba(239,130,22,.14), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(97,134,54,.14), transparent 60%),
+        linear-gradient(180deg, var(--beige) 0%, #ffffff 60%, var(--beige) 100%);
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 90px}
+
+    /* Topbar */
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:10px 0 18px;}
+    .brand{display:flex; align-items:center; gap:12px;}
+    .logo{
+      width:46px; height:46px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(34,73,26,.12), rgba(239,130,22,.18));
+      display:grid; place-items:center; overflow:hidden;
+      border:1px solid rgba(16,32,20,.10);
+    }
+    .logo img{width:100%; height:100%; object-fit:contain; display:block; padding:6px;}
+    .brand strong{color:var(--green-900)}
+    .brand small{display:block; color:var(--muted); margin-top:2px}
+    .nav{display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end; color:var(--muted); font-size:14px;}
+    .nav a{opacity:.9; text-decoration:none}
+    .nav a:hover{opacity:1; text-decoration:underline}
+
+    /* Panels */
+    .panel{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero{padding:26px}
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:7px 12px; border-radius:999px;
+      border:1px solid rgba(239,130,22,.35);
+      background: rgba(239,130,22,.10);
+      font-size:13px; color:rgba(16,32,20,.88);
+      font-weight:700;
+    }
+    h1{margin:14px 0 10px; font-size:38px; line-height:1.07; color:var(--green-900)}
+    @media (max-width:520px){h1{font-size:30px}}
+    .sub{margin:0 0 16px; color:var(--muted); font-size:16px; line-height:1.6; max-width:78ch;}
+
+    .grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:16px; margin-top:16px;}
+    @media (max-width: 920px){.grid{grid-template-columns:1fr}}
+
+    .card{
+      padding:16px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background: #fff;
+    }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:6px 10px; border-radius:999px; font-size:12px;
+      border:1px solid rgba(34,73,26,.18);
+      background: rgba(34,73,26,.06);
+      color:rgba(16,32,20,.92);
+      margin-bottom:10px;
+      font-weight:700;
+    }
+    .card h3{margin:0 0 8px; font-size:16px; color:var(--green-900)}
+    .card p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.6}
+
+    /* Buttons */
+    .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px; border-radius:14px;
+      font-weight:900; text-decoration:none;
+      border:1px solid rgba(239,130,22,.45);
+      background: var(--orange);
+      color:#fff;
+      box-shadow: 0 10px 22px rgba(239,130,22,.22);
+    }
+    .btn:hover{filter:brightness(.97)}
+    .btn2{
+      border:1px solid rgba(34,73,26,.22);
+      background: rgba(34,73,26,.07);
+      color: var(--green-900);
+      font-weight:800;
+      box-shadow:none;
+    }
+    .btn2:hover{background: rgba(34,73,26,.10)}
+    .micro{color:var(--muted); font-size:13px}
+
+    /* Sections */
+    .section{margin-top:18px}
+    .head{display:flex; justify-content:space-between; gap:12px; align-items:flex-end; padding:18px 22px 0}
+    .head h2{margin:0; font-size:22px; color:var(--green-900)}
+    .hint{color:var(--muted); font-size:13px; margin-bottom:2px}
+    .content{padding:16px 22px 22px}
+
+    /* Quiz */
+    .progress{height:10px; border-radius:999px; background: rgba(16,32,20,.08); overflow:hidden; border:1px solid rgba(16,32,20,.12);}
+    .bar{height:100%; width:0%; background: linear-gradient(90deg, var(--green-600), var(--orange));}
+    .qbox{margin-top:14px; padding:14px; border-radius:16px; border:1px solid var(--line); background: rgba(244,244,244,.55);}
+    .qtitle{font-size:15px; font-weight:900; margin:0 0 8px; color:var(--green-900)}
+    .qtext{margin:0; color:rgba(16,32,20,.92); font-size:14px; line-height:1.6}
+    .ans{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .abtn{
+      padding:10px 14px; border-radius:14px; cursor:pointer;
+      border:1px solid rgba(16,32,20,.16);
+      background: #fff;
+      color:rgba(16,32,20,.92);
+      font-weight:900;
+    }
+    .abtn:hover{background: rgba(244,244,244,.7)}
+    .abtn.yes{border-color: rgba(97,134,54,.35); background: rgba(97,134,54,.10)}
+    .abtn.no{border-color: rgba(239,130,22,.40); background: rgba(239,130,22,.12)}
+    .small{font-size:12px; color:var(--muted); margin-top:10px; line-height:1.5}
+
+    /* Results */
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid rgba(16,32,20,.12);
+      background: rgba(244,244,244,.70);
+      font-weight:900;
+    }
+    .score{font-size:26px; color:var(--green-900)}
+    .tag{font-size:12px; color:rgba(16,32,20,.92); padding:4px 10px; border-radius:999px; border:1px solid rgba(16,32,20,.12)}
+    .tag.ok{background: rgba(97,134,54,.12); border-color: rgba(97,134,54,.22)}
+    .tag.mid{background: rgba(239,130,22,.10); border-color: rgba(239,130,22,.22)}
+    .tag.bad{background: rgba(239,130,22,.14); border-color: rgba(239,130,22,.30)}
+    .cols{display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-top:14px}
+    @media (max-width: 920px){.cols{grid-template-columns:1fr}}
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:13.5px; line-height:1.65}
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+
+    details{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 14px;
+      background: rgba(244,244,244,.55);
+      margin-top:12px;
+    }
+    summary{cursor:pointer; font-weight:900; color:var(--green-900);}
+
+    footer{
+      margin-top:26px; padding-top:18px;
+      border-top: 1px solid rgba(16,32,20,.10);
+      color:var(--muted); font-size:13px;
+      display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center;
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo"><img src="https://vermögens-check.vermögenslotse.de/logo-cgc.png" alt="Logo"></div>
+      <div>
+        <strong>Christian Gradt Consulting</strong>
+        <small>Vermögenslotse – Strukturen schaffen. Werte bewahren.</small>
+      </div>
+    </div>
+    <div class="nav">
+      <a href="#check">Check</a>
+      <a href="#ergebnis">Auswertung</a>
+      <a href="#plan">14-Tage-Plan</a>
+      <a href="#guide">Guide</a>
+      <a href="#minicase">Depotoptimierung</a>
+      <a href="#cta">Kontakt</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="panel hero">
+    <div class="kicker">✅ 9 Fragen · Score 0–9 · 2 PDFs (Auswertung & Plan) · auf Ihrer Domain</div>
+    <h1>Die 7 blinden Flecken ab 300.000 €</h1>
+    <p class="sub">
+      30-Minuten-Übersichts-Check mit 9 Ja/Nein-Fragen. Danach erhalten Sie Ihre Auswertung, Handlungsfelder
+      und einen 14-Tage-Aktionsplan (täglich 20–40 Minuten).
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="pill">Für wen ist dieser Guide?</div>
+        <p>
+          Für anspruchsvolle Kapitalanleger 50+, die privat und/oder über die vermögensverwaltende GmbH investieren,
+          wenig Zeit haben und unabhängige, transparente Entscheidungen treffen wollen.
+        </p>
+        <div class="btnrow">
+          <a class="btn" href="#check">VermCheck starten</a>
+          <a class="btn btn2" href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002" target="_blank" rel="noopener">
+            20-Min-Check-up buchen
+          </a>
+          <span class="micro">Kein Produkt-Pitch. Fokus: Struktur & Umsetzung.</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="pill">Datenschutz</div>
+        <p>
+          Dieser Check läuft vollständig im Browser. Ihre Antworten werden nicht gespeichert und nicht übertragen.
+          Nur wenn Sie aktiv „Ergebnis per E-Mail“ anfordern, wechseln Sie zu Zoho (Double-Opt-In).
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECK -->
+  <div class="section panel" id="check">
+    <div class="head">
+      <h2>Interaktiver Check (9 Fragen)</h2>
+      <div class="hint"><span id="pLabel">0</span>/9 beantwortet</div>
+    </div>
+    <div class="content">
+      <div class="progress" aria-label="Fortschritt"><div class="bar" id="bar"></div></div>
+
+      <div class="qbox" id="qbox">
+        <p class="qtitle" id="qtitle">Frage 1</p>
+        <p class="qtext" id="qtext"></p>
+
+        <div class="ans">
+          <button class="abtn yes" id="yesBtn" type="button">Ja</button>
+          <button class="abtn no" id="noBtn" type="button">Nein</button>
+          <button class="abtn" id="backBtn" type="button" style="margin-left:auto;">Zurück</button>
+        </div>
+
+        <div class="small">
+          Tipp: „Ja“ bedeutet: umgesetzt und regelmäßig geprüft. „Nein“ bedeutet: nicht klar geregelt oder nicht dokumentiert.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="section panel" id="ergebnis">
+    <div class="head">
+      <h2>Ihre Auswertung</h2>
+      <div class="hint">Button erzeugt PDF nur für die Auswertung</div>
+    </div>
+    <div class="content" id="resultContent">
+      <p class="micro">Bitte zuerst den Check durchführen. Ihre Auswertung erscheint automatisch.</p>
+    </div>
+  </div>
+
+  <!-- PLAN -->
+  <div class="section panel" id="plan">
+    <div class="head">
+      <h2>Ihr 14-Tage-Aktionsplan</h2>
+      <div class="hint">Button erzeugt PDF nur für den Plan</div>
+    </div>
+    <div class="content" id="planContent">
+      <p class="micro">Der Plan erscheint nach Abschluss des Checks.</p>
+    </div>
+  </div>
+
+  <!-- GUIDE (aus deiner Manus-PDF) -->
+  <div class="section panel" id="guide">
+    <div class="head">
+      <h2>Die 7 blinden Flecken</h2>
+      <div class="hint">Kurz erklärt → warum teuer → 3-Schritte-Fix :contentReference[oaicite:2]{index=2}</div>
+    </div>
+    <div class="content">
+      <div class="card">
+        <div class="pill">Quick-Wins auf einer Seite</div>
+        <ul class="list">
+          <li>1-Seiten-Kostenreport je Produkt</li>
+          <li>Allokations-Policy privat vs. GmbH</li>
+          <li>Verlusttopf-Transparenz + Jahresend-Reminder</li>
+          <li>Rebalancing-Regel (Termine + Trigger)</li>
+          <li>Notfall- & Nachfolgemappe vollständig</li>
+        </ul>
+        <p class="micro" style="margin-top:10px">Quelle/Struktur nach deiner Manus-Vorlage :contentReference[oaicite:3]{index=3}</p>
+      </div>
+
+      <!-- 1..7 als Details -->
+      <details>
+        <summary>1) Freibeträge verpuffen</summary>
+        <ul class="list">
+          <li><strong>Kurz erklärt:</strong> Freistellungsaufträge falsch verteilt/fehlen; bei Paaren/mehreren Banken wird Potenzial verschenkt.</li>
+          <li><strong>Warum teuer:</strong> unnötige Besteuerung, summiert sich über Jahre.</li>
+          <li><strong>3-Schritte-Fix:</strong> 1-Seiten-Übersicht Erträge/Steuer · Freistellungen passend verteilen · Familie/Kinderdepots/NV prüfen (mit StB).</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>2) Vorabpauschale ohne Cash-Puffer</summary>
+        <ul class="list">
+          <li><strong>Kurz erklärt:</strong> Thesaurierer → Vorabpauschale; ohne Liquidität entstehen ungünstige Verkäufe.</li>
+          <li><strong>Warum teuer:</strong> Timing-Risiko + Transaktionskosten.</li>
+          <li><strong>3-Schritte-Fix:</strong> Liquiditätstopf je Depot · Ausschütter ergänzen · Stichtage/Agenda + 1× p.a. mit StB abgleichen.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>3) Falscher Topf bei Verlusten</summary>
+        <ul class="list">
+          <li><strong>Kurz erklärt:</strong> Aktien- und Sonstige-Verlusttöpfe getrennt; depotübergreifend nur über Veranlagung.</li>
+          <li><strong>Warum teuer:</strong> Verluste bleiben ungenutzt, Fristen (Verlustbescheinigung) verstreichen.</li>
+          <li><strong>3-Schritte-Fix:</strong> Topf-Transparenz je Depot · Jahresend-Hebel/Reminder · Veranlagungs-Plan mit StB.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>4) Privat vs. GmbH suboptimal</summary>
+        <ul class="list">
+          <li><strong>Kurz erklärt:</strong> Anlagen liegen „irgendwo“, statt klarer Logik privat vs. vV-GmbH.</li>
+          <li><strong>Warum teuer:</strong> unterschiedliche Steuerlogiken beeinflussen Netto-Rendite massiv.</li>
+          <li><strong>3-Schritte-Fix:</strong> Allokations-Matrix · Steuerwirkung für Kernprodukte grob simulieren · 1-Seiten-Policy + jährliches Review mit StB.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>5) Kosten & Kickbacks unsichtbar</summary>
+        <ul class="list">
+          <li><strong>Kurz erklärt:</strong> TER ist nicht alles; All-in-Kosten/Spreads/Zuwendungen bleiben unklar.</li>
+          <li><strong>Warum teuer:</strong> 0,5–1,0 %-Punkte Kostenunterschied p.a. wirken langfristig stark.</li>
+          <li><strong>3-Schritte-Fix:</strong> Ex-ante/Ex-post Reports · 5-Punkte-Produktfilter · Offenlegung/Unabhängigkeit dokumentieren.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>6) Klumpenrisiken & fehlendes Rebalancing</summary>
+        <ul class="list">
+          <li><strong>Kurz erklärt:</strong> Übergewichtungen + ohne Regeln driftet Risiko unbemerkt.</li>
+          <li><strong>Warum teuer:</strong> konzentrierte Verluste in Stressphasen, falsches Timing.</li>
+          <li><strong>3-Schritte-Fix:</strong> Ist-Bild + Max-Quoten · Rebalancing-Regel (±5%/Fixtermine) · Sparpläne/Entnahmen fürs Rebalancing nutzen.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>7) Nachfolge & Entnahmeplan zu spät</summary>
+        <ul class="list">
+          <li><strong>Kurz erklärt:</strong> Ruhestandscashflow, Entnahmereihenfolge und Nachfolge nicht vorbereitet.</li>
+          <li><strong>Warum teuer:</strong> steuerliche Fallen, Zwangsverkäufe, Familienstress.</li>
+          <li><strong>3-Schritte-Fix:</strong> Cashflow-Plan 63 · Entnahmereihenfolge · Notfall- & Nachfolgemappe + 1-Seiten-Übersicht.</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- MINI CASE -->
+  <h2>Kurzanleitung zur Depotoptimierung</h2>
+      <div class="hint">Struktur, Hebel und Umsetzung in der Praxis</div>
+    </div>
+    <div class="content">
+      <div class="card">
+        <div class="pill">Strukturbeispiel aus der Praxis</div>
+        <ul class="list">
+          <li><strong>Ausgangslage:</strong> 300.000 € investiert (privat 200k, vV-GmbH 100k)</li>
+          <li><strong>Ziel:</strong> mehr Netto-Ertrag, weniger Komplexität, klare Regeln (Rebalancing, Cash-Puffer), Steuerlogik sauber nutzen</li>
+          <li><strong>Ergebnis-Idee:</strong> 1-Seiten-Policy + Kosten runter + Steuerhebel + Prozessroutinen :contentReference[oaicite:5]{index=5}</li>
+        </ul>
+      </div>
+
+      <details>
+        <summary>Vorher – typische Bugwelle</summary>
+        <ul class="list">
+          <li>Privat: 70% aktive Mischfonds, 30% Einzelaktien; kein Rebalancing-Plan</li>
+          <li>GmbH: Mix ohne schriftliche Policy</li>
+          <li>All-in-Kosten ca. 1,0–1,2% p.a.</li>
+          <li>Freistellungsaufträge schlecht verteilt; Teilfreistellungen nicht bewusst genutzt</li>
+          <li>Kein Cash-Puffer → Vorabpauschale „kommt aus dem Nichts“ :contentReference[oaicite:6]{index=6}</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Nachher – klar & schlank</summary>
+        <ul class="list">
+          <li><strong>Privat (200k):</strong> 60k Welt-Aktien-ETF, 120k Welt-Anleihen-ETF, 20k Cash-Puffer</li>
+          <li><strong>GmbH (100k):</strong> 100k Welt-Aktien-ETF (Teilfreistellung nutzen; jährliches Review mit StB)</li>
+          <li><strong>Kosten-Ziel:</strong> 0,2–0,3% p.a.</li>
+          <li><strong>Prozess:</strong> Rebalancing ±5% halbjährlich + 5-Punkte-Produktfilter</li>
+          <li><strong>Risiko:</strong> keine Einzelposition >10%, global diversifiziert :contentReference[oaicite:7]{index=7}</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Hebel-Logik (1-Jahres-Orientierung)</summary>
+        <ul class="list">
+          <li>Kosten senken (Delta) ~0,80%</li>
+          <li>Steuern optimieren ~0,15%</li>
+          <li>Strukturhebel ~0,05%</li>
+          <li><strong>Gesamt-Mehrwert p.a. ~+1,00%</strong> (Orientierung) :contentReference[oaicite:8]{index=8}</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="section panel" id="cta">
+    <div class="head">
+      <h2>Nächster Schritt</h2>
+      <div class="hint">DOI oder Termin</div>
+    </div>
+    <div class="content">
+      <div class="cols">
+        <div class="card">
+          <h3>Ergebnis per E-Mail erhalten (Double-Opt-In)</h3>
+          <p>Optional: Versand über Zoho (DOI). Ideal, wenn Sie den Guide zusätzlich erhalten möchten.</p>
+          <div class="actions">
+            <a class="btn" href="https://vermcheck.zoholandingpage.eu/7-blinde-flecken/" target="_blank" rel="noopener">Ergebnis per E-Mail anfordern</a>
+          </div>
+          <p class="small">Hinweis: E-Mail-Versand/DOI/Automation werden in Zoho gesteuert.</p>
+        </div>
+
+        <div class="card">
+          <h3>20-Min-Vermögens-Check-up</h3>
+          <p>Wenn Sie 2–4 Optimierungsfelder sehen: Priorisieren wir die nächsten 30–60 Tage – klar, pragmatisch, ohne Produkt-Pitch.</p>
+          <div class="actions">
+            <a class="btn btn2" href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002" target="_blank" rel="noopener">Termin buchen</a>
+            <button class="abtn" id="resetBtn" type="button">Check zurücksetzen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div>© <span id="y"></span> Christian Gradt Consulting</div>
+    <div>
+      <a href="https://vermögenslotse.de/impressum/" style="text-decoration:none;">Impressum</a> ·
+      <a href="https://vermögenslotse.de/datenschutz/" style="text-decoration:none;">Datenschutz</a> ·
+      <a href="mailto:ch.gradt@gradt-consulting.de" style="text-decoration:none;">Kontakt</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  const BRAND = {
+    primary: "#22491a",
+    accent:  "#618636",
+    orange:  "#ef8216",
+    beige:   "#f4f4f4",
+    logoUrl: "https://vermögens-check.vermögenslotse.de/logo-cgc.png"
+  };
+
+  const CONTACT = {
+    name: "Christian Gradt",
+    role: "Vermögenslotse – Strukturen schaffen. Werte bewahren.",
+    email: "ch.gradt@gradt-consulting.de",
+    phone: "0171-8108154",
+    website: "www.vermögenslotse.de"
+  };
+
+  const questions = [
+    { id:"freibetrag",       bsNo:1, title:"Freibeträge", text:"Sind Ihre Freistellungsaufträge so verteilt, dass Freibeträge tatsächlich genutzt werden – und wird das mindestens jährlich überprüft?" },
+    { id:"vorabpauschale",   bsNo:2, title:"Vorabpauschale & Liquidität", text:"Haben Sie für Vorabpauschale/Steuern einen klaren Liquiditätspuffer, damit keine Verkäufe „zur falschen Zeit“ nötig werden?" },
+    { id:"verlusttoepfe",    bsNo:3, title:"Verlusttöpfe", text:"Kennen und dokumentieren Sie Ihre Verlusttöpfe (je Depot) so, dass Verluste steuerlich nicht ungenutzt bleiben?" },
+    { id:"privat_gmbh",      bsNo:4, title:"Privat vs. GmbH", text:"Ist eindeutig festgelegt, was privat investiert wird und was über (vV-)GmbH läuft – inklusive nachvollziehbarer Netto-Logik (Steuerwirkung)?" },
+    { id:"kosten",           bsNo:5, title:"Kosten-Transparenz", text:"Haben Sie eine 1-Seiten-Übersicht über Ihre All-in-Kosten (inkl. Produkt-/Depotkosten), sodass Sie echte Nettorendite beurteilen können?" },
+    { id:"klumpen",          bsNo:6, title:"Klumpenrisiken", text:"Sind Klumpenrisiken (Einzeltitel, Regionen, Branchen, Währungen, Immobilien) bewusst begrenzt – und können Sie das belegen?" },
+    { id:"rebalancing",      bsNo:7, title:"Rebalancing-Regel", text:"Gibt es eine feste Rebalancing-Regel (Trigger + Termine), die auch wirklich umgesetzt wird?" },
+    { id:"entnahme_63",      bsNo:8, title:"Entnahme & Cashflow", text:"Ist Ihre Entnahmeplanung als Cashflow-Plan dokumentiert – inklusive Entnahmereihenfolge und Liquiditätslogik?" },
+    { id:"nachfolge_notfall",bsNo:9, title:"Notfall & Nachfolge", text:"Sind Nachfolge/Vertretung/Notfallmappe so vorbereitet, dass Ihre Familie/Partner handlungsfähig ist (Vollmachten, Zugänge, Struktur, Prioritäten)?" }
+  ];
+
+  const blindspots = {
+    freibetrag: { name:"Freibeträge verpuffen", why:"Unnötige Steuerbelastung auf Erträge, die sich über Jahre stark summiert.", fix:["1-Seiten-Übersicht Erträge/Steuer erstellen","Freistellungsaufträge passend verteilen","Jährlichen Review-Termin setzen"] },
+    vorabpauschale: { name:"Vorabpauschale ohne Cash-Puffer", why:"Zwangsverkäufe zum falschen Zeitpunkt + unnötige Transaktionskosten.", fix:["Liquiditätstopf je Depot definieren","Steuertermine planen","Ausschüttungen/Pufferlogik prüfen"] },
+    verlusttoepfe: { name:"Verlusttöpfe ungenutzt", why:"Verluste werden steuerlich nicht genutzt, Gewinne werden voll besteuert.", fix:["Verlusttöpfe je Depot dokumentieren","Jahresend-Reminder setzen","Abstimmung mit Steuerberatung"] },
+    privat_gmbh: { name:"Privat vs. GmbH suboptimal", why:"Steuerlogik beeinflusst Nettorendite massiv – ohne Policy wird verschenkt.", fix:["Allokations-Matrix privat/GmbH","Netto-Vergleich 2–3 Kernbausteine","1-Seiten-Policy schriftlich festhalten"] },
+    kosten: { name:"Kosten unsichtbar", why:"0,5–1,0 %-Punkte p.a. wirken langfristig fünfstellig.", fix:["Ex-ante/Ex-post Kostenreports anfordern","All-in-Kosten je Produkt erfassen","Transparenzstandard definieren"] },
+    klumpen: { name:"Klumpenrisiken", why:"Ein einzelnes Risiko kann das Ergebnis dominieren – oft unbemerkt.", fix:["Ist-Gewichte erfassen","Maximalquoten definieren","Monitoring-Routine festlegen"] },
+    rebalancing: { name:"Kein Rebalancing", why:"Risiko driftet – Entscheidungen passieren zu spät oder emotional.", fix:["Regel (Trigger/Termine) definieren","Umsetzungstermine planen","Sparraten/Entnahmen nutzen"] },
+    entnahme_63: { name:"Entnahmeplanung fehlt", why:"Renditereihenfolge-Risiko & Liquiditätsfehler treffen in der Entnahmephase.", fix:["Cashflow-Plan erstellen","Entnahmereihenfolge definieren","Sicherheits-/Liquiditätstöpfe festlegen"] },
+    nachfolge_notfall: { name:"Nachfolge/Notfall nicht geregelt", why:"Im Ernstfall Chaos, Verzögerungen, unnötige Schäden.", fix:["Notfallmappe strukturieren","Vollmachten/Zugänge prüfen","Jährliches Update terminieren"] }
+  };
+
+  const IMPACT = { freibetrag:6, vorabpauschale:6, verlusttoepfe:5, privat_gmbh:7, kosten:8, klumpen:6, rebalancing:5, entnahme_63:9, nachfolge_notfall:7 };
+
+  function scoreHeadline(score){
+    if(score >= 8) return "Sehr solide – Feintuning & Routinen ausbauen.";
+    if(score >= 5) return "Solide, aber Lücken in 2–4 Bereichen – in 30–60 Tagen schließen.";
+    return "Mehrere Lecks – jetzt 2–3 Hebel priorisieren und schließen (30–60 Tage).";
+  }
+
+  // 14-Tage-Plan (wie zuvor – kompakt genug, aber Manus-nah)
+  const PLAN_OVERVIEW = [
+    "1-Seiten-Allokations-Policy (privat vs. GmbH)",
+    "Kostenreport je Produkt (All-in)",
+    "Freistellungsaufträge & Verlusttöpfe dokumentiert",
+    "Cash-Puffer je Depot eingerichtet",
+    "Rebalancing-Regel (Trigger + Termine)",
+    "Produktfilter (5 Prüfungen) als Formular",
+    "Notfall- & Nachfolgemappe – Mini-Check (Status)"
+  ];
+
+  const PLAN_WEEK1 = [
+    { day: 1, title:"Bestandsaufnahme", minutes:"30–40 min", tasks:["Alle Depots/Konten auflisten (privat & GmbH)","Produkte je Depot notieren (Name, ISIN, Stückzahl)","Ziel: Inventarliste auf 1 Seite"]},
+    { day: 2, title:"Kosten einholen", minutes:"30 min", tasks:["Ex-ante/Ex-post-Kostenberichte vom Broker/Bank anfordern","Depot-/Ordergebühren ergänzen","E-Mail-Vorlage unten nutzen"],
+      emailTemplate:{ subject:"Kostenübersichten / Ex-ante & Ex-post", body:"Bitte senden Sie mir die aktuellen Ex-ante/Ex-post-Kostenberichte für meine Depots [Nummern]. Vielen Dank." }},
+    { day: 3, title:"Freibeträge & Vorabpauschale", minutes:"30 min", tasks:["Freistellungsaufträge prüfen/verteilen","Cash-Puffer je Depot definieren (z. B. 1–3 %)","Steuertermine in Kalender aufnehmen"]},
+    { day: 4, title:"Verlusttöpfe", minutes:"30 min", tasks:["Aktien- und Sonstige-Verlusttöpfe je Depot dokumentieren","Dezember-Reminder „Verlustbescheinigung prüfen“ setzen"]},
+    { day: 5, title:"Produktfilter", minutes:"35 min", tasks:["1-Seiten-Formular: Ziel/Rolle · Kosten · Risiko · Liquidität · Steuern/Struktur","Als PDF speichern + Handy-Notiz"]},
+    { day: 6, title:"Allokations-Policy", minutes:"40 min", tasks:["Matrix privat/GmbH × Anlagekategorie erstellen","Pro Feld: Haltedauer, Ertragsart, Liquidität","Ergebnis: 1-Seiten-Policy"]},
+    { day: 7, title:"Review & Quick-Wins", minutes:"20–30 min", tasks:["Kosten-Outlier identifizieren","1–2 Einsparungen terminieren"]}
+  ];
+
+  const PLAN_WEEK2 = [
+    { day: 8, title:"Cash-Puffer umsetzen", minutes:"20 min", tasks:["Je Depot Verrechnungskonto/Tagesgeld auffüllen (Steuern/Entnahme-Puffer)"]},
+    { day: 9, title:"Rebalancing-Regel", minutes:"25 min", tasks:["Trigger ±5 % oder Fixtermine","Prozess: erst Sparrate/Entnahme, dann Umschichtung"]},
+    { day: 10, title:"Kostenreport finalisieren", minutes:"30–40 min", tasks:["All-in-Kosten je Produkt 1 Zeile","Depot-/Orderkosten als Jahresbetrag dazu"]},
+    { day: 11, title:"Privat vs. GmbH Feinschliff", minutes:"35 min", tasks:["2–3 Kernprodukte Netto grob vergleichen (privat vs. GmbH)","Policy ggf. anpassen; StB-To-dos notieren"]},
+    { day: 12, title:"Notfall/Nachfolge Mini-Check", minutes:"30 min", tasks:["Vollmachten/Zugänge/Verträge prüfen","1-Seiten-Übersicht Ansprechpartner + Konten/Depots"]},
+    { day: 13, title:"Ablage", minutes:"20–30 min", tasks:["Ordner „Vermögens-System“ (Cloud + Papier)","Benennung: YYYY-MM Thema – 1-Seite.pdf"]},
+    { day: 14, title:"Routine", minutes:"20 min", tasks:["Quartals-Reminder setzen","Offene Punkte + Verantwortliche dokumentieren"]}
+  ];
+
+  // ====== State / UI ======
+  const answers = new Array(questions.length).fill(null);
+  let idx = 0;
+
+  const qtitle = document.getElementById("qtitle");
+  const qtext  = document.getElementById("qtext");
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn  = document.getElementById("noBtn");
+  const backBtn= document.getElementById("backBtn");
+  const pLabel = document.getElementById("pLabel");
+  const bar    = document.getElementById("bar");
+  const resultContent = document.getElementById("resultContent");
+  const planContent   = document.getElementById("planContent");
+  const resetBtn      = document.getElementById("resetBtn");
+
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  function renderQuestion(){
+    const q = questions[idx];
+    qtitle.textContent = `Frage ${idx+1}: ${q.title}`;
+    qtext.textContent  = q.text;
+
+    const answeredCount = answers.filter(v => v !== null).length;
+    pLabel.textContent = answeredCount;
+    bar.style.width = `${(answeredCount / questions.length) * 100}%`;
+
+    backBtn.disabled = (idx === 0);
+    backBtn.style.opacity = backBtn.disabled ? 0.5 : 1;
+  }
+
+  function computeScore(){
+    return answers.reduce((sum, v) => sum + (v === true ? 1 : 0), 0);
+  }
+
+  function buildBlindspotList(){
+    const items = [];
+    answers.forEach((v, i) => {
+      if(v === false){
+        const key = questions[i].id;
+        if(blindspots[key]) items.push({ ...blindspots[key], _id: key, bsNo: questions[i].bsNo });
+      }
+    });
+    return items;
+  }
+
+  function topPriorities(reds, n=3){
+    const scored = reds.map(r => ({...r, impact: (IMPACT[r._id] ?? 5)}));
+    scored.sort((a,b) => b.impact - a.impact);
+    return scored.slice(0,n);
+  }
+
+  function renderResults(){
+    const answeredCount = answers.filter(v => v !== null).length;
+    if(answeredCount < questions.length){
+      resultContent.innerHTML = `<p class="micro">Bitte zuerst alle 9 Fragen beantworten. (${answeredCount}/9)</p>`;
+      planContent.innerHTML = `<p class="micro">Der Plan erscheint nach Abschluss des Checks.</p>`;
+      return;
+    }
+
+    const score = computeScore();
+    const reds = buildBlindspotList();
+    const top3 = topPriorities(reds, 3);
+
+    const bsNos = reds.map(r => r.bsNo).sort((a,b)=>a-b);
+    const bsNosText = bsNos.length ? bsNos.join(", ") : "–";
+
+    const top3Html = top3.length
+      ? `<ol class="list">${top3.map(t => `<li><strong>${escapeHtml(t.name)}</strong> <span class="micro">(Hebel: ${t.impact}/10)</span></li>`).join("")}</ol>`
+      : `<p class="micro">Keine „Nein“-Antworten. Fokus: Feintuning & Routinen.</p>`;
+
+    resultContent.innerHTML = `
+      <div class="badge">
+        <span class="score">${score}/9</span>
+        <span class="tag ${score>=8?'ok':(score>=5?'mid':'bad')}">${escapeHtml(scoreHeadline(score))}</span>
+      </div>
+
+      <div class="cols">
+        <div class="card">
+          <div class="pill">Ihre Handlungsfelder</div>
+          <p class="micro">Handlungsfelder (Nein-Antworten):</p>
+<p class="mono"><strong>Handlungsfeld ${escapeHtml(bsNosText)}</strong></p>
+          <div class="actions">
+            <button class="abtn" id="pdfEvalBtn" type="button">PDF Auswertung</button>
+            <a class="btn btn2" href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002" target="_blank" rel="noopener">20-Min-Check-up</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="pill">Ihre nächsten Schritte</div>
+          <ul class="list">
+            <li>Priorisieren Sie 2–3 Punkte mit dem größten Hebel</li>
+            <li>Nutzen Sie den 14-Tage-Plan zur Umsetzung</li>
+            <li>Optional: Check-up für Roadmap 30–60 Tage</li>
+          </ul>
+          <div class="actions">
+            <a class="btn" href="#plan">Zum 14-Tage-Plan</a>
+            <a class="btn btn2" href="https://vermcheck.zoholandingpage.eu/7-blinde-flecken/" target="_blank" rel="noopener">Ergebnis per E-Mail</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <div class="pill">Top-3 Prioritäten</div>
+        ${top3Html}
+      </div>
+
+      ${reds.length ? `
+        <div style="margin-top:6px">
+          ${reds.map(r => `
+            <div class="card" style="margin-top:12px">
+              <div class="pill">Detail</div>
+              <h3 style="margin:0 0 6px">Handlungsfeld ${r.bsNo}: ${escapeHtml(r.name)}</h3>
+              <p class="micro"><strong>Warum teuer:</strong> ${escapeHtml(r.why)}</p>
+              <p class="micro" style="margin-top:10px"><strong>3-Schritte-Fix:</strong></p>
+              <ul class="list">
+                <li>${escapeHtml(r.fix[0])}</li>
+                <li>${escapeHtml(r.fix[1])}</li>
+                <li>${escapeHtml(r.fix[2])}</li>
+              </ul>
+            </div>
+          `).join("")}
+        </div>
+      ` : ``}
+
+      <div class="card" style="margin-top:14px">
+        <div class="pill">Kontakt</div>
+        <p class="micro"><strong>${escapeHtml(CONTACT.name)}</strong><br>${escapeHtml(CONTACT.role)}</p>
+        <p class="micro">E-Mail: ${escapeHtml(CONTACT.email)}<br>Telefon: ${escapeHtml(CONTACT.phone)}<br>Website: ${escapeHtml(CONTACT.website)}</p>
+      </div>
+    `;
+
+    renderPlan();
+  }
+
+  function renderPlan(){
+    planContent.innerHTML = `
+      <div class="card">
+        <div class="pill">Überblick: Was Sie nach 14 Tagen haben</div>
+        <ul class="list">${PLAN_OVERVIEW.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
+      </div>
+
+      <div class="cols" style="margin-top:14px">
+        <div class="card">
+          <div class="pill">Woche 1 – Transparenz & Grundlagen</div>
+          <ol class="list">
+            ${PLAN_WEEK1.map(d => `
+              <li>
+                <strong>Tag ${d.day}: ${escapeHtml(d.title)}</strong> <span class="micro">(${escapeHtml(d.minutes)})</span>
+                <ul class="list">
+                  ${d.tasks.map(t => `<li>${escapeHtml(t)}</li>`).join("")}
+                </ul>
+                ${d.emailTemplate ? `
+                  <div style="margin-top:10px; border:1px dashed rgba(16,32,20,.20); border-radius:14px; padding:12px; background:#fff;">
+                    <div class="pill" style="margin:0 0 8px">E-Mail-Vorlage</div>
+                    <div class="micro"><span class="mono">Betreff:</span> ${escapeHtml(d.emailTemplate.subject)}</div>
+                    <div class="micro" style="margin-top:6px"><span class="mono">Text:</span> ${escapeHtml(d.emailTemplate.body)}</div>
+                  </div>
+                ` : ``}
+              </li>
+            `).join("")}
+          </ol>
+        </div>
+
+        <div class="card">
+          <div class="pill">Woche 2 – Umsetzung & Routinen</div>
+          <ol class="list">
+            ${PLAN_WEEK2.map(d => `
+              <li>
+                <strong>Tag ${d.day}: ${escapeHtml(d.title)}</strong> <span class="micro">(${escapeHtml(d.minutes)})</span>
+                <ul class="list">
+                  ${d.tasks.map(t => `<li>${escapeHtml(t)}</li>`).join("")}
+                </ul>
+              </li>
+            `).join("")}
+          </ol>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <div class="pill">Download</div>
+        <p class="micro">Hier kannst Du den Plan separat als PDF speichern.</p>
+        <div class="actions">
+          <button class="abtn" id="pdfPlanBtn" type="button">PDF 14-Tage-Plan</button>
+          <a class="btn btn2" href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002" target="_blank" rel="noopener">Termin buchen</a>
+        </div>
+      </div>
+    `;
+  }
+
+  function next(){
+    const answeredCount = answers.filter(v => v !== null).length;
+    if(answeredCount === questions.length){
+      renderResults();
+      document.getElementById("ergebnis").scrollIntoView({behavior:"smooth", block:"start"});
+      return;
+    }
+    if(idx < questions.length - 1) idx++;
+    renderQuestion();
+  }
+  function prev(){ if(idx > 0) idx--; renderQuestion(); }
+
+  yesBtn.addEventListener("click", () => { answers[idx] = true; next(); });
+  noBtn.addEventListener("click",  () => { answers[idx] = false; next(); });
+  backBtn.addEventListener("click", () => prev());
+
+  function resetAll(){
+    for(let i=0;i<answers.length;i++) answers[i]=null;
+    idx = 0;
+    renderQuestion();
+    renderResults();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+  resetBtn.addEventListener("click", resetAll);
+
+  // ====== PDF generation (2 getrennte PDFs) ======
+  function pdfShell({title, bodyHtml}){
+    const date = new Date().toLocaleDateString("de-DE");
+    const logo = `<img src="${escapeHtml(BRAND.logoUrl)}" style="height:52px" alt="Logo">`;
+
+    return `
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${escapeHtml(title)}</title>
+<style>
+  :root{
+    --g900:${BRAND.primary};
+    --g600:${BRAND.accent};
+    --orange:${BRAND.orange};
+    --beige:${BRAND.beige};
+    --line:#ddd;
+    --muted:#555;
+    --font: ${getComputedStyle(document.documentElement).getPropertyValue('--font')};
+  }
+  body{ font-family: var(--font); color:#111; margin:28px; }
+  .noprint{ margin-bottom:10px; }
+  .btn{ padding:10px 12px;border:1px solid #bbb;border-radius:10px;background:#f6f6f6;cursor:pointer;font-weight:800; }
+  .header{ display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:14px; }
+  .brand{ text-align:right; }
+  .brand h2{ margin:0; font-size:14px; color:var(--g900); }
+  .brand p{ margin:0; font-size:12px; color:var(--muted); }
+  h1{ margin:10px 0 6px; font-size:20px; color:var(--g900); }
+  .meta{ color:var(--muted); font-size:12px; margin-bottom:14px; }
+  .box{ border:1px solid var(--line); border-radius:12px; padding:14px; margin:12px 0; background:#fff; }
+  .pill{ display:inline-block; padding:4px 10px; border-radius:999px; border:1px solid var(--line); font-size:12px; font-weight:800; }
+  .pill.orange{ border-color: color-mix(in srgb, var(--orange) 55%, var(--line)); background: color-mix(in srgb, var(--orange) 12%, transparent); }
+  .pill.green{ border-color: color-mix(in srgb, var(--g600) 55%, var(--line)); background: color-mix(in srgb, var(--g600) 12%, transparent); }
+  ul,ol{ margin:8px 0 0 18px; }
+  li{ margin:7px 0; }
+  .muted{ color:var(--muted); }
+  @media print{ body{ margin:12mm; } .noprint{ display:none !important; } }
+</style>
+</head>
+<body>
+  <div class="noprint">
+    <button class="btn" onclick="window.print()">Drucken / Als PDF speichern</button>
+  </div>
+
+  <div class="header">
+    ${logo}
+    <div class="brand">
+      <h2>Christian Gradt Consulting</h2>
+      <p>${escapeHtml(CONTACT.role)}</p>
+    </div>
+  </div>
+
+  <h1>${escapeHtml(title)}</h1>
+  <div class="meta">Datum: ${date}</div>
+
+  ${bodyHtml}
+
+  <div class="box">
+    <span class="pill green">Kontakt</span>
+    <p style="margin:10px 0 0">
+      <strong>${escapeHtml(CONTACT.name)}</strong><br>
+      <span class="muted">${escapeHtml(CONTACT.role)}</span><br><br>
+      E-Mail: ${escapeHtml(CONTACT.email)}<br>
+      Telefon: ${escapeHtml(CONTACT.phone)}<br>
+      Website: ${escapeHtml(CONTACT.website)}
+    </p>
+  </div>
+
+  <div class="muted" style="font-size:11px;margin-top:12px;">
+    Hinweis: Dieser Check ersetzt keine Anlage-, Steuer- oder Rechtsberatung. Er dient der Struktur-Orientierung.
+  </div>
+</body>
+</html>`;
+  }
+
+  function buildPdfEvaluationHtml(){
+    const answeredCount = answers.filter(v => v !== null).length;
+    if(answeredCount < questions.length) return null;
+
+    const score = computeScore();
+    const reds = buildBlindspotList();
+    const top3 = topPriorities(reds, 3);
+
+    const bsNos = reds.map(r => r.bsNo).sort((a,b)=>a-b);
+    const bsNosText = bsNos.length ? bsNos.join(", ") : "–";
+
+    const top3List = top3.length
+      ? `<ol>${top3.map(t => `<li><strong>${escapeHtml(t.name)}</strong> <span class="muted">(Hebel: ${t.impact}/10)</span></li>`).join("")}</ol>`
+      : `<p class="muted">Keine roten Punkte. Fokus: Feintuning & Routinen.</p>`;
+
+    const details = reds.length
+      ? reds.map(r => `
+          <div class="box">
+            <span class="pill orange">Handlungsfeld ${r.bsNo}</span>
+            <h3 style="margin:10px 0 6px; color:${BRAND.primary}">${escapeHtml(r.name)}</h3>
+            <p><strong>Warum teuer:</strong> <span class="muted">${escapeHtml(r.why)}</span></p>
+            <p><strong>3-Schritte-Fix:</strong></p>
+            <ul>
+              <li>${escapeHtml(r.fix[0])}</li>
+              <li>${escapeHtml(r.fix[1])}</li>
+              <li>${escapeHtml(r.fix[2])}</li>
+            </ul>
+          </div>
+        `).join("")
+      : "";
+
+    const body = `
+      <div class="box">
+        <span class="pill green">Score</span>
+        <p style="margin:10px 0 0"><strong>${score}/9</strong> – ${escapeHtml(scoreHeadline(score))}</p>
+      </div>
+
+      <div class="box">
+        <span class="pill orange">Handlungsfelder</span>
+        <p style="margin:10px 0 0" class="muted">Optimierungspotenzial (Nein-Antworten):</p>
+        <p style="margin:6px 0 0"><strong>Handlungsfeld ${escapeHtml(bsNosText)}</strong></p>
+      </div>
+
+      <div class="box">
+        <span class="pill green">Top-3 Prioritäten</span>
+        ${top3List}
+      </div>
+
+      ${details}
+    `;
+
+    return pdfShell({ title: "VermCheck – PDF Auswertung", bodyHtml: body });
+  }
+
+  function buildPdfPlanHtml(){
+    const answeredCount = answers.filter(v => v !== null).length;
+    if(answeredCount < questions.length) return null;
+
+    const body = `
+      <div class="box">
+        <span class="pill green">Überblick: Was Sie nach 14 Tagen haben</span>
+        <ul>${PLAN_OVERVIEW.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
+      </div>
+
+      <div class="box">
+        <span class="pill orange">Woche 1 – Transparenz & Grundlagen</span>
+        <ol>
+          ${PLAN_WEEK1.map(d => `
+            <li>
+              <strong>Tag ${d.day}: ${escapeHtml(d.title)}</strong> <span class="muted">(${escapeHtml(d.minutes)})</span>
+              <ul>${d.tasks.map(t => `<li>${escapeHtml(t)}</li>`).join("")}</ul>
+              ${d.emailTemplate ? `
+                <div class="box" style="border-style:dashed;">
+                  <span class="pill green">E-Mail-Vorlage</span>
+                  <p style="margin:10px 0 0"><strong>Betreff:</strong> ${escapeHtml(d.emailTemplate.subject)}</p>
+                  <p style="margin:8px 0 0"><strong>Text:</strong> ${escapeHtml(d.emailTemplate.body)}</p>
+                </div>
+              ` : ``}
+            </li>
+          `).join("")}
+        </ol>
+      </div>
+
+      <div class="box">
+        <span class="pill orange">Woche 2 – Umsetzung & Routinen</span>
+        <ol>
+          ${PLAN_WEEK2.map(d => `
+            <li>
+              <strong>Tag ${d.day}: ${escapeHtml(d.title)}</strong> <span class="muted">(${escapeHtml(d.minutes)})</span>
+              <ul>${d.tasks.map(t => `<li>${escapeHtml(t)}</li>`).join("")}</ul>
+            </li>
+          `).join("")}
+        </ol>
+      </div>
+    `;
+
+    return pdfShell({ title: "VermCheck – PDF 14-Tage-Plan", bodyHtml: body });
+  }
+
+  function openPdfWindow(html){
+    if(!html){
+      alert("Bitte zuerst alle 9 Fragen beantworten, dann können Sie das PDF erstellen.");
+      return;
+    }
+    const w = window.open("", "_blank");
+    w.document.open();
+    w.document.write(html);
+    w.document.close();
+  }
+
+  document.addEventListener("click", (e) => {
+    if(e.target && e.target.id === "pdfEvalBtn"){
+      e.preventDefault();
+      openPdfWindow(buildPdfEvaluationHtml());
+    }
+    if(e.target && e.target.id === "pdfPlanBtn"){
+      e.preventDefault();
+      openPdfWindow(buildPdfPlanHtml());
+    }
+  });
+
+  // initial
+  renderQuestion();
+  renderResults();
+</script>
+</body>
+</html>

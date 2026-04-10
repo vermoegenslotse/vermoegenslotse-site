@@ -49,9 +49,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="stepsGrid">
         <div class="stepCard">
           <div class="stepNo">1</div>
-          <h3>Kurze Eingaben</h3>
+          <h3>Kurze Eingabe</h3>
           <p>
-            Sie tragen direkt hier auf der Seite Ihre Kontaktdaten ein und starten den Vermögenscheck ohne Umwege.
+            Sie tragen direkt auf dieser Seite Ihre Kontaktdaten ein und starten den Vermögenscheck ohne zusätzliche Zwischenschritte.
           </p>
         </div>
 
@@ -67,14 +67,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="stepNo">3</div>
           <h3>Erste Einordnung erhalten</h3>
           <p>
-            Sie erhalten eine strukturierte Einordnung Ihrer Situation – inklusive Hinweis, welcher nächste Schritt sinnvoll sein kann.
+            Sie erhalten eine strukturierte erste Einordnung – inklusive Hinweis, welcher nächste Schritt sinnvoll sein kann.
           </p>
         </div>
       </div>
 
       <div class="noteBox" style="margin-top:18px;">
-        <strong>Transparenz:</strong> Ihre Angaben dienen ausschließlich der Durchführung und Dokumentation des Vermögenschecks
-        sowie der Zuordnung in unserem CRM. Kein Newsletter, kein unnötiger Verteiler.
+        <strong>Transparenz:</strong> Ihre Angaben dienen ausschließlich der Durchführung des Vermögenschecks
+        und der sauberen Zuordnung in unserem CRM. Kein Newsletter, kein unnötiger Verteiler.
       </div>
     </section>
 
@@ -106,26 +106,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <section class="section sectionAlt" style="margin-top:18px;">
       <h2 class="sectionTitle">Jetzt Vermögenscheck starten</h2>
-      <p class="lead">
-        Der Vermögenscheck ist bewusst kein Massen-Tool. Er ist ein Einstieg in eine strukturierte Vermögensführung.
-        Wenn das zu Ihnen passt, können Sie hier direkt starten.
+
+      <p class="lead" style="max-width:820px;">
+        Der Vermögenscheck ist kein Massen-Tool, sondern ein strukturierter Einstieg für Anleger und Unternehmer,
+        die ihr Vermögen mit mehr Klarheit, Logik und Priorität führen möchten.
       </p>
 
-      <div class="formEmbedBox" style="margin-top:22px;">
-        <!-- ZOHO-FORMULAR: Embed-Code hier einsetzen -->
-        <div class="https://forms.zoho.eu/christiangradtconsulting1/form/Vermgenscheck">
-          <p><strong>Hier wird das Zoho-Formular eingebettet.</strong></p>
-          <p>
-            Bitte den Embed-Code aus Zoho Forms an dieser Stelle einsetzen.
-          </p>
+      <p style="max-width:820px; margin-top:10px;">
+        Tragen Sie hier kurz Ihre Daten ein und starten Sie anschließend direkt mit dem Check.
+      </p>
+
+      <div class="formStage" style="margin-top:24px;">
+        <div class="formStageInner">
+          <!-- ZOHO-FORMULAR: Embed-Code hier einsetzen -->
+          <div class="formEmbedPlaceholder">
+            <strong>Zoho-Formular hier einfügen</strong>
+            <p style="margin-top:8px;">
+              Ersetzen Sie diesen Platzhalter durch den Embed-Code Ihres Zoho-Formulars.
+            </p>
+          </div>
         </div>
       </div>
 
-      <div class="noteBox" style="margin-top:18px;">
-        Nach dem Absenden startet der Vermögenscheck direkt. Die Weiterleitung richten Sie in Zoho Forms ein.
-      </div>
+      <p style="margin-top:14px; color: rgba(20,35,24,0.68); font-size:0.96rem; max-width:820px;">
+        Kein Newsletter, kein unnötiger Verteiler. Ihre Angaben dienen ausschließlich der Durchführung des Vermögenschecks
+        und der sauberen Zuordnung in unserem CRM.
+      </p>
 
-      <div class="btnRow" style="margin-top:18px;">
+      <div class="btnRow" style="margin-top:22px;">
         <a class="btn btnSecondary"
            href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
            target="_blank"
@@ -135,7 +143,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
 
       <p style="margin-top:10px; color: rgba(20,35,24,0.65); font-size:0.95rem;">
-        Hinweis: Wenn Sie lieber direkt sprechen möchten, können Sie alternativ ein Orientierungsgespräch buchen.
+        Wenn Sie lieber direkt sprechen möchten, können Sie alternativ ein Orientierungsgespräch buchen.
       </p>
     </section>
 
@@ -144,3 +152,44 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </p>
   </section>
 </BaseLayout>
+
+<style>
+  .formStage {
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .formStageInner {
+    background: #fff;
+    border: 1px solid rgba(20, 35, 24, 0.08);
+    border-radius: 22px;
+    box-shadow: 0 18px 50px rgba(20, 35, 24, 0.08);
+    padding: 26px 22px;
+  }
+
+  .formEmbedPlaceholder {
+    min-height: 180px;
+    border: 1px dashed rgba(20, 35, 24, 0.18);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    color: rgba(20, 35, 24, 0.72);
+    background: rgba(255,255,255,0.7);
+  }
+
+  @media (max-width: 768px) {
+    .formStageInner {
+      padding: 18px 14px;
+      border-radius: 18px;
+    }
+
+    .formEmbedPlaceholder {
+      padding: 18px;
+      min-height: 140px;
+    }
+  }
+</style>

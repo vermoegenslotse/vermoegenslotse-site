@@ -118,13 +118,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       <div class="formStage" style="margin-top:24px;">
         <div class="formStageInner">
-          <!-- ZOHO-FORMULAR: Embed-Code hier einsetzen -->
-          <div class="https://forms.zoho.eu/christiangradtconsulting1/form/Vermgenscheck">
-            <strong>Zoho-Formular hier einfügen</strong>
-            <p style="margin-top:8px;">
-              Ersetzen Sie diesen Platzhalter durch den Embed-Code Ihres Zoho-Formulars.
-            </p>
-          </div>
+          <iframe aria-label='Vermögenscheck' frameborder="0" style="height:500px;width:99%;border:none;" src='https://forms.zohopublic.eu/christiangradtconsulting1/form/Vermgenscheck/formperma/8ep73jKEEAkb5kVuVjXPnOjwFX-BODAmlva-SQXLXwo'></iframe>
         </div>
       </div>
 
@@ -165,31 +159,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     border: 1px solid rgba(20, 35, 24, 0.08);
     border-radius: 22px;
     box-shadow: 0 18px 50px rgba(20, 35, 24, 0.08);
-    padding: 26px 22px;
+    padding: 16px;
+    overflow: hidden;
   }
 
-  .formEmbedPlaceholder {
-    min-height: 180px;
-    border: 1px dashed rgba(20, 35, 24, 0.18);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 24px;
-    color: rgba(20, 35, 24, 0.72);
-    background: rgba(255,255,255,0.7);
+  .zohoFormFrame {
+    width: 100%;
+    min-height: 760px;
+    border: none;
+    display: block;
+    background: #fff;
   }
 
   @media (max-width: 768px) {
     .formStageInner {
-      padding: 18px 14px;
+      padding: 8px;
       border-radius: 18px;
     }
 
-    .formEmbedPlaceholder {
-      padding: 18px;
-      min-height: 140px;
+    .zohoFormFrame {
+      min-height: 840px;
     }
   }
 </style>

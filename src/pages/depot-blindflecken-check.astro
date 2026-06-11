@@ -1,1 +1,137 @@
+---
+type Props = {
+  title?: string;
+};
 
+const { title = "Vermögenslotse" } = Astro.props;
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
+---
+
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+<meta
+  name="description"
+  content="Strategische Vermögensarchitektur für Unternehmer und anspruchsvolle Privatanleger. Struktur statt Produktlogik – für planbare Entscheidungen und langfristige Vermögensentwicklung."
+/>
+
+<meta property="og:title" content="Vermögenslotse – Strategische Vermögensarchitektur" />
+<meta property="og:description" content="Struktur statt Produktlogik – für planbare Entscheidungen und langfristige Vermögensentwicklung." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://vermoegenslotse.de" />
+<!-- Optional, sobald du ein Preview-Bild hast -->
+<!-- <meta property="og:image" content="https://vermoegenslotse.de/images/og-image.jpg" /> -->
+
+    <link rel="stylesheet" href="/styles/tokens.css" />
+  </head>
+
+  <body>
+    <header class="siteHeader">
+      <div class="container headerInner">
+        <div class="logo">
+  <a href="/" class="logoLink" aria-label="Vermögenslotse – Start">
+    <img src="/images/vermoegenslotse-logo.png" alt="Vermögenslotse" class="logoImg" />
+  </a>
+</div>
+
+<nav class="site-nav" aria-label="Hauptnavigation">
+  <a class={isActive("/") ? "active" : ""} href="/">Start</a>
+  <a class={isActive("/ueber-mich") ? "active" : ""} href="/ueber-mich">So denke ich</a>
+  <a class={isActive("/so-arbeite-ich") ? "active" : ""} href="/so-arbeite-ich">So arbeite ich</a>
+  <a class={isActive("/vermoegenscheck") ? "active" : ""} href="/vermoegenscheck">Vermögenscheck</a>
+</nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <slot />
+    </main>
+
+    <footer class="siteFooter">
+  <div class="container footerGrid">
+
+    <div>
+      <strong>Vermögenslotse</strong><br />
+      Christian Gradt Consulting
+      <p class="muted" style="margin-top:8px;">
+        Strategische Vermögensarchitektur für Unternehmer und Privatanleger.
+      </p>
+    </div>
+
+    <div>
+      <strong>Navigation</strong>
+      <ul class="footerLinks">
+        <li><a href="/">Start</a></li>
+        <li><a href="/ueber-mich">So denke ich</a></li>
+        <li><a href="/so-arbeite-ich">So arbeite ich</a></li>
+        <li><a href="/vermoegenscheck">Vermögenscheck</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <strong>Rechtliches</strong>
+      <ul class="footerLinks">
+        <li><a href="/recht/impressum">Impressum</a></li>
+        <li><a href="/recht/datenschutz">Datenschutz</a></li>
+        <li><a href="/recht/transparenz">Transparenz</a></li>
+        <li><a href="/recht/nachhaltigkeit">Nachhaltigkeit</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footerBottom">
+    © {new Date().getFullYear()} Christian Gradt Consulting
+  </div>
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const reveals = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealVisible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+  reveals.forEach((el) => {
+    observer.observe(el);
+  });
+
+});
+</script>
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealVisible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    reveals.forEach((el) => observer.observe(el));
+  });
+</script>
+  </body>
+</html>

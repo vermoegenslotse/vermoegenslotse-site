@@ -259,6 +259,36 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
+  <section class="section reveal">
+    <div class="panel pdfOptinPanel">
+      <div class="pdfOptinIntro">
+        <h2 class="sectionTitle">Ergebnis als PDF erhalten</h2>
+        <p class="lead">
+          Wenn Sie möchten, sende ich Ihnen die Einordnung Ihres Depot-Blindflecken-Checks zusätzlich als PDF zu –
+          inklusive kurzer Zusammenfassung und nächstem sinnvollen Schritt.
+        </p>
+        <ul class="bullets" style="margin-top:12px;">
+          <li>Kurze Einordnung Ihres Ergebnisses</li>
+          <li>Zusammenfassung der wichtigsten Blindflecken</li>
+          <li>Nächster sinnvoller Schritt für mehr Klarheit und Steuerbarkeit</li>
+        </ul>
+        <p class="muted" style="margin-top:12px;">
+          Wenn Sie das Formular ausfüllen, erhalten Sie Ihr Ergebnis zusätzlich per E-Mail.
+        </p>
+      </div>
+
+      <div class="zohoFormEmbed">
+        <iframe
+          aria-label="Depot Blindflecken Check PDF anfordern"
+          title="Depot Blindflecken Check PDF anfordern"
+          frameborder="0"
+          loading="lazy"
+          src="https://forms.zohopublic.eu/christiangradtconsulting1/form/DepotBlindfleckenCheck/formperma/o8zNje2ro2Addqzesju20QMu3dcTLRgUVRvtLHIk8Ug"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
   <section class="section sectionAlt reveal">
     <h2 class="sectionTitle">Was der Check zeigt – und was nicht</h2>
 
@@ -286,32 +316,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </div>
   </section>
-
-<section class="section reveal">
-  <div class="panel pdfOptinPanel">
-    <h2 class="sectionTitle">Ergebnis als PDF erhalten</h2>
-    <p class="lead">
-      Wenn Sie möchten, sende ich Ihnen die Einordnung Ihres Depot-Blindflecken-Checks
-      zusätzlich als PDF zu – inklusive kurzer Zusammenfassung und nächstem sinnvollen Schritt.
-    </p>
-
-    <ul class="bullets" style="margin-top: 12px;">
-      <li>Kurze Einordnung Ihres Ergebnisses</li>
-      <li>Zusammenfassung der Blindflecken-Logik</li>
-      <li>Konkreter nächster Schritt zur weiteren Klärung</li>
-    </ul>
-
-    <div class="zohoFormEmbed">
-      <iframe
-        aria-label="Depot Blindflecken Check PDF anfordern"
-        frameborder="0"
-        style="height: 760px; width: 100%; border: none;"
-        src="https://forms.zohopublic.eu/christiangradtconsulting1/form/DepotBlindfleckenCheck/formperma/o8zNje2ro2Addqzesju20QMu3dcTLRgUVRvtLHIk8Ug"
-        loading="lazy">
-      </iframe>
-    </div>
-  </div>
-</section>
 
   <section class="section sectionAlt ctaProcess reveal">
     <h2 class="sectionTitle">Der nächste Schritt</h2>
@@ -488,7 +492,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     .blindspotWarning,
     .blindspotChart,
     .blindspotMetric,
-    .blindspotQuestion {
+    .blindspotQuestion,
+    .pdfOptinPanel {
       background: rgba(255, 255, 255, 0.72);
       border: 1px solid rgba(40, 72, 48, 0.10);
       box-shadow: 0 10px 28px rgba(0, 0, 0, 0.05);
@@ -499,7 +504,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     .blindspotSummary h3,
     .blindspotWarning h3,
     .blindspotChart h3,
-    .blindspotMetric h3 {
+    .blindspotMetric h3,
+    .pdfOptinPanel h3 {
       margin-top: 0;
       color: var(--c-primary);
     }
@@ -526,7 +532,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     .blindspotGroup,
     .blindspotResultsPanel,
-    .blindspotQuestionList {
+    .blindspotQuestionList,
+    .pdfOptinPanel {
       display: grid;
       gap: 1rem;
     }
@@ -625,6 +632,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       margin-top: 1rem;
     }
 
+    .pdfOptinPanel {
+      padding: 1.25rem;
+    }
+
+    .pdfOptinIntro {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .zohoFormEmbed {
+      margin-top: 0.5rem;
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(40, 72, 48, 0.10);
+    }
+
+    .zohoFormEmbed iframe {
+      width: 100%;
+      min-height: 760px;
+      border: none;
+      display: block;
+      background: #fff;
+    }
+
     .statusBadge {
       display: inline-flex;
       align-items: center;
@@ -668,6 +700,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     @media (max-width: 720px) {
       .blindspotMetrics {
         grid-template-columns: 1fr;
+      }
+
+      .zohoFormEmbed iframe {
+        min-height: 880px;
       }
     }
   </style>

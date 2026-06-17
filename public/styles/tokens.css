@@ -1903,3 +1903,125 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(40, 72, 48, 0.10);
 }
+.mediaCard {
+  padding: 0;
+  overflow: hidden;
+}
+
+.mediaCard img {
+  width: 100%;
+  display: block;
+  border-radius: 28px;
+}
+
+.mediaCard--soft {
+  background: #f8faf8;
+}
+
+.input-card {
+  position: relative;
+}
+
+.fieldLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.infoBtn {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #2588c4;
+  color: #2588c4;
+  background: #fff;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.moneyInput {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  padding-right: 18px;
+}
+
+.moneyInput input {
+  border: 0;
+  margin: 0;
+}
+
+.moneyInput span {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.helpText {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 14px 0 18px;
+}
+
+.quickButtons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.quickButtons button {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  background: #f4f4f4;
+  font-weight: 900;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.quickButtons small {
+  display: block;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.quickButtons button.active {
+  border-color: #2588c4;
+  background: #eaf6fc;
+  box-shadow: 0 0 0 3px rgba(37,136,196,.12);
+}
+
+.pillValue {
+  margin-left: auto;
+  background: #0f73b7;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+.rangeEnds {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 20;
+  max-width: 340px;
+  background: #0f73b7;
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: .95rem;
+  line-height: 1.45;
+  box-shadow: 0 14px 30px rgba(15,115,183,.25);
+}

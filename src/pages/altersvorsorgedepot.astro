@@ -2,18 +2,26 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Altersvorsorgedepot-Rechner | Vermögenslotse">
+<BaseLayout title="Altersvorsorgedepot | Vermögenslotse">
   <main class="avd-page">
+
     <section class="avd-hero">
       <div class="container hero-grid">
         <div>
           <img src="/images/vermoegenslotse-logo.png" alt="Vermögenslotse" class="logo" />
-          <p class="eyebrow">Altersvorsorgedepot-Rechner</p>
-          <h1>Was kann das neue Altersvorsorgedepot für Sie leisten?</h1>
+          <p class="eyebrow">Unabhängiger Vermögenslotsen-Leitfaden</p>
+          <h1>Das Altersvorsorgedepot</h1>
           <p class="lead">
-            Vergleichen Sie Ihre mögliche staatlich geförderte Vorsorge mit einem ungeförderten ETF-Depot.
-            Die Berechnung dient der ersten Orientierung - nicht als Empfehlung.
+            Chancen verstehen. Förderung nutzen. Entscheidungen mit System treffen.
           </p>
+          <p class="heroText">
+            Was die neue staatlich geförderte Altersvorsorge für Ihren Vermögensaufbau bedeuten kann -
+            verständlich erklärt, unabhängig eingeordnet und ergänzt um einen interaktiven Rechner.
+          </p>
+          <div class="heroActions">
+            <a class="btn" href="#broschuere">Broschüre kostenlos anfordern</a>
+            <a class="btn btn--ghost" href="#rechner">Rechner starten</a>
+          </div>
         </div>
 
         <div class="retirementHeroVisual mediaCard mediaCard--soft">
@@ -26,7 +34,44 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </section>
 
-    <section class="section calculator-section">
+    <section class="section intro-section">
+      <div class="container two-col">
+        <div>
+          <p class="eyebrow">Warum jetzt?</p>
+          <h2>Die private Altersvorsorge wird neu sortiert.</h2>
+          <p>
+            Das Altersvorsorgedepot soll die staatlich geförderte private Altersvorsorge ab 2027
+            stärker kapitalmarktorientiert, flexibler und für mehr Menschen zugänglich machen.
+          </p>
+          <p>
+            Doch mehr Freiheit bedeutet auch mehr Verantwortung. Die entscheidende Frage lautet nicht,
+            ob das Altersvorsorgedepot grundsätzlich gut ist.
+          </p>
+          <p>
+            Die entscheidende Frage lautet:
+            <strong>Passt es zu Ihrer persönlichen Situation?</strong>
+          </p>
+        </div>
+
+        <div class="quoteCard">
+          <span>Vermögenslotsen-Merksatz</span>
+          <strong>
+            Förderung ist ein Baustein. Keine Strategie.
+          </strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section calculator-section" id="rechner">
+      <div class="container sectionHeader">
+        <p class="eyebrow">Interaktiver Rechner</p>
+        <h2>Altersvorsorgedepot vs. ungefördertes ETF-Depot</h2>
+        <p>
+          Berechnen Sie modellhaft, wie sich Eigenbeitrag, Förderung, Rendite und Inflation langfristig
+          auswirken können.
+        </p>
+      </div>
+
       <div class="container calculator-grid">
         <div class="card input-card">
           <p class="eyebrow">Rechner</p>
@@ -43,8 +88,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
 
           <p class="helpText">
-            Die maximale Kinderzulage (300 € pro Kind/Jahr) wird ab 25 € monatlich erreicht.
-            Die Grundzulage für den Sparer ist bei 150 € am höchsten.
+            Die maximale Kinderzulage wird ab 25 € monatlich pro Kind erreicht.
+            Die volle Grundzulage wird bei 150 € monatlicher Sparrate ausgeschöpft.
           </p>
 
           <div class="quickButtons">
@@ -78,6 +123,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <input id="retirementAge" type="number" value="67" min="60" max="70" />
 
           <label class="fieldLabel">
+            Kinder
+            <button class="infoBtn" type="button" data-tip="children">i</button>
+          </label>
+
+          <input id="children" type="number" value="0" min="0" max="10" />
+
+          <label class="fieldLabel">
             Rendite nach Kosten
             <button class="infoBtn" type="button" data-tip="return">i</button>
             <span id="returnLabel" class="pillValue">5,0 %</span>
@@ -90,10 +142,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <span>10 %</span>
           </div>
 
-          <p class="helpText">
-            Die Rendite wird jährlich angenommen und monatlich verzinst.
-          </p>
-
           <label class="fieldLabel">
             Inflation
             <button class="infoBtn" type="button" data-tip="inflation">i</button>
@@ -101,13 +149,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </label>
 
           <input id="inflationRate" type="range" value="2" min="0" max="6" step="0.1" />
-
-          <label class="fieldLabel">
-            Kinder
-            <button class="infoBtn" type="button" data-tip="children">i</button>
-          </label>
-
-          <input id="children" type="number" value="0" min="0" max="10" />
 
           <button class="btn" id="calculateBtn" type="button">Berechnung aktualisieren</button>
 
@@ -167,17 +208,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </div>
 
         <div class="card lead-card">
-          <p class="eyebrow">Nächster Schritt</p>
-          <h2>Ergebnis als PDF erhalten</h2>
+          <p class="eyebrow">PDF-Auswertung</p>
+          <h2>Ergebnis per E-Mail erhalten</h2>
           <p>
-            Im nächsten Schritt kann dieses Formular mit Zoho CRM verbunden werden.
-            Der Nutzer erhält dann seine persönliche Auswertung per E-Mail.
+            Lassen Sie sich Ihre persönliche Modellrechnung zusenden und nutzen Sie sie als Grundlage
+            für Ihre weitere Vorsorgeplanung.
           </p>
 
           <form id="leadForm">
-            <input type="text" name="name" placeholder="Ihr Name" />
-            <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" />
+            <input type="text" name="name" placeholder="Ihr Name" required />
+            <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required />
             <input type="tel" name="phone" placeholder="Telefon optional" />
+            <label class="privacyCheck">
+              <input type="checkbox" required />
+              <span>Ich stimme der Verarbeitung meiner Angaben gemäß Datenschutzerklärung zu.</span>
+            </label>
             <button class="btn" type="submit">PDF-Auswertung anfordern</button>
           </form>
 
@@ -187,6 +232,140 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </div>
       </div>
     </section>
+
+    <section class="section audience-section">
+      <div class="container sectionHeader">
+        <p class="eyebrow">Für wen?</p>
+        <h2>Für wen das Altersvorsorgedepot interessant sein kann</h2>
+      </div>
+
+      <div class="container cards-grid">
+        <div class="miniCard">
+          <strong>Berufseinsteiger</strong>
+          <p>Früh starten, lange Laufzeiten nutzen und Förderung mitnehmen.</p>
+        </div>
+        <div class="miniCard">
+          <strong>Familien</strong>
+          <p>Kinderzulagen können den Vermögensaufbau deutlich unterstützen.</p>
+        </div>
+        <div class="miniCard">
+          <strong>Berufstätige</strong>
+          <p>Bestehende Vorsorge prüfen und Versorgungslücken erkennen.</p>
+        </div>
+        <div class="miniCard">
+          <strong>Selbstständige</strong>
+          <p>Erstmals kann staatlich geförderte Vorsorge relevant werden.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section perspectives-section">
+      <div class="container two-col">
+        <div>
+          <p class="eyebrow">Einordnung</p>
+          <h2>Warum es so viele unterschiedliche Meinungen gibt</h2>
+          <p>
+            Fondsanbieter sprechen über Renditechancen. Versicherer über Sicherheit.
+            Verbraucherschützer über Kosten. Die Politik über mehr private Vorsorge.
+          </p>
+          <p>
+            Alle diese Perspektiven haben ihre Berechtigung. Entscheidend ist jedoch,
+            welche Lösung zu Ihrer persönlichen Situation passt.
+          </p>
+        </div>
+
+        <div class="card tableCard">
+          <div><span>Politik</span><strong>Mehr Vorsorge</strong></div>
+          <div><span>Fondsanbieter</span><strong>Rendite</strong></div>
+          <div><span>Versicherer</span><strong>Sicherheit</strong></div>
+          <div><span>Verbraucherschutz</span><strong>Kosten</strong></div>
+          <div class="accent"><span>Vermögenslotse</span><strong>Passende Lösung</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section download-section" id="broschuere">
+      <div class="container two-col">
+        <div class="brochureBox">
+          <p class="eyebrow">Kostenloser Leitfaden</p>
+          <h2>Broschüre zum Altersvorsorgedepot anfordern</h2>
+          <p>
+            Verständlich erklärt. Chancen und Risiken eingeordnet. Ohne Produktverkauf.
+          </p>
+          <ul>
+            <li>Was sich durch die Reform verändert</li>
+            <li>Für wen das Altersvorsorgedepot interessant sein kann</li>
+            <li>Welche Denkfehler Anleger vermeiden sollten</li>
+            <li>Welche Fragen Sie vor einer Entscheidung stellen sollten</li>
+          </ul>
+        </div>
+
+        <div class="card lead-card">
+          <p class="eyebrow">Download</p>
+          <h2>PDF-Broschüre erhalten</h2>
+          <form id="brochureForm">
+            <input type="text" name="name" placeholder="Ihr Name" required />
+            <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required />
+            <label class="privacyCheck">
+              <input type="checkbox" required />
+              <span>Ich stimme der Verarbeitung meiner Angaben gemäß Datenschutzerklärung zu.</span>
+            </label>
+            <button class="btn" type="submit">Broschüre anfordern</button>
+          </form>
+          <p class="small">
+            Bis zur Zoho-Anbindung kann der Download-Link hier direkt hinterlegt werden:
+            <br />
+            <a href="/downloads/altersvorsorgedepot-leitfaden.pdf">PDF direkt öffnen</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section expert-section">
+      <div class="container expert-grid">
+        <div>
+          <p class="eyebrow">Ihr Vermögenslotse</p>
+          <h2>Christian Gradt</h2>
+          <p>
+            Diplom-Betriebswirt, Sachverständiger für das Versicherungswesen (BVSV)
+            und seit über 30 Jahren in der Finanzberatung tätig.
+          </p>
+          <p>
+            Mein Ansatz: Orientierung statt Produktverkauf. Struktur statt Zufall.
+            Entscheidungen mit System.
+          </p>
+
+          <div class="proofBox">
+            <div class="stars">★★★★★</div>
+            <strong>Bewertungen auf ProvenExpert</strong>
+            <p>Logo + Sterne hier einbinden.</p>
+          </div>
+        </div>
+
+        <div class="portraitCard">
+          <img
+            src="/images/christian-hero2.png"
+            alt="Christian Gradt – Vermögenslotse"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div class="container ctaBox">
+        <p class="eyebrow">Orientierungsgespräch</p>
+        <h2>Welche Rolle kann das Altersvorsorgedepot in Ihrer Strategie spielen?</h2>
+        <p>
+          Besprechen Sie Ihre Ergebnisse persönlich und prüfen Sie, welche nächsten Schritte
+          für Ihre Situation sinnvoll sind.
+        </p>
+        <a class="btn" href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002">
+          Termin vereinbaren
+        </a>
+      </div>
+    </section>
+
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -217,7 +396,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       summaryText: document.getElementById("summaryText"),
       headline: document.getElementById("headline"),
       calculateBtn: document.getElementById("calculateBtn"),
-      leadForm: document.getElementById("leadForm")
+      leadForm: document.getElementById("leadForm"),
+      brochureForm: document.getElementById("brochureForm")
     };
 
     let chart;
@@ -225,7 +405,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     const tooltipTexts = {
       sparrate: "Ihr monatlicher Eigenbeitrag. Jeder andere Betrag kann frei eingetragen werden.",
       income: "Das Bruttojahreseinkommen dient der späteren steuerlichen Einordnung. In dieser Version wird es noch nicht steuerlich optimiert.",
-      birthyear: "Aus dem Geburtsjahr wird der Zeitraum bis zum Renteneintritt abgeleitet. Die Berechnung startet aktuell mit 2027.",
+      birthyear: "Aus dem Geburtsjahr wird der Zeitraum bis zum Renteneintritt abgeleitet. Die Berechnung startet modellhaft mit 2027.",
       retirement: "Standardmäßig wird mit Renteneintritt 67 gerechnet. Sie können den Wert anpassen.",
       return: "Angenommene jährliche Rendite nach Kosten. Die Berechnung erfolgt modellhaft mit monatlicher Verzinsung.",
       inflation: "Inflation reduziert die Kaufkraft des späteren Vermögens. Standardwert: 2 % pro Jahr.",
@@ -236,12 +416,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     function annualSubsidy(monthly, children) {
       const yearly = monthly * 12;
-
       const stage1 = Math.min(yearly, 360) * 0.5;
       const stage2 = Math.max(0, Math.min(yearly, 1800) - 360) * 0.25;
-
       const childSubsidy = Math.min(monthly * 12, children * 300);
-
       return stage1 + stage2 + childSubsidy;
     }
 
@@ -254,7 +431,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       const total = [];
 
       for (let y = 0; y <= years; y++) {
-        labels.push(String(new Date().getFullYear() + y));
+        labels.push(String(2027 + y));
         deposits.push(monthlyContribution * 12 * y);
         subsidies.push(yearlySubsidy * y);
         total.push(capital);
@@ -264,13 +441,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         }
       }
 
-      return {
-        final: capital,
-        labels,
-        deposits,
-        subsidies,
-        total
-      };
+      return { final: capital, labels, deposits, subsidies, total };
     }
 
     function calculate() {
@@ -294,7 +465,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       els.returnLabel.textContent = returnRate.toFixed(1).replace(".", ",") + " %";
       els.inflationLabel.textContent = inflation.toFixed(1).replace(".", ",") + " %";
-
       els.headline.textContent = `Brutto-Vermögen mit ${retirementAge}`;
       els.totalSubsidy.textContent = euro.format(subsidy * years);
       els.avdFinal.textContent = euro.format(avd.final);
@@ -316,7 +486,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     function drawChart(labels, deposits, subsidies, total) {
       const ctx = document.getElementById("growthChart");
-
       if (chart) chart.destroy();
 
       chart = new Chart(ctx, {
@@ -352,15 +521,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         },
         options: {
           responsive: true,
-          plugins: {
-            legend: { position: "bottom" }
-          },
+          plugins: { legend: { position: "bottom" } },
           scales: {
-            y: {
-              ticks: {
-                callback: value => euro.format(value)
-              }
-            }
+            y: { ticks: { callback: value => euro.format(value) } }
           }
         }
       });
@@ -388,13 +551,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     document.querySelectorAll(".infoBtn").forEach((btn) => {
       btn.addEventListener("click", (event) => {
         event.stopPropagation();
-
         tooltip.textContent = tooltipTexts[btn.dataset.tip] || "";
         tooltip.hidden = false;
-
         const rect = btn.getBoundingClientRect();
         const parentRect = document.querySelector(".input-card").getBoundingClientRect();
-
         tooltip.style.left = `${rect.left - parentRect.left - 10}px`;
         tooltip.style.top = `${rect.bottom - parentRect.top + 10}px`;
       });
@@ -413,6 +573,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       alert("Platzhalter: Hier wird später Zoho CRM / Zoho Flow angebunden.");
     });
 
+    els.brochureForm.addEventListener("submit", e => {
+      e.preventDefault();
+      alert("Platzhalter: Hier wird später Zoho CRM angebunden und die Broschüre per E-Mail versendet.");
+    });
+
     calculate();
   </script>
 
@@ -428,84 +593,33 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       --shadow: 0 18px 45px rgba(30,47,74,.12);
     }
 
-    .avd-page {
-      background: var(--light);
-      color: var(--blue);
-    }
+    .avd-page { background: var(--light); color: var(--blue); }
+    .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 64px 0; }
+    .avd-hero { padding: 72px 0 56px; background: linear-gradient(180deg, #fff 0%, #eef6fb 100%); }
 
-    .container {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .avd-hero {
-      padding: 72px 0 48px;
-      background: linear-gradient(180deg, #ffffff 0%, #eef6fb 100%);
-    }
-
-    .hero-grid {
+    .hero-grid, .two-col, .expert-grid {
       display: grid;
       grid-template-columns: 1fr .9fr;
-      gap: 32px;
+      gap: 36px;
       align-items: center;
     }
 
-    .calculator-grid {
-      display: grid;
-      grid-template-columns: 1.18fr .82fr;
-      gap: 32px;
-      align-items: start;
-    }
+    .calculator-grid { display: grid; grid-template-columns: 1.18fr .82fr; gap: 32px; align-items: start; }
+    .chart-grid { display: grid; grid-template-columns: 1.4fr .8fr; gap: 32px; align-items: start; margin-top: 32px; }
+    .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 
-    .chart-grid {
-      display: grid;
-      grid-template-columns: 1.4fr .8fr;
-      gap: 32px;
-      align-items: start;
-      margin-top: 32px;
-    }
+    .logo { max-width: 260px; margin-bottom: 28px; }
+    .eyebrow { color: #2588c4; text-transform: uppercase; letter-spacing: .18em; font-weight: 800; font-size: .85rem; margin-bottom: 10px; }
+    h1, h2 { margin: 0 0 18px; line-height: 1.05; color: #111827; }
+    h1 { font-size: clamp(2.7rem, 5vw, 5.4rem); max-width: 850px; }
+    h2 { font-size: clamp(1.8rem, 3vw, 2.7rem); }
+    p, li { line-height: 1.65; }
+    .lead { font-size: 1.45rem; color: var(--blue); font-weight: 800; }
+    .heroText { font-size: 1.08rem; color: var(--muted); max-width: 720px; }
+    .heroActions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
 
-    .logo {
-      max-width: 260px;
-      margin-bottom: 28px;
-    }
-
-    .eyebrow {
-      color: #2588c4;
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      font-weight: 800;
-      font-size: .85rem;
-      margin-bottom: 10px;
-    }
-
-    h1, h2 {
-      margin: 0 0 18px;
-      line-height: 1.05;
-      color: #111827;
-    }
-
-    h1 {
-      font-size: clamp(2.4rem, 5vw, 4.8rem);
-      max-width: 850px;
-    }
-
-    h2 {
-      font-size: clamp(1.8rem, 3vw, 2.7rem);
-    }
-
-    .lead {
-      font-size: 1.2rem;
-      line-height: 1.65;
-      color: var(--muted);
-      max-width: 720px;
-    }
-
-    .section {
-      padding: 56px 0;
-    }
-
-    .card {
+    .card, .quoteCard, .miniCard, .brochureBox, .ctaBox {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 28px;
@@ -513,244 +627,69 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       padding: 32px;
     }
 
-    .mediaCard {
-      padding: 0;
-      overflow: hidden;
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--line);
-    }
+    .mediaCard, .portraitCard { padding: 0; overflow: hidden; border-radius: 28px; box-shadow: var(--shadow); border: 1px solid var(--line); background: #fff; }
+    .mediaCard img, .portraitCard img { width: 100%; display: block; border-radius: 28px; }
+    .mediaCard--soft { background: #f8faf8; }
 
-    .mediaCard img {
-      width: 100%;
-      display: block;
-      border-radius: 28px;
-    }
+    .quoteCard { border-left: 8px solid var(--gold); }
+    .quoteCard span { display: block; color: #2588c4; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; margin-bottom: 12px; }
+    .quoteCard strong { display: block; font-size: 1.65rem; line-height: 1.2; color: #111827; }
 
-    .mediaCard--soft {
-      background: #f8faf8;
-    }
+    .input-card { position: relative; }
+    label { display: block; font-weight: 800; margin: 24px 0 8px; color: #111827; }
+    .fieldLabel { display: flex; align-items: center; gap: 8px; }
+    input { width: 100%; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; font-size: 1.1rem; margin-top: 8px; background: #fff; }
+    input[type="range"] { accent-color: #2588c4; }
+    .moneyInput { display: flex; align-items: center; border: 1px solid var(--line); border-radius: 14px; background: #fff; padding-right: 18px; }
+    .moneyInput input { border: 0; margin: 0; }
+    .moneyInput span { font-size: 1.2rem; font-weight: 800; color: #111827; }
+    .helpText, .muted, .small { color: var(--muted); line-height: 1.6; }
+    .quickButtons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 28px; }
+    .quickButtons button { border: 1px solid var(--line); border-radius: 14px; padding: 14px; background: #f4f4f4; font-weight: 900; font-size: 1.1rem; cursor: pointer; }
+    .quickButtons small { display: block; font-weight: 500; color: var(--muted); margin-top: 6px; }
+    .quickButtons button.active { border-color: #2588c4; background: #eaf6fc; box-shadow: 0 0 0 3px rgba(37,136,196,.12); }
 
-    .input-card {
-      position: relative;
-    }
+    .infoBtn { width: 20px; height: 20px; border: 2px solid #2588c4; color: #2588c4; background: #fff; border-radius: 999px; font-size: 12px; font-weight: 800; cursor: pointer; line-height: 1; }
+    .pillValue { margin-left: auto; background: #0f73b7; color: #fff; padding: 8px 14px; border-radius: 999px; font-weight: 900; }
+    .rangeEnds { display: flex; justify-content: space-between; color: var(--muted); margin-top: 6px; }
+    .tooltip { position: absolute; z-index: 20; max-width: 340px; background: #0f73b7; color: #fff; padding: 14px 18px; border-radius: 14px; font-size: .95rem; line-height: 1.45; box-shadow: 0 14px 30px rgba(15,115,183,.25); }
 
-    label {
-      display: block;
-      font-weight: 800;
-      margin: 24px 0 8px;
-      color: #111827;
-    }
+    .btn { display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 999px; background: #2588c4; color: #fff; font-weight: 800; padding: 16px 24px; cursor: pointer; text-decoration: none; font-size: 1rem; }
+    .btn:hover { background: #126ca3; }
+    .btn--ghost { background: #fff; color: #2588c4; border: 1px solid #2588c4; }
+    .btn--ghost:hover { background: #eaf6fc; }
 
-    .fieldLabel {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .results-column { display: grid; gap: 28px; }
+    .result-tiles, .comparison { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 24px 0; }
+    .result-tiles div, .comparison div { border: 1px solid var(--line); border-radius: 18px; padding: 18px; background: #fff; }
+    .result-tiles span, .comparison span { display: block; text-transform: uppercase; color: var(--muted); font-size: .8rem; font-weight: 800; margin-bottom: 8px; }
+    .result-tiles strong, .comparison strong { font-size: 1.6rem; color: #111827; }
+    .highlight { background: #2588c4 !important; color: #fff; border-color: #2588c4 !important; }
+    .highlight span, .highlight strong { color: #fff; }
 
-    input {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 16px 18px;
-      font-size: 1.1rem;
-      margin-top: 8px;
-      background: #fff;
-    }
+    .lead-card form { display: grid; gap: 12px; }
+    .privacyCheck { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; color: var(--muted); }
+    .privacyCheck input { width: auto; margin-top: 4px; }
 
-    input[type="range"] {
-      accent-color: #2588c4;
-    }
-
-    .moneyInput {
-      display: flex;
-      align-items: center;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: #fff;
-      padding-right: 18px;
-    }
-
-    .moneyInput input {
-      border: 0;
-      margin: 0;
-    }
-
-    .moneyInput span {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: #111827;
-    }
-
-    .helpText {
-      color: var(--muted);
-      line-height: 1.6;
-      margin: 14px 0 18px;
-    }
-
-    .quickButtons {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .quickButtons button {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
-      background: #f4f4f4;
-      font-weight: 900;
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
-
-    .quickButtons small {
-      display: block;
-      font-weight: 500;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-    .quickButtons button.active {
-      border-color: #2588c4;
-      background: #eaf6fc;
-      box-shadow: 0 0 0 3px rgba(37,136,196,.12);
-    }
-
-    .infoBtn {
-      width: 20px;
-      height: 20px;
-      border: 2px solid #2588c4;
-      color: #2588c4;
-      background: #fff;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      line-height: 1;
-    }
-
-    .pillValue {
-      margin-left: auto;
-      background: #0f73b7;
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-weight: 900;
-    }
-
-    .rangeEnds {
-      display: flex;
-      justify-content: space-between;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-    .tooltip {
-      position: absolute;
-      z-index: 20;
-      max-width: 340px;
-      background: #0f73b7;
-      color: #fff;
-      padding: 14px 18px;
-      border-radius: 14px;
-      font-size: .95rem;
-      line-height: 1.45;
-      box-shadow: 0 14px 30px rgba(15,115,183,.25);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 0;
-      border-radius: 999px;
-      background: #2588c4;
-      color: #fff;
-      font-weight: 800;
-      padding: 16px 24px;
-      margin-top: 24px;
-      cursor: pointer;
-      text-decoration: none;
-      width: 100%;
-      font-size: 1rem;
-    }
-
-    .btn:hover {
-      background: #126ca3;
-    }
-
-    .results-column {
-      display: grid;
-      gap: 28px;
-    }
-
-    .result-tiles,
-    .comparison {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin: 24px 0;
-    }
-
-    .result-tiles div,
-    .comparison div {
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
-      background: #fff;
-    }
-
-    .result-tiles span,
-    .comparison span {
-      display: block;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-size: .8rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .result-tiles strong,
-    .comparison strong {
-      font-size: 1.6rem;
-      color: #111827;
-    }
-
-    .highlight {
-      background: #2588c4 !important;
-      color: #fff;
-      border-color: #2588c4 !important;
-    }
-
-    .highlight span,
-    .highlight strong {
-      color: #fff;
-    }
-
-    .muted,
-    .small {
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .lead-card form {
-      display: grid;
-      gap: 12px;
-    }
+    .sectionHeader { max-width: 820px; margin-bottom: 32px; }
+    .miniCard strong { font-size: 1.25rem; color: #111827; }
+    .tableCard { display: grid; gap: 12px; }
+    .tableCard div { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+    .tableCard span { color: var(--muted); }
+    .tableCard .accent strong { color: #2588c4; }
+    .brochureBox ul { padding-left: 20px; }
+    .proofBox { margin-top: 24px; padding: 22px; border-radius: 22px; background: #f4f8fb; }
+    .stars { color: var(--gold); font-size: 1.6rem; letter-spacing: .08em; }
+    .ctaBox { text-align: center; max-width: 880px; }
+    .final-cta { background: #fff; }
 
     @media (max-width: 900px) {
-      .hero-grid,
-      .calculator-grid,
-      .chart-grid {
+      .hero-grid, .two-col, .expert-grid, .calculator-grid, .chart-grid, .cards-grid {
         grid-template-columns: 1fr;
       }
-
-      .result-tiles,
-      .comparison {
-        grid-template-columns: 1fr;
-      }
+      .result-tiles, .comparison { grid-template-columns: 1fr; }
+      .heroActions { flex-direction: column; }
+      .btn { width: 100%; }
     }
   </style>
 </BaseLayout>

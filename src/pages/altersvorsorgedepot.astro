@@ -15,9 +15,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             Die Berechnung dient der ersten Orientierung - nicht als Empfehlung.
           </p>
         </div>
-        <div class="hero-card">
-          <strong>Vermögenslotsen-Merksatz</strong>
-          <p>Förderung ist ein Baustein. Keine Strategie.</p>
+
+        <div class="retirementHeroVisual mediaCard mediaCard--soft">
+          <img
+            src="/images/ihr-vermoegen-in-sicheren-bahnen.png"
+            alt="Ihr Vermögen in sicheren Bahnen – systematisch zu Ihrem Anlageziel"
+            loading="eager"
+          />
         </div>
       </div>
     </section>
@@ -28,35 +32,86 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <p class="eyebrow">Rechner</p>
           <h2>Ihre Eingaben</h2>
 
-          <label>Monatliche Sparrate
-            <input id="monthly" type="number" value="150" min="10" step="10" />
+          <label class="fieldLabel">
+            Monatliche Sparrate
+            <button class="infoBtn" type="button" data-tip="sparrate">i</button>
           </label>
 
-          <label>Bruttojahreseinkommen
+          <div class="moneyInput">
+            <input id="monthly" type="number" value="150" min="0" step="10" />
+            <span>€</span>
+          </div>
+
+          <p class="helpText">
+            Die maximale Kinderzulage (300 € pro Kind/Jahr) wird ab 25 € monatlich erreicht.
+            Die Grundzulage für den Sparer ist bei 150 € am höchsten.
+          </p>
+
+          <div class="quickButtons">
+            <button type="button" data-value="10">10 €<small>Mindestbeitrag</small></button>
+            <button type="button" data-value="150" class="active">150 €<small>Fördergrenze</small></button>
+            <button type="button" data-value="570">570 €<small>Maximum</small></button>
+          </div>
+
+          <label class="fieldLabel">
+            Bruttojahreseinkommen
+            <button class="infoBtn" type="button" data-tip="income">i</button>
+          </label>
+
+          <div class="moneyInput">
             <input id="income" type="number" value="35000" min="0" step="1000" />
+            <span>€</span>
+          </div>
+
+          <label class="fieldLabel">
+            Geburtsjahr
+            <button class="infoBtn" type="button" data-tip="birthyear">i</button>
           </label>
 
-          <label>Geburtsjahr
-            <input id="birthyear" type="number" value="1990" min="1950" max="2010" />
+          <input id="birthyear" type="number" value="1990" min="1950" max="2010" />
+
+          <label class="fieldLabel">
+            Renteneintrittsalter
+            <button class="infoBtn" type="button" data-tip="retirement">i</button>
           </label>
 
-          <label>Renteneintrittsalter
-            <input id="retirementAge" type="number" value="67" min="60" max="70" />
+          <input id="retirementAge" type="number" value="67" min="60" max="70" />
+
+          <label class="fieldLabel">
+            Rendite nach Kosten
+            <button class="infoBtn" type="button" data-tip="return">i</button>
+            <span id="returnLabel" class="pillValue">5,0 %</span>
           </label>
 
-          <label>Kinder
-            <input id="children" type="number" value="0" min="0" max="10" />
+          <input id="returnRate" type="range" value="5" min="0" max="10" step="0.1" />
+
+          <div class="rangeEnds">
+            <span>0 %</span>
+            <span>10 %</span>
+          </div>
+
+          <p class="helpText">
+            Die Rendite wird jährlich angenommen und monatlich verzinst.
+          </p>
+
+          <label class="fieldLabel">
+            Inflation
+            <button class="infoBtn" type="button" data-tip="inflation">i</button>
+            <span id="inflationLabel" class="pillValue">2,0 %</span>
           </label>
 
-          <label>Rendite nach Kosten: <span id="returnLabel">5,0 %</span>
-            <input id="returnRate" type="range" value="5" min="0" max="10" step="0.1" />
+          <input id="inflationRate" type="range" value="2" min="0" max="6" step="0.1" />
+
+          <label class="fieldLabel">
+            Kinder
+            <button class="infoBtn" type="button" data-tip="children">i</button>
           </label>
 
-          <label>Inflation: <span id="inflationLabel">2,0 %</span>
-            <input id="inflationRate" type="range" value="2" min="0" max="6" step="0.1" />
-          </label>
+          <input id="children" type="number" value="0" min="0" max="10" />
 
-          <button class="btn" id="calculateBtn">Berechnung aktualisieren</button>
+          <button class="btn" id="calculateBtn" type="button">Berechnung aktualisieren</button>
+
+          <div id="tooltip" class="tooltip" hidden></div>
         </div>
 
         <div class="results-column">
@@ -167,14 +222,24 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     let chart;
 
+    const tooltipTexts = {
+      sparrate: "Ihr monatlicher Eigenbeitrag. Jeder andere Betrag kann frei eingetragen werden.",
+      income: "Das Bruttojahreseinkommen dient der späteren steuerlichen Einordnung. In dieser Version wird es noch nicht steuerlich optimiert.",
+      birthyear: "Aus dem Geburtsjahr wird der Zeitraum bis zum Renteneintritt abgeleitet. Die Berechnung startet aktuell mit 2027.",
+      retirement: "Standardmäßig wird mit Renteneintritt 67 gerechnet. Sie können den Wert anpassen.",
+      return: "Angenommene jährliche Rendite nach Kosten. Die Berechnung erfolgt modellhaft mit monatlicher Verzinsung.",
+      inflation: "Inflation reduziert die Kaufkraft des späteren Vermögens. Standardwert: 2 % pro Jahr.",
+      children: "Für Kinder wird modellhaft eine Kinderzulage von bis zu 300 € pro Kind und Jahr berücksichtigt."
+    };
+
+    const tooltip = document.getElementById("tooltip");
+
     function annualSubsidy(monthly, children) {
       const yearly = monthly * 12;
 
       const stage1 = Math.min(yearly, 360) * 0.5;
       const stage2 = Math.max(0, Math.min(yearly, 1800) - 360) * 0.25;
 
-      // vereinfachtes Modell: Kinderzulage max. 300 € pro Kind/Jahr,
-      // erreichbar bei 25 € monatlichem Eigenbeitrag pro Kind
       const childSubsidy = Math.min(monthly * 12, children * 300);
 
       return stage1 + stage2 + childSubsidy;
@@ -216,7 +281,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       const returnRate = Number(els.returnRate.value || 5);
       const inflation = Number(els.inflationRate.value || 2);
 
-      const currentYear = new Date().getFullYear();
+      const currentYear = 2027;
       const age = currentYear - birthyear;
       const years = Math.max(0, retirementAge - age);
 
@@ -305,6 +370,42 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       input.addEventListener("input", calculate);
     });
 
+    document.querySelectorAll(".quickButtons button").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".quickButtons button").forEach((b) => b.classList.remove("active"));
+        button.classList.add("active");
+        els.monthly.value = button.dataset.value;
+        calculate();
+      });
+    });
+
+    els.monthly.addEventListener("input", () => {
+      document.querySelectorAll(".quickButtons button").forEach((b) => {
+        b.classList.toggle("active", b.dataset.value === els.monthly.value);
+      });
+    });
+
+    document.querySelectorAll(".infoBtn").forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        tooltip.textContent = tooltipTexts[btn.dataset.tip] || "";
+        tooltip.hidden = false;
+
+        const rect = btn.getBoundingClientRect();
+        const parentRect = document.querySelector(".input-card").getBoundingClientRect();
+
+        tooltip.style.left = `${rect.left - parentRect.left - 10}px`;
+        tooltip.style.top = `${rect.bottom - parentRect.top + 10}px`;
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".infoBtn") && !e.target.closest(".tooltip")) {
+        tooltip.hidden = true;
+      }
+    });
+
     els.calculateBtn.addEventListener("click", calculate);
 
     els.leadForm.addEventListener("submit", e => {
@@ -333,7 +434,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
     .container {
-      width: min(1120px, calc(100% - 32px));
+      width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
     }
 
@@ -342,13 +443,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       background: linear-gradient(180deg, #ffffff 0%, #eef6fb 100%);
     }
 
-    .hero-grid,
-    .calculator-grid,
-    .chart-grid {
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr .9fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: 1.18fr .82fr;
       gap: 32px;
       align-items: start;
+    }
+
+    .chart-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .8fr;
+      gap: 32px;
+      align-items: start;
+      margin-top: 32px;
     }
 
     .logo {
@@ -391,8 +505,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       padding: 56px 0;
     }
 
-    .card,
-    .hero-card {
+    .card {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 28px;
@@ -400,13 +513,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       padding: 32px;
     }
 
-    .hero-card {
-      border-left: 8px solid var(--gold);
-      font-size: 1.3rem;
+    .mediaCard {
+      padding: 0;
+      overflow: hidden;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
     }
 
-    .hero-card strong {
-      color: var(--green);
+    .mediaCard img {
+      width: 100%;
+      display: block;
+      border-radius: 28px;
+    }
+
+    .mediaCard--soft {
+      background: #f8faf8;
+    }
+
+    .input-card {
+      position: relative;
     }
 
     label {
@@ -414,6 +540,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       font-weight: 800;
       margin: 24px 0 8px;
       color: #111827;
+    }
+
+    .fieldLabel {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     input {
@@ -428,6 +560,104 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     input[type="range"] {
       accent-color: #2588c4;
+    }
+
+    .moneyInput {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      padding-right: 18px;
+    }
+
+    .moneyInput input {
+      border: 0;
+      margin: 0;
+    }
+
+    .moneyInput span {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .helpText {
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 14px 0 18px;
+    }
+
+    .quickButtons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .quickButtons button {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      background: #f4f4f4;
+      font-weight: 900;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .quickButtons small {
+      display: block;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .quickButtons button.active {
+      border-color: #2588c4;
+      background: #eaf6fc;
+      box-shadow: 0 0 0 3px rgba(37,136,196,.12);
+    }
+
+    .infoBtn {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #2588c4;
+      color: #2588c4;
+      background: #fff;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .pillValue {
+      margin-left: auto;
+      background: #0f73b7;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+    }
+
+    .rangeEnds {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .tooltip {
+      position: absolute;
+      z-index: 20;
+      max-width: 340px;
+      background: #0f73b7;
+      color: #fff;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: .95rem;
+      line-height: 1.45;
+      box-shadow: 0 14px 30px rgba(15,115,183,.25);
     }
 
     .btn {
@@ -503,11 +733,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     .small {
       color: var(--muted);
       line-height: 1.6;
-    }
-
-    .chart-grid {
-      margin-top: 32px;
-      grid-template-columns: 1.4fr .8fr;
     }
 
     .lead-card form {

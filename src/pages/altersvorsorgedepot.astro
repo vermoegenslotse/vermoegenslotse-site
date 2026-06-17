@@ -1,1 +1,531 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
 
+<BaseLayout title="Altersvorsorgedepot-Rechner | Vermögenslotse">
+  <main class="avd-page">
+    <section class="avd-hero">
+      <div class="container hero-grid">
+        <div>
+          <img src="/images/vermoegenslotse-logo.png" alt="Vermögenslotse" class="logo" />
+          <p class="eyebrow">Altersvorsorgedepot-Rechner</p>
+          <h1>Was kann das neue Altersvorsorgedepot für Sie leisten?</h1>
+          <p class="lead">
+            Vergleichen Sie Ihre mögliche staatlich geförderte Vorsorge mit einem ungeförderten ETF-Depot.
+            Die Berechnung dient der ersten Orientierung - nicht als Empfehlung.
+          </p>
+        </div>
+        <div class="hero-card">
+          <strong>Vermögenslotsen-Merksatz</strong>
+          <p>Förderung ist ein Baustein. Keine Strategie.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section calculator-section">
+      <div class="container calculator-grid">
+        <div class="card input-card">
+          <p class="eyebrow">Rechner</p>
+          <h2>Ihre Eingaben</h2>
+
+          <label>Monatliche Sparrate
+            <input id="monthly" type="number" value="150" min="10" step="10" />
+          </label>
+
+          <label>Bruttojahreseinkommen
+            <input id="income" type="number" value="35000" min="0" step="1000" />
+          </label>
+
+          <label>Geburtsjahr
+            <input id="birthyear" type="number" value="1990" min="1950" max="2010" />
+          </label>
+
+          <label>Renteneintrittsalter
+            <input id="retirementAge" type="number" value="67" min="60" max="70" />
+          </label>
+
+          <label>Kinder
+            <input id="children" type="number" value="0" min="0" max="10" />
+          </label>
+
+          <label>Rendite nach Kosten: <span id="returnLabel">5,0 %</span>
+            <input id="returnRate" type="range" value="5" min="0" max="10" step="0.1" />
+          </label>
+
+          <label>Inflation: <span id="inflationLabel">2,0 %</span>
+            <input id="inflationRate" type="range" value="2" min="0" max="6" step="0.1" />
+          </label>
+
+          <button class="btn" id="calculateBtn">Berechnung aktualisieren</button>
+        </div>
+
+        <div class="results-column">
+          <div class="card result-card">
+            <p class="eyebrow">Altersvorsorgedepot</p>
+            <h2 id="headline">Brutto-Vermögen mit 67</h2>
+
+            <div class="result-tiles">
+              <div>
+                <span>Gesamtförderung</span>
+                <strong id="totalSubsidy">0 €</strong>
+              </div>
+              <div class="highlight">
+                <span>Brutto-Vermögen</span>
+                <strong id="avdFinal">0 €</strong>
+              </div>
+              <div>
+                <span>Heutige Kaufkraft</span>
+                <strong id="realValue">0 €</strong>
+              </div>
+            </div>
+
+            <p class="muted" id="summaryText"></p>
+          </div>
+
+          <div class="card result-card">
+            <p class="eyebrow">Vergleich</p>
+            <h2>AVD vs. ETF-Depot</h2>
+
+            <div class="comparison">
+              <div>
+                <span>Altersvorsorgedepot</span>
+                <strong id="compareAvd">0 €</strong>
+              </div>
+              <div>
+                <span>ETF-Depot ohne Förderung</span>
+                <strong id="compareEtf">0 €</strong>
+              </div>
+              <div class="highlight">
+                <span>Vorteil durch Förderung</span>
+                <strong id="advantage">0 €</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container chart-grid">
+        <div class="card chart-card">
+          <p class="eyebrow">Verlauf</p>
+          <h2>Kapitalaufbau bis Rentenbeginn</h2>
+          <canvas id="growthChart"></canvas>
+        </div>
+
+        <div class="card lead-card">
+          <p class="eyebrow">Nächster Schritt</p>
+          <h2>Ergebnis als PDF erhalten</h2>
+          <p>
+            Im nächsten Schritt kann dieses Formular mit Zoho CRM verbunden werden.
+            Der Nutzer erhält dann seine persönliche Auswertung per E-Mail.
+          </p>
+
+          <form id="leadForm">
+            <input type="text" name="name" placeholder="Ihr Name" />
+            <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" />
+            <input type="tel" name="phone" placeholder="Telefon optional" />
+            <button class="btn" type="submit">PDF-Auswertung anfordern</button>
+          </form>
+
+          <p class="small">
+            [Zoho-CRM-Webform oder Zoho-Flow-Anbindung hier einfügen]
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    const euro = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "EUR",
+      maximumFractionDigits: 0
+    });
+
+    const els = {
+      monthly: document.getElementById("monthly"),
+      income: document.getElementById("income"),
+      birthyear: document.getElementById("birthyear"),
+      retirementAge: document.getElementById("retirementAge"),
+      children: document.getElementById("children"),
+      returnRate: document.getElementById("returnRate"),
+      inflationRate: document.getElementById("inflationRate"),
+      returnLabel: document.getElementById("returnLabel"),
+      inflationLabel: document.getElementById("inflationLabel"),
+      totalSubsidy: document.getElementById("totalSubsidy"),
+      avdFinal: document.getElementById("avdFinal"),
+      realValue: document.getElementById("realValue"),
+      compareAvd: document.getElementById("compareAvd"),
+      compareEtf: document.getElementById("compareEtf"),
+      advantage: document.getElementById("advantage"),
+      summaryText: document.getElementById("summaryText"),
+      headline: document.getElementById("headline"),
+      calculateBtn: document.getElementById("calculateBtn"),
+      leadForm: document.getElementById("leadForm")
+    };
+
+    let chart;
+
+    function annualSubsidy(monthly, children) {
+      const yearly = monthly * 12;
+
+      const stage1 = Math.min(yearly, 360) * 0.5;
+      const stage2 = Math.max(0, Math.min(yearly, 1800) - 360) * 0.25;
+
+      // vereinfachtes Modell: Kinderzulage max. 300 € pro Kind/Jahr,
+      // erreichbar bei 25 € monatlichem Eigenbeitrag pro Kind
+      const childSubsidy = Math.min(monthly * 12, children * 300);
+
+      return stage1 + stage2 + childSubsidy;
+    }
+
+    function compoundMonthly(monthlyContribution, yearlySubsidy, years, annualReturn) {
+      const r = annualReturn / 100 / 12;
+      let capital = 0;
+      const labels = [];
+      const deposits = [];
+      const subsidies = [];
+      const total = [];
+
+      for (let y = 0; y <= years; y++) {
+        labels.push(String(new Date().getFullYear() + y));
+        deposits.push(monthlyContribution * 12 * y);
+        subsidies.push(yearlySubsidy * y);
+        total.push(capital);
+
+        for (let m = 0; m < 12 && y < years; m++) {
+          capital = capital * (1 + r) + monthlyContribution + yearlySubsidy / 12;
+        }
+      }
+
+      return {
+        final: capital,
+        labels,
+        deposits,
+        subsidies,
+        total
+      };
+    }
+
+    function calculate() {
+      const monthly = Number(els.monthly.value || 0);
+      const birthyear = Number(els.birthyear.value || 1990);
+      const retirementAge = Number(els.retirementAge.value || 67);
+      const children = Number(els.children.value || 0);
+      const returnRate = Number(els.returnRate.value || 5);
+      const inflation = Number(els.inflationRate.value || 2);
+
+      const currentYear = new Date().getFullYear();
+      const age = currentYear - birthyear;
+      const years = Math.max(0, retirementAge - age);
+
+      const subsidy = annualSubsidy(monthly, children);
+      const avd = compoundMonthly(monthly, subsidy, years, returnRate);
+      const etf = compoundMonthly(monthly, 0, years, returnRate);
+
+      const realValue = avd.final / Math.pow(1 + inflation / 100, years);
+      const advantage = avd.final - etf.final;
+
+      els.returnLabel.textContent = returnRate.toFixed(1).replace(".", ",") + " %";
+      els.inflationLabel.textContent = inflation.toFixed(1).replace(".", ",") + " %";
+
+      els.headline.textContent = `Brutto-Vermögen mit ${retirementAge}`;
+      els.totalSubsidy.textContent = euro.format(subsidy * years);
+      els.avdFinal.textContent = euro.format(avd.final);
+      els.realValue.textContent = euro.format(realValue);
+      els.compareAvd.textContent = euro.format(avd.final);
+      els.compareEtf.textContent = euro.format(etf.final);
+      els.advantage.textContent = euro.format(advantage);
+
+      els.summaryText.innerHTML =
+        `Bei Renteneintritt mit <strong>${retirementAge}</strong> und ` +
+        `<strong>${returnRate.toFixed(1).replace(".", ",")} %</strong> Rendite nach Kosten ` +
+        `beträgt Ihr geschätztes Brutto-Vermögen im Altersvorsorgedepot ` +
+        `<strong>${euro.format(avd.final)}</strong>. Bei ` +
+        `<strong>${inflation.toFixed(1).replace(".", ",")} %</strong> Inflation entspricht dies ` +
+        `einer heutigen Kaufkraft von <strong>${euro.format(realValue)}</strong>.`;
+
+      drawChart(avd.labels, avd.deposits, avd.subsidies, avd.total);
+    }
+
+    function drawChart(labels, deposits, subsidies, total) {
+      const ctx = document.getElementById("growthChart");
+
+      if (chart) chart.destroy();
+
+      chart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels,
+          datasets: [
+            {
+              label: "Einzahlungen",
+              data: deposits,
+              borderColor: "#8d969d",
+              backgroundColor: "rgba(141,150,157,.15)",
+              fill: true,
+              tension: 0.25
+            },
+            {
+              label: "Förderung",
+              data: subsidies,
+              borderColor: "#1e88c8",
+              backgroundColor: "rgba(30,136,200,.18)",
+              fill: true,
+              tension: 0.25
+            },
+            {
+              label: "Gesamtvermögen",
+              data: total,
+              borderColor: "#1f6b3a",
+              backgroundColor: "rgba(31,107,58,.18)",
+              fill: true,
+              tension: 0.25
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: "bottom" }
+          },
+          scales: {
+            y: {
+              ticks: {
+                callback: value => euro.format(value)
+              }
+            }
+          }
+        }
+      });
+    }
+
+    document.querySelectorAll("input").forEach(input => {
+      input.addEventListener("input", calculate);
+    });
+
+    els.calculateBtn.addEventListener("click", calculate);
+
+    els.leadForm.addEventListener("submit", e => {
+      e.preventDefault();
+      alert("Platzhalter: Hier wird später Zoho CRM / Zoho Flow angebunden.");
+    });
+
+    calculate();
+  </script>
+
+  <style>
+    :root {
+      --blue: #1e2f4a;
+      --green: #1f5b35;
+      --gold: #c79652;
+      --light: #eef6fb;
+      --card: #ffffff;
+      --muted: #6d7582;
+      --line: #dfe6ec;
+      --shadow: 0 18px 45px rgba(30,47,74,.12);
+    }
+
+    .avd-page {
+      background: var(--light);
+      color: var(--blue);
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .avd-hero {
+      padding: 72px 0 48px;
+      background: linear-gradient(180deg, #ffffff 0%, #eef6fb 100%);
+    }
+
+    .hero-grid,
+    .calculator-grid,
+    .chart-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .logo {
+      max-width: 260px;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      color: #2588c4;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-weight: 800;
+      font-size: .85rem;
+      margin-bottom: 10px;
+    }
+
+    h1, h2 {
+      margin: 0 0 18px;
+      line-height: 1.05;
+      color: #111827;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      max-width: 850px;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+    }
+
+    .lead {
+      font-size: 1.2rem;
+      line-height: 1.65;
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .section {
+      padding: 56px 0;
+    }
+
+    .card,
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 32px;
+    }
+
+    .hero-card {
+      border-left: 8px solid var(--gold);
+      font-size: 1.3rem;
+    }
+
+    .hero-card strong {
+      color: var(--green);
+    }
+
+    label {
+      display: block;
+      font-weight: 800;
+      margin: 24px 0 8px;
+      color: #111827;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 18px;
+      font-size: 1.1rem;
+      margin-top: 8px;
+      background: #fff;
+    }
+
+    input[type="range"] {
+      accent-color: #2588c4;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      background: #2588c4;
+      color: #fff;
+      font-weight: 800;
+      padding: 16px 24px;
+      margin-top: 24px;
+      cursor: pointer;
+      text-decoration: none;
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background: #126ca3;
+    }
+
+    .results-column {
+      display: grid;
+      gap: 28px;
+    }
+
+    .result-tiles,
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .result-tiles div,
+    .comparison div {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: #fff;
+    }
+
+    .result-tiles span,
+    .comparison span {
+      display: block;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-size: .8rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .result-tiles strong,
+    .comparison strong {
+      font-size: 1.6rem;
+      color: #111827;
+    }
+
+    .highlight {
+      background: #2588c4 !important;
+      color: #fff;
+      border-color: #2588c4 !important;
+    }
+
+    .highlight span,
+    .highlight strong {
+      color: #fff;
+    }
+
+    .muted,
+    .small {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .chart-grid {
+      margin-top: 32px;
+      grid-template-columns: 1.4fr .8fr;
+    }
+
+    .lead-card form {
+      display: grid;
+      gap: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .calculator-grid,
+      .chart-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-tiles,
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

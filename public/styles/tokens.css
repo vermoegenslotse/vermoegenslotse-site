@@ -2047,9 +2047,6 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 }
 
 .zohoFormEmbed iframe {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  min-height: 720px;
-  border: 0;
+  height: 640px !important;
+  min-height: 0 !important;
 }

@@ -2027,18 +2027,29 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 }
 .pdfOptinPanel {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 32px;
   align-items: start;
 }
 
+.pdfOptinPanel > * {
+  min-width: 0;
+}
+
+.pdfOptinIntro,
 .zohoFormEmbed {
+  min-width: 0;
   width: 100%;
+}
+
+.zohoFormEmbed {
+  overflow: hidden;
 }
 
 .zohoFormEmbed iframe {
   display: block;
   width: 100%;
+  max-width: 100%;
   min-height: 900px;
   border: 0;
 }

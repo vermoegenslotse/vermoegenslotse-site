@@ -2025,3 +2025,20 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
   line-height: 1.45;
   box-shadow: 0 14px 30px rgba(15,115,183,.25);
 }
+.pdfOptinPanel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.zohoFormEmbed {
+  width: 100%;
+}
+
+.zohoFormEmbed iframe {
+  display: block;
+  width: 100%;
+  min-height: 900px;
+  border: 0;
+}

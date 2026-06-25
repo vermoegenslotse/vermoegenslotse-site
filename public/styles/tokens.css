@@ -2044,9 +2044,15 @@ h1{ font-size: 44px; line-height: 1.06; margin: 0 0 12px; color: var(--c-primary
 
 .zohoFormEmbed {
   overflow: hidden;
+  width: 100%;
+  max-width: none;
 }
 
 .zohoFormEmbed iframe {
+  width: 100% !important;
+  max-width: none !important;
+  display: block;
   height: 640px !important;
   min-height: 0 !important;
+  border: 0;
 }

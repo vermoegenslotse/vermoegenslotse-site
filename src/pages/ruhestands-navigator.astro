@@ -429,29 +429,50 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     const inputs = ids.map((id) => el(id)).filter(Boolean);
     const zohoBase = "https://forms.zohopublic.eu/christiangradtconsulting1/form/RuhestandsNavigator/formperma/lQFs-HJBhg8zIB9e5h-I47jcUdaD8kyk-X-deTuVMMU";
 
-    function parseNum(value) { const n = Number(value); return Number.isFinite(n) ? n : 0; }
-    function formatCurrency(value) {
-      return new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(Math.max(0, value));
+    function parseNum(value) {
+      const n = Number(value);
+      return Number.isFinite(n) ? n : 0;
     }
-    function formatPercent(value, digits = 1) { return `${Number(value).toFixed(digits).replace(".", ",")} %`; }
-    function formatYears(value) { return `${Number(value).toFixed(1).replace(".", ",")} Jahre`; }
+
+    function formatCurrency(value) {
+      return new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR",
+        maximumFractionDigits: 0
+      }).format(Math.max(0, value));
+    }
+
+    function formatPercent(value, digits = 1) {
+      return `${Number(value).toFixed(digits).replace(".", ",")} %`;
+    }
+
+    function formatYears(value) {
+      return `${Number(value).toFixed(1).replace(".", ",")} Jahre`;
+    }
 
     function updateRangeOutputs() {
       document.querySelectorAll("[data-range-output]").forEach((node) => {
         const source = el(node.dataset.rangeOutput);
         if (!source) return;
         const value = parseNum(source.value);
-        if (["inflationRate","pensionIncrease","expectedReturn","retirementReturn","retirementInflation"].includes(source.id)) node.textContent = formatPercent(value, 1);
-        else if (source.id === "taxRate") node.textContent = formatPercent(value, 2);
-        else node.textContent = `${Math.round(value)}`;
+
+        if (["inflationRate","pensionIncrease","expectedReturn","retirementReturn","retirementInflation"].includes(source.id)) {
+          node.textContent = formatPercent(value, 1);
+        } else if (source.id === "taxRate") {
+          node.textContent = formatPercent(value, 2);
+        } else {
+          node.textContent = `${Math.round(value)}`;
+        }
       });
     }
 
     function calculateCoverageYears(startCapital, startGapMonthly, monthlyReturn, monthlyInflationGap, maxMonths) {
       if (startGapMonthly <= 0) return maxMonths / 12;
+
       let capital = startCapital;
       let gap = startGapMonthly;
       let monthsCovered = 0;
+
       for (let i = 0; i < maxMonths; i++) {
         if (capital <= 0) break;
         capital = capital * (1 + monthlyReturn) - gap;
@@ -459,14 +480,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         monthsCovered += 1;
         gap = gap * (1 + monthlyInflationGap);
       }
+
       return monthsCovered / 12;
     }
 
     function buildZohoUrl(data) {
       const params = new URLSearchParams({
-        versorgungsluecke_heute: data.versorgungsluecke_heute,
         zielkapital_benoetigt: data.zielkapital_benoetigt,
-        kapitalluecke_zum_start: data.kapitalluecke_zum_start
+        ztest: Date.now().toString()
       });
       return `${zohoBase}?${params.toString()}`;
     }
@@ -513,7 +534,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       let requiredCapital = 0;
       if (monthsInRetirement > 0 && gapAtRetirement > 0) {
         if (monthlyNetReturn > 0 && Math.abs(monthlyNetReturn - monthlyGapGrowth) > 0.000001) {
-          requiredCapital = gapAtRetirement * ((1 - Math.pow((1 + monthlyGapGrowth) / (1 + monthlyNetReturn), monthsInRetirement)) / (monthlyNetReturn - monthlyGapGrowth));
+          requiredCapital = gapAtRetirement * (
+            (1 - Math.pow((1 + monthlyGapGrowth) / (1 + monthlyNetReturn), monthsInRetirement)) /
+            (monthlyNetReturn - monthlyGapGrowth)
+          );
         } else if (monthlyNetReturn > 0) {
           requiredCapital = (gapAtRetirement * monthsInRetirement) / (1 + monthlyNetReturn);
         } else {
@@ -543,7 +567,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         }
       }
 
-      const coverageYears = calculateCoverageYears(expectedWealthAtRetirement, gapAtRetirement, monthlyNetReturn, monthlyGapGrowth, monthsInRetirement);
+      const coverageYears = calculateCoverageYears(
+        expectedWealthAtRetirement,
+        gapAtRetirement,
+        monthlyNetReturn,
+        monthlyGapGrowth,
+        monthsInRetirement
+      );
 
       el("metricGapToday").textContent = formatCurrency(gapToday);
       el("metricGapRetirement").textContent = formatCurrency(gapAtRetirement);
@@ -601,9 +631,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       el("chartCaption").textContent = "Die Vergleichsgrafik zeigt, wie sich die monatliche Versorgungslücke von heute bis zum Ruhestandsbeginn unter den gewählten Annahmen verändern kann.";
 
       updateZohoFrame({
-        versorgungsluecke_heute: gapToday.toFixed(2).replace(".", ","),
-        zielkapital_benoetigt: requiredCapital.toFixed(2).replace(".", ","),
-        kapitalluecke_zum_start: capitalGap.toFixed(2).replace(".", ",")
+        zielkapital_benoetigt: requiredCapital.toFixed(2).replace(".", ",")
       });
     }
 

@@ -333,9 +333,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       <div class="pdfOptinForm">
         <iframe
+          id="zohoFrame"
           aria-label="Ruhestands-Navigator"
           frameborder="0"
-          style="height:500px;width:99%;border:none;"
+          scrolling="no"
+          style="width:100%;height:1120px;border:none;overflow:hidden;"
           src="https://forms.zohopublic.eu/christiangradtconsulting1/form/RuhestandsNavigator/formperma/lQFs-HJBhg8zIB9e5h-I47jcUdaD8kyk-X-deTuVMMU"
         ></iframe>
       </div>
@@ -447,68 +449,32 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <script is:inline>
     const el = (id) => document.getElementById(id);
-
-    const ids = [
-      "currentAge",
-      "retirementAge",
-      "lifeExpectancy",
-      "desiredIncome",
-      "statePension",
-      "privatePension",
-      "currentSavings",
-      "inflationRate",
-      "pensionIncrease",
-      "expectedReturn",
-      "taxRate",
-      "retirementReturn",
-      "retirementInflation",
-    ];
-
+    const ids = ["currentAge","retirementAge","lifeExpectancy","desiredIncome","statePension","privatePension","currentSavings","inflationRate","pensionIncrease","expectedReturn","taxRate","retirementReturn","retirementInflation"];
     const inputs = ids.map((id) => el(id)).filter(Boolean);
 
-    function parseNum(value) {
-      const num = Number(value);
-      return Number.isFinite(num) ? num : 0;
-    }
+    const zohoBase = "https://forms.zohopublic.eu/christiangradtconsulting1/form/RuhestandsNavigator/formperma/lQFs-HJBhg8zIB9e5h-I47jcUdaD8kyk-X-deTuVMMU";
 
+    function parseNum(value) { const n = Number(value); return Number.isFinite(n) ? n : 0; }
     function formatCurrency(value) {
-      return new Intl.NumberFormat("de-DE", {
-        style: "currency",
-        currency: "EUR",
-        maximumFractionDigits: 0,
-      }).format(Math.max(0, value));
+      return new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(Math.max(0, value));
     }
-
-    function formatPercent(value, digits = 1) {
-      return `${Number(value).toFixed(digits).replace(".", ",")} %`;
-    }
-
-    function formatYears(value) {
-      return `${Number(value).toFixed(1).replace(".", ",")} Jahre`;
-    }
+    function formatPercent(value, digits = 1) { return `${Number(value).toFixed(digits).replace(".", ",")} %`; }
+    function formatYears(value) { return `${Number(value).toFixed(1).replace(".", ",")} Jahre`; }
 
     function updateRangeOutputs() {
       document.querySelectorAll("[data-range-output]").forEach((node) => {
         const source = el(node.dataset.rangeOutput);
         if (!source) return;
         const value = parseNum(source.value);
-
-        if (["inflationRate", "pensionIncrease", "expectedReturn", "retirementReturn", "retirementInflation"].includes(source.id)) {
-          node.textContent = formatPercent(value, 1);
-        } else if (source.id === "taxRate") {
-          node.textContent = formatPercent(value, 2);
-        } else {
-          node.textContent = `${Math.round(value)}`;
-        }
+        if (["inflationRate","pensionIncrease","expectedReturn","retirementReturn","retirementInflation"].includes(source.id)) node.textContent = formatPercent(value, 1);
+        else if (source.id === "taxRate") node.textContent = formatPercent(value, 2);
+        else node.textContent = `${Math.round(value)}`;
       });
     }
 
     function calculateCoverageYears(startCapital, startGapMonthly, monthlyReturn, monthlyInflationGap, maxMonths) {
       if (startGapMonthly <= 0) return maxMonths / 12;
-      let capital = startCapital;
-      let gap = startGapMonthly;
-      let monthsCovered = 0;
-
+      let capital = startCapital, gap = startGapMonthly, monthsCovered = 0;
       for (let i = 0; i < maxMonths; i++) {
         if (capital <= 0) break;
         capital = capital * (1 + monthlyReturn) - gap;
@@ -516,8 +482,42 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         monthsCovered += 1;
         gap = gap * (1 + monthlyInflationGap);
       }
-
       return monthsCovered / 12;
+    }
+
+    function buildZohoUrl(data) {
+      const params = new URLSearchParams({
+        current_age: data.current_age,
+        retirement_age: data.retirement_age,
+        life_expectancy: data.life_expectancy,
+        desired_income: data.desired_income,
+        state_pension: data.state_pension,
+        private_pension: data.private_pension,
+        current_savings: data.current_savings,
+        inflation_rate: data.inflation_rate,
+        pension_increase: data.pension_increase,
+        expected_return: data.expected_return,
+        tax_rate: data.tax_rate,
+        retirement_return: data.retirement_return,
+        retirement_inflation: data.retirement_inflation,
+        gap_today: data.gap_today,
+        gap_retirement: data.gap_retirement,
+        required_capital: data.required_capital,
+        monthly_need: data.monthly_need,
+        expected_wealth: data.expected_wealth,
+        capital_gap: data.capital_gap,
+        coverage_years: data.coverage_years,
+        retirement_assumptions: data.retirement_assumptions,
+        einordnung: data.einordnung,
+        status: data.status
+      });
+      return `${zohoBase}?${params.toString()}`;
+    }
+
+    function updateZohoFrame(payload) {
+      const frame = el("zohoFrame");
+      if (!frame) return;
+      frame.src = buildZohoUrl(payload);
     }
 
     function calculate() {
@@ -543,7 +543,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       const monthsInRetirement = yearsInRetirement * 12;
 
       const gapToday = Math.max(0, desiredIncome - statePension - privatePension);
-
       const futureDesiredIncome = desiredIncome * Math.pow(1 + inflationRate, yearsToRetirement);
       const futureStatePension = statePension * Math.pow(1 + pensionIncrease, yearsToRetirement);
       const futurePrivatePension = privatePension * Math.pow(1 + pensionIncrease, yearsToRetirement);
@@ -562,10 +561,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           requiredCapital = (gapAtRetirement * monthsInRetirement) / (1 + monthlyNetReturn);
         } else {
           let rollingGap = gapAtRetirement;
-          for (let i = 0; i < monthsInRetirement; i++) {
-            requiredCapital += rollingGap;
-            rollingGap *= 1 + monthlyGapGrowth;
-          }
+          for (let i = 0; i < monthsInRetirement; i++) { requiredCapital += rollingGap; rollingGap *= 1 + monthlyGapGrowth; }
         }
       }
 
@@ -587,13 +583,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         }
       }
 
-      const coverageYears = calculateCoverageYears(
-        expectedWealthAtRetirement,
-        gapAtRetirement,
-        monthlyNetReturn,
-        monthlyGapGrowth,
-        monthsInRetirement
-      );
+      const coverageYears = calculateCoverageYears(expectedWealthAtRetirement, gapAtRetirement, monthlyNetReturn, monthlyGapGrowth, monthsInRetirement);
 
       el("metricGapToday").textContent = formatCurrency(gapToday);
       el("metricGapRetirement").textContent = formatCurrency(gapAtRetirement);
@@ -644,14 +634,37 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       }
 
       const maxGap = Math.max(gapToday, gapAtRetirement, 1);
-      const widthToday = Math.min(100, (gapToday / maxGap) * 100);
-      const widthRet = Math.min(100, (gapAtRetirement / maxGap) * 100);
-
-      el("barToday").style.width = `${widthToday}%`;
-      el("barRetirement").style.width = `${widthRet}%`;
+      el("barToday").style.width = `${Math.min(100, (gapToday / maxGap) * 100)}%`;
+      el("barRetirement").style.width = `${Math.min(100, (gapAtRetirement / maxGap) * 100)}%`;
       el("barLabelToday").textContent = formatCurrency(gapToday);
       el("barLabelRetirement").textContent = formatCurrency(gapAtRetirement);
       el("chartCaption").textContent = "Die Vergleichsgrafik zeigt, wie sich die monatliche Versorgungslücke von heute bis zum Ruhestandsbeginn unter den gewählten Annahmen verändern kann.";
+
+      updateZohoFrame({
+        current_age: currentAge,
+        retirement_age: retirementAge,
+        life_expectancy: lifeExpectancy,
+        desired_income: desiredIncome,
+        state_pension: statePension,
+        private_pension: privatePension,
+        current_savings: currentSavings,
+        inflation_rate: parseNum(el("inflationRate")?.value),
+        pension_increase: parseNum(el("pensionIncrease")?.value),
+        expected_return: parseNum(el("expectedReturn")?.value),
+        tax_rate: parseNum(el("taxRate")?.value),
+        retirement_return: parseNum(el("retirementReturn")?.value),
+        retirement_inflation: parseNum(el("retirementInflation")?.value),
+        gap_today: gapToday,
+        gap_retirement: gapAtRetirement,
+        required_capital: requiredCapital,
+        monthly_need: monthlySavingsRequired,
+        expected_wealth: expectedWealthAtRetirement,
+        capital_gap: capitalGap,
+        coverage_years: gapAtRetirement <= 0 ? yearsInRetirement : coverageYears,
+        retirement_assumptions: `${formatPercent(retirementReturn * 100, 1)} / ${formatPercent(retirementInflation * 100, 1)}`,
+        einordnung: summary,
+        status: gapAtRetirement <= 0 ? "gruen" : capitalGap > 0 ? "gelb" : "rot"
+      });
     }
 
     inputs.forEach((input) => {
@@ -663,271 +676,56 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </script>
 
   <style>
-    .retirementHeroGrid {
-      align-items: start;
-      gap: 2rem;
-    }
-
-    .navigatorHighlights {
-      display: grid;
-      gap: 1rem;
-      margin-top: 1.25rem;
-    }
-
-    .navigatorHighlight,
-    .retirementGroup,
-    .retirementResultsPanel,
-    .retirementSummary,
-    .retirementWarning,
-    .retirementChart,
-    .retirementMetric,
-    .pdfOptinPanel {
+    .retirementHeroGrid { align-items: start; gap: 2rem; }
+    .navigatorHighlights { display: grid; gap: 1rem; margin-top: 1.25rem; }
+    .navigatorHighlight, .retirementGroup, .retirementResultsPanel, .retirementSummary, .retirementWarning, .retirementChart, .retirementMetric, .pdfOptinPanel {
       background: rgba(255,255,255,0.72);
       border: 1px solid rgba(40,72,48,0.10);
       box-shadow: 0 10px 28px rgba(0,0,0,0.05);
     }
-
-    .navigatorHighlight h3,
-    .retirementGroup h3,
-    .retirementSummary h3,
-    .retirementWarning h3,
-    .retirementChart h3,
-    .retirementMetric h3 {
-      margin-top: 0;
-      color: var(--c-primary);
-    }
-
-    .retirementHeroVisual {
-      margin-bottom: 1rem;
-      padding: 0.6rem;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.78);
-      border: 1px solid rgba(40,72,48,0.10);
-      box-shadow: 0 18px 44px rgba(0,0,0,0.06);
-    }
-
-    .retirementHeroVisual img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 18px;
-    }
-
-    .retirementInfoPanel {
-      margin-top: 0;
-    }
-
-    .retirementLayout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-      gap: 1.5rem;
-      align-items: start;
-      margin-top: 1.5rem;
-    }
-
-    .retirementFormColumn,
-    .retirementResultsColumn {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .retirementGroup {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .retirementFieldGrid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .retirementFieldGrid2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .retirementField {
-      display: grid;
-      gap: 0.5rem;
-      font-weight: 600;
-      color: var(--c-primary);
-    }
-
-    .retirementField span {
-      color: var(--c-primary);
-    }
-
-    .retirementHelp {
-      display: block;
-      margin-top: -0.1rem;
-      color: rgba(40,72,48,0.68);
-      font-size: 0.86rem;
-      line-height: 1.45;
-      font-weight: 500;
-    }
-
-    .retirementField input[type="number"] {
-      width: 100%;
-      padding: 0.95rem 1rem;
-      border-radius: 14px;
-      border: 1px solid rgba(40,72,48,0.14);
-      background: rgba(255,255,255,0.92);
-      color: var(--c-text);
-      font: inherit;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.45);
-    }
-
-    .retirementField input[type="number"]:focus {
-      outline: none;
-      border-color: rgba(216,120,8,0.55);
-      box-shadow: 0 0 0 4px rgba(216,120,8,0.12);
-    }
-
-    .retirementField input[type="range"] {
-      width: 100%;
-      accent-color: var(--c-accent);
-    }
-
-    .retirementRangeTop {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .retirementRangeTop strong {
-      color: var(--c-accent);
-      font-size: 0.98rem;
-    }
-
-    .retirementResultsPanel {
-      display: grid;
-      gap: 1rem;
-      position: sticky;
-      top: 96px;
-    }
-
-    .retirementMetrics {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .retirementMetric {
-      min-height: 140px;
-    }
-
-    .retirementMetric p {
-      margin-bottom: 0.5rem;
-    }
-
-    .retirementMetric h3 {
-      font-size: clamp(1.2rem, 2.1vw, 1.8rem);
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 0;
-    }
-
-    .retirementBarRow + .retirementBarRow {
-      margin-top: 1rem;
-    }
-
-    .retirementBarHead {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 0.4rem;
-      color: var(--c-primary);
-    }
-
-    .retirementBarTrack {
-      width: 100%;
-      height: 12px;
-      border-radius: 999px;
-      background: rgba(40,72,48,0.08);
-      overflow: hidden;
-    }
-
-    .retirementBarFill {
-      height: 100%;
-      width: 0;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--c-primary) 0%, var(--c-accent) 100%);
-      transition: width 0.35s ease;
-    }
-
-    #chartCaption {
-      margin-top: 1rem;
-    }
-
-    .retirementStatus {
-      margin-top: 1rem;
-    }
-
-    .statusBadge {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.7rem 0.95rem;
-      border-radius: 999px;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
-    .statusGood {
-      background: rgba(40,72,48,0.10);
-      border: 1px solid rgba(40,72,48,0.18);
-      color: var(--c-primary);
-    }
-
-    .statusMedium {
-      background: rgba(216,120,8,0.10);
-      border: 1px solid rgba(216,120,8,0.22);
-      color: #9a5406;
-    }
-
-    .statusAlert {
-      background: rgba(168,58,37,0.10);
-      border: 1px solid rgba(168,58,37,0.20);
-      color: #8f2f1f;
-    }
-
-    .pdfOptinPanel {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 1.5rem;
-      align-items: start;
-    }
-
-    .pdfOptinForm {
-      display: grid;
-      gap: 0.85rem;
-    }
-
-    .pdfOptinForm iframe {
-      width: 100%;
-      min-height: 500px;
-      border: none;
-      border-radius: 16px;
-      background: #fff;
-    }
-
+    .navigatorHighlight h3, .retirementGroup h3, .retirementSummary h3, .retirementWarning h3, .retirementChart h3, .retirementMetric h3 { margin-top: 0; color: var(--c-primary); }
+    .retirementHeroVisual { margin-bottom: 1rem; padding: 0.6rem; border-radius: 22px; background: rgba(255,255,255,0.78); border: 1px solid rgba(40,72,48,0.10); box-shadow: 0 18px 44px rgba(0,0,0,0.06); }
+    .retirementHeroVisual img { width: 100%; height: auto; display: block; border-radius: 18px; }
+    .retirementInfoPanel { margin-top: 0; }
+    .retirementLayout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr); gap: 1.5rem; align-items: start; margin-top: 1.5rem; }
+    .retirementFormColumn, .retirementResultsColumn { display: grid; gap: 1rem; }
+    .retirementGroup { display: grid; gap: 1rem; }
+    .retirementFieldGrid { display: grid; gap: 1rem; }
+    .retirementFieldGrid2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .retirementField { display: grid; gap: 0.5rem; font-weight: 600; color: var(--c-primary); }
+    .retirementField span { color: var(--c-primary); }
+    .retirementHelp { display: block; margin-top: -0.1rem; color: rgba(40,72,48,0.68); font-size: 0.86rem; line-height: 1.45; font-weight: 500; }
+    .retirementField input[type="number"] { width: 100%; padding: 0.95rem 1rem; border-radius: 14px; border: 1px solid rgba(40,72,48,0.14); background: rgba(255,255,255,0.92); color: var(--c-text); font: inherit; box-shadow: inset 0 1px 0 rgba(255,255,255,0.45); }
+    .retirementField input[type="number"]:focus { outline: none; border-color: rgba(216,120,8,0.55); box-shadow: 0 0 0 4px rgba(216,120,8,0.12); }
+    .retirementField input[type="range"] { width: 100%; accent-color: var(--c-accent); }
+    .retirementRangeTop { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .retirementRangeTop strong { color: var(--c-accent); font-size: 0.98rem; }
+    .retirementResultsPanel { display: grid; gap: 1rem; position: sticky; top: 96px; }
+    .retirementMetrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .retirementMetric { min-height: 140px; }
+    .retirementMetric p { margin-bottom: 0.5rem; }
+    .retirementMetric h3 { font-size: clamp(1.2rem, 2.1vw, 1.8rem); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 0; }
+    .retirementBarRow + .retirementBarRow { margin-top: 1rem; }
+    .retirementBarHead { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 0.4rem; color: var(--c-primary); }
+    .retirementBarTrack { width: 100%; height: 12px; border-radius: 999px; background: rgba(40,72,48,0.08); overflow: hidden; }
+    .retirementBarFill { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--c-primary) 0%, var(--c-accent) 100%); transition: width 0.35s ease; }
+    #chartCaption { margin-top: 1rem; }
+    .retirementStatus { margin-top: 1rem; }
+    .statusBadge { display: inline-flex; align-items: center; padding: 0.7rem 0.95rem; border-radius: 999px; font-weight: 700; line-height: 1.35; }
+    .statusGood { background: rgba(40,72,48,0.10); border: 1px solid rgba(40,72,48,0.18); color: var(--c-primary); }
+    .statusMedium { background: rgba(216,120,8,0.10); border: 1px solid rgba(216,120,8,0.22); color: #9a5406; }
+    .statusAlert { background: rgba(168,58,37,0.10); border: 1px solid rgba(168,58,37,0.20); color: #8f2f1f; }
+    .pdfOptinPanel { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1.5rem; align-items: start; }
+    .pdfOptinForm { display: grid; gap: 0.85rem; }
+    .pdfOptinForm iframe { width: 100%; min-height: 1120px; border: none; border-radius: 16px; background: #fff; }
     @media (max-width: 980px) {
-      .retirementLayout,
-      .retirementHeroGrid,
-      .pdfOptinPanel {
-        grid-template-columns: 1fr;
-      }
-
-      .retirementResultsPanel {
-        position: static;
-        top: auto;
-      }
+      .retirementLayout, .retirementHeroGrid, .pdfOptinPanel { grid-template-columns: 1fr; }
+      .retirementResultsPanel { position: static; top: auto; }
+      .pdfOptinForm iframe { min-height: 1350px; }
     }
-
     @media (max-width: 720px) {
-      .retirementFieldGrid2,
-      .retirementMetrics {
-        grid-template-columns: 1fr;
-      }
+      .retirementFieldGrid2, .retirementMetrics { grid-template-columns: 1fr; }
+      .pdfOptinForm iframe { min-height: 1500px; }
     }
   </style>
 </BaseLayout>

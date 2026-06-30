@@ -501,9 +501,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         erwartetes_vermoegen_ruhestart: data.erwartetes_vermoegen_ruhestart,
         kapitalluecke_ruhestart: data.kapitalluecke_ruhestart,
         kapitalreichweite: data.kapitalreichweite,
-        einordnung: data.einordnung,
-        status: data.status,
-        next_step: data.next_step,
         ztest: Date.now().toString()
       });
 
@@ -610,12 +607,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       const statusEl = el("retirementStatus");
       const warningList = el("warningList");
-      let statusText = "";
-      let nextStepText = "";
 
       if (gapAtRetirement <= 0) {
-        statusText = "keine_rechnerische_versorgungsluecke";
-        nextStepText = "Entnahmestruktur, Liquidität und Sicherheitsbausteine im Detail prüfen.";
         statusEl.innerHTML = `<div class="statusBadge statusGood">Die Modellrechnung zeigt aktuell keine rechnerische Versorgungslücke zum Ruhestandsbeginn.</div>`;
         warningList.innerHTML = `
           <li>Auch ohne rechnerische Lücke bleibt die Struktur der Entnahmephase entscheidend.</li>
@@ -623,8 +616,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <li>Die Modellrechnung ersetzt keine individuelle Prüfung von Steuern, Produktkosten und realen Zahlungsströmen.</li>
         `;
       } else if (coverageYears < Math.max(8, yearsInRetirement * 0.5)) {
-        statusText = "spuerbarer_handlungsbedarf";
-        nextStepText = "Versorgungslücke, Kapitalreichweite und Entnahmestruktur strukturiert analysieren.";
         statusEl.innerHTML = `<div class="statusBadge statusAlert">Die aktuelle Konstellation deutet auf spürbaren strategischen Handlungsbedarf hin.</div>`;
         warningList.innerHTML = `
           <li>Die Kapitalreichweite ist im Verhältnis zur geplanten Ruhestandsdauer eher kurz.</li>
@@ -632,8 +623,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <li>Gerade in der Ruhestandsphase wirken Rendite, Inflation und Reihenfolge der Marktjahre besonders stark.</li>
         `;
       } else if (capitalGap > 0) {
-        statusText = "kapitalluecke_bis_ruhestandsbeginn";
-        nextStepText = "Kapitallücke und monatlichen Handlungsbedarf priorisiert einordnen.";
         statusEl.innerHTML = `<div class="statusBadge statusMedium">Die Richtung stimmt, aber es bleibt eine rechnerische Kapitallücke bis zum Ruhestandsbeginn.</div>`;
         warningList.innerHTML = `
           <li>Die Modellrechnung zeigt einen grundsätzlich tragfähigen Kurs – aber noch keinen vollständigen Puffer.</li>
@@ -641,8 +630,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <li>Schon moderate Anpassungen bei Aufbau, Struktur oder Zielgröße können die Tragfähigkeit verbessern.</li>
         `;
       } else {
-        statusText = "zielkapital_rechnerisch_erreichbar";
-        nextStepText = "Robustheit der Vermögensstruktur und Entnahmephase konkret überprüfen.";
         statusEl.innerHTML = `<div class="statusBadge statusGood">Das Zielkapital wäre unter den aktuellen Annahmen rechnerisch erreichbar.</div>`;
         warningList.innerHTML = `
           <li>Auch bei erreichter Zielgröße bleibt die Robustheit der Vermögensstruktur entscheidend.</li>
@@ -665,10 +652,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         zusaetzlicher_monatlicher_handlungsbedarf: formatNumberPlain(monthlySavingsRequired),
         erwartetes_vermoegen_ruhestart: formatNumberPlain(expectedWealthAtRetirement),
         kapitalluecke_ruhestart: formatNumberPlain(capitalGap),
-        kapitalreichweite: formatIntegerPlain(coverageYears),
-        einordnung: summary,
-        status: statusText,
-        next_step: nextStepText
+        kapitalreichweite: formatIntegerPlain(coverageYears)
       });
     }
 

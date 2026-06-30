@@ -486,7 +486,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     function buildZohoUrl(data) {
       const params = new URLSearchParams({
-        zielkapital_benoetigt: data.zielkapital_benoetigt,
+        versorgungsluecke_ruhestandsbeginn: data.versorgungsluecke_ruhestandsbeginn,
         ztest: Date.now().toString()
       });
       return `${zohoBase}?${params.toString()}`;
@@ -631,7 +631,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       el("chartCaption").textContent = "Die Vergleichsgrafik zeigt, wie sich die monatliche Versorgungslücke von heute bis zum Ruhestandsbeginn unter den gewählten Annahmen verändern kann.";
 
       updateZohoFrame({
-        zielkapital_benoetigt: requiredCapital.toFixed(2).replace(".", ",")
+        versorgungsluecke_ruhestandsbeginn: gapAtRetirement.toFixed(2).replace(".", ",")
       });
     }
 

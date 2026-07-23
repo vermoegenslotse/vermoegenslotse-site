@@ -279,6 +279,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       <div class="zohoFormEmbed">
         <iframe
+          id="blindspotZohoForm"
           aria-label="Depot Blindflecken Check PDF anfordern"
           title="Depot Blindflecken Check PDF anfordern"
           frameborder="0"
@@ -385,6 +386,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       const scoreInputs = Array.from(document.querySelectorAll('[data-score]'));
       if (!scoreInputs.length) return;
 
+      const formBaseUrl = "https://forms.zohopublic.eu/christiangradtconsulting1/form/DepotBlindfleckenCheck/formperma/o8zNje2ro2Addqzesju20QMu3dcTLRgUVRvtLHIk8Ug";
+      const zohoFrame = document.getElementById('blindspotZohoForm');
+
       const strengthMap = {
         0: 'Verständlichkeit des Depots',
         1: 'klare Rollen der Bausteine',
@@ -410,6 +414,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         if (node) node.textContent = content;
       };
 
+      const getGermanDateLong = () => {
+        const now = new Date();
+        return now.toLocaleDateString('de-DE', {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric'
+        });
+      };
+
+      function updateZohoForm(paramsObj) {
+        if (!zohoFrame) return;
+        const params = new URLSearchParams(paramsObj);
+        zohoFrame.src = `${formBaseUrl}?${params.toString()}`;
+      }
+
       function calculateBlindspotScore() {
         const values = scoreInputs.map((input) => Number(input.value || 0));
         const total = values.reduce((sum, value) => sum + value, 0);
@@ -432,30 +451,50 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           }
         });
 
+        const strongestText = strengthMap[strongestIndex];
+        const weakestText = strengthMap[weakestIndex];
+
+        let level = '';
+        let summaryText = '';
+
         setText('metricScore', `${total} / ${maxScore}`);
-        setText('metricStrength', strengthMap[strongestIndex]);
-        setText('metricWeakness', strengthMap[weakestIndex]);
+        setText('metricStrength', strongestText);
+        setText('metricWeakness', weakestText);
         setText('scoreLabel', `${total} / ${maxScore}`);
 
         const bar = document.getElementById('scoreBar');
         if (bar) bar.style.width = `${percent}%`;
 
         if (total <= 15) {
-          setText('metricLevel', 'kritisch');
-          setText('summaryText', 'Ihre Auswertung deutet darauf hin, dass Ihr Depot derzeit eher historisch gewachsen als klar geführt ist. Wahrscheinlich fehlen an mehreren Stellen Rollenlogik, Prioritäten und eine belastbare Struktur für ruhigere Entscheidungen.');
+          level = 'kritisch';
+          summaryText = 'Ihre Auswertung deutet darauf hin, dass Ihr Depot derzeit eher historisch gewachsen als klar geführt ist. Wahrscheinlich fehlen an mehreren Stellen Rollenlogik, Prioritäten und eine belastbare Struktur für ruhigere Entscheidungen.';
+          setText('metricLevel', level);
+          setText('summaryText', summaryText);
           setHtml('blindspotStatus', '<div class="statusBadge statusAlert">Die aktuelle Struktur deutet auf deutlichen strategischen Handlungsbedarf hin.</div>');
           setHtml('recommendationList', '<li>Prüfen Sie zuerst Übersicht, Rollen der Bausteine und erkennbare Altlasten.</li><li>Entscheidend ist jetzt nicht mehr Information, sondern eine klare Struktur mit Prioritäten.</li><li>Ein Vermögens-Check-up ist hier meist sinnvoll, bevor weitere Einzelentscheidungen getroffen werden.</li>');
         } else if (total <= 26) {
-          setText('metricLevel', 'teilweise tragfähig');
-          setText('summaryText', 'Ihre Vermögensstruktur wirkt in Teilen bereits tragfähig, zeigt aber noch erkennbare Blindflecken. Die Richtung stimmt, doch einzelne Schwachstellen könnten spätere Entscheidungen erschweren oder unnötig komplex machen.');
+          level = 'teilweise tragfähig';
+          summaryText = 'Ihre Vermögensstruktur wirkt in Teilen bereits tragfähig, zeigt aber noch erkennbare Blindflecken. Die Richtung stimmt, doch einzelne Schwachstellen könnten spätere Entscheidungen erschweren oder unnötig komplex machen.';
+          setText('metricLevel', level);
+          setText('summaryText', summaryText);
           setHtml('blindspotStatus', '<div class="statusBadge statusMedium">Die Richtung stimmt, aber es bestehen noch relevante Blindflecken.</div>');
           setHtml('recommendationList', '<li>Konzentrieren Sie sich auf die 2–3 Punkte mit der geringsten Klarheit.</li><li>Oft reichen schon wenige strukturelle Anpassungen, um Steuerbarkeit deutlich zu erhöhen.</li><li>Ein Orientierungsgespräch hilft, Prioritäten sauber zu sortieren.</li>');
         } else {
-          setText('metricLevel', 'strukturell solide');
-          setText('summaryText', 'Ihre Antworten sprechen dafür, dass bereits eine vergleichsweise klare und steuerbare Vermögensstruktur vorhanden ist. Trotzdem lohnt sich ein prüfender Blick auf Entnahmephase, Reservebildung und Robustheit in unruhigen Marktphasen.');
+          level = 'strukturell solide';
+          summaryText = 'Ihre Antworten sprechen dafür, dass bereits eine vergleichsweise klare und steuerbare Vermögensstruktur vorhanden ist. Trotzdem lohnt sich ein prüfender Blick auf Entnahmephase, Reservebildung und Robustheit in unruhigen Marktphasen.';
+          setText('metricLevel', level);
+          setText('summaryText', summaryText);
           setHtml('blindspotStatus', '<div class="statusBadge statusGood">Ihre Struktur wirkt insgesamt bereits vergleichsweise robust.</div>');
           setHtml('recommendationList', '<li>Behalten Sie besonders Entnahmefähigkeit, Reservebildung und Anpassungslogik im Blick.</li><li>Auch solide Strukturen profitieren von einer externen Überprüfung auf blinde Flecken.</li><li>Ein kurzer Abgleich kann helfen, Sicherheit und Steuerbarkeit weiter zu schärfen.</li>');
         }
+
+        updateZohoForm({
+          datum: getGermanDateLong(),
+          score: String(total),
+          ergebnisstufe: level,
+          staerkster_bereich: strongestText,
+          groesster_blindfleck: weakestText
+        });
       }
 
       scoreInputs.forEach((input) => {

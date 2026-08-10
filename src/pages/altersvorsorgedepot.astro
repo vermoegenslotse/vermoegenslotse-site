@@ -11,6 +11,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <section class="avd-hero">
       <div class="container hero-grid">
+
         <div>
           <img
             src="/images/vermoegenslotse-logo.png"
@@ -43,13 +44,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
         </div>
 
-        <div class="retirementHeroVisual mediaCard mediaCard--soft">
+        <div class="mediaCard mediaCard--soft">
           <img
-            src="/images/Altersvorsorgedepot_Cover.png"
+            src="/images/ihr-vermoegen-in-sicheren-bahnen.png"
             alt="Ihr Vermögen in sicheren Bahnen – systematisch zu Ihrem Anlageziel"
             loading="eager"
           />
         </div>
+
       </div>
     </section>
 
@@ -60,25 +62,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     <section class="section intro-section">
       <div class="container two-col">
+
         <div>
           <p class="eyebrow">Warum jetzt?</p>
 
           <h2>Die private Altersvorsorge wird neu sortiert.</h2>
 
           <p>
-            Das Altersvorsorgedepot soll die staatlich geförderte private Altersvorsorge
-            ab 2027 stärker kapitalmarktorientiert, flexibler und für mehr Menschen
-            zugänglich machen.
+            Ab 2027 verändert sich die staatlich geförderte private Altersvorsorge
+            grundlegend. Das neue Altersvorsorgedepot eröffnet mehr Möglichkeiten
+            bei der Kapitalanlage – und damit auch neue Entscheidungen.
           </p>
 
           <p>
-            Doch mehr Freiheit bedeutet auch mehr Verantwortung. Die entscheidende
-            Frage lautet nicht, ob das Altersvorsorgedepot grundsätzlich gut ist.
+            Gerade wenn bereits ein Riester-Vertrag vorhanden ist, sollte deshalb
+            nicht nur auf Förderung oder mögliche Rendite geschaut werden.
           </p>
 
           <p>
             Die entscheidende Frage lautet:
-            <strong>Passt es zu Ihrer persönlichen Situation?</strong>
+            <strong>Was passt zu Ihrer persönlichen Situation?</strong>
           </p>
         </div>
 
@@ -89,295 +92,986 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             Förderung ist ein Baustein. Keine Strategie.
           </strong>
         </div>
+
       </div>
     </section>
 
 
     <!-- =========================================================
-         RECHNER
+         NEUER RECHNER
     ========================================================== -->
 
     <section class="section calculator-section" id="rechner">
+
       <div class="container sectionHeader">
         <p class="eyebrow">Interaktiver Rechner</p>
 
-        <h2>Altersvorsorgedepot vs. ungefördertes ETF-Depot</h2>
+        <h2>
+          Was könnte das Altersvorsorgedepot für Sie bedeuten?
+        </h2>
 
         <p>
-          Berechnen Sie modellhaft, wie sich Eigenbeitrag, Förderung, Rendite und
-          Inflation langfristig auswirken können.
+          Vergleichen Sie modellhaft Förderung, Vermögensentwicklung,
+          Kaufkraft und spätere Auszahlung mit einem normalen ETF-Depot.
         </p>
       </div>
 
 
-      <div class="container calculator-grid">
+      <!-- =======================================================
+           TOP-ERGEBNISSE
+      ======================================================== -->
 
-        <!-- Eingaben -->
+      <div class="container">
 
-        <div class="card input-card">
-          <p class="eyebrow">Rechner</p>
+        <div class="resultHero card">
 
-          <h2>Ihre Eingaben</h2>
-
-
-          <label class="fieldLabel">
-            Monatliche Sparrate
-            <button class="infoBtn" type="button" data-tip="sparrate">i</button>
-          </label>
-
-          <div class="moneyInput">
-            <input
-              id="monthly"
-              type="number"
-              value="150"
-              min="0"
-              step="10"
-            />
-
-            <span>€</span>
-          </div>
-
-          <p class="helpText">
-            Die maximale Kinderzulage wird ab 25 € monatlich pro Kind erreicht.
-            Die volle Grundzulage wird bei 150 € monatlicher Sparrate ausgeschöpft.
-          </p>
-
-
-          <div class="quickButtons">
-            <button type="button" data-value="10">
-              10 €
-              <small>Mindestbeitrag</small>
-            </button>
-
-            <button type="button" data-value="150" class="active">
-              150 €
-              <small>Fördergrenze</small>
-            </button>
-
-            <button type="button" data-value="570">
-              570 €
-              <small>Maximum</small>
-            </button>
-          </div>
-
-
-          <label class="fieldLabel">
-            Bruttojahreseinkommen
-            <button class="infoBtn" type="button" data-tip="income">i</button>
-          </label>
-
-          <div class="moneyInput">
-            <input
-              id="income"
-              type="number"
-              value="35000"
-              min="0"
-              step="1000"
-            />
-
-            <span>€</span>
-          </div>
-
-
-          <label class="fieldLabel">
-            Geburtsjahr
-            <button class="infoBtn" type="button" data-tip="birthyear">i</button>
-          </label>
-
-          <input
-            id="birthyear"
-            type="number"
-            value="1990"
-            min="1950"
-            max="2010"
-          />
-
-
-          <label class="fieldLabel">
-            Renteneintrittsalter
-            <button class="infoBtn" type="button" data-tip="retirement">i</button>
-          </label>
-
-          <input
-            id="retirementAge"
-            type="number"
-            value="67"
-            min="60"
-            max="70"
-          />
-
-
-          <label class="fieldLabel">
-            Kinder
-            <button class="infoBtn" type="button" data-tip="children">i</button>
-          </label>
-
-          <input
-            id="children"
-            type="number"
-            value="0"
-            min="0"
-            max="10"
-          />
-
-
-          <label class="fieldLabel">
-            Rendite nach Kosten
-            <button class="infoBtn" type="button" data-tip="return">i</button>
-
-            <span id="returnLabel" class="pillValue">
-              5,0 %
+          <div class="resultMain">
+            <span class="resultLabel">
+              Monatliche Netto-Auszahlung
             </span>
-          </label>
 
-          <input
-            id="returnRate"
-            type="range"
-            value="5"
-            min="0"
-            max="10"
-            step="0.1"
-          />
+            <strong id="netMonthlyPension">
+              0 €
+            </strong>
 
-          <div class="rangeEnds">
-            <span>0 %</span>
-            <span>10 %</span>
+            <span class="resultSub">
+              zusätzlich zu Ihren übrigen Alterseinkünften
+            </span>
           </div>
 
 
-          <label class="fieldLabel">
-            Inflation
-            <button class="infoBtn" type="button" data-tip="inflation">i</button>
+          <div class="resultHeroGrid">
 
-            <span id="inflationLabel" class="pillValue">
-              2,0 %
-            </span>
-          </label>
+            <div>
+              <span>
+                Netto-Eigenaufwand
+              </span>
 
-          <input
-            id="inflationRate"
-            type="range"
-            value="2"
-            min="0"
-            max="6"
-            step="0.1"
-          />
+              <strong id="effectiveOwnCost">
+                0 € / Monat
+              </strong>
+
+              <small>
+                Modellwert nach Zulage und Steuervorteil
+              </small>
+            </div>
 
 
-          <button
-            class="btn"
-            id="calculateBtn"
-            type="button"
-          >
-            Berechnung aktualisieren
-          </button>
+            <div>
+              <span>
+                Vermögen zum Rentenbeginn
+              </span>
+
+              <strong id="heroCapital">
+                0 €
+              </strong>
+
+              <small id="heroRetirementAge">
+                mit 67 Jahren
+              </small>
+            </div>
 
 
-          <div
-            id="tooltip"
-            class="tooltip"
-            hidden
-          ></div>
+            <div>
+              <span>
+                Heutige Kaufkraft
+              </span>
+
+              <strong id="heroRealCapital">
+                0 €
+              </strong>
+
+              <small>
+                inflationsbereinigt
+              </small>
+            </div>
+
+          </div>
+
+
+          <p id="heroSummary" class="heroSummary"></p>
+
+
+          <div class="resultHeroActions">
+
+            <button
+              type="button"
+              class="btn btn--small btn--ghost"
+              id="saveScenarioBtn"
+            >
+              Szenario merken
+            </button>
+
+            <button
+              type="button"
+              class="textButton"
+              id="resetCalculatorBtn"
+            >
+              Zurücksetzen
+            </button>
+
+          </div>
+
         </div>
 
 
-        <!-- Ergebnisse -->
+        <div
+          id="savedScenarioBox"
+          class="savedScenario"
+          hidden
+        >
+          <div>
+            <span>Gemerktes Szenario</span>
+            <strong id="savedScenarioName">Szenario 1</strong>
+          </div>
+
+          <div>
+            <span>Vermögen</span>
+            <strong id="savedCapital">–</strong>
+          </div>
+
+          <div>
+            <span>Netto-Auszahlung</span>
+            <strong id="savedPension">–</strong>
+          </div>
+
+          <button
+            type="button"
+            class="textButton"
+            id="clearScenarioBtn"
+          >
+            Löschen
+          </button>
+        </div>
+
+      </div>
+
+
+      <!-- =======================================================
+           EINGABEN
+      ======================================================== -->
+
+      <div class="container calculator-grid">
+
+        <div class="card input-card">
+
+          <div class="cardHeading">
+            <div>
+              <p class="eyebrow">Ihre Angaben</p>
+              <h2>Persönliche Ausgangslage</h2>
+            </div>
+          </div>
+
+
+          <!-- Eigenbeitrag -->
+
+          <label class="fieldLabel" for="monthly">
+            Eigenbeitrag pro Monat
+
+            <button
+              class="infoBtn"
+              type="button"
+              data-tip="monthly"
+            >
+              i
+            </button>
+
+            <span class="pillValue" id="monthlyLabel">
+              150 €
+            </span>
+          </label>
+
+          <input
+            id="monthly"
+            type="range"
+            value="150"
+            min="10"
+            max="570"
+            step="10"
+          />
+
+          <div class="rangeEnds">
+            <span>10 €</span>
+            <span>570 €</span>
+          </div>
+
+          <p class="helpText">
+            Bis 1.800 € Eigenbeitrag pro Jahr werden gefördert.
+            Insgesamt können modellhaft bis 6.840 € jährlich berücksichtigt werden.
+          </p>
+
+
+          <!-- Riester Übertrag -->
+
+          <label class="fieldLabel" for="riesterTransfer">
+            Riester-Übertrag / Startkapital
+
+            <button
+              class="infoBtn"
+              type="button"
+              data-tip="riester"
+            >
+              i
+            </button>
+
+            <span class="pillValue" id="riesterLabel">
+              0 €
+            </span>
+          </label>
+
+          <input
+            id="riesterTransfer"
+            type="range"
+            value="0"
+            min="0"
+            max="100000"
+            step="1000"
+          />
+
+          <div class="rangeEnds">
+            <span>0 €</span>
+            <span>100.000 €</span>
+          </div>
+
+
+          <div
+            id="riesterNotice"
+            class="notice notice--gold"
+            hidden
+          >
+            <strong>Sie haben Riester-Vermögen angegeben.</strong>
+
+            <p>
+              Der Rechner zeigt nur die modellhafte Ertragsseite einer Übertragung.
+              Ob ein Wechsel sinnvoll ist, hängt zusätzlich von Garantien,
+              Rentenfaktor, Kosten und Restlaufzeit Ihres bisherigen Vertrags ab.
+            </p>
+
+            <a
+              href="https://riesterapp.de/a/6AGQYBL"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Bestehenden Riester-Vertrag prüfen →
+            </a>
+          </div>
+
+
+          <!-- Alter -->
+
+          <div class="inputTwoCol">
+
+            <div>
+              <label class="fieldLabel" for="currentAge">
+                Alter Anfang 2027
+
+                <button
+                  class="infoBtn"
+                  type="button"
+                  data-tip="age"
+                >
+                  i
+                </button>
+              </label>
+
+              <input
+                id="currentAge"
+                type="number"
+                value="40"
+                min="18"
+                max="64"
+              />
+            </div>
+
+
+            <div>
+              <label class="fieldLabel" for="retirementAge">
+                Rentenbeginn mit
+              </label>
+
+              <input
+                id="retirementAge"
+                type="number"
+                value="67"
+                min="65"
+                max="70"
+              />
+            </div>
+
+          </div>
+
+
+          <!-- Auszahlalter -->
+
+          <label class="fieldLabel" for="payoutUntil">
+            Auszahlung bis Alter
+
+            <button
+              class="infoBtn"
+              type="button"
+              data-tip="payout"
+            >
+              i
+            </button>
+
+            <span class="pillValue" id="payoutLabel">
+              85
+            </span>
+          </label>
+
+          <input
+            id="payoutUntil"
+            type="range"
+            value="85"
+            min="85"
+            max="100"
+            step="1"
+          />
+
+          <div class="rangeEnds">
+            <span>85</span>
+            <span>100</span>
+          </div>
+
+
+          <!-- Kinder -->
+
+          <div class="childrenHeader">
+
+            <div>
+              <label class="fieldLabel">
+                Kinder
+
+                <button
+                  class="infoBtn"
+                  type="button"
+                  data-tip="children"
+                >
+                  i
+                </button>
+              </label>
+
+              <p class="helpText helpText--tight">
+                Optional: Geburtsjahr hinterlegen.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              class="smallOutlineButton"
+              id="addChildBtn"
+            >
+              + Kind
+            </button>
+
+          </div>
+
+
+          <div id="childrenList" class="childrenList"></div>
+
+
+          <!-- Annahmen -->
+
+          <details class="assumptions">
+
+            <summary>
+              Annahmen anpassen
+            </summary>
+
+
+            <div class="assumptionGrid">
+
+              <div>
+                <label for="avdReturn">
+                  Rendite AVD vor Kosten
+                </label>
+
+                <div class="percentInput">
+                  <input
+                    id="avdReturn"
+                    type="number"
+                    value="6"
+                    min="0"
+                    max="12"
+                    step="0.1"
+                  />
+                  <span>%</span>
+                </div>
+              </div>
+
+
+              <div>
+                <label for="avdCosts">
+                  Kosten AVD
+                </label>
+
+                <div class="percentInput">
+                  <input
+                    id="avdCosts"
+                    type="number"
+                    value="1"
+                    min="0"
+                    max="5"
+                    step="0.1"
+                  />
+                  <span>%</span>
+                </div>
+              </div>
+
+
+              <div>
+                <label for="etfReturn">
+                  Rendite ETF vor Kosten
+                </label>
+
+                <div class="percentInput">
+                  <input
+                    id="etfReturn"
+                    type="number"
+                    value="6"
+                    min="0"
+                    max="12"
+                    step="0.1"
+                  />
+                  <span>%</span>
+                </div>
+              </div>
+
+
+              <div>
+                <label for="etfCosts">
+                  Kosten ETF
+                </label>
+
+                <div class="percentInput">
+                  <input
+                    id="etfCosts"
+                    type="number"
+                    value="0.25"
+                    min="0"
+                    max="5"
+                    step="0.05"
+                  />
+                  <span>%</span>
+                </div>
+              </div>
+
+
+              <div>
+                <label for="taxRateNow">
+                  Grenzsteuersatz heute
+                </label>
+
+                <div class="percentInput">
+                  <input
+                    id="taxRateNow"
+                    type="number"
+                    value="30"
+                    min="0"
+                    max="50"
+                    step="1"
+                  />
+                  <span>%</span>
+                </div>
+              </div>
+
+
+              <div>
+                <label for="taxRateRetirement">
+                  Steuersatz im Ruhestand
+                </label>
+
+                <div class="percentInput">
+                  <input
+                    id="taxRateRetirement"
+                    type="number"
+                    value="22"
+                    min="0"
+                    max="50"
+                    step="1"
+                  />
+                  <span>%</span>
+                </div>
+              </div>
+
+
+              <div>
+                <label for="inflationRate">
+                  Inflation
+                </label>
+
+                <div class="percentInput">
+                  <input
+                    id="inflationRate"
+                    type="number"
+                    value="2"
+                    min="0"
+                    max="8"
+                    step="0.1"
+                  />
+                  <span>%</span>
+                </div>
+              </div>
+
+
+              <div>
+                <label for="payoutReturn">
+                  Rendite Auszahlphase
+                </label>
+
+                <div class="percentInput">
+                  <input
+                    id="payoutReturn"
+                    type="number"
+                    value="2"
+                    min="0"
+                    max="8"
+                    step="0.1"
+                  />
+                  <span>%</span>
+                </div>
+              </div>
+
+
+              <div>
+                <label for="taxAllowance">
+                  Sparer-Pauschbetrag
+                </label>
+
+                <div class="moneyInput compactMoney">
+                  <input
+                    id="taxAllowance"
+                    type="number"
+                    value="1000"
+                    min="0"
+                    max="5000"
+                    step="100"
+                  />
+                  <span>€</span>
+                </div>
+              </div>
+
+            </div>
+
+
+            <p class="assumptionNote">
+              Die Steuerberechnung ist bewusst vereinfacht. Der tatsächliche
+              Sonderausgabenabzug und Ihre spätere Steuerbelastung hängen von
+              Ihrer persönlichen steuerlichen Situation ab.
+            </p>
+
+          </details>
+
+
+          <div id="tooltip" class="tooltip" hidden></div>
+
+        </div>
+
+
+        <!-- =====================================================
+             FÖRDERUNG
+        ====================================================== -->
 
         <div class="results-column">
 
           <div class="card result-card">
-            <p class="eyebrow">Altersvorsorgedepot</p>
 
-            <h2 id="headline">
-              Brutto-Vermögen mit 67
-            </h2>
+            <p class="eyebrow">Förderung</p>
 
-            <div class="result-tiles">
+            <h2>Was der Staat modellhaft dazugibt</h2>
+
+
+            <div class="bigResultRow">
+              <span>Förderung im ersten Jahr</span>
+              <strong id="annualSupport">0 €</strong>
+            </div>
+
+
+            <div class="supportBar">
+              <div
+                id="supportOwnBar"
+                class="supportBarOwn"
+              ></div>
+
+              <div
+                id="supportSubsidyBar"
+                class="supportBarSubsidy"
+              ></div>
+
+              <div
+                id="supportTaxBar"
+                class="supportBarTax"
+              ></div>
+            </div>
+
+
+            <div class="legendList">
 
               <div>
-                <span>Gesamtförderung</span>
-                <strong id="totalSubsidy">0 €</strong>
-              </div>
-
-              <div class="highlight">
-                <span>Brutto-Vermögen</span>
-                <strong id="avdFinal">0 €</strong>
+                <i class="legendOwn"></i>
+                <span>Eigenbeitrag</span>
+                <strong id="annualOwn">0 €</strong>
               </div>
 
               <div>
-                <span>Heutige Kaufkraft</span>
-                <strong id="realValue">0 €</strong>
+                <i class="legendSubsidy"></i>
+                <span>Zulagen</span>
+                <strong id="annualAllowance">0 €</strong>
+              </div>
+
+              <div>
+                <i class="legendTax"></i>
+                <span>zusätzlicher Steuervorteil</span>
+                <strong id="annualTaxBenefit">0 €</strong>
               </div>
 
             </div>
 
-            <p
-              class="muted"
-              id="summaryText"
-            ></p>
+
+            <p class="small" id="supportExplanation"></p>
+
           </div>
 
 
           <div class="card result-card">
-            <p class="eyebrow">Vergleich</p>
 
-            <h2>AVD vs. ETF-Depot</h2>
+            <p class="eyebrow">Bis zum Rentenbeginn</p>
 
-            <div class="comparison">
+            <h2>Woher Ihr Vermögen kommt</h2>
+
+
+            <div class="compositionList">
 
               <div>
-                <span>Altersvorsorgedepot</span>
-                <strong id="compareAvd">0 €</strong>
+                <span>Eigene Beiträge</span>
+                <strong id="totalOwnContributions">0 €</strong>
               </div>
 
               <div>
-                <span>ETF-Depot ohne Förderung</span>
-                <strong id="compareEtf">0 €</strong>
+                <span>Zulagen</span>
+                <strong id="totalAllowances">0 €</strong>
               </div>
 
-              <div class="highlight">
-                <span>Vorteil durch Förderung</span>
-                <strong id="advantage">0 €</strong>
+              <div>
+                <span>Steuervorteile</span>
+                <strong id="totalTaxBenefits">0 €</strong>
+              </div>
+
+              <div>
+                <span>Riester-Startkapital</span>
+                <strong id="totalRiester">0 €</strong>
+              </div>
+
+              <div>
+                <span>Wertzuwachs</span>
+                <strong id="investmentGrowth">0 €</strong>
+              </div>
+
+              <div class="compositionTotal">
+                <span>Gesamt</span>
+                <strong id="compositionTotal">0 €</strong>
               </div>
 
             </div>
+
           </div>
 
         </div>
+
       </div>
 
 
-      <!-- Chart + spätere PDF-Auswertung -->
+      <!-- =======================================================
+           CHART
+      ======================================================== -->
 
-      <div class="container chart-grid">
+      <div class="container chartSection">
 
         <div class="card chart-card">
-          <p class="eyebrow">Verlauf</p>
 
-          <h2>Kapitalaufbau bis Rentenbeginn</h2>
+          <div class="chartHeading">
 
-          <canvas id="growthChart"></canvas>
-        </div>
+            <div>
+              <p class="eyebrow">Anlageentwicklung</p>
+              <h2>Vom Start bis zur Auszahlung</h2>
+            </div>
+
+            <div class="chartLegend">
+              <span>
+                <i class="dot dot--avd"></i>
+                Altersvorsorgedepot
+              </span>
+
+              <span>
+                <i class="dot dot--etf"></i>
+                normales ETF-Depot
+              </span>
+            </div>
+
+          </div>
 
 
-        <div class="card lead-card">
-          <p class="eyebrow">PDF-Auswertung</p>
+          <div class="chartCanvasWrapper">
+            <canvas id="growthChart"></canvas>
+          </div>
 
-          <h2>Ergebnis per E-Mail erhalten</h2>
 
-          <p>
-            Lassen Sie sich Ihre persönliche Modellrechnung zusenden und nutzen Sie
-            sie als Grundlage für Ihre weitere Vorsorgeplanung.
+          <p class="small">
+            Die Darstellung ist eine Modellrechnung. Wertentwicklungen verlaufen
+            in der Realität nicht gleichmäßig.
           </p>
 
-          <form id="leadForm">
+        </div>
 
-            <input
-              type="text"
-              name="name"
-              placeholder="Ihr Name"
-              required
-            />
+      </div>
+
+
+      <!-- =======================================================
+           VERGLEICH
+      ======================================================== -->
+
+      <div class="container comparisonSection">
+
+        <div class="card">
+
+          <p class="eyebrow">Vergleich</p>
+
+          <h2>Altersvorsorgedepot vs. normales ETF-Depot</h2>
+
+          <p class="comparisonIntro">
+            Wir vergleichen denselben monatlichen Eigenbeitrag.
+            Beim Altersvorsorgedepot werden Zulagen und der modellhafte
+            zusätzliche Steuervorteil berücksichtigt. Beim normalen Depot
+            wird eine vereinfachte laufende Besteuerung der Kapitalerträge
+            eingerechnet.
+          </p>
+
+
+          <div class="comparisonHighlights">
+
+            <div>
+              <span>Mehr / weniger Vermögen</span>
+              <strong id="capitalDifference">0 €</strong>
+            </div>
+
+            <div>
+              <span>Mehr / weniger Netto-Auszahlung</span>
+              <strong id="pensionDifference">0 €</strong>
+            </div>
+
+          </div>
+
+
+          <div class="comparisonBars">
+
+            <div class="comparisonBarRow">
+              <div class="barHeading">
+                <span>AVD zum Rentenbeginn</span>
+                <strong id="avdCapitalCompare">0 €</strong>
+              </div>
+
+              <div class="barTrack">
+                <div
+                  id="avdCapitalBar"
+                  class="barFill barFill--avd"
+                ></div>
+              </div>
+            </div>
+
+
+            <div class="comparisonBarRow">
+              <div class="barHeading">
+                <span>Normales ETF-Depot</span>
+                <strong id="etfCapitalCompare">0 €</strong>
+              </div>
+
+              <div class="barTrack">
+                <div
+                  id="etfCapitalBar"
+                  class="barFill barFill--etf"
+                ></div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="comparisonTable">
+
+            <div class="comparisonTableHeader">
+              <span></span>
+              <strong>AVD</strong>
+              <strong>ETF</strong>
+            </div>
+
+
+            <div>
+              <span>Vermögen Rentenbeginn</span>
+              <strong id="tableAvdCapital">–</strong>
+              <strong id="tableEtfCapital">–</strong>
+            </div>
+
+
+            <div>
+              <span>Monatliche Netto-Auszahlung</span>
+              <strong id="tableAvdPension">–</strong>
+              <strong id="tableEtfPension">–</strong>
+            </div>
+
+
+            <div>
+              <span>Staatliche Zulagen</span>
+              <strong id="tableAvdSubsidies">–</strong>
+              <strong>0 €</strong>
+            </div>
+
+
+            <div>
+              <span>Verfügbarkeit vor Ruhestand</span>
+              <strong>eingeschränkt</strong>
+              <strong>grundsätzlich frei</strong>
+            </div>
+
+          </div>
+
+
+          <div class="notice">
+            <strong>Der rechnerische Sieger ist nicht automatisch die bessere Lösung.</strong>
+
+            <p>
+              Ein normales Depot bietet eine deutlich höhere Verfügbarkeit.
+              Das geförderte Altersvorsorgevermögen ist dagegen langfristig
+              für die Altersvorsorge gebunden. Auch Garantien, Vertragskosten
+              und Ihre persönliche Risikobereitschaft werden durch diesen
+              Vergleich nicht vollständig bewertet.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =======================================================
+           METHODIK
+      ======================================================== -->
+
+      <div class="container methodSection">
+
+        <details class="methodDetails">
+          <summary>So rechnet der Rechner</summary>
+
+          <div class="methodContent">
+
+            <h3>Grundzulage</h3>
+
+            <p>
+              Bis 360 € Eigenbeitrag pro Jahr werden 50 Cent je Euro
+              berücksichtigt. Für den darüber hinausgehenden Eigenbeitrag
+              bis insgesamt 1.800 € werden 25 Cent je Euro angesetzt.
+            </p>
+
+
+            <h3>Kinderzulage</h3>
+
+            <p>
+              Der Rechner berücksichtigt modellhaft bis zu 300 € je
+              zulagenberechtigtem Kind und Beitragsjahr. Für die langfristige
+              Projektion wird vereinfachend mit einer Förderberechtigung
+              bis zum 25. Geburtstag gerechnet.
+            </p>
+
+
+            <h3>Steuervorteil</h3>
+
+            <p>
+              Der Rechner schätzt die steuerliche Wirkung über den von Ihnen
+              angegebenen Grenzsteuersatz. Die bereits erhaltenen Zulagen
+              werden bei der modellhaften Günstigerprüfung berücksichtigt.
+              Das Ergebnis kann von Ihrer tatsächlichen Steuerveranlagung
+              deutlich abweichen.
+            </p>
+
+
+            <h3>Normales ETF-Depot</h3>
+
+            <p>
+              Beim Vergleichsdepot wird eine vereinfachte Besteuerung von
+              Wertzuwächsen mit Kapitalertragsteuer, Solidaritätszuschlag,
+              30 Prozent Teilfreistellung und dem eingestellten
+              Sparer-Pauschbetrag modelliert.
+            </p>
+
+
+            <h3>Auszahlungsphase</h3>
+
+            <p>
+              Das angesparte Kapital wird modellhaft gleichmäßig bis zum
+              gewählten Endalter verrentet beziehungsweise über einen
+              Auszahlungsplan verteilt. Eine angenommene Rendite während
+              der Auszahlungsphase wird berücksichtigt.
+            </p>
+
+
+            <h3>Was nicht vollständig abgebildet wird</h3>
+
+            <p>
+              Individuelle Vertragskosten, Garantien, Rentenfaktoren,
+              Kirchensteuer, persönliche Steuerbesonderheiten,
+              Änderungen der Gesetzgebung und die tatsächliche
+              Kapitalmarktentwicklung können das Ergebnis verändern.
+            </p>
+
+          </div>
+        </details>
+
+      </div>
+
+
+      <!-- =======================================================
+           PDF-AUSWERTUNG
+      ======================================================== -->
+
+      <div class="container pdfSection">
+
+        <div class="card pdfCard">
+
+          <div>
+            <p class="eyebrow">Persönliche PDF-Auswertung</p>
+
+            <h2>
+              Möchten Sie diese Modellrechnung mitnehmen?
+            </h2>
+
+            <p>
+              Lassen Sie sich Ihre aktuellen Eingaben und Ergebnisse
+              später bequem per E-Mail zusenden.
+            </p>
+
+            <p class="small">
+              Die Verbindung zu Zoho Forms und Zoho Writer richten wir
+              im nächsten Schritt ein.
+            </p>
+          </div>
+
+
+          <form id="leadForm" class="pdfForm">
+
+            <div class="inputTwoCol">
+              <input
+                type="text"
+                name="firstname"
+                placeholder="Vorname"
+                required
+              />
+
+              <input
+                type="text"
+                name="lastname"
+                placeholder="Nachname"
+                required
+              />
+            </div>
 
             <input
               type="email"
@@ -394,13 +1088,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
             <label class="privacyCheck">
-              <input
-                type="checkbox"
-                required
-              />
+              <input type="checkbox" required />
 
               <span>
-                Ich stimme der Verarbeitung meiner Angaben gemäß Datenschutzerklärung zu.
+                Ich stimme der Verarbeitung meiner Angaben gemäß
+                Datenschutzerklärung zu.
               </span>
             </label>
 
@@ -414,13 +1106,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
           </form>
 
-          <p class="small">
-            Die persönliche PDF-Auswertung wird im nächsten Schritt
-            mit Zoho Forms und Zoho Writer verbunden.
-          </p>
         </div>
 
       </div>
+
+
+      <div class="container legalCalculatorNotice">
+
+        <p>
+          <strong>Wichtiger Hinweis:</strong>
+          Dieser Rechner dient ausschließlich der allgemeinen Information
+          und stellt keine Anlage-, Steuer-, Rechts- oder Versicherungsberatung
+          dar. Alle Ergebnisse beruhen auf vereinfachten Modellannahmen und
+          sind keine Prognose oder Garantie für tatsächlich erzielbare Ergebnisse.
+        </p>
+
+      </div>
+
     </section>
 
 
@@ -429,6 +1131,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     ========================================================== -->
 
     <section class="section audience-section">
+
       <div class="container sectionHeader">
         <p class="eyebrow">Für wen?</p>
 
@@ -471,11 +1174,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <strong>Selbstständige</strong>
 
           <p>
-            Erstmals kann staatlich geförderte Vorsorge relevant werden.
+            Staatlich geförderte private Vorsorge kann künftig auch
+            für viele Selbstständige relevant werden.
           </p>
         </div>
 
       </div>
+
     </section>
 
 
@@ -484,6 +1189,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     ========================================================== -->
 
     <section class="section perspectives-section">
+
       <div class="container two-col">
 
         <div>
@@ -494,13 +1200,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </h2>
 
           <p>
-            Fondsanbieter sprechen über Renditechancen. Versicherer über Sicherheit.
-            Verbraucherschützer über Kosten. Die Politik über mehr private Vorsorge.
+            Fondsanbieter sprechen über Renditechancen.
+            Versicherer über Sicherheit.
+            Verbraucherschützer über Kosten.
+            Die Politik über mehr private Vorsorge.
           </p>
 
           <p>
-            Alle diese Perspektiven haben ihre Berechtigung. Entscheidend ist jedoch,
-            welche Lösung zu Ihrer persönlichen Situation passt.
+            Alle diese Perspektiven haben ihre Berechtigung.
+            Entscheidend ist jedoch, welche Lösung zu Ihrer
+            persönlichen Situation passt.
           </p>
         </div>
 
@@ -533,7 +1242,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
 
         </div>
+
       </div>
+
     </section>
 
 
@@ -545,9 +1256,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       class="section download-section"
       id="broschuere"
     >
+
       <div class="container two-col">
 
         <div class="brochureBox">
+
           <p class="eyebrow">
             Kostenloser Leitfaden
           </p>
@@ -560,7 +1273,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             Verständlich erklärt. Chancen und Risiken eingeordnet.
             Ohne Produktverkauf.
           </p>
-
 
           <ul>
             <li>
@@ -580,15 +1292,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </li>
           </ul>
 
-
           <p class="brochureNote">
             Nach dem Absenden erhalten Sie per E-Mail sowohl den Leitfaden
             als auch den ergänzenden Experten-Anhang.
           </p>
+
         </div>
 
 
         <div class="card zoho-form-card">
+
           <p class="eyebrow">
             Download
           </p>
@@ -610,9 +1323,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             ></div>
 
           </div>
+
         </div>
 
       </div>
+
     </section>
 
 
@@ -621,9 +1336,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     ========================================================== -->
 
     <section class="section expert-section">
+
       <div class="container expert-grid">
 
         <div>
+
           <p class="eyebrow">
             Ihr Vermögenslotse
           </p>
@@ -638,12 +1355,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
 
           <p>
-            Mein Ansatz: Orientierung statt Produktverkauf. Struktur statt Zufall.
-            Entscheidungen mit System.
+            Mein Ansatz: Orientierung statt Produktverkauf.
+            Struktur statt Zufall. Entscheidungen mit System.
           </p>
 
 
           <div class="proofBox">
+
             <div class="stars">
               ★★★★★
             </div>
@@ -655,27 +1373,33 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <p>
               Logo + Sterne hier einbinden.
             </p>
+
           </div>
+
         </div>
 
 
         <div class="portraitCard">
+
           <img
             src="/images/christian-hero2.png"
             alt="Christian Gradt – Vermögenslotse"
             loading="lazy"
           />
+
         </div>
 
       </div>
+
     </section>
 
 
     <!-- =========================================================
-         CTA
+         FINAL CTA
     ========================================================== -->
 
     <section class="section final-cta">
+
       <div class="container ctaBox">
 
         <p class="eyebrow">
@@ -683,14 +1407,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </p>
 
         <h2>
-          Welche Rolle kann das Altersvorsorgedepot in Ihrer Strategie spielen?
+          Welche Rolle kann das Altersvorsorgedepot
+          in Ihrer Strategie spielen?
         </h2>
 
         <p>
           Besprechen Sie Ihre Ergebnisse persönlich und prüfen Sie,
           welche nächsten Schritte für Ihre Situation sinnvoll sind.
         </p>
-
 
         <a
           class="btn"
@@ -700,13 +1424,24 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </a>
 
       </div>
+
     </section>
 
   </main>
 
 
   <!-- =========================================================
-       ZOHO FORM JAVASCRIPT
+       CHART.JS
+  ========================================================== -->
+
+  <script
+    is:inline
+    src="https://cdn.jsdelivr.net/npm/chart.js"
+  ></script>
+
+
+  <!-- =========================================================
+       ZOHO BROSCHÜREN-FORMULAR
   ========================================================== -->
 
   <script is:inline>
@@ -777,8 +1512,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     utmVal;
 
                 }
+
               }
+
             }
+
           }
 
 
@@ -829,8 +1567,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     utmVal;
 
                 }
+
               }
+
             }
+
           }
 
 
@@ -895,6 +1636,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     );
 
                 }
+
               }
 
 
@@ -906,13 +1648,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 ) +
                 "referrername=" +
                 encodeURIComponent(rfr);
+
             }
+
           }
 
         } catch (e) {}
 
 
-        f.src = ifrmSrc;
+        f.src =
+          ifrmSrc;
 
         f.style.border =
           "none";
@@ -939,9 +1684,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
         if (d) {
-
           d.appendChild(f);
-
         }
 
 
@@ -988,9 +1731,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                   );
 
 
-                if (!formContainer) {
-                  return;
-                }
+                if (!formContainer) return;
 
 
                 var iframe =
@@ -1000,9 +1741,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     )[0];
 
 
-                if (!iframe) {
-                  return;
-                }
+                if (!iframe) return;
 
 
                 if (
@@ -1042,16 +1781,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     zf_ifrm_ht_nw
                   ) {
 
-                    if (
-                      zf_tout
-                    ) {
+                    if (zf_tout) {
 
                       setTimeout(
                         function() {
-
                           iframe.style.height =
                             zf_ifrm_ht_nw;
-
                         },
                         500
                       );
@@ -1062,10 +1797,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                         zf_ifrm_ht_nw;
 
                     }
+
                   }
+
                 }
+
               }
+
             }
+
           },
 
           false
@@ -1077,20 +1817,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
   <!-- =========================================================
-       CHART.JS
-  ========================================================== -->
-
-  <script
-    is:inline
-    src="https://cdn.jsdelivr.net/npm/chart.js"
-  ></script>
-
-
-  <!-- =========================================================
-       RECHNER JAVASCRIPT
+       RECHNER
   ========================================================== -->
 
   <script is:inline>
+
+    /* ---------------------------------------------------------
+       FORMATTER
+    ---------------------------------------------------------- */
 
     const euro =
       new Intl.NumberFormat(
@@ -1103,488 +1837,1504 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       );
 
 
-    const els = {
-
-      monthly:
-        document.getElementById(
-          "monthly"
-        ),
-
-      income:
-        document.getElementById(
-          "income"
-        ),
-
-      birthyear:
-        document.getElementById(
-          "birthyear"
-        ),
-
-      retirementAge:
-        document.getElementById(
-          "retirementAge"
-        ),
-
-      children:
-        document.getElementById(
-          "children"
-        ),
-
-      returnRate:
-        document.getElementById(
-          "returnRate"
-        ),
-
-      inflationRate:
-        document.getElementById(
-          "inflationRate"
-        ),
-
-      returnLabel:
-        document.getElementById(
-          "returnLabel"
-        ),
-
-      inflationLabel:
-        document.getElementById(
-          "inflationLabel"
-        ),
-
-      totalSubsidy:
-        document.getElementById(
-          "totalSubsidy"
-        ),
-
-      avdFinal:
-        document.getElementById(
-          "avdFinal"
-        ),
-
-      realValue:
-        document.getElementById(
-          "realValue"
-        ),
-
-      compareAvd:
-        document.getElementById(
-          "compareAvd"
-        ),
-
-      compareEtf:
-        document.getElementById(
-          "compareEtf"
-        ),
-
-      advantage:
-        document.getElementById(
-          "advantage"
-        ),
-
-      summaryText:
-        document.getElementById(
-          "summaryText"
-        ),
-
-      headline:
-        document.getElementById(
-          "headline"
-        ),
-
-      calculateBtn:
-        document.getElementById(
-          "calculateBtn"
-        ),
-
-      leadForm:
-        document.getElementById(
-          "leadForm"
-        )
-    };
-
-
-    let chart;
-
-
-    const tooltipTexts = {
-
-      sparrate:
-        "Ihr monatlicher Eigenbeitrag. Jeder andere Betrag kann frei eingetragen werden.",
-
-      income:
-        "Das Bruttojahreseinkommen dient der späteren steuerlichen Einordnung. In dieser Version wird es noch nicht steuerlich optimiert.",
-
-      birthyear:
-        "Aus dem Geburtsjahr wird der Zeitraum bis zum Renteneintritt abgeleitet. Die Berechnung startet modellhaft mit 2027.",
-
-      retirement:
-        "Standardmäßig wird mit Renteneintritt 67 gerechnet. Sie können den Wert anpassen.",
-
-      return:
-        "Angenommene jährliche Rendite nach Kosten. Die Berechnung erfolgt modellhaft mit monatlicher Verzinsung.",
-
-      inflation:
-        "Inflation reduziert die Kaufkraft des späteren Vermögens. Standardwert: 2 % pro Jahr.",
-
-      children:
-        "Für Kinder wird modellhaft eine Kinderzulage von bis zu 300 € pro Kind und Jahr berücksichtigt."
-    };
-
-
-    const tooltip =
-      document.getElementById(
-        "tooltip"
+    const euroExact =
+      new Intl.NumberFormat(
+        "de-DE",
+        {
+          style: "currency",
+          currency: "EUR",
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 2
+        }
       );
 
 
-    function annualSubsidy(
-      monthly,
-      children
+    /* ---------------------------------------------------------
+       ELEMENTE
+    ---------------------------------------------------------- */
+
+    const el = {
+
+      monthly:
+        document.getElementById("monthly"),
+
+      monthlyLabel:
+        document.getElementById("monthlyLabel"),
+
+      riesterTransfer:
+        document.getElementById("riesterTransfer"),
+
+      riesterLabel:
+        document.getElementById("riesterLabel"),
+
+      riesterNotice:
+        document.getElementById("riesterNotice"),
+
+      currentAge:
+        document.getElementById("currentAge"),
+
+      retirementAge:
+        document.getElementById("retirementAge"),
+
+      payoutUntil:
+        document.getElementById("payoutUntil"),
+
+      payoutLabel:
+        document.getElementById("payoutLabel"),
+
+      childrenList:
+        document.getElementById("childrenList"),
+
+      addChildBtn:
+        document.getElementById("addChildBtn"),
+
+      avdReturn:
+        document.getElementById("avdReturn"),
+
+      avdCosts:
+        document.getElementById("avdCosts"),
+
+      etfReturn:
+        document.getElementById("etfReturn"),
+
+      etfCosts:
+        document.getElementById("etfCosts"),
+
+      taxRateNow:
+        document.getElementById("taxRateNow"),
+
+      taxRateRetirement:
+        document.getElementById("taxRateRetirement"),
+
+      inflationRate:
+        document.getElementById("inflationRate"),
+
+      payoutReturn:
+        document.getElementById("payoutReturn"),
+
+      taxAllowance:
+        document.getElementById("taxAllowance"),
+
+      netMonthlyPension:
+        document.getElementById("netMonthlyPension"),
+
+      effectiveOwnCost:
+        document.getElementById("effectiveOwnCost"),
+
+      heroCapital:
+        document.getElementById("heroCapital"),
+
+      heroRealCapital:
+        document.getElementById("heroRealCapital"),
+
+      heroRetirementAge:
+        document.getElementById("heroRetirementAge"),
+
+      heroSummary:
+        document.getElementById("heroSummary"),
+
+      annualSupport:
+        document.getElementById("annualSupport"),
+
+      annualOwn:
+        document.getElementById("annualOwn"),
+
+      annualAllowance:
+        document.getElementById("annualAllowance"),
+
+      annualTaxBenefit:
+        document.getElementById("annualTaxBenefit"),
+
+      supportOwnBar:
+        document.getElementById("supportOwnBar"),
+
+      supportSubsidyBar:
+        document.getElementById("supportSubsidyBar"),
+
+      supportTaxBar:
+        document.getElementById("supportTaxBar"),
+
+      supportExplanation:
+        document.getElementById("supportExplanation"),
+
+      totalOwnContributions:
+        document.getElementById("totalOwnContributions"),
+
+      totalAllowances:
+        document.getElementById("totalAllowances"),
+
+      totalTaxBenefits:
+        document.getElementById("totalTaxBenefits"),
+
+      totalRiester:
+        document.getElementById("totalRiester"),
+
+      investmentGrowth:
+        document.getElementById("investmentGrowth"),
+
+      compositionTotal:
+        document.getElementById("compositionTotal"),
+
+      capitalDifference:
+        document.getElementById("capitalDifference"),
+
+      pensionDifference:
+        document.getElementById("pensionDifference"),
+
+      avdCapitalCompare:
+        document.getElementById("avdCapitalCompare"),
+
+      etfCapitalCompare:
+        document.getElementById("etfCapitalCompare"),
+
+      avdCapitalBar:
+        document.getElementById("avdCapitalBar"),
+
+      etfCapitalBar:
+        document.getElementById("etfCapitalBar"),
+
+      tableAvdCapital:
+        document.getElementById("tableAvdCapital"),
+
+      tableEtfCapital:
+        document.getElementById("tableEtfCapital"),
+
+      tableAvdPension:
+        document.getElementById("tableAvdPension"),
+
+      tableEtfPension:
+        document.getElementById("tableEtfPension"),
+
+      tableAvdSubsidies:
+        document.getElementById("tableAvdSubsidies"),
+
+      saveScenarioBtn:
+        document.getElementById("saveScenarioBtn"),
+
+      savedScenarioBox:
+        document.getElementById("savedScenarioBox"),
+
+      savedCapital:
+        document.getElementById("savedCapital"),
+
+      savedPension:
+        document.getElementById("savedPension"),
+
+      clearScenarioBtn:
+        document.getElementById("clearScenarioBtn"),
+
+      resetCalculatorBtn:
+        document.getElementById("resetCalculatorBtn"),
+
+      leadForm:
+        document.getElementById("leadForm"),
+
+      tooltip:
+        document.getElementById("tooltip")
+
+    };
+
+
+    /* ---------------------------------------------------------
+       STATUS
+    ---------------------------------------------------------- */
+
+    let children =
+      [];
+
+
+    let chart =
+      null;
+
+
+    let latestResult =
+      null;
+
+
+    let savedScenario =
+      null;
+
+
+    /* ---------------------------------------------------------
+       TOOLTIP
+    ---------------------------------------------------------- */
+
+    const tooltipTexts = {
+
+      monthly:
+        "Ihr tatsächlicher monatlicher Eigenbeitrag. Zulagen werden zusätzlich in den Vertrag eingezahlt.",
+
+      riester:
+        "Optionales vorhandenes Riester-Vermögen. Der Rechner bewertet damit nur die modellhafte Kapitalentwicklung, nicht die Qualität Ihres Altvertrags.",
+
+      age:
+        "Ihr Alter zu Beginn des Modelljahres 2027.",
+
+      payout:
+        "Der befristete Auszahlungsplan wird modellhaft mindestens bis Alter 85 gerechnet.",
+
+      children:
+        "Kinder werden vereinfachend über ihr Geburtsjahr berücksichtigt. Die tatsächliche Zulagenberechtigung sollte individuell geprüft werden."
+
+    };
+
+
+    /* ---------------------------------------------------------
+       KINDER
+    ---------------------------------------------------------- */
+
+    function addChild(
+      birthYear = 2015
     ) {
 
-      const yearly =
-        monthly * 12;
+      children.push({
+        id:
+          Date.now() +
+          Math.random(),
+
+        birthYear
+      });
 
 
-      const stage1 =
+      renderChildren();
+
+      calculate();
+
+    }
+
+
+    function removeChild(
+      id
+    ) {
+
+      children =
+        children.filter(
+          child =>
+            child.id !== id
+        );
+
+
+      renderChildren();
+
+      calculate();
+
+    }
+
+
+    function renderChildren() {
+
+      if (
+        children.length === 0
+      ) {
+
+        el.childrenList.innerHTML =
+          `
+            <p class="emptyChildren">
+              Keine Kinder hinterlegt.
+            </p>
+          `;
+
+        return;
+
+      }
+
+
+      el.childrenList.innerHTML =
+        children
+          .map(
+            (child, index) =>
+              `
+                <div class="childRow">
+
+                  <div>
+                    <label>
+                      Kind ${index + 1} – Geburtsjahr
+                    </label>
+
+                    <input
+                      type="number"
+                      class="childBirthYear"
+                      data-id="${child.id}"
+                      value="${child.birthYear}"
+                      min="2002"
+                      max="2026"
+                    />
+
+                    <small>
+                      Modellhaft bis zum 25. Geburtstag berücksichtigt
+                    </small>
+                  </div>
+
+                  <button
+                    type="button"
+                    class="removeChildBtn"
+                    data-id="${child.id}"
+                    aria-label="Kind entfernen"
+                  >
+                    ×
+                  </button>
+
+                </div>
+              `
+          )
+          .join("");
+
+
+      document
+        .querySelectorAll(
+          ".childBirthYear"
+        )
+        .forEach(
+          input => {
+
+            input.addEventListener(
+              "input",
+              () => {
+
+                const id =
+                  Number(
+                    input.dataset.id
+                  );
+
+
+                const child =
+                  children.find(
+                    item =>
+                      item.id === id
+                  );
+
+
+                if (child) {
+
+                  child.birthYear =
+                    Number(
+                      input.value
+                    );
+
+                }
+
+
+                calculate();
+
+              }
+            );
+
+          }
+        );
+
+
+      document
+        .querySelectorAll(
+          ".removeChildBtn"
+        )
+        .forEach(
+          button => {
+
+            button.addEventListener(
+              "click",
+              () => {
+
+                removeChild(
+                  Number(
+                    button.dataset.id
+                  )
+                );
+
+              }
+            );
+
+          }
+        );
+
+    }
+
+
+    /* ---------------------------------------------------------
+       FÖRDERUNG
+    ---------------------------------------------------------- */
+
+    function basicAllowance(
+      yearlyContribution
+    ) {
+
+      if (
+        yearlyContribution < 120
+      ) {
+        return 0;
+      }
+
+
+      const funded =
         Math.min(
-          yearly,
+          yearlyContribution,
+          1800
+        );
+
+
+      const firstStage =
+        Math.min(
+          funded,
           360
-        ) * 0.5;
+        ) *
+        0.50;
 
 
-      const stage2 =
+      const secondStage =
         Math.max(
           0,
-          Math.min(
-            yearly,
-            1800
-          ) - 360
-        ) * 0.25;
+          funded - 360
+        ) *
+        0.25;
 
 
-      const childSubsidy =
+      return (
+        firstStage +
+        secondStage
+      );
+
+    }
+
+
+    function eligibleChildrenForYear(
+      year
+    ) {
+
+      return children.filter(
+        child => {
+
+          const age =
+            year -
+            child.birthYear;
+
+
+          return (
+            age >= 0 &&
+            age < 25
+          );
+
+        }
+      ).length;
+
+    }
+
+
+    function childAllowance(
+      yearlyContribution,
+      year
+    ) {
+
+      if (
+        yearlyContribution < 120
+      ) {
+        return 0;
+      }
+
+
+      const childCount =
+        eligibleChildrenForYear(
+          year
+        );
+
+
+      const allowancePerChild =
         Math.min(
-          monthly * 12,
-          children * 300
+          yearlyContribution,
+          300
         );
 
 
       return (
-        stage1 +
-        stage2 +
-        childSubsidy
+        childCount *
+        allowancePerChild
       );
+
     }
 
 
-    function compoundMonthly(
-      monthlyContribution,
-      yearlySubsidy,
+    function totalAllowance(
+      yearlyContribution,
+      year
+    ) {
+
+      return (
+        basicAllowance(
+          yearlyContribution
+        ) +
+        childAllowance(
+          yearlyContribution,
+          year
+        )
+      );
+
+    }
+
+
+    function taxBenefit(
+      yearlyContribution,
+      allowance,
+      taxRate
+    ) {
+
+      const fundedContribution =
+        Math.min(
+          yearlyContribution,
+          1800
+        );
+
+
+      const deductible =
+        fundedContribution +
+        allowance;
+
+
+      const grossTaxEffect =
+        deductible *
+        (
+          taxRate /
+          100
+        );
+
+
+      return Math.max(
+        0,
+        grossTaxEffect -
+        allowance
+      );
+
+    }
+
+
+    /* ---------------------------------------------------------
+       ETF-STEUERDRAG
+    ---------------------------------------------------------- */
+
+    function applyEtfYearTax(
+      capitalBeforeGain,
+      capitalAfterGain,
+      taxAllowance
+    ) {
+
+      const gain =
+        Math.max(
+          0,
+          capitalAfterGain -
+          capitalBeforeGain
+        );
+
+
+      const taxableGain =
+        Math.max(
+          0,
+          gain *
+          0.70 -
+          taxAllowance
+        );
+
+
+      const taxRate =
+        0.26375;
+
+
+      const tax =
+        taxableGain *
+        taxRate;
+
+
+      return Math.max(
+        0,
+        capitalAfterGain -
+        tax
+      );
+
+    }
+
+
+    /* ---------------------------------------------------------
+       AUSZAHLUNGSPLAN
+    ---------------------------------------------------------- */
+
+    function annuityPayment(
+      capital,
       years,
       annualReturn
     ) {
 
-      const r =
+      const months =
+        Math.max(
+          1,
+          years * 12
+        );
+
+
+      const monthlyRate =
         annualReturn /
         100 /
         12;
 
 
-      let capital =
+      if (
+        monthlyRate <= 0
+      ) {
+
+        return (
+          capital /
+          months
+        );
+
+      }
+
+
+      return (
+        capital *
+        monthlyRate /
+        (
+          1 -
+          Math.pow(
+            1 +
+            monthlyRate,
+            -months
+          )
+        )
+      );
+
+    }
+
+
+    /* ---------------------------------------------------------
+       HAUPTBERECHNUNG
+    ---------------------------------------------------------- */
+
+    function calculateModel() {
+
+      const monthly =
+        Number(
+          el.monthly.value
+        );
+
+
+      const yearlyContribution =
+        monthly *
+        12;
+
+
+      const riesterTransfer =
+        Number(
+          el.riesterTransfer.value
+        );
+
+
+      const currentAge =
+        Number(
+          el.currentAge.value
+        );
+
+
+      const retirementAge =
+        Math.max(
+          65,
+          Number(
+            el.retirementAge.value
+          )
+        );
+
+
+      const payoutUntil =
+        Math.max(
+          85,
+          Number(
+            el.payoutUntil.value
+          )
+        );
+
+
+      const yearsToRetirement =
+        Math.max(
+          1,
+          retirementAge -
+          currentAge
+        );
+
+
+      const payoutYears =
+        Math.max(
+          1,
+          payoutUntil -
+          retirementAge
+        );
+
+
+      const avdNetReturn =
+        Math.max(
+          -0.99,
+          (
+            Number(
+              el.avdReturn.value
+            ) -
+            Number(
+              el.avdCosts.value
+            )
+          ) /
+          100
+        );
+
+
+      const etfNetReturn =
+        Math.max(
+          -0.99,
+          (
+            Number(
+              el.etfReturn.value
+            ) -
+            Number(
+              el.etfCosts.value
+            )
+          ) /
+          100
+        );
+
+
+      const inflation =
+        Number(
+          el.inflationRate.value
+        ) /
+        100;
+
+
+      const taxNow =
+        Number(
+          el.taxRateNow.value
+        );
+
+
+      const taxRetirement =
+        Number(
+          el.taxRateRetirement.value
+        ) /
+        100;
+
+
+      const payoutReturn =
+        Number(
+          el.payoutReturn.value
+        );
+
+
+      const taxAllowance =
+        Number(
+          el.taxAllowance.value
+        );
+
+
+      let avdFunded =
+        riesterTransfer;
+
+
+      let avdUnfunded =
+        0;
+
+
+      let avdUnfundedBasis =
+        0;
+
+
+      let etfCapital =
+        0;
+
+
+      let totalOwn =
+        0;
+
+
+      let totalAllowances =
+        0;
+
+
+      let totalTaxBenefits =
         0;
 
 
       const labels =
         [];
 
-      const deposits =
+
+      const avdSeries =
         [];
 
-      const subsidies =
+
+      const etfSeries =
         [];
 
-      const total =
+
+      const annualRows =
         [];
 
 
       for (
-        let y = 0;
-        y <= years;
-        y++
+        let yearIndex = 0;
+        yearIndex <= yearsToRetirement;
+        yearIndex++
       ) {
 
+        const calendarYear =
+          2027 +
+          yearIndex;
+
+
+        const age =
+          currentAge +
+          yearIndex;
+
+
         labels.push(
-          String(
-            2027 + y
-          )
+          String(age)
         );
 
 
-        deposits.push(
-          monthlyContribution *
-          12 *
-          y
+        avdSeries.push(
+          avdFunded +
+          avdUnfunded
         );
 
 
-        subsidies.push(
-          yearlySubsidy *
-          y
+        etfSeries.push(
+          etfCapital
         );
 
 
-        total.push(
-          capital
-        );
-
-
-        for (
-          let m = 0;
-          m < 12 &&
-          y < years;
-          m++
+        if (
+          yearIndex ===
+          yearsToRetirement
         ) {
-
-          capital =
-            capital *
-            (1 + r) +
-            monthlyContribution +
-            yearlySubsidy / 12;
+          break;
         }
+
+
+        const fundedOwn =
+          Math.min(
+            yearlyContribution,
+            1800
+          );
+
+
+        const unfundedOwn =
+          Math.max(
+            0,
+            yearlyContribution -
+            fundedOwn
+          );
+
+
+        const allowance =
+          totalAllowance(
+            fundedOwn,
+            calendarYear
+          );
+
+
+        const taxRefund =
+          taxBenefit(
+            fundedOwn,
+            allowance,
+            taxNow
+          );
+
+
+        totalOwn +=
+          yearlyContribution;
+
+
+        totalAllowances +=
+          allowance;
+
+
+        totalTaxBenefits +=
+          taxRefund;
+
+
+        annualRows.push({
+          calendarYear,
+          allowance,
+          taxRefund
+        });
+
+
+        /* AVD geförderter Topf */
+
+        avdFunded +=
+          fundedOwn +
+          allowance;
+
+
+        avdFunded *=
+          (
+            1 +
+            avdNetReturn
+          );
+
+
+        /* Nicht geförderter Teil + Steuererstattung */
+
+        avdUnfunded +=
+          unfundedOwn +
+          taxRefund;
+
+
+        avdUnfundedBasis +=
+          unfundedOwn +
+          taxRefund;
+
+
+        avdUnfunded *=
+          (
+            1 +
+            avdNetReturn
+          );
+
+
+        /* Vergleichs-ETF */
+
+        const etfBeforeGain =
+          etfCapital +
+          yearlyContribution;
+
+
+        const etfAfterGain =
+          etfBeforeGain *
+          (
+            1 +
+            etfNetReturn
+          );
+
+
+        etfCapital =
+          applyEtfYearTax(
+            etfBeforeGain,
+            etfAfterGain,
+            taxAllowance
+          );
+
       }
 
 
+      const avdCapital =
+        avdFunded +
+        avdUnfunded;
+
+
+      const realCapital =
+        avdCapital /
+        Math.pow(
+          1 +
+          inflation,
+          yearsToRetirement
+        );
+
+
+      /* -------------------------------------------
+         AVD NETTO ZUM AUSZAHLSTART
+      -------------------------------------------- */
+
+      const fundedNetCapital =
+        avdFunded *
+        (
+          1 -
+          taxRetirement
+        );
+
+
+      const unfundedGain =
+        Math.max(
+          0,
+          avdUnfunded -
+          avdUnfundedBasis
+        );
+
+
+      const effectiveCapitalGainTax =
+        0.26375 *
+        0.70;
+
+
+      const unfundedNetCapital =
+        avdUnfundedBasis +
+        unfundedGain *
+        (
+          1 -
+          effectiveCapitalGainTax
+        );
+
+
+      const avdNetCapitalForPayout =
+        fundedNetCapital +
+        unfundedNetCapital;
+
+
+      const avdMonthlyNet =
+        annuityPayment(
+          avdNetCapitalForPayout,
+          payoutYears,
+          payoutReturn
+        );
+
+
+      /* ETF-Auszahlung */
+
+      const etfPayoutReturn =
+        payoutReturn *
+        (
+          1 -
+          effectiveCapitalGainTax
+        );
+
+
+      const etfMonthlyNet =
+        annuityPayment(
+          etfCapital,
+          payoutYears,
+          etfPayoutReturn
+        );
+
+
+      const firstYear =
+        annualRows[0] ||
+        {
+          allowance: 0,
+          taxRefund: 0
+        };
+
+
+      const effectiveOwnCost =
+        Math.max(
+          0,
+          (
+            yearlyContribution -
+            firstYear.allowance -
+            firstYear.taxRefund
+          ) /
+          12
+        );
+
+
+      const investmentGrowth =
+        avdCapital -
+        totalOwn -
+        totalAllowances -
+        totalTaxBenefits -
+        riesterTransfer;
+
+
       return {
-        final: capital,
+
+        monthly,
+        yearlyContribution,
+        riesterTransfer,
+        currentAge,
+        retirementAge,
+        payoutUntil,
+        yearsToRetirement,
+        payoutYears,
+
+        avdCapital,
+        etfCapital,
+        realCapital,
+
+        avdMonthlyNet,
+        etfMonthlyNet,
+
+        effectiveOwnCost,
+
+        totalOwn,
+        totalAllowances,
+        totalTaxBenefits,
+
+        investmentGrowth,
+
+        firstYearAllowance:
+          firstYear.allowance,
+
+        firstYearTaxBenefit:
+          firstYear.taxRefund,
+
         labels,
-        deposits,
-        subsidies,
-        total
+        avdSeries,
+        etfSeries
+
       };
+
     }
 
 
-    function calculate() {
+    /* ---------------------------------------------------------
+       UI
+    ---------------------------------------------------------- */
 
-      const monthly =
-        Number(
-          els.monthly.value || 0
+    function updateUI(
+      result
+    ) {
+
+      latestResult =
+        result;
+
+
+      el.monthlyLabel.textContent =
+        euro.format(
+          result.monthly
         );
 
 
-      const birthyear =
-        Number(
-          els.birthyear.value || 1990
+      el.riesterLabel.textContent =
+        euro.format(
+          result.riesterTransfer
         );
 
 
-      const retirementAge =
-        Number(
-          els.retirementAge.value || 67
+      el.payoutLabel.textContent =
+        result.payoutUntil;
+
+
+      el.riesterNotice.hidden =
+        result.riesterTransfer <= 0;
+
+
+      el.netMonthlyPension.textContent =
+        euro.format(
+          result.avdMonthlyNet
         );
 
 
-      const children =
-        Number(
-          els.children.value || 0
+      el.effectiveOwnCost.textContent =
+        euro.format(
+          result.effectiveOwnCost
+        ) +
+        " / Monat";
+
+
+      el.heroCapital.textContent =
+        euro.format(
+          result.avdCapital
         );
 
 
-      const returnRate =
-        Number(
-          els.returnRate.value || 5
+      el.heroRealCapital.textContent =
+        euro.format(
+          result.realCapital
         );
 
 
-      const inflation =
-        Number(
-          els.inflationRate.value || 2
+      el.heroRetirementAge.textContent =
+        `mit ${result.retirementAge} Jahren`;
+
+
+      el.heroSummary.innerHTML =
+        `Bis zum Rentenbeginn mit <strong>${result.retirementAge}</strong> Jahren ` +
+        `ergibt die Modellrechnung ein Vermögen von <strong>${euro.format(result.avdCapital)}</strong>. ` +
+        `Davon stammen insgesamt <strong>${euro.format(result.totalAllowances)}</strong> aus Zulagen ` +
+        `und modellhaft <strong>${euro.format(result.totalTaxBenefits)}</strong> aus zusätzlichen Steuervorteilen.`;
+
+
+      const firstYearSupport =
+        result.firstYearAllowance +
+        result.firstYearTaxBenefit;
+
+
+      el.annualSupport.textContent =
+        euro.format(
+          firstYearSupport
         );
 
 
-      const currentYear =
-        2027;
+      el.annualOwn.textContent =
+        euro.format(
+          result.yearlyContribution
+        );
 
 
-      const age =
-        currentYear -
-        birthyear;
+      el.annualAllowance.textContent =
+        euro.format(
+          result.firstYearAllowance
+        );
 
 
-      const years =
+      el.annualTaxBenefit.textContent =
+        euro.format(
+          result.firstYearTaxBenefit
+        );
+
+
+      const supportTotal =
         Math.max(
-          0,
-          retirementAge -
-          age
+          1,
+          result.yearlyContribution +
+          result.firstYearAllowance +
+          result.firstYearTaxBenefit
         );
 
 
-      const subsidy =
-        annualSubsidy(
-          monthly,
-          children
-        );
+      el.supportOwnBar.style.width =
+        (
+          result.yearlyContribution /
+          supportTotal *
+          100
+        ) +
+        "%";
 
 
-      const avd =
-        compoundMonthly(
-          monthly,
-          subsidy,
-          years,
-          returnRate
-        );
+      el.supportSubsidyBar.style.width =
+        (
+          result.firstYearAllowance /
+          supportTotal *
+          100
+        ) +
+        "%";
 
 
-      const etf =
-        compoundMonthly(
-          monthly,
-          0,
-          years,
-          returnRate
-        );
+      el.supportTaxBar.style.width =
+        (
+          result.firstYearTaxBenefit /
+          supportTotal *
+          100
+        ) +
+        "%";
 
 
-      const realValue =
-        avd.final /
-        Math.pow(
-          1 +
-          inflation / 100,
-          years
-        );
+      const supportRate =
+        result.yearlyContribution > 0
+          ? firstYearSupport /
+            result.yearlyContribution *
+            100
+          : 0;
 
 
-      const advantage =
-        avd.final -
-        etf.final;
+      el.supportExplanation.textContent =
+        `Zulagen und modellhafter zusätzlicher Steuervorteil entsprechen im ersten Jahr rund ${supportRate.toFixed(0)} % Ihres Eigenbeitrags.`;
 
 
-      els.returnLabel.textContent =
-        returnRate
-          .toFixed(1)
-          .replace(
-            ".",
-            ","
-          ) +
-        " %";
-
-
-      els.inflationLabel.textContent =
-        inflation
-          .toFixed(1)
-          .replace(
-            ".",
-            ","
-          ) +
-        " %";
-
-
-      els.headline.textContent =
-        `Brutto-Vermögen mit ${retirementAge}`;
-
-
-      els.totalSubsidy.textContent =
+      el.totalOwnContributions.textContent =
         euro.format(
-          subsidy *
-          years
+          result.totalOwn
         );
 
 
-      els.avdFinal.textContent =
+      el.totalAllowances.textContent =
         euro.format(
-          avd.final
+          result.totalAllowances
         );
 
 
-      els.realValue.textContent =
+      el.totalTaxBenefits.textContent =
         euro.format(
-          realValue
+          result.totalTaxBenefits
         );
 
 
-      els.compareAvd.textContent =
+      el.totalRiester.textContent =
         euro.format(
-          avd.final
+          result.riesterTransfer
         );
 
 
-      els.compareEtf.textContent =
+      el.investmentGrowth.textContent =
         euro.format(
-          etf.final
+          result.investmentGrowth
         );
 
 
-      els.advantage.textContent =
+      el.compositionTotal.textContent =
         euro.format(
-          advantage
+          result.avdCapital
         );
 
 
-      els.summaryText.innerHTML =
-        `Bei Renteneintritt mit <strong>${retirementAge}</strong> und ` +
-        `<strong>${returnRate.toFixed(1).replace(".", ",")} %</strong> Rendite nach Kosten ` +
-        `beträgt Ihr geschätztes Brutto-Vermögen im Altersvorsorgedepot ` +
-        `<strong>${euro.format(avd.final)}</strong>. Bei ` +
-        `<strong>${inflation.toFixed(1).replace(".", ",")} %</strong> Inflation entspricht dies ` +
-        `einer heutigen Kaufkraft von <strong>${euro.format(realValue)}</strong>.`;
+      const capitalDiff =
+        result.avdCapital -
+        result.etfCapital;
+
+
+      const pensionDiff =
+        result.avdMonthlyNet -
+        result.etfMonthlyNet;
+
+
+      el.capitalDifference.textContent =
+        (
+          capitalDiff >= 0
+            ? "+"
+            : ""
+        ) +
+        euro.format(
+          capitalDiff
+        );
+
+
+      el.pensionDifference.textContent =
+        (
+          pensionDiff >= 0
+            ? "+"
+            : ""
+        ) +
+        euro.format(
+          pensionDiff
+        ) +
+        " / Monat";
+
+
+      el.capitalDifference.classList.toggle(
+        "positiveValue",
+        capitalDiff >= 0
+      );
+
+
+      el.capitalDifference.classList.toggle(
+        "negativeValue",
+        capitalDiff < 0
+      );
+
+
+      el.pensionDifference.classList.toggle(
+        "positiveValue",
+        pensionDiff >= 0
+      );
+
+
+      el.pensionDifference.classList.toggle(
+        "negativeValue",
+        pensionDiff < 0
+      );
+
+
+      el.avdCapitalCompare.textContent =
+        euro.format(
+          result.avdCapital
+        );
+
+
+      el.etfCapitalCompare.textContent =
+        euro.format(
+          result.etfCapital
+        );
+
+
+      const maxCapital =
+        Math.max(
+          result.avdCapital,
+          result.etfCapital,
+          1
+        );
+
+
+      el.avdCapitalBar.style.width =
+        (
+          result.avdCapital /
+          maxCapital *
+          100
+        ) +
+        "%";
+
+
+      el.etfCapitalBar.style.width =
+        (
+          result.etfCapital /
+          maxCapital *
+          100
+        ) +
+        "%";
+
+
+      el.tableAvdCapital.textContent =
+        euro.format(
+          result.avdCapital
+        );
+
+
+      el.tableEtfCapital.textContent =
+        euro.format(
+          result.etfCapital
+        );
+
+
+      el.tableAvdPension.textContent =
+        euro.format(
+          result.avdMonthlyNet
+        );
+
+
+      el.tableEtfPension.textContent =
+        euro.format(
+          result.etfMonthlyNet
+        );
+
+
+      el.tableAvdSubsidies.textContent =
+        euro.format(
+          result.totalAllowances
+        );
 
 
       drawChart(
-        avd.labels,
-        avd.deposits,
-        avd.subsidies,
-        avd.total
+        result
       );
+
     }
 
 
+    /* ---------------------------------------------------------
+       CHART
+    ---------------------------------------------------------- */
+
     function drawChart(
-      labels,
-      deposits,
-      subsidies,
-      total
+      result
     ) {
 
-      const ctx =
+      const canvas =
         document.getElementById(
           "growthChart"
         );
 
 
+      if (!canvas) return;
+
+
       if (chart) {
-
         chart.destroy();
-
       }
 
 
       chart =
         new Chart(
-          ctx,
+          canvas,
           {
 
-            type: "line",
+            type:
+              "line",
 
             data: {
 
-              labels,
+              labels:
+                result.labels,
 
               datasets: [
 
                 {
                   label:
-                    "Einzahlungen",
+                    "Altersvorsorgedepot",
 
                   data:
-                    deposits,
+                    result.avdSeries,
 
                   borderColor:
-                    "#8d969d",
+                    "#1f5b35",
 
                   backgroundColor:
-                    "rgba(141,150,157,.15)",
+                    "rgba(31,91,53,.10)",
+
+                  borderWidth:
+                    3,
 
                   fill:
                     true,
+
+                  pointRadius:
+                    0,
 
                   tension:
                     0.25
@@ -1593,46 +3343,32 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
                 {
                   label:
-                    "Förderung",
+                    "Normales ETF-Depot",
 
                   data:
-                    subsidies,
+                    result.etfSeries,
 
                   borderColor:
-                    "#1e88c8",
+                    "#8ca8bd",
 
                   backgroundColor:
-                    "rgba(30,136,200,.18)",
+                    "rgba(140,168,189,.06)",
+
+                  borderWidth:
+                    3,
 
                   fill:
-                    true,
+                    false,
 
-                  tension:
-                    0.25
-                },
-
-
-                {
-                  label:
-                    "Gesamtvermögen",
-
-                  data:
-                    total,
-
-                  borderColor:
-                    "#1f6b3a",
-
-                  backgroundColor:
-                    "rgba(31,107,58,.18)",
-
-                  fill:
-                    true,
+                  pointRadius:
+                    0,
 
                   tension:
                     0.25
                 }
 
               ]
+
             },
 
 
@@ -1641,21 +3377,65 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               responsive:
                 true,
 
+              maintainAspectRatio:
+                false,
+
+              interaction: {
+                intersect:
+                  false,
+
+                mode:
+                  "index"
+              },
+
 
               plugins: {
 
                 legend: {
+                  display:
+                    false
+                },
 
-                  position:
-                    "bottom"
+
+                tooltip: {
+
+                  callbacks: {
+
+                    label:
+                      context =>
+                        `${context.dataset.label}: ${euro.format(context.raw)}`
+
+                  }
 
                 }
+
               },
 
 
               scales: {
 
+                x: {
+
+                  title: {
+                    display:
+                      true,
+
+                    text:
+                      "Alter"
+                  },
+
+                  grid: {
+                    display:
+                      false
+                  }
+
+                },
+
+
                 y: {
+
+                  beginAtZero:
+                    true,
 
                   ticks: {
 
@@ -1664,24 +3444,71 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                         euro.format(
                           value
                         )
+
                   }
+
                 }
+
               }
+
             }
+
           }
         );
+
     }
 
 
-    document
-      .querySelectorAll(
-        "#rechner input"
-      )
+    /* ---------------------------------------------------------
+       CALCULATE
+    ---------------------------------------------------------- */
+
+    function calculate() {
+
+      const result =
+        calculateModel();
+
+
+      updateUI(
+        result
+      );
+
+    }
+
+
+    /* ---------------------------------------------------------
+       EVENTS
+    ---------------------------------------------------------- */
+
+    [
+      el.monthly,
+      el.riesterTransfer,
+      el.currentAge,
+      el.retirementAge,
+      el.payoutUntil,
+      el.avdReturn,
+      el.avdCosts,
+      el.etfReturn,
+      el.etfCosts,
+      el.taxRateNow,
+      el.taxRateRetirement,
+      el.inflationRate,
+      el.payoutReturn,
+      el.taxAllowance
+    ]
       .forEach(
         input => {
 
+          if (!input) return;
+
+
           input.addEventListener(
             "input",
+            calculate
+          );
+
+          input.addEventListener(
+            "change",
             calculate
           );
 
@@ -1689,64 +3516,123 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       );
 
 
-    document
-      .querySelectorAll(
-        ".quickButtons button"
-      )
-      .forEach(
-        button => {
-
-          button.addEventListener(
-            "click",
-            () => {
-
-              document
-                .querySelectorAll(
-                  ".quickButtons button"
-                )
-                .forEach(
-                  b =>
-                    b.classList.remove(
-                      "active"
-                    )
-                );
-
-
-              button.classList.add(
-                "active"
-              );
-
-
-              els.monthly.value =
-                button.dataset.value;
-
-
-              calculate();
-            }
-          );
-        }
-      );
-
-
-    els.monthly.addEventListener(
-      "input",
+    el.addChildBtn.addEventListener(
+      "click",
       () => {
 
-        document
-          .querySelectorAll(
-            ".quickButtons button"
-          )
-          .forEach(
-            b => {
+        addChild(
+          2015
+        );
 
-              b.classList.toggle(
-                "active",
-                b.dataset.value ===
-                els.monthly.value
-              );
+      }
+    );
 
-            }
+
+    el.saveScenarioBtn.addEventListener(
+      "click",
+      () => {
+
+        if (!latestResult) return;
+
+
+        savedScenario = {
+          capital:
+            latestResult.avdCapital,
+
+          pension:
+            latestResult.avdMonthlyNet
+        };
+
+
+        el.savedCapital.textContent =
+          euro.format(
+            savedScenario.capital
           );
+
+
+        el.savedPension.textContent =
+          euro.format(
+            savedScenario.pension
+          ) +
+          " / Monat";
+
+
+        el.savedScenarioBox.hidden =
+          false;
+
+      }
+    );
+
+
+    el.clearScenarioBtn.addEventListener(
+      "click",
+      () => {
+
+        savedScenario =
+          null;
+
+        el.savedScenarioBox.hidden =
+          true;
+
+      }
+    );
+
+
+    el.resetCalculatorBtn.addEventListener(
+      "click",
+      () => {
+
+        el.monthly.value =
+          150;
+
+        el.riesterTransfer.value =
+          0;
+
+        el.currentAge.value =
+          40;
+
+        el.retirementAge.value =
+          67;
+
+        el.payoutUntil.value =
+          85;
+
+        el.avdReturn.value =
+          6;
+
+        el.avdCosts.value =
+          1;
+
+        el.etfReturn.value =
+          6;
+
+        el.etfCosts.value =
+          0.25;
+
+        el.taxRateNow.value =
+          30;
+
+        el.taxRateRetirement.value =
+          22;
+
+        el.inflationRate.value =
+          2;
+
+        el.payoutReturn.value =
+          2;
+
+        el.taxAllowance.value =
+          1000;
+
+
+        children =
+          [];
+
+
+        renderChildren();
+
+        calculate();
+
       }
     );
 
@@ -1756,102 +3642,117 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         ".infoBtn"
       )
       .forEach(
-        btn => {
+        button => {
 
-          btn.addEventListener(
+          button.addEventListener(
             "click",
             event => {
+
+              event.preventDefault();
 
               event.stopPropagation();
 
 
-              tooltip.textContent =
+              el.tooltip.textContent =
                 tooltipTexts[
-                  btn.dataset.tip
+                  button.dataset.tip
                 ] || "";
 
 
-              tooltip.hidden =
+              el.tooltip.hidden =
                 false;
 
 
               const rect =
-                btn
+                button
                   .getBoundingClientRect();
 
 
-              const parentRect =
+              const parent =
                 document
                   .querySelector(
                     ".input-card"
-                  )
+                  );
+
+
+              const parentRect =
+                parent
                   .getBoundingClientRect();
 
 
-              tooltip.style.left =
-                `${
+              el.tooltip.style.left =
+                Math.max(
+                  10,
                   rect.left -
                   parentRect.left -
-                  10
-                }px`;
+                  30
+                ) +
+                "px";
 
 
-              tooltip.style.top =
-                `${
+              el.tooltip.style.top =
+                (
                   rect.bottom -
                   parentRect.top +
                   10
-                }px`;
+                ) +
+                "px";
+
             }
           );
+
         }
       );
 
 
     document.addEventListener(
       "click",
-      e => {
+      event => {
 
         if (
-          !e.target.closest(
+          !event.target.closest(
             ".infoBtn"
           ) &&
-          !e.target.closest(
+          !event.target.closest(
             ".tooltip"
           )
         ) {
 
-          tooltip.hidden =
+          el.tooltip.hidden =
             true;
 
         }
+
       }
     );
 
 
-    els.calculateBtn.addEventListener(
-      "click",
-      calculate
-    );
+    if (
+      el.leadForm
+    ) {
 
-
-    if (els.leadForm) {
-
-      els.leadForm.addEventListener(
+      el.leadForm.addEventListener(
         "submit",
-        e => {
+        event => {
 
-          e.preventDefault();
+          event.preventDefault();
 
 
           alert(
-            "Die persönliche PDF-Auswertung wird im nächsten Schritt mit Zoho Forms und Zoho Writer verbunden."
+            "Die Zoho-Forms-/Writer-Anbindung für die persönliche PDF-Auswertung richten wir im nächsten Schritt ein."
           );
 
         }
       );
+
     }
 
+
+    /* ---------------------------------------------------------
+       START
+    ---------------------------------------------------------- */
+
+    renderChildren();
 
     calculate();
 
@@ -1866,13 +3767,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     :root {
       --blue: #1e2f4a;
+      --blueBright: #2588c4;
       --green: #1f5b35;
       --gold: #c79652;
+      --goldLight: #f6efe4;
       --light: #eef6fb;
       --card: #ffffff;
       --muted: #6d7582;
       --line: #dfe6ec;
+      --dark: #111827;
       --shadow: 0 18px 45px rgba(30,47,74,.12);
+    }
+
+
+    * {
+      box-sizing: border-box;
     }
 
 
@@ -1917,15 +3826,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     .calculator-grid {
       display: grid;
-      grid-template-columns: 1.18fr .82fr;
-      gap: 32px;
-      align-items: start;
-    }
-
-
-    .chart-grid {
-      display: grid;
-      grid-template-columns: 1.4fr .8fr;
+      grid-template-columns: 1.08fr .92fr;
       gap: 32px;
       align-items: start;
       margin-top: 32px;
@@ -1946,12 +3847,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .eyebrow {
-      color: #2588c4;
+      color: var(--blueBright);
       text-transform: uppercase;
       letter-spacing: .18em;
       font-weight: 800;
       font-size: .85rem;
-      margin-bottom: 10px;
+      margin: 0 0 10px;
+    }
+
+
+    h1,
+    h2,
+    h3 {
+      color: var(--dark);
     }
 
 
@@ -1959,7 +3867,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     h2 {
       margin: 0 0 18px;
       line-height: 1.05;
-      color: #111827;
     }
 
 
@@ -1971,6 +3878,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     h2 {
       font-size: clamp(1.8rem, 3vw, 2.7rem);
+    }
+
+
+    h3 {
+      margin: 28px 0 8px;
+      font-size: 1.2rem;
     }
 
 
@@ -2046,7 +3959,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     .quoteCard span {
       display: block;
-      color: #2588c4;
+      color: var(--blueBright);
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: .12em;
@@ -2059,161 +3972,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       display: block;
       font-size: 1.65rem;
       line-height: 1.2;
-      color: #111827;
+      color: var(--dark);
     }
 
 
-    .input-card {
-      position: relative;
+    .sectionHeader {
+      max-width: 850px;
+      margin-bottom: 32px;
     }
 
 
-    label {
-      display: block;
-      font-weight: 800;
-      margin: 24px 0 8px;
-      color: #111827;
-    }
-
-
-    .fieldLabel {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-
-    input {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 16px 18px;
-      font-size: 1.1rem;
-      margin-top: 8px;
-      background: #fff;
-    }
-
-
-    input[type="range"] {
-      accent-color: #2588c4;
-    }
-
-
-    .moneyInput {
-      display: flex;
-      align-items: center;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: #fff;
-      padding-right: 18px;
-    }
-
-
-    .moneyInput input {
-      border: 0;
-      margin: 0;
-    }
-
-
-    .moneyInput span {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: #111827;
-    }
-
-
-    .helpText,
-    .muted,
-    .small {
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-
-    .quickButtons {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-
-    .quickButtons button {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
-      background: #f4f4f4;
-      font-weight: 900;
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
-
-
-    .quickButtons small {
-      display: block;
-      font-weight: 500;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-
-    .quickButtons button.active {
-      border-color: #2588c4;
-      background: #eaf6fc;
-
-      box-shadow:
-        0 0 0 3px
-        rgba(37,136,196,.12);
-    }
-
-
-    .infoBtn {
-      width: 20px;
-      height: 20px;
-      border: 2px solid #2588c4;
-      color: #2588c4;
-      background: #fff;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      line-height: 1;
-    }
-
-
-    .pillValue {
-      margin-left: auto;
-      background: #0f73b7;
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-weight: 900;
-    }
-
-
-    .rangeEnds {
-      display: flex;
-      justify-content: space-between;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-
-    .tooltip {
-      position: absolute;
-      z-index: 20;
-      max-width: 340px;
-      background: #0f73b7;
-      color: #fff;
-      padding: 14px 18px;
-      border-radius: 14px;
-      font-size: .95rem;
-      line-height: 1.45;
-
-      box-shadow:
-        0 14px 30px
-        rgba(15,115,183,.25);
-    }
+    /* ========================================================
+       BUTTONS
+    ========================================================= */
 
 
     .btn {
@@ -2222,25 +3993,27 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       justify-content: center;
       border: 0;
       border-radius: 999px;
-      background: #2588c4;
+      background: var(--blueBright);
       color: #fff;
       font-weight: 800;
       padding: 16px 24px;
       cursor: pointer;
       text-decoration: none;
       font-size: 1rem;
+      transition: .2s ease;
     }
 
 
     .btn:hover {
       background: #126ca3;
+      transform: translateY(-1px);
     }
 
 
     .btn--ghost {
       background: #fff;
-      color: #2588c4;
-      border: 1px solid #2588c4;
+      color: var(--blueBright);
+      border: 1px solid var(--blueBright);
     }
 
 
@@ -2249,62 +4022,837 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
+    .btn--small {
+      padding: 11px 18px;
+      font-size: .9rem;
+    }
+
+
+    .textButton {
+      appearance: none;
+      border: 0;
+      background: none;
+      color: var(--muted);
+      text-decoration: underline;
+      cursor: pointer;
+      font: inherit;
+      padding: 8px;
+    }
+
+
+    .smallOutlineButton {
+      border: 1px solid var(--blue);
+      border-radius: 999px;
+      padding: 10px 18px;
+      background: #fff;
+      color: var(--blue);
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+
+    /* ========================================================
+       RESULT HERO
+    ========================================================= */
+
+
+    .resultHero {
+      padding: 38px;
+      margin-bottom: 24px;
+    }
+
+
+    .resultMain {
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--line);
+    }
+
+
+    .resultLabel {
+      display: block;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+
+    .resultMain > strong {
+      display: block;
+      font-size: clamp(3.2rem, 8vw, 6rem);
+      color: var(--dark);
+      line-height: 1;
+      margin: 12px 0 8px;
+    }
+
+
+    .resultSub {
+      color: var(--muted);
+    }
+
+
+    .resultHeroGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 24px;
+    }
+
+
+    .resultHeroGrid > div {
+      padding: 4px 24px;
+      border-right: 1px solid var(--line);
+    }
+
+
+    .resultHeroGrid > div:first-child {
+      padding-left: 0;
+    }
+
+
+    .resultHeroGrid > div:last-child {
+      border-right: 0;
+    }
+
+
+    .resultHeroGrid span,
+    .resultHeroGrid small {
+      display: block;
+      color: var(--muted);
+    }
+
+
+    .resultHeroGrid span {
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 800;
+    }
+
+
+    .resultHeroGrid strong {
+      display: block;
+      color: var(--dark);
+      font-size: 1.45rem;
+      margin: 7px 0 5px;
+    }
+
+
+    .heroSummary {
+      color: var(--muted);
+      margin-top: 28px;
+      max-width: 900px;
+    }
+
+
+    .resultHeroActions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+
+    .savedScenario {
+      background: #fff;
+      border: 1px dashed var(--gold);
+      border-radius: 18px;
+      padding: 18px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr auto;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+
+    .savedScenario[hidden] {
+      display: none;
+    }
+
+
+    .savedScenario span {
+      display: block;
+      color: var(--muted);
+      font-size: .78rem;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+
+    .savedScenario strong {
+      color: var(--dark);
+    }
+
+
+    /* ========================================================
+       INPUT
+    ========================================================= */
+
+
+    .input-card {
+      position: relative;
+    }
+
+
+    .cardHeading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+
+    label {
+      display: block;
+      color: var(--dark);
+      font-weight: 800;
+    }
+
+
+    .fieldLabel {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 28px 0 9px;
+    }
+
+
+    input[type="number"],
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 15px 16px;
+      font-size: 1rem;
+      background: #fff;
+      color: var(--dark);
+    }
+
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--blue);
+      cursor: pointer;
+    }
+
+
+    .pillValue {
+      margin-left: auto;
+      background: #edf5f9;
+      color: var(--blue);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: .9rem;
+    }
+
+
+    .rangeEnds {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: .8rem;
+      margin-top: 5px;
+    }
+
+
+    .helpText {
+      color: var(--muted);
+      font-size: .9rem;
+      margin: 8px 0;
+    }
+
+
+    .helpText--tight {
+      margin: 3px 0 0;
+    }
+
+
+    .inputTwoCol {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+
+    .inputTwoCol .fieldLabel {
+      min-height: 28px;
+    }
+
+
+    .infoBtn {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--blueBright);
+      color: var(--blueBright);
+      background: #fff;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+    }
+
+
+    .tooltip {
+      position: absolute;
+      z-index: 50;
+      max-width: 340px;
+      background: #0f73b7;
+      color: #fff;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: .92rem;
+      line-height: 1.45;
+      box-shadow: 0 14px 30px rgba(15,115,183,.25);
+    }
+
+
+    .childrenHeader {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+
+    .childrenList {
+      margin-top: 12px;
+    }
+
+
+    .emptyChildren {
+      color: var(--muted);
+      padding: 14px;
+      background: #f7f9fb;
+      border-radius: 12px;
+      margin: 0;
+    }
+
+
+    .childRow {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--line);
+      padding: 14px;
+      border-radius: 14px;
+      margin-bottom: 10px;
+    }
+
+
+    .childRow label {
+      font-size: .9rem;
+      margin-bottom: 6px;
+    }
+
+
+    .childRow small {
+      color: var(--muted);
+      display: block;
+      margin-top: 5px;
+    }
+
+
+    .removeChildBtn {
+      border: 0;
+      background: #f3f5f7;
+      color: var(--muted);
+      border-radius: 999px;
+      width: 34px;
+      height: 34px;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+
+    /* ========================================================
+       ANNAHMEN
+    ========================================================= */
+
+
+    .assumptions {
+      margin-top: 30px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+
+
+    .assumptions summary,
+    .methodDetails summary {
+      cursor: pointer;
+      color: var(--dark);
+      font-weight: 900;
+      font-size: 1.03rem;
+    }
+
+
+    .assumptionGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+
+    .assumptionGrid label {
+      font-size: .88rem;
+      margin-bottom: 7px;
+    }
+
+
+    .percentInput,
+    .moneyInput {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+
+    .percentInput input,
+    .moneyInput input {
+      border: 0 !important;
+      border-radius: 0 !important;
+      padding: 13px !important;
+    }
+
+
+    .percentInput span,
+    .moneyInput span {
+      padding-right: 14px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+
+    .assumptionNote {
+      background: #f7f9fb;
+      color: var(--muted);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: .86rem;
+      margin-top: 20px;
+    }
+
+
+    /* ========================================================
+       NOTICE
+    ========================================================= */
+
+
+    .notice {
+      margin-top: 24px;
+      background: #f7f9fb;
+      border-left: 5px solid var(--blueBright);
+      padding: 18px 20px;
+      border-radius: 12px;
+    }
+
+
+    .notice strong {
+      color: var(--dark);
+    }
+
+
+    .notice p {
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+
+    .notice a {
+      color: var(--blueBright);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+
+    .notice--gold {
+      background: var(--goldLight);
+      border-left-color: var(--gold);
+    }
+
+
+    /* ========================================================
+       RESULTS
+    ========================================================= */
+
+
     .results-column {
       display: grid;
       gap: 28px;
     }
 
 
-    .result-tiles,
-    .comparison {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin: 24px 0;
+    .bigResultRow {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 15px;
+      margin: 25px 0 17px;
     }
 
 
-    .result-tiles div,
-    .comparison div {
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
-      background: #fff;
-    }
-
-
-    .result-tiles span,
-    .comparison span {
-      display: block;
-      text-transform: uppercase;
+    .bigResultRow span {
       color: var(--muted);
-      font-size: .8rem;
+    }
+
+
+    .bigResultRow strong {
+      color: var(--dark);
+      font-size: 2rem;
+    }
+
+
+    .supportBar {
+      display: flex;
+      width: 100%;
+      height: 24px;
+      background: #f0f3f5;
+      border-radius: 7px;
+      overflow: hidden;
+      margin: 16px 0 20px;
+    }
+
+
+    .supportBarOwn {
+      background: var(--blue);
+    }
+
+
+    .supportBarSubsidy {
+      background: #f0c934;
+    }
+
+
+    .supportBarTax {
+      background: var(--gold);
+    }
+
+
+    .legendList {
+      display: grid;
+      gap: 11px;
+    }
+
+
+    .legendList > div {
+      display: grid;
+      grid-template-columns: 12px 1fr auto;
+      align-items: center;
+      gap: 9px;
+      font-size: .9rem;
+    }
+
+
+    .legendList span {
+      color: var(--muted);
+    }
+
+
+    .legendList strong {
+      color: var(--dark);
+    }
+
+
+    .legendList i {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+    }
+
+
+    .legendOwn {
+      background: var(--blue);
+    }
+
+
+    .legendSubsidy {
+      background: #f0c934;
+    }
+
+
+    .legendTax {
+      background: var(--gold);
+    }
+
+
+    .compositionList {
+      display: grid;
+      gap: 0;
+      margin-top: 15px;
+    }
+
+
+    .compositionList > div {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+
+    .compositionList span {
+      color: var(--muted);
+    }
+
+
+    .compositionList strong {
+      color: var(--dark);
+    }
+
+
+    .compositionTotal {
+      border-bottom: 0 !important;
+      margin-top: 4px;
+    }
+
+
+    .compositionTotal span,
+    .compositionTotal strong {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--dark);
+    }
+
+
+    /* ========================================================
+       CHART
+    ========================================================= */
+
+
+    .chartSection,
+    .comparisonSection,
+    .methodSection,
+    .pdfSection {
+      margin-top: 32px;
+    }
+
+
+    .chartHeading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+
+    .chartLegend {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      margin-right: 5px;
+    }
+
+
+    .dot--avd {
+      background: var(--green);
+    }
+
+
+    .dot--etf {
+      background: #8ca8bd;
+    }
+
+
+    .chartCanvasWrapper {
+      height: 380px;
+      margin-top: 12px;
+    }
+
+
+    .small {
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.55;
+    }
+
+
+    /* ========================================================
+       VERGLEICH
+    ========================================================= */
+
+
+    .comparisonIntro {
+      max-width: 850px;
+      color: var(--muted);
+    }
+
+
+    .comparisonHighlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+
+    .comparisonHighlights > div {
+      background: #f5f7f8;
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+
+    .comparisonHighlights span {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: .75rem;
+      letter-spacing: .08em;
       font-weight: 800;
-      margin-bottom: 8px;
     }
 
 
-    .result-tiles strong,
-    .comparison strong {
-      font-size: 1.6rem;
-      color: #111827;
+    .comparisonHighlights strong {
+      display: block;
+      margin-top: 7px;
+      font-size: 1.8rem;
     }
 
 
-    .highlight {
-      background: #2588c4 !important;
-      color: #fff;
-      border-color: #2588c4 !important;
+    .positiveValue {
+      color: var(--green) !important;
     }
 
 
-    .highlight span,
-    .highlight strong {
-      color: #fff;
+    .negativeValue {
+      color: #a13b36 !important;
     }
 
 
-    .lead-card form {
+    .comparisonBars {
+      display: grid;
+      gap: 20px;
+      margin: 32px 0;
+    }
+
+
+    .barHeading {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 7px;
+    }
+
+
+    .barHeading span {
+      color: var(--muted);
+    }
+
+
+    .barTrack {
+      width: 100%;
+      height: 14px;
+      background: #edf1f4;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+
+    .barFill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width .3s ease;
+    }
+
+
+    .barFill--avd {
+      background: var(--blue);
+    }
+
+
+    .barFill--etf {
+      background: #a9bdcb;
+    }
+
+
+    .comparisonTable {
+      border-top: 1px solid var(--line);
+      margin-top: 28px;
+    }
+
+
+    .comparisonTable > div {
+      display: grid;
+      grid-template-columns: 1.5fr .75fr .75fr;
+      gap: 15px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+
+    .comparisonTable > div span {
+      color: var(--muted);
+    }
+
+
+    .comparisonTableHeader {
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+
+    /* ========================================================
+       METHODIK
+    ========================================================= */
+
+
+    .methodDetails {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px 28px;
+    }
+
+
+    .methodContent {
+      max-width: 900px;
+      padding-top: 10px;
+    }
+
+
+    .methodContent p {
+      color: var(--muted);
+    }
+
+
+    /* ========================================================
+       PDF
+    ========================================================= */
+
+
+    .pdfCard {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 38px;
+      align-items: start;
+    }
+
+
+    .pdfForm {
       display: grid;
       gap: 12px;
     }
@@ -2312,28 +4860,35 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     .privacyCheck {
       display: flex;
-      gap: 10px;
       align-items: flex-start;
-      font-weight: 500;
+      gap: 10px;
       color: var(--muted);
+      font-weight: 500;
+      margin: 5px 0;
     }
 
 
     .privacyCheck input {
       width: auto;
-      margin-top: 4px;
+      margin-top: 5px;
     }
 
 
-    .sectionHeader {
-      max-width: 820px;
-      margin-bottom: 32px;
+    .legalCalculatorNotice {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: .82rem;
     }
+
+
+    /* ========================================================
+       RESTLICHE SEITE
+    ========================================================= */
 
 
     .miniCard strong {
       font-size: 1.25rem;
-      color: #111827;
+      color: var(--dark);
     }
 
 
@@ -2358,7 +4913,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .tableCard .accent strong {
-      color: #2588c4;
+      color: var(--blueBright);
     }
 
 
@@ -2432,21 +4987,63 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
+    /* ========================================================
+       MOBILE
+    ========================================================= */
+
+
     @media (max-width: 900px) {
 
       .hero-grid,
       .two-col,
       .expert-grid,
       .calculator-grid,
-      .chart-grid,
-      .cards-grid {
+      .cards-grid,
+      .pdfCard {
         grid-template-columns: 1fr;
       }
 
 
-      .result-tiles,
-      .comparison {
+      .resultHeroGrid {
         grid-template-columns: 1fr;
+      }
+
+
+      .resultHeroGrid > div {
+        padding: 14px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+
+      .resultHeroGrid > div:last-child {
+        border-bottom: 0;
+      }
+
+
+      .savedScenario {
+        grid-template-columns: 1fr 1fr;
+      }
+
+
+      .comparisonHighlights {
+        grid-template-columns: 1fr;
+      }
+
+
+      .comparisonTable > div {
+        grid-template-columns: 1.3fr .85fr .85fr;
+        font-size: .88rem;
+      }
+
+
+      .chartHeading {
+        flex-direction: column;
+      }
+
+
+      .chartCanvasWrapper {
+        height: 310px;
       }
 
 
@@ -2455,19 +5052,67 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       }
 
 
-      .btn {
+      .heroActions .btn {
         width: 100%;
       }
 
+    }
 
-      .zoho-form-card {
-        padding: 24px 18px;
+
+    @media (max-width: 620px) {
+
+      .section {
+        padding: 46px 0;
       }
 
 
-      #zf_div_FCXvjeX7zWdEo3JIQ7xOG0qTW-KBMx-6ej11xdpqS7M iframe {
-        width: 100% !important;
+      .card,
+      .quoteCard,
+      .miniCard,
+      .brochureBox,
+      .ctaBox {
+        padding: 22px;
+        border-radius: 20px;
       }
+
+
+      .resultHero {
+        padding: 24px;
+      }
+
+
+      .resultMain > strong {
+        font-size: 3.2rem;
+      }
+
+
+      .inputTwoCol,
+      .assumptionGrid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .savedScenario {
+        grid-template-columns: 1fr;
+      }
+
+
+      .comparisonTable > div {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+
+      .comparisonTableHeader {
+        display: none !important;
+      }
+
+
+      .childrenHeader {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
     }
 
   </style>

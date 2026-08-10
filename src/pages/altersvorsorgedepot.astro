@@ -30,7 +30,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <p class="heroText">
             Was die neue staatlich geförderte Altersvorsorge für Ihren Vermögensaufbau
             bedeuten kann – verständlich erklärt, unabhängig eingeordnet und ergänzt
-            um einen interaktiven Rechner.
+            um einen interaktiven Prognoserechner.
           </p>
 
           <div class="heroActions">
@@ -44,10 +44,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
         </div>
 
-        <div class="mediaCard mediaCard--soft">
+
+        <div class="coverHeroCard">
           <img
-            src="/images/ihr-vermoegen-in-sicheren-bahnen.png"
-            alt="Ihr Vermögen in sicheren Bahnen – systematisch zu Ihrem Anlageziel"
+            src="/images/Altersvorsorgedepot_Cover.png"
+            alt="Broschüre: Das neue Altersvorsorgedepot ab 2027"
             loading="eager"
           />
         </div>
@@ -85,6 +86,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
         </div>
 
+
         <div class="quoteCard">
           <span>Vermögenslotsen-Merksatz</span>
 
@@ -98,13 +100,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     <!-- =========================================================
-         NEUER RECHNER
+         RECHNER
     ========================================================== -->
 
     <section class="section calculator-section" id="rechner">
 
       <div class="container sectionHeader">
-        <p class="eyebrow">Interaktiver Rechner</p>
+        <p class="eyebrow">Interaktiver Prognoserechner</p>
 
         <h2>
           Was könnte das Altersvorsorgedepot für Sie bedeuten?
@@ -112,13 +114,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <p>
           Vergleichen Sie modellhaft Förderung, Vermögensentwicklung,
-          Kaufkraft und spätere Auszahlung mit einem normalen ETF-Depot.
+          Kaufkraft und spätere Auszahlung mit einem ungeförderten Fonds-Depot.
         </p>
       </div>
 
 
       <!-- =======================================================
-           TOP-ERGEBNISSE
+           HAUPTERGEBNIS
       ======================================================== -->
 
       <div class="container">
@@ -127,7 +129,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
           <div class="resultMain">
             <span class="resultLabel">
-              Monatliche Netto-Auszahlung
+              Modellhafte monatliche Netto-Auszahlung
             </span>
 
             <strong id="netMonthlyPension">
@@ -144,7 +146,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
             <div>
               <span>
-                Netto-Eigenaufwand
+                Monatliche Einzahlung
+              </span>
+
+              <strong id="monthlyContributionDisplay">
+                150 €
+              </strong>
+
+              <small>
+                Ihr tatsächlicher Eigenbeitrag
+              </small>
+            </div>
+
+
+            <div>
+              <span>
+                Rechnerische Belastung nach Förderung
               </span>
 
               <strong id="effectiveOwnCost">
@@ -220,9 +237,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           class="savedScenario"
           hidden
         >
+
           <div>
             <span>Gemerktes Szenario</span>
-            <strong id="savedScenarioName">Szenario 1</strong>
+            <strong>Szenario 1</strong>
           </div>
 
           <div>
@@ -242,25 +260,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           >
             Löschen
           </button>
+
         </div>
 
       </div>
 
 
       <!-- =======================================================
-           EINGABEN
+           EINGABEN + FÖRDERUNG
       ======================================================== -->
 
       <div class="container calculator-grid">
 
         <div class="card input-card">
 
-          <div class="cardHeading">
-            <div>
-              <p class="eyebrow">Ihre Angaben</p>
-              <h2>Persönliche Ausgangslage</h2>
-            </div>
-          </div>
+          <p class="eyebrow">Ihre Angaben</p>
+
+          <h2>Persönliche Ausgangslage</h2>
 
 
           <!-- Eigenbeitrag -->
@@ -296,12 +312,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
 
           <p class="helpText">
-            Bis 1.800 € Eigenbeitrag pro Jahr werden gefördert.
-            Insgesamt können modellhaft bis 6.840 € jährlich berücksichtigt werden.
+            Der Regler bestimmt Ihren monatlichen Eigenbeitrag.
+            Beiträge oberhalb der Fördergrenze werden in der Modellrechnung
+            separat als ungeförderter Anteil berücksichtigt.
           </p>
 
 
-          <!-- Riester Übertrag -->
+          <!-- Riester -->
 
           <label class="fieldLabel" for="riesterTransfer">
             Riester-Übertrag / Startkapital
@@ -342,8 +359,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <strong>Sie haben Riester-Vermögen angegeben.</strong>
 
             <p>
-              Der Rechner zeigt nur die modellhafte Ertragsseite einer Übertragung.
-              Ob ein Wechsel sinnvoll ist, hängt zusätzlich von Garantien,
+              Der Rechner zeigt nur die modellhafte Entwicklung dieses Kapitals.
+              Ob eine Übertragung sinnvoll ist, hängt zusätzlich von Garantien,
               Rentenfaktor, Kosten und Restlaufzeit Ihres bisherigen Vertrags ab.
             </p>
 
@@ -401,7 +418,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
 
 
-          <!-- Auszahlalter -->
+          <!-- Auszahlung -->
 
           <label class="fieldLabel" for="payoutUntil">
             Auszahlung bis Alter
@@ -452,9 +469,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               </label>
 
               <p class="helpText helpText--tight">
-                Optional: Geburtsjahr hinterlegen.
+                Optional das Geburtsjahr hinterlegen.
               </p>
             </div>
+
 
             <button
               type="button"
@@ -483,7 +501,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
               <div>
                 <label for="avdReturn">
-                  Rendite AVD vor Kosten
+                  Rendite Altersvorsorgedepot vor Kosten
                 </label>
 
                 <div class="percentInput">
@@ -502,7 +520,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
               <div>
                 <label for="avdCosts">
-                  Kosten AVD
+                  Kosten Altersvorsorgedepot
                 </label>
 
                 <div class="percentInput">
@@ -520,13 +538,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
               <div>
-                <label for="etfReturn">
-                  Rendite ETF vor Kosten
+                <label for="fundReturn">
+                  Rendite Fonds-Depot vor Kosten
                 </label>
 
                 <div class="percentInput">
                   <input
-                    id="etfReturn"
+                    id="fundReturn"
                     type="number"
                     value="6"
                     min="0"
@@ -539,18 +557,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
               <div>
-                <label for="etfCosts">
-                  Kosten ETF
+                <label for="fundCosts">
+                  Kosten Fonds-Depot
                 </label>
 
                 <div class="percentInput">
                   <input
-                    id="etfCosts"
+                    id="fundCosts"
                     type="number"
-                    value="0.25"
+                    value="1"
                     min="0"
                     max="5"
-                    step="0.05"
+                    step="0.1"
                   />
                   <span>%</span>
                 </div>
@@ -559,7 +577,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
               <div>
                 <label for="taxRateNow">
-                  Grenzsteuersatz heute
+                  Angenommener Grenzsteuersatz heute
                 </label>
 
                 <div class="percentInput">
@@ -578,7 +596,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
               <div>
                 <label for="taxRateRetirement">
-                  Steuersatz im Ruhestand
+                  Angenommener Steuersatz im Ruhestand
                 </label>
 
                 <div class="percentInput">
@@ -616,7 +634,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
               <div>
                 <label for="payoutReturn">
-                  Rendite Auszahlphase
+                  Rendite in der Auszahlungsphase
                 </label>
 
                 <div class="percentInput">
@@ -635,7 +653,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
               <div>
                 <label for="taxAllowance">
-                  Sparer-Pauschbetrag
+                  Sparer-Pauschbetrag im Vergleichsmodell
                 </label>
 
                 <div class="moneyInput compactMoney">
@@ -655,9 +673,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
             <p class="assumptionNote">
-              Die Steuerberechnung ist bewusst vereinfacht. Der tatsächliche
-              Sonderausgabenabzug und Ihre spätere Steuerbelastung hängen von
-              Ihrer persönlichen steuerlichen Situation ab.
+              Diese Werte sind Modellannahmen. Insbesondere die tatsächliche
+              steuerliche Wirkung hängt von Ihrer persönlichen steuerlichen
+              Situation ab.
             </p>
 
           </details>
@@ -688,20 +706,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
             <div class="supportBar">
-              <div
-                id="supportOwnBar"
-                class="supportBarOwn"
-              ></div>
-
-              <div
-                id="supportSubsidyBar"
-                class="supportBarSubsidy"
-              ></div>
-
-              <div
-                id="supportTaxBar"
-                class="supportBarTax"
-              ></div>
+              <div id="supportOwnBar" class="supportBarOwn"></div>
+              <div id="supportSubsidyBar" class="supportBarSubsidy"></div>
+              <div id="supportTaxBar" class="supportBarTax"></div>
             </div>
 
 
@@ -721,7 +728,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
               <div>
                 <i class="legendTax"></i>
-                <span>zusätzlicher Steuervorteil</span>
+                <span>modellhafter zusätzlicher Steuervorteil</span>
                 <strong id="annualTaxBenefit">0 €</strong>
               </div>
 
@@ -753,7 +760,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               </div>
 
               <div>
-                <span>Steuervorteile</span>
+                <span>Modellhafte Steuervorteile</span>
                 <strong id="totalTaxBenefits">0 €</strong>
               </div>
 
@@ -793,19 +800,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
             <div>
               <p class="eyebrow">Anlageentwicklung</p>
-              <h2>Vom Start bis zur Auszahlung</h2>
+
+              <h2>
+                Vom Start bis zum Rentenbeginn
+              </h2>
             </div>
 
+
             <div class="chartLegend">
+
               <span>
                 <i class="dot dot--avd"></i>
                 Altersvorsorgedepot
               </span>
 
               <span>
-                <i class="dot dot--etf"></i>
-                normales ETF-Depot
+                <i class="dot dot--fund"></i>
+                Fonds-Depot
               </span>
+
             </div>
 
           </div>
@@ -817,8 +830,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
           <p class="small">
-            Die Darstellung ist eine Modellrechnung. Wertentwicklungen verlaufen
-            in der Realität nicht gleichmäßig.
+            Die Darstellung ist eine Prognose auf Basis gleichmäßiger
+            Modellrenditen. Tatsächliche Kapitalmarktentwicklungen verlaufen
+            nicht gleichmäßig und können erheblich abweichen.
           </p>
 
         </div>
@@ -836,27 +850,39 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
           <p class="eyebrow">Vergleich</p>
 
-          <h2>Altersvorsorgedepot vs. normales ETF-Depot</h2>
+          <h2>
+            Altersvorsorgedepot vs. ungefördertes Fonds-Depot
+          </h2>
 
           <p class="comparisonIntro">
-            Wir vergleichen denselben monatlichen Eigenbeitrag.
-            Beim Altersvorsorgedepot werden Zulagen und der modellhafte
-            zusätzliche Steuervorteil berücksichtigt. Beim normalen Depot
-            wird eine vereinfachte laufende Besteuerung der Kapitalerträge
-            eingerechnet.
+            Beide Modellrechnungen verwenden denselben Eigenbeitrag.
+            Beim Altersvorsorgedepot werden Zulagen und ein modellhafter
+            zusätzlicher Steuervorteil berücksichtigt. Beim Fonds-Depot
+            wird eine vereinfachte Besteuerung der Kapitalerträge modelliert.
           </p>
 
 
           <div class="comparisonHighlights">
 
             <div>
-              <span>Mehr / weniger Vermögen</span>
-              <strong id="capitalDifference">0 €</strong>
+              <span>
+                Modellhafter Vermögensunterschied
+              </span>
+
+              <strong id="capitalDifference">
+                0 €
+              </strong>
             </div>
 
+
             <div>
-              <span>Mehr / weniger Netto-Auszahlung</span>
-              <strong id="pensionDifference">0 €</strong>
+              <span>
+                Unterschied der monatlichen Modell-Auszahlung
+              </span>
+
+              <strong id="pensionDifference">
+                0 €
+              </strong>
             </div>
 
           </div>
@@ -865,8 +891,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="comparisonBars">
 
             <div class="comparisonBarRow">
+
               <div class="barHeading">
-                <span>AVD zum Rentenbeginn</span>
+                <span>Altersvorsorgedepot zum Rentenbeginn</span>
                 <strong id="avdCapitalCompare">0 €</strong>
               </div>
 
@@ -876,21 +903,24 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                   class="barFill barFill--avd"
                 ></div>
               </div>
+
             </div>
 
 
             <div class="comparisonBarRow">
+
               <div class="barHeading">
-                <span>Normales ETF-Depot</span>
-                <strong id="etfCapitalCompare">0 €</strong>
+                <span>Ungefördertes Fonds-Depot</span>
+                <strong id="fundCapitalCompare">0 €</strong>
               </div>
 
               <div class="barTrack">
                 <div
-                  id="etfCapitalBar"
-                  class="barFill barFill--etf"
+                  id="fundCapitalBar"
+                  class="barFill barFill--fund"
                 ></div>
               </div>
+
             </div>
 
           </div>
@@ -901,21 +931,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <div class="comparisonTableHeader">
               <span></span>
               <strong>AVD</strong>
-              <strong>ETF</strong>
+              <strong>Fonds</strong>
             </div>
 
 
             <div>
-              <span>Vermögen Rentenbeginn</span>
+              <span>Vermögen zum Rentenbeginn</span>
               <strong id="tableAvdCapital">–</strong>
-              <strong id="tableEtfCapital">–</strong>
+              <strong id="tableFundCapital">–</strong>
             </div>
 
 
             <div>
-              <span>Monatliche Netto-Auszahlung</span>
+              <span>Monatliche Modell-Auszahlung</span>
               <strong id="tableAvdPension">–</strong>
-              <strong id="tableEtfPension">–</strong>
+              <strong id="tableFundPension">–</strong>
             </div>
 
 
@@ -927,7 +957,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
             <div>
-              <span>Verfügbarkeit vor Ruhestand</span>
+              <span>Verfügbarkeit vor dem Ruhestand</span>
               <strong>eingeschränkt</strong>
               <strong>grundsätzlich frei</strong>
             </div>
@@ -936,14 +966,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
           <div class="notice">
-            <strong>Der rechnerische Sieger ist nicht automatisch die bessere Lösung.</strong>
+            <strong>
+              Der rechnerische Vorsprung ist nicht automatisch die bessere Lösung.
+            </strong>
 
             <p>
-              Ein normales Depot bietet eine deutlich höhere Verfügbarkeit.
+              Ein freies Fonds-Depot bietet eine höhere Verfügbarkeit.
               Das geförderte Altersvorsorgevermögen ist dagegen langfristig
-              für die Altersvorsorge gebunden. Auch Garantien, Vertragskosten
-              und Ihre persönliche Risikobereitschaft werden durch diesen
-              Vergleich nicht vollständig bewertet.
+              für die Altersvorsorge gebunden. Bestehende Garantien,
+              individuelle Vertragskosten und Ihre persönliche Risikobereitschaft
+              werden durch diese Modellrechnung nicht vollständig bewertet.
             </p>
           </div>
 
@@ -959,77 +991,76 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="container methodSection">
 
         <details class="methodDetails">
-          <summary>So rechnet der Rechner</summary>
+
+          <summary>
+            So rechnet der Prognoserechner
+          </summary>
+
 
           <div class="methodContent">
 
             <h3>Grundzulage</h3>
 
             <p>
-              Bis 360 € Eigenbeitrag pro Jahr werden 50 Cent je Euro
-              berücksichtigt. Für den darüber hinausgehenden Eigenbeitrag
-              bis insgesamt 1.800 € werden 25 Cent je Euro angesetzt.
+              Die staatliche Grundzulage wird anhand des förderfähigen
+              Eigenbeitrags modelliert.
             </p>
 
 
             <h3>Kinderzulage</h3>
 
             <p>
-              Der Rechner berücksichtigt modellhaft bis zu 300 € je
-              zulagenberechtigtem Kind und Beitragsjahr. Für die langfristige
-              Projektion wird vereinfachend mit einer Förderberechtigung
-              bis zum 25. Geburtstag gerechnet.
+              Kinder werden anhand des hinterlegten Geburtsjahres
+              jahrgangsbezogen berücksichtigt. Die tatsächliche
+              Zulagenberechtigung sollte individuell geprüft werden.
             </p>
 
 
             <h3>Steuervorteil</h3>
 
             <p>
-              Der Rechner schätzt die steuerliche Wirkung über den von Ihnen
-              angegebenen Grenzsteuersatz. Die bereits erhaltenen Zulagen
-              werden bei der modellhaften Günstigerprüfung berücksichtigt.
-              Das Ergebnis kann von Ihrer tatsächlichen Steuerveranlagung
-              deutlich abweichen.
+              Der Rechner schätzt eine mögliche zusätzliche steuerliche
+              Wirkung anhand des eingegebenen Grenzsteuersatzes.
+              Dies ist keine individuelle Steuerberechnung.
             </p>
 
 
-            <h3>Normales ETF-Depot</h3>
+            <h3>Fonds-Depot</h3>
 
             <p>
-              Beim Vergleichsdepot wird eine vereinfachte Besteuerung von
-              Wertzuwächsen mit Kapitalertragsteuer, Solidaritätszuschlag,
-              30 Prozent Teilfreistellung und dem eingestellten
-              Sparer-Pauschbetrag modelliert.
+              Das ungeförderte Fonds-Depot dient als Vergleichsmodell.
+              Rendite und Kosten können separat eingestellt werden.
+              Die Besteuerung der Wertentwicklung wird vereinfacht modelliert.
             </p>
 
 
             <h3>Auszahlungsphase</h3>
 
             <p>
-              Das angesparte Kapital wird modellhaft gleichmäßig bis zum
-              gewählten Endalter verrentet beziehungsweise über einen
-              Auszahlungsplan verteilt. Eine angenommene Rendite während
-              der Auszahlungsphase wird berücksichtigt.
+              Das angesparte Kapital wird modellhaft über den gewählten
+              Zeitraum verteilt. Eine angenommene Rendite während der
+              Auszahlungsphase wird dabei berücksichtigt.
             </p>
 
 
             <h3>Was nicht vollständig abgebildet wird</h3>
 
             <p>
-              Individuelle Vertragskosten, Garantien, Rentenfaktoren,
-              Kirchensteuer, persönliche Steuerbesonderheiten,
-              Änderungen der Gesetzgebung und die tatsächliche
+              Individuelle Vertragsbedingungen, Garantien, Rentenfaktoren,
+              Kirchensteuer, weitere steuerliche Besonderheiten,
+              zukünftige Gesetzesänderungen und die tatsächliche
               Kapitalmarktentwicklung können das Ergebnis verändern.
             </p>
 
           </div>
+
         </details>
 
       </div>
 
 
       <!-- =======================================================
-           PDF-AUSWERTUNG
+           PDF AUSWERTUNG
       ======================================================== -->
 
       <div class="container pdfSection">
@@ -1037,20 +1068,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="card pdfCard">
 
           <div>
-            <p class="eyebrow">Persönliche PDF-Auswertung</p>
+            <p class="eyebrow">
+              Persönliche PDF-Auswertung
+            </p>
 
             <h2>
-              Möchten Sie diese Modellrechnung mitnehmen?
+              Möchten Sie Ihre Modellrechnung mitnehmen?
             </h2>
 
             <p>
               Lassen Sie sich Ihre aktuellen Eingaben und Ergebnisse
-              später bequem per E-Mail zusenden.
+              bequem per E-Mail zusenden.
             </p>
 
             <p class="small">
-              Die Verbindung zu Zoho Forms und Zoho Writer richten wir
-              im nächsten Schritt ein.
+              Die automatische PDF-Auswertung wird im nächsten Schritt
+              mit Zoho Forms und Zoho Writer verbunden.
             </p>
           </div>
 
@@ -1058,6 +1091,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <form id="leadForm" class="pdfForm">
 
             <div class="inputTwoCol">
+
               <input
                 type="text"
                 name="firstname"
@@ -1071,7 +1105,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 placeholder="Nachname"
                 required
               />
+
             </div>
+
 
             <input
               type="email"
@@ -1079,6 +1115,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               placeholder="Ihre E-Mail-Adresse"
               required
             />
+
 
             <input
               type="tel"
@@ -1088,12 +1125,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
             <label class="privacyCheck">
-              <input type="checkbox" required />
+
+              <input
+                type="checkbox"
+                required
+              />
 
               <span>
                 Ich stimme der Verarbeitung meiner Angaben gemäß
                 Datenschutzerklärung zu.
               </span>
+
             </label>
 
 
@@ -1116,9 +1158,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <p>
           <strong>Wichtiger Hinweis:</strong>
           Dieser Rechner dient ausschließlich der allgemeinen Information
-          und stellt keine Anlage-, Steuer-, Rechts- oder Versicherungsberatung
-          dar. Alle Ergebnisse beruhen auf vereinfachten Modellannahmen und
-          sind keine Prognose oder Garantie für tatsächlich erzielbare Ergebnisse.
+          und stellt keine Anlage-, Steuer-, Rechts- oder Versicherungsberatung dar.
+          Die Ergebnisse beruhen auf vereinfachten Annahmen und sind keine
+          Prognose oder Garantie für tatsächlich erzielbare Ergebnisse.
         </p>
 
       </div>
@@ -1133,11 +1175,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <section class="section audience-section">
 
       <div class="container sectionHeader">
+
         <p class="eyebrow">Für wen?</p>
 
         <h2>
           Für wen das Altersvorsorgedepot interessant sein kann
         </h2>
+
       </div>
 
 
@@ -1145,34 +1189,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <div class="miniCard">
           <strong>Berufseinsteiger</strong>
-
-          <p>
-            Früh starten, lange Laufzeiten nutzen und Förderung mitnehmen.
-          </p>
+          <p>Früh starten, lange Laufzeiten nutzen und Förderung mitnehmen.</p>
         </div>
-
 
         <div class="miniCard">
           <strong>Familien</strong>
-
-          <p>
-            Kinderzulagen können den Vermögensaufbau deutlich unterstützen.
-          </p>
+          <p>Kinderzulagen können den Vermögensaufbau deutlich unterstützen.</p>
         </div>
-
 
         <div class="miniCard">
           <strong>Berufstätige</strong>
-
-          <p>
-            Bestehende Vorsorge prüfen und Versorgungslücken erkennen.
-          </p>
+          <p>Bestehende Vorsorge prüfen und Versorgungslücken erkennen.</p>
         </div>
-
 
         <div class="miniCard">
           <strong>Selbstständige</strong>
-
           <p>
             Staatlich geförderte private Vorsorge kann künftig auch
             für viele Selbstständige relevant werden.
@@ -1249,7 +1280,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     <!-- =========================================================
-         BROSCHÜRE + ZOHO FORM
+         BROSCHÜRE
     ========================================================== -->
 
     <section
@@ -1257,40 +1288,59 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       id="broschuere"
     >
 
-      <div class="container two-col">
+      <div class="container two-col brochureSectionGrid">
 
         <div class="brochureBox">
 
-          <p class="eyebrow">
-            Kostenloser Leitfaden
-          </p>
+          <div class="brochureContentGrid">
 
-          <h2>
-            Broschüre zum Altersvorsorgedepot anfordern
-          </h2>
+            <div class="brochureCoverSmall">
+              <img
+                src="/images/Altersvorsorgedepot_Cover.png"
+                alt="Broschüre zum Altersvorsorgedepot"
+                loading="lazy"
+              />
+            </div>
 
-          <p>
-            Verständlich erklärt. Chancen und Risiken eingeordnet.
-            Ohne Produktverkauf.
-          </p>
 
-          <ul>
-            <li>
-              Was sich durch die Reform verändert
-            </li>
+            <div>
 
-            <li>
-              Was jetzt aus bestehenden Riester-Verträgen werden kann
-            </li>
+              <p class="eyebrow">
+                Kostenloser Leitfaden
+              </p>
 
-            <li>
-              Welche Denkfehler Anleger vermeiden sollten
-            </li>
+              <h2>
+                Broschüre zum Altersvorsorgedepot anfordern
+              </h2>
 
-            <li>
-              Welche Fragen Sie vor einer Entscheidung stellen sollten
-            </li>
-          </ul>
+              <p>
+                Verständlich erklärt. Chancen und Risiken eingeordnet.
+                Ohne Produktverkauf.
+              </p>
+
+
+              <ul>
+                <li>
+                  Was sich durch die Reform verändert
+                </li>
+
+                <li>
+                  Was jetzt aus bestehenden Riester-Verträgen werden kann
+                </li>
+
+                <li>
+                  Welche Denkfehler Anleger vermeiden sollten
+                </li>
+
+                <li>
+                  Welche Fragen Sie vor einer Entscheidung stellen sollten
+                </li>
+              </ul>
+
+            </div>
+
+          </div>
+
 
           <p class="brochureNote">
             Nach dem Absenden erhalten Sie per E-Mail sowohl den Leitfaden
@@ -1311,8 +1361,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </h2>
 
           <p class="zohoIntro">
-            Tragen Sie Ihre Kontaktdaten ein. Anschließend erhalten Sie
-            die Download-Links bequem per E-Mail.
+            Tragen Sie Ihre Kontaktdaten ein.
+            Anschließend erhalten Sie die Download-Links bequem per E-Mail.
           </p>
 
 
@@ -1332,7 +1382,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     <!-- =========================================================
-         ÜBER CHRISTIAN
+         EXPERTE
     ========================================================== -->
 
     <section class="section expert-section">
@@ -1395,7 +1445,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     <!-- =========================================================
-         FINAL CTA
+         CTA
     ========================================================== -->
 
     <section class="section final-cta">
@@ -1441,7 +1491,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
   <!-- =========================================================
-       ZOHO BROSCHÜREN-FORMULAR
+       ZOHO BROSCHÜRENFORMULAR
   ========================================================== -->
 
   <script is:inline>
@@ -1491,12 +1541,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 utmVal != ""
               ) {
 
-                if (
-                  ifrmSrc.indexOf("?") > 0
-                ) {
+                if (ifrmSrc.indexOf("?") > 0) {
 
-                  ifrmSrc =
-                    ifrmSrc +
+                  ifrmSrc +=
                     "&" +
                     utmPm +
                     "=" +
@@ -1504,8 +1551,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
                 } else {
 
-                  ifrmSrc =
-                    ifrmSrc +
+                  ifrmSrc +=
                     "?" +
                     utmPm +
                     "=" +
@@ -1546,12 +1592,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 utmVal != ""
               ) {
 
-                if (
-                  ifrmSrc.indexOf("?") > 0
-                ) {
+                if (ifrmSrc.indexOf("?") > 0) {
 
-                  ifrmSrc =
-                    ifrmSrc +
+                  ifrmSrc +=
                     "&" +
                     utmPm +
                     "=" +
@@ -1559,8 +1602,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
                 } else {
 
-                  ifrmSrc =
-                    ifrmSrc +
+                  ifrmSrc +=
                     "?" +
                     utmPm +
                     "=" +
@@ -1599,22 +1641,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             } catch (e) {}
 
 
-            if (
-              rfr &&
-              rfr !== ""
-            ) {
+            if (rfr && rfr !== "") {
 
-              if (
-                rfr.length > 1800
-              ) {
+              if (rfr.length > 1800) {
 
                 var queryIndex =
                   rfr.indexOf("?");
 
 
-                if (
-                  queryIndex > -1
-                ) {
+                if (queryIndex > -1) {
 
                   rfr =
                     rfr.substring(
@@ -1625,9 +1660,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 }
 
 
-                if (
-                  rfr.length > 1800
-                ) {
+                if (rfr.length > 1800) {
 
                   rfr =
                     rfr.substring(
@@ -1656,20 +1689,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         } catch (e) {}
 
 
-        f.src =
-          ifrmSrc;
-
-        f.style.border =
-          "none";
-
-        f.style.height =
-          "810px";
-
-        f.style.width =
-          "100%";
-
-        f.style.transition =
-          "all 0.5s ease";
+        f.src = ifrmSrc;
+        f.style.border = "none";
+        f.style.height = "810px";
+        f.style.width = "100%";
+        f.style.transition = "all 0.5s ease";
 
         f.setAttribute(
           "aria-label",
@@ -1770,8 +1794,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                       block: "start"
                     });
 
-                    zf_tout =
-                      true;
+                    zf_tout = true;
 
                   }
 
@@ -1785,8 +1808,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
                       setTimeout(
                         function() {
+
                           iframe.style.height =
                             zf_ifrm_ht_nw;
+
                         },
                         500
                       );
@@ -1822,10 +1847,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <script is:inline>
 
-    /* ---------------------------------------------------------
-       FORMATTER
-    ---------------------------------------------------------- */
-
     const euro =
       new Intl.NumberFormat(
         "de-DE",
@@ -1837,22 +1858,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       );
 
 
-    const euroExact =
-      new Intl.NumberFormat(
-        "de-DE",
-        {
-          style: "currency",
-          currency: "EUR",
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 2
-        }
-      );
-
-
-    /* ---------------------------------------------------------
-       ELEMENTE
-    ---------------------------------------------------------- */
-
     const el = {
 
       monthly:
@@ -1860,6 +1865,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       monthlyLabel:
         document.getElementById("monthlyLabel"),
+
+      monthlyContributionDisplay:
+        document.getElementById("monthlyContributionDisplay"),
 
       riesterTransfer:
         document.getElementById("riesterTransfer"),
@@ -1894,11 +1902,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       avdCosts:
         document.getElementById("avdCosts"),
 
-      etfReturn:
-        document.getElementById("etfReturn"),
+      fundReturn:
+        document.getElementById("fundReturn"),
 
-      etfCosts:
-        document.getElementById("etfCosts"),
+      fundCosts:
+        document.getElementById("fundCosts"),
 
       taxRateNow:
         document.getElementById("taxRateNow"),
@@ -1984,26 +1992,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       avdCapitalCompare:
         document.getElementById("avdCapitalCompare"),
 
-      etfCapitalCompare:
-        document.getElementById("etfCapitalCompare"),
+      fundCapitalCompare:
+        document.getElementById("fundCapitalCompare"),
 
       avdCapitalBar:
         document.getElementById("avdCapitalBar"),
 
-      etfCapitalBar:
-        document.getElementById("etfCapitalBar"),
+      fundCapitalBar:
+        document.getElementById("fundCapitalBar"),
 
       tableAvdCapital:
         document.getElementById("tableAvdCapital"),
 
-      tableEtfCapital:
-        document.getElementById("tableEtfCapital"),
+      tableFundCapital:
+        document.getElementById("tableFundCapital"),
 
       tableAvdPension:
         document.getElementById("tableAvdPension"),
 
-      tableEtfPension:
-        document.getElementById("tableEtfPension"),
+      tableFundPension:
+        document.getElementById("tableFundPension"),
 
       tableAvdSubsidies:
         document.getElementById("tableAvdSubsidies"),
@@ -2035,53 +2043,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     };
 
 
-    /* ---------------------------------------------------------
-       STATUS
-    ---------------------------------------------------------- */
+    let children = [];
+    let chart = null;
+    let latestResult = null;
 
-    let children =
-      [];
-
-
-    let chart =
-      null;
-
-
-    let latestResult =
-      null;
-
-
-    let savedScenario =
-      null;
-
-
-    /* ---------------------------------------------------------
-       TOOLTIP
-    ---------------------------------------------------------- */
 
     const tooltipTexts = {
 
       monthly:
-        "Ihr tatsächlicher monatlicher Eigenbeitrag. Zulagen werden zusätzlich in den Vertrag eingezahlt.",
+        "Ihr monatlicher Eigenbeitrag. Staatliche Zulagen werden zusätzlich berücksichtigt.",
 
       riester:
-        "Optionales vorhandenes Riester-Vermögen. Der Rechner bewertet damit nur die modellhafte Kapitalentwicklung, nicht die Qualität Ihres Altvertrags.",
+        "Optional können Sie vorhandenes Riester-Vermögen als Startkapital eintragen. Die Qualität des Altvertrags wird dadurch nicht bewertet.",
 
       age:
         "Ihr Alter zu Beginn des Modelljahres 2027.",
 
       payout:
-        "Der befristete Auszahlungsplan wird modellhaft mindestens bis Alter 85 gerechnet.",
+        "Hier bestimmen Sie, bis zu welchem Alter der modellhafte Auszahlungsplan gerechnet wird.",
 
       children:
-        "Kinder werden vereinfachend über ihr Geburtsjahr berücksichtigt. Die tatsächliche Zulagenberechtigung sollte individuell geprüft werden."
+        "Kinder werden vereinfacht über ihr Geburtsjahr berücksichtigt. Die tatsächliche Zulagenberechtigung sollte individuell geprüft werden."
 
     };
 
 
-    /* ---------------------------------------------------------
+    /* =========================================================
        KINDER
-    ---------------------------------------------------------- */
+    ========================================================== */
 
     function addChild(
       birthYear = 2015
@@ -2097,15 +2086,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       renderChildren();
-
       calculate();
 
     }
 
 
-    function removeChild(
-      id
-    ) {
+    function removeChild(id) {
 
       children =
         children.filter(
@@ -2115,7 +2101,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       renderChildren();
-
       calculate();
 
     }
@@ -2147,6 +2132,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 <div class="childRow">
 
                   <div>
+
                     <label>
                       Kind ${index + 1} – Geburtsjahr
                     </label>
@@ -2163,7 +2149,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     <small>
                       Modellhaft bis zum 25. Geburtstag berücksichtigt
                     </small>
+
                   </div>
+
 
                   <button
                     type="button"
@@ -2249,9 +2237,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ---------------------------------------------------------
+    /* =========================================================
        FÖRDERUNG
-    ---------------------------------------------------------- */
+    ========================================================== */
 
     function basicAllowance(
       yearlyContribution
@@ -2282,7 +2270,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       const secondStage =
         Math.max(
           0,
-          funded - 360
+          funded -
+          360
         ) *
         0.25;
 
@@ -2404,11 +2393,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ---------------------------------------------------------
-       ETF-STEUERDRAG
-    ---------------------------------------------------------- */
+    /* =========================================================
+       FONDS-DEPOT STEUERMODELL
+    ========================================================== */
 
-    function applyEtfYearTax(
+    function applyFundYearTax(
       capitalBeforeGain,
       capitalAfterGain,
       taxAllowance
@@ -2449,9 +2438,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ---------------------------------------------------------
+    /* =========================================================
        AUSZAHLUNGSPLAN
-    ---------------------------------------------------------- */
+    ========================================================== */
 
     function annuityPayment(
       capital,
@@ -2462,7 +2451,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       const months =
         Math.max(
           1,
-          years * 12
+          years *
+          12
         );
 
 
@@ -2500,9 +2490,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ---------------------------------------------------------
-       HAUPTBERECHNUNG
-    ---------------------------------------------------------- */
+    /* =========================================================
+       MODELL
+    ========================================================== */
 
     function calculateModel() {
 
@@ -2578,15 +2568,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         );
 
 
-      const etfNetReturn =
+      const fundNetReturn =
         Math.max(
           -0.99,
           (
             Number(
-              el.etfReturn.value
+              el.fundReturn.value
             ) -
             Number(
-              el.etfCosts.value
+              el.fundCosts.value
             )
           ) /
           100
@@ -2637,7 +2627,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         0;
 
 
-      let etfCapital =
+      let fundCapital =
         0;
 
 
@@ -2661,7 +2651,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         [];
 
 
-      const etfSeries =
+      const fundSeries =
         [];
 
 
@@ -2696,8 +2686,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         );
 
 
-        etfSeries.push(
-          etfCapital
+        fundSeries.push(
+          fundCapital
         );
 
 
@@ -2758,7 +2748,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         });
 
 
-        /* AVD geförderter Topf */
+        /* Geförderter AVD-Topf */
 
         avdFunded +=
           fundedOwn +
@@ -2772,7 +2762,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           );
 
 
-        /* Nicht geförderter Teil + Steuererstattung */
+        /* Ungeförderter Anteil innerhalb des Modells */
 
         avdUnfunded +=
           unfundedOwn +
@@ -2791,25 +2781,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           );
 
 
-        /* Vergleichs-ETF */
+        /* Freies Fonds-Depot */
 
-        const etfBeforeGain =
-          etfCapital +
+        const fundBeforeGain =
+          fundCapital +
           yearlyContribution;
 
 
-        const etfAfterGain =
-          etfBeforeGain *
+        const fundAfterGain =
+          fundBeforeGain *
           (
             1 +
-            etfNetReturn
+            fundNetReturn
           );
 
 
-        etfCapital =
-          applyEtfYearTax(
-            etfBeforeGain,
-            etfAfterGain,
+        fundCapital =
+          applyFundYearTax(
+            fundBeforeGain,
+            fundAfterGain,
             taxAllowance
           );
 
@@ -2830,9 +2820,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         );
 
 
-      /* -------------------------------------------
-         AVD NETTO ZUM AUSZAHLSTART
-      -------------------------------------------- */
+      /* AVD Netto */
 
       const fundedNetCapital =
         avdFunded *
@@ -2877,9 +2865,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         );
 
 
-      /* ETF-Auszahlung */
+      /* Fonds-Auszahlung */
 
-      const etfPayoutReturn =
+      const fundPayoutReturn =
         payoutReturn *
         (
           1 -
@@ -2887,11 +2875,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         );
 
 
-      const etfMonthlyNet =
+      const fundMonthlyNet =
         annuityPayment(
-          etfCapital,
+          fundCapital,
           payoutYears,
-          etfPayoutReturn
+          fundPayoutReturn
         );
 
 
@@ -2935,11 +2923,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         payoutYears,
 
         avdCapital,
-        etfCapital,
+        fundCapital,
         realCapital,
 
         avdMonthlyNet,
-        etfMonthlyNet,
+        fundMonthlyNet,
 
         effectiveOwnCost,
 
@@ -2957,16 +2945,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         labels,
         avdSeries,
-        etfSeries
+        fundSeries
 
       };
 
     }
 
 
-    /* ---------------------------------------------------------
+    /* =========================================================
        UI
-    ---------------------------------------------------------- */
+    ========================================================== */
 
     function updateUI(
       result
@@ -2977,6 +2965,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       el.monthlyLabel.textContent =
+        euro.format(
+          result.monthly
+        );
+
+
+      el.monthlyContributionDisplay.textContent =
         euro.format(
           result.monthly
         );
@@ -3147,12 +3141,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       const capitalDiff =
         result.avdCapital -
-        result.etfCapital;
+        result.fundCapital;
 
 
       const pensionDiff =
         result.avdMonthlyNet -
-        result.etfMonthlyNet;
+        result.fundMonthlyNet;
 
 
       el.capitalDifference.textContent =
@@ -3208,16 +3202,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         );
 
 
-      el.etfCapitalCompare.textContent =
+      el.fundCapitalCompare.textContent =
         euro.format(
-          result.etfCapital
+          result.fundCapital
         );
 
 
       const maxCapital =
         Math.max(
           result.avdCapital,
-          result.etfCapital,
+          result.fundCapital,
           1
         );
 
@@ -3231,9 +3225,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         "%";
 
 
-      el.etfCapitalBar.style.width =
+      el.fundCapitalBar.style.width =
         (
-          result.etfCapital /
+          result.fundCapital /
           maxCapital *
           100
         ) +
@@ -3246,9 +3240,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         );
 
 
-      el.tableEtfCapital.textContent =
+      el.tableFundCapital.textContent =
         euro.format(
-          result.etfCapital
+          result.fundCapital
         );
 
 
@@ -3258,9 +3252,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         );
 
 
-      el.tableEtfPension.textContent =
+      el.tableFundPension.textContent =
         euro.format(
-          result.etfMonthlyNet
+          result.fundMonthlyNet
         );
 
 
@@ -3277,9 +3271,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ---------------------------------------------------------
+    /* =========================================================
        CHART
-    ---------------------------------------------------------- */
+    ========================================================== */
 
     function drawChart(
       result
@@ -3343,10 +3337,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
                 {
                   label:
-                    "Normales ETF-Depot",
+                    "Fonds-Depot",
 
                   data:
-                    result.etfSeries,
+                    result.fundSeries,
 
                   borderColor:
                     "#8ca8bd",
@@ -3459,10 +3453,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ---------------------------------------------------------
-       CALCULATE
-    ---------------------------------------------------------- */
-
     function calculate() {
 
       const result =
@@ -3476,9 +3466,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ---------------------------------------------------------
+    /* =========================================================
        EVENTS
-    ---------------------------------------------------------- */
+    ========================================================== */
 
     [
       el.monthly,
@@ -3488,8 +3478,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       el.payoutUntil,
       el.avdReturn,
       el.avdCosts,
-      el.etfReturn,
-      el.etfCosts,
+      el.fundReturn,
+      el.fundCosts,
       el.taxRateNow,
       el.taxRateRetirement,
       el.inflationRate,
@@ -3535,24 +3525,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         if (!latestResult) return;
 
 
-        savedScenario = {
-          capital:
-            latestResult.avdCapital,
-
-          pension:
-            latestResult.avdMonthlyNet
-        };
-
-
         el.savedCapital.textContent =
           euro.format(
-            savedScenario.capital
+            latestResult.avdCapital
           );
 
 
         el.savedPension.textContent =
           euro.format(
-            savedScenario.pension
+            latestResult.avdMonthlyNet
           ) +
           " / Monat";
 
@@ -3568,9 +3549,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       "click",
       () => {
 
-        savedScenario =
-          null;
-
         el.savedScenarioBox.hidden =
           true;
 
@@ -3582,55 +3560,29 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       "click",
       () => {
 
-        el.monthly.value =
-          150;
+        el.monthly.value = 150;
+        el.riesterTransfer.value = 0;
+        el.currentAge.value = 40;
+        el.retirementAge.value = 67;
+        el.payoutUntil.value = 85;
 
-        el.riesterTransfer.value =
-          0;
+        el.avdReturn.value = 6;
+        el.avdCosts.value = 1;
 
-        el.currentAge.value =
-          40;
+        el.fundReturn.value = 6;
+        el.fundCosts.value = 1;
 
-        el.retirementAge.value =
-          67;
-
-        el.payoutUntil.value =
-          85;
-
-        el.avdReturn.value =
-          6;
-
-        el.avdCosts.value =
-          1;
-
-        el.etfReturn.value =
-          6;
-
-        el.etfCosts.value =
-          0.25;
-
-        el.taxRateNow.value =
-          30;
-
-        el.taxRateRetirement.value =
-          22;
-
-        el.inflationRate.value =
-          2;
-
-        el.payoutReturn.value =
-          2;
-
-        el.taxAllowance.value =
-          1000;
+        el.taxRateNow.value = 30;
+        el.taxRateRetirement.value = 22;
+        el.inflationRate.value = 2;
+        el.payoutReturn.value = 2;
+        el.taxAllowance.value = 1000;
 
 
-        children =
-          [];
+        children = [];
 
 
         renderChildren();
-
         calculate();
 
       }
@@ -3649,7 +3601,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             event => {
 
               event.preventDefault();
-
               event.stopPropagation();
 
 
@@ -3727,9 +3678,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     );
 
 
-    if (
-      el.leadForm
-    ) {
+    if (el.leadForm) {
 
       el.leadForm.addEventListener(
         "submit",
@@ -3739,7 +3688,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
           alert(
-            "Die Zoho-Forms-/Writer-Anbindung für die persönliche PDF-Auswertung richten wir im nächsten Schritt ein."
+            "Die Zoho-Forms-/Writer-Anbindung für die persönliche PDF-Auswertung richten wir jetzt im nächsten Schritt ein."
           );
 
         }
@@ -3748,12 +3697,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ---------------------------------------------------------
-       START
-    ---------------------------------------------------------- */
-
     renderChildren();
-
     calculate();
 
   </script>
@@ -3846,6 +3790,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
+    .coverHeroCard {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 28px;
+    }
+
+
+    .coverHeroCard img {
+      width: min(100%, 460px);
+      max-height: 620px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 22px 28px rgba(30,47,74,.18));
+    }
+
+
     .eyebrow {
       color: var(--blueBright);
       text-transform: uppercase;
@@ -3928,7 +3889,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    .mediaCard,
     .portraitCard {
       padding: 0;
       overflow: hidden;
@@ -3939,16 +3899,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    .mediaCard img,
     .portraitCard img {
       width: 100%;
       display: block;
       border-radius: 28px;
-    }
-
-
-    .mediaCard--soft {
-      background: #f8faf8;
     }
 
 
@@ -3982,10 +3936,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ========================================================
-       BUTTONS
-    ========================================================= */
-
+    /* BUTTONS */
 
     .btn {
       display: inline-flex;
@@ -4052,10 +4003,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ========================================================
-       RESULT HERO
-    ========================================================= */
-
+    /* RESULT HERO */
 
     .resultHero {
       padding: 38px;
@@ -4095,13 +4043,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     .resultHeroGrid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       margin-top: 24px;
     }
 
 
     .resultHeroGrid > div {
-      padding: 4px 24px;
+      padding: 4px 20px;
       border-right: 1px solid var(--line);
     }
 
@@ -4124,7 +4072,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .resultHeroGrid span {
-      font-size: .78rem;
+      font-size: .76rem;
       text-transform: uppercase;
       letter-spacing: .08em;
       font-weight: 800;
@@ -4134,7 +4082,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     .resultHeroGrid strong {
       display: block;
       color: var(--dark);
-      font-size: 1.45rem;
+      font-size: 1.35rem;
       margin: 7px 0 5px;
     }
 
@@ -4186,20 +4134,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ========================================================
-       INPUT
-    ========================================================= */
-
+    /* INPUT */
 
     .input-card {
       position: relative;
-    }
-
-
-    .cardHeading {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
     }
 
 
@@ -4372,10 +4310,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ========================================================
-       ANNAHMEN
-    ========================================================= */
-
+    /* ANNAHMEN */
 
     .assumptions {
       margin-top: 30px;
@@ -4444,10 +4379,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ========================================================
-       NOTICE
-    ========================================================= */
-
+    /* NOTICE */
 
     .notice {
       margin-top: 24px;
@@ -4482,10 +4414,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ========================================================
-       RESULTS
-    ========================================================= */
-
+    /* RESULTS */
 
     .results-column {
       display: grid;
@@ -4588,7 +4517,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     .compositionList {
       display: grid;
-      gap: 0;
       margin-top: 15px;
     }
 
@@ -4626,10 +4554,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ========================================================
-       CHART
-    ========================================================= */
-
+    /* CHART */
 
     .chartSection,
     .comparisonSection,
@@ -4670,7 +4595,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    .dot--etf {
+    .dot--fund {
       background: #8ca8bd;
     }
 
@@ -4688,10 +4613,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ========================================================
-       VERGLEICH
-    ========================================================= */
-
+    /* VERGLEICH */
 
     .comparisonIntro {
       max-width: 850px;
@@ -4782,7 +4704,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    .barFill--etf {
+    .barFill--fund {
       background: #a9bdcb;
     }
 
@@ -4815,10 +4737,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ========================================================
-       METHODIK
-    ========================================================= */
-
+    /* METHODIK */
 
     .methodDetails {
       background: #fff;
@@ -4839,10 +4758,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ========================================================
-       PDF
-    ========================================================= */
-
+    /* PDF */
 
     .pdfCard {
       display: grid;
@@ -4881,10 +4797,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ========================================================
-       RESTLICHE SEITE
-    ========================================================= */
-
+    /* REST */
 
     .miniCard strong {
       font-size: 1.25rem;
@@ -4914,6 +4827,29 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     .tableCard .accent strong {
       color: var(--blueBright);
+    }
+
+
+    .brochureContentGrid {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+
+    .brochureCoverSmall {
+      display: flex;
+      justify-content: center;
+    }
+
+
+    .brochureCoverSmall img {
+      width: 100%;
+      max-width: 170px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 12px 18px rgba(30,47,74,.16));
     }
 
 
@@ -4987,10 +4923,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ========================================================
-       MOBILE
-    ========================================================= */
-
+    /* MOBILE */
 
     @media (max-width: 900px) {
 
@@ -5004,20 +4937,29 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       }
 
 
+      .coverHeroCard {
+        padding-top: 0;
+      }
+
+
+      .coverHeroCard img {
+        max-width: 360px;
+      }
+
+
       .resultHeroGrid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
 
 
       .resultHeroGrid > div {
-        padding: 14px 0;
-        border-right: 0;
+        padding: 14px;
         border-bottom: 1px solid var(--line);
       }
 
 
-      .resultHeroGrid > div:last-child {
-        border-bottom: 0;
+      .resultHeroGrid > div:nth-child(2) {
+        border-right: 0;
       }
 
 
@@ -5028,12 +4970,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       .comparisonHighlights {
         grid-template-columns: 1fr;
-      }
-
-
-      .comparisonTable > div {
-        grid-template-columns: 1.3fr .85fr .85fr;
-        font-size: .88rem;
       }
 
 
@@ -5086,6 +5022,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       }
 
 
+      .resultHeroGrid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .resultHeroGrid > div {
+        border-right: 0;
+        padding: 14px 0;
+      }
+
+
       .inputTwoCol,
       .assumptionGrid {
         grid-template-columns: 1fr;
@@ -5111,6 +5058,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       .childrenHeader {
         align-items: flex-start;
         flex-direction: column;
+      }
+
+
+      .brochureContentGrid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .brochureCoverSmall img {
+        max-width: 220px;
+        margin-bottom: 8px;
       }
 
     }

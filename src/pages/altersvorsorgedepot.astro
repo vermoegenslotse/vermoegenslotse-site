@@ -8,19 +8,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <section class="avd-hero">
       <div class="container hero-grid">
         <div>
-          <img src="/images/vermoegenslotse-logo.png" alt="Vermögenslotse" class="logo" />
+          <img
+            src="/images/vermoegenslotse-logo.png"
+            alt="Vermögenslotse"
+            class="logo"
+          />
+
           <p class="eyebrow">Unabhängiger Vermögenslotsen-Leitfaden</p>
+
           <h1>Das Altersvorsorgedepot</h1>
+
           <p class="lead">
             Chancen verstehen. Förderung nutzen. Entscheidungen mit System treffen.
           </p>
+
           <p class="heroText">
-            Was die neue staatlich geförderte Altersvorsorge für Ihren Vermögensaufbau bedeuten kann -
-            verständlich erklärt, unabhängig eingeordnet und ergänzt um einen interaktiven Rechner.
+            Was die neue staatlich geförderte Altersvorsorge für Ihren Vermögensaufbau
+            bedeuten kann – verständlich erklärt, unabhängig eingeordnet und ergänzt
+            um einen interaktiven Rechner.
           </p>
+
           <div class="heroActions">
-            <a class="btn" href="#broschuere">Broschüre kostenlos anfordern</a>
-            <a class="btn btn--ghost" href="#rechner">Rechner starten</a>
+            <a class="btn" href="#broschuere">
+              Broschüre kostenlos anfordern
+            </a>
+
+            <a class="btn btn--ghost" href="#rechner">
+              Rechner starten
+            </a>
           </div>
         </div>
 
@@ -34,19 +49,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </section>
 
+
     <section class="section intro-section">
       <div class="container two-col">
         <div>
           <p class="eyebrow">Warum jetzt?</p>
+
           <h2>Die private Altersvorsorge wird neu sortiert.</h2>
+
           <p>
-            Das Altersvorsorgedepot soll die staatlich geförderte private Altersvorsorge ab 2027
-            stärker kapitalmarktorientiert, flexibler und für mehr Menschen zugänglich machen.
+            Das Altersvorsorgedepot soll die staatlich geförderte private Altersvorsorge
+            ab 2027 stärker kapitalmarktorientiert, flexibler und für mehr Menschen
+            zugänglich machen.
           </p>
+
           <p>
-            Doch mehr Freiheit bedeutet auch mehr Verantwortung. Die entscheidende Frage lautet nicht,
-            ob das Altersvorsorgedepot grundsätzlich gut ist.
+            Doch mehr Freiheit bedeutet auch mehr Verantwortung. Die entscheidende
+            Frage lautet nicht, ob das Altersvorsorgedepot grundsätzlich gut ist.
           </p>
+
           <p>
             Die entscheidende Frage lautet:
             <strong>Passt es zu Ihrer persönlichen Situation?</strong>
@@ -55,6 +76,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <div class="quoteCard">
           <span>Vermögenslotsen-Merksatz</span>
+
           <strong>
             Förderung ist ein Baustein. Keine Strategie.
           </strong>
@@ -62,19 +84,24 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </section>
 
+
     <section class="section calculator-section" id="rechner">
       <div class="container sectionHeader">
         <p class="eyebrow">Interaktiver Rechner</p>
+
         <h2>Altersvorsorgedepot vs. ungefördertes ETF-Depot</h2>
+
         <p>
-          Berechnen Sie modellhaft, wie sich Eigenbeitrag, Förderung, Rendite und Inflation langfristig
-          auswirken können.
+          Berechnen Sie modellhaft, wie sich Eigenbeitrag, Förderung, Rendite und
+          Inflation langfristig auswirken können.
         </p>
       </div>
 
       <div class="container calculator-grid">
+
         <div class="card input-card">
           <p class="eyebrow">Rechner</p>
+
           <h2>Ihre Eingaben</h2>
 
           <label class="fieldLabel">
@@ -83,7 +110,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </label>
 
           <div class="moneyInput">
-            <input id="monthly" type="number" value="150" min="0" step="10" />
+            <input
+              id="monthly"
+              type="number"
+              value="150"
+              min="0"
+              step="10"
+            />
+
             <span>€</span>
           </div>
 
@@ -93,10 +127,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
 
           <div class="quickButtons">
-            <button type="button" data-value="10">10 €<small>Mindestbeitrag</small></button>
-            <button type="button" data-value="150" class="active">150 €<small>Fördergrenze</small></button>
-            <button type="button" data-value="570">570 €<small>Maximum</small></button>
+            <button type="button" data-value="10">
+              10 €
+              <small>Mindestbeitrag</small>
+            </button>
+
+            <button type="button" data-value="150" class="active">
+              150 €
+              <small>Fördergrenze</small>
+            </button>
+
+            <button type="button" data-value="570">
+              570 €
+              <small>Maximum</small>
+            </button>
           </div>
+
 
           <label class="fieldLabel">
             Bruttojahreseinkommen
@@ -104,232 +150,418 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </label>
 
           <div class="moneyInput">
-            <input id="income" type="number" value="35000" min="0" step="1000" />
+            <input
+              id="income"
+              type="number"
+              value="35000"
+              min="0"
+              step="1000"
+            />
+
             <span>€</span>
           </div>
+
 
           <label class="fieldLabel">
             Geburtsjahr
             <button class="infoBtn" type="button" data-tip="birthyear">i</button>
           </label>
 
-          <input id="birthyear" type="number" value="1990" min="1950" max="2010" />
+          <input
+            id="birthyear"
+            type="number"
+            value="1990"
+            min="1950"
+            max="2010"
+          />
+
 
           <label class="fieldLabel">
             Renteneintrittsalter
             <button class="infoBtn" type="button" data-tip="retirement">i</button>
           </label>
 
-          <input id="retirementAge" type="number" value="67" min="60" max="70" />
+          <input
+            id="retirementAge"
+            type="number"
+            value="67"
+            min="60"
+            max="70"
+          />
+
 
           <label class="fieldLabel">
             Kinder
             <button class="infoBtn" type="button" data-tip="children">i</button>
           </label>
 
-          <input id="children" type="number" value="0" min="0" max="10" />
+          <input
+            id="children"
+            type="number"
+            value="0"
+            min="0"
+            max="10"
+          />
+
 
           <label class="fieldLabel">
             Rendite nach Kosten
             <button class="infoBtn" type="button" data-tip="return">i</button>
-            <span id="returnLabel" class="pillValue">5,0 %</span>
+
+            <span id="returnLabel" class="pillValue">
+              5,0 %
+            </span>
           </label>
 
-          <input id="returnRate" type="range" value="5" min="0" max="10" step="0.1" />
+          <input
+            id="returnRate"
+            type="range"
+            value="5"
+            min="0"
+            max="10"
+            step="0.1"
+          />
 
           <div class="rangeEnds">
             <span>0 %</span>
             <span>10 %</span>
           </div>
 
+
           <label class="fieldLabel">
             Inflation
             <button class="infoBtn" type="button" data-tip="inflation">i</button>
-            <span id="inflationLabel" class="pillValue">2,0 %</span>
+
+            <span id="inflationLabel" class="pillValue">
+              2,0 %
+            </span>
           </label>
 
-          <input id="inflationRate" type="range" value="2" min="0" max="6" step="0.1" />
+          <input
+            id="inflationRate"
+            type="range"
+            value="2"
+            min="0"
+            max="6"
+            step="0.1"
+          />
 
-          <button class="btn" id="calculateBtn" type="button">Berechnung aktualisieren</button>
+          <button class="btn" id="calculateBtn" type="button">
+            Berechnung aktualisieren
+          </button>
 
           <div id="tooltip" class="tooltip" hidden></div>
         </div>
 
+
         <div class="results-column">
+
           <div class="card result-card">
             <p class="eyebrow">Altersvorsorgedepot</p>
-            <h2 id="headline">Brutto-Vermögen mit 67</h2>
+
+            <h2 id="headline">
+              Brutto-Vermögen mit 67
+            </h2>
 
             <div class="result-tiles">
+
               <div>
                 <span>Gesamtförderung</span>
                 <strong id="totalSubsidy">0 €</strong>
               </div>
+
               <div class="highlight">
                 <span>Brutto-Vermögen</span>
                 <strong id="avdFinal">0 €</strong>
               </div>
+
               <div>
                 <span>Heutige Kaufkraft</span>
                 <strong id="realValue">0 €</strong>
               </div>
+
             </div>
 
             <p class="muted" id="summaryText"></p>
           </div>
 
+
           <div class="card result-card">
             <p class="eyebrow">Vergleich</p>
+
             <h2>AVD vs. ETF-Depot</h2>
 
             <div class="comparison">
+
               <div>
                 <span>Altersvorsorgedepot</span>
                 <strong id="compareAvd">0 €</strong>
               </div>
+
               <div>
                 <span>ETF-Depot ohne Förderung</span>
                 <strong id="compareEtf">0 €</strong>
               </div>
+
               <div class="highlight">
                 <span>Vorteil durch Förderung</span>
                 <strong id="advantage">0 €</strong>
               </div>
+
             </div>
           </div>
+
         </div>
       </div>
 
+
       <div class="container chart-grid">
+
         <div class="card chart-card">
           <p class="eyebrow">Verlauf</p>
+
           <h2>Kapitalaufbau bis Rentenbeginn</h2>
+
           <canvas id="growthChart"></canvas>
         </div>
 
+
         <div class="card lead-card">
           <p class="eyebrow">PDF-Auswertung</p>
+
           <h2>Ergebnis per E-Mail erhalten</h2>
+
           <p>
-            Lassen Sie sich Ihre persönliche Modellrechnung zusenden und nutzen Sie sie als Grundlage
-            für Ihre weitere Vorsorgeplanung.
+            Lassen Sie sich Ihre persönliche Modellrechnung zusenden und nutzen Sie
+            sie als Grundlage für Ihre weitere Vorsorgeplanung.
           </p>
 
           <form id="leadForm">
-            <input type="text" name="name" placeholder="Ihr Name" required />
-            <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required />
-            <input type="tel" name="phone" placeholder="Telefon optional" />
+            <input
+              type="text"
+              name="name"
+              placeholder="Ihr Name"
+              required
+            />
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Ihre E-Mail-Adresse"
+              required
+            />
+
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Telefon optional"
+            />
+
             <label class="privacyCheck">
               <input type="checkbox" required />
-              <span>Ich stimme der Verarbeitung meiner Angaben gemäß Datenschutzerklärung zu.</span>
+
+              <span>
+                Ich stimme der Verarbeitung meiner Angaben gemäß Datenschutzerklärung zu.
+              </span>
             </label>
-            <button class="btn" type="submit">PDF-Auswertung anfordern</button>
+
+            <button class="btn" type="submit">
+              PDF-Auswertung anfordern
+            </button>
           </form>
 
           <p class="small">
-            [Zoho-CRM-Webform oder Zoho-Flow-Anbindung hier einfügen]
+            Die persönliche PDF-Auswertung wird im nächsten Schritt
+            mit Zoho Forms und Zoho Writer verbunden.
           </p>
         </div>
+
       </div>
     </section>
+
 
     <section class="section audience-section">
       <div class="container sectionHeader">
         <p class="eyebrow">Für wen?</p>
-        <h2>Für wen das Altersvorsorgedepot interessant sein kann</h2>
+
+        <h2>
+          Für wen das Altersvorsorgedepot interessant sein kann
+        </h2>
       </div>
 
       <div class="container cards-grid">
+
         <div class="miniCard">
           <strong>Berufseinsteiger</strong>
-          <p>Früh starten, lange Laufzeiten nutzen und Förderung mitnehmen.</p>
+
+          <p>
+            Früh starten, lange Laufzeiten nutzen und Förderung mitnehmen.
+          </p>
         </div>
+
         <div class="miniCard">
           <strong>Familien</strong>
-          <p>Kinderzulagen können den Vermögensaufbau deutlich unterstützen.</p>
+
+          <p>
+            Kinderzulagen können den Vermögensaufbau deutlich unterstützen.
+          </p>
         </div>
+
         <div class="miniCard">
           <strong>Berufstätige</strong>
-          <p>Bestehende Vorsorge prüfen und Versorgungslücken erkennen.</p>
+
+          <p>
+            Bestehende Vorsorge prüfen und Versorgungslücken erkennen.
+          </p>
         </div>
+
         <div class="miniCard">
           <strong>Selbstständige</strong>
-          <p>Erstmals kann staatlich geförderte Vorsorge relevant werden.</p>
+
+          <p>
+            Erstmals kann staatlich geförderte Vorsorge relevant werden.
+          </p>
         </div>
+
       </div>
     </section>
 
+
     <section class="section perspectives-section">
       <div class="container two-col">
+
         <div>
           <p class="eyebrow">Einordnung</p>
-          <h2>Warum es so viele unterschiedliche Meinungen gibt</h2>
+
+          <h2>
+            Warum es so viele unterschiedliche Meinungen gibt
+          </h2>
+
           <p>
             Fondsanbieter sprechen über Renditechancen. Versicherer über Sicherheit.
             Verbraucherschützer über Kosten. Die Politik über mehr private Vorsorge.
           </p>
+
           <p>
             Alle diese Perspektiven haben ihre Berechtigung. Entscheidend ist jedoch,
             welche Lösung zu Ihrer persönlichen Situation passt.
           </p>
         </div>
 
+
         <div class="card tableCard">
-          <div><span>Politik</span><strong>Mehr Vorsorge</strong></div>
-          <div><span>Fondsanbieter</span><strong>Rendite</strong></div>
-          <div><span>Versicherer</span><strong>Sicherheit</strong></div>
-          <div><span>Verbraucherschutz</span><strong>Kosten</strong></div>
-          <div class="accent"><span>Vermögenslotse</span><strong>Passende Lösung</strong></div>
+
+          <div>
+            <span>Politik</span>
+            <strong>Mehr Vorsorge</strong>
+          </div>
+
+          <div>
+            <span>Fondsanbieter</span>
+            <strong>Rendite</strong>
+          </div>
+
+          <div>
+            <span>Versicherer</span>
+            <strong>Sicherheit</strong>
+          </div>
+
+          <div>
+            <span>Verbraucherschutz</span>
+            <strong>Kosten</strong>
+          </div>
+
+          <div class="accent">
+            <span>Vermögenslotse</span>
+            <strong>Passende Lösung</strong>
+          </div>
+
         </div>
       </div>
     </section>
+
 
     <section class="section download-section" id="broschuere">
       <div class="container two-col">
+
         <div class="brochureBox">
           <p class="eyebrow">Kostenloser Leitfaden</p>
-          <h2>Broschüre zum Altersvorsorgedepot anfordern</h2>
+
+          <h2>
+            Broschüre zum Altersvorsorgedepot anfordern
+          </h2>
+
           <p>
-            Verständlich erklärt. Chancen und Risiken eingeordnet. Ohne Produktverkauf.
+            Verständlich erklärt. Chancen und Risiken eingeordnet.
+            Ohne Produktverkauf.
           </p>
+
           <ul>
-            <li>Was sich durch die Reform verändert</li>
-            <li>Für wen das Altersvorsorgedepot interessant sein kann</li>
-            <li>Welche Denkfehler Anleger vermeiden sollten</li>
-            <li>Welche Fragen Sie vor einer Entscheidung stellen sollten</li>
+            <li>
+              Was sich durch die Reform verändert
+            </li>
+
+            <li>
+              Was jetzt aus bestehenden Riester-Verträgen werden kann
+            </li>
+
+            <li>
+              Welche Denkfehler Anleger vermeiden sollten
+            </li>
+
+            <li>
+              Welche Fragen Sie vor einer Entscheidung stellen sollten
+            </li>
           </ul>
+
+          <p class="brochureNote">
+            Nach dem Absenden erhalten Sie per E-Mail sowohl den Leitfaden
+            als auch den ergänzenden Experten-Anhang.
+          </p>
         </div>
 
-        <div class="card lead-card">
+
+        <div class="card zoho-form-card">
+
           <p class="eyebrow">Download</p>
+
           <h2>PDF-Broschüre erhalten</h2>
-          <form id="brochureForm">
-            <input type="text" name="name" placeholder="Ihr Name" required />
-            <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required />
-            <label class="privacyCheck">
-              <input type="checkbox" required />
-              <span>Ich stimme der Verarbeitung meiner Angaben gemäß Datenschutzerklärung zu.</span>
-            </label>
-            <button class="btn" type="submit">Broschüre anfordern</button>
-          </form>
-          <p class="small">
-            Bis zur Zoho-Anbindung kann der Download-Link hier direkt hinterlegt werden:
-            <br />
-            <a href="/downloads/altersvorsorgedepot-leitfaden.pdf">PDF direkt öffnen</a>
+
+          <p class="zohoIntro">
+            Tragen Sie Ihre Kontaktdaten ein. Anschließend erhalten Sie
+            die Download-Links per E-Mail.
           </p>
+
+
+          <div class="zohoFormWrapper">
+            <iframe
+              src="https://forms.zohopublic.eu/christiangradtconsulting1/form/AltersvorsorgedepotBroschrenanforderung/formperma/FCXvjeX7zWdEo3JIQ7xOG0qTW-KBMx-6ej11xdpqS7M"
+              title="Altersvorsorgedepot Broschürenanforderung"
+              frameborder="0"
+              loading="lazy"
+              scrolling="yes"
+            ></iframe>
+          </div>
+
         </div>
+
       </div>
     </section>
 
+
     <section class="section expert-section">
       <div class="container expert-grid">
+
         <div>
           <p class="eyebrow">Ihr Vermögenslotse</p>
+
           <h2>Christian Gradt</h2>
+
           <p>
             Diplom-Betriebswirt, Sachverständiger für das Versicherungswesen (BVSV)
             und seit über 30 Jahren in der Finanzberatung tätig.
           </p>
+
           <p>
             Mein Ansatz: Orientierung statt Produktverkauf. Struktur statt Zufall.
             Entscheidungen mit System.
@@ -337,10 +569,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
           <div class="proofBox">
             <div class="stars">★★★★★</div>
-            <strong>Bewertungen auf ProvenExpert</strong>
-            <p>Logo + Sterne hier einbinden.</p>
+
+            <strong>
+              Bewertungen auf ProvenExpert
+            </strong>
+
+            <p>
+              Logo + Sterne hier einbinden.
+            </p>
           </div>
         </div>
+
 
         <div class="portraitCard">
           <img
@@ -349,24 +588,39 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             loading="lazy"
           />
         </div>
+
       </div>
     </section>
 
+
     <section class="section final-cta">
       <div class="container ctaBox">
-        <p class="eyebrow">Orientierungsgespräch</p>
-        <h2>Welche Rolle kann das Altersvorsorgedepot in Ihrer Strategie spielen?</h2>
-        <p>
-          Besprechen Sie Ihre Ergebnisse persönlich und prüfen Sie, welche nächsten Schritte
-          für Ihre Situation sinnvoll sind.
+
+        <p class="eyebrow">
+          Orientierungsgespräch
         </p>
-        <a class="btn" href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002">
+
+        <h2>
+          Welche Rolle kann das Altersvorsorgedepot in Ihrer Strategie spielen?
+        </h2>
+
+        <p>
+          Besprechen Sie Ihre Ergebnisse persönlich und prüfen Sie,
+          welche nächsten Schritte für Ihre Situation sinnvoll sind.
+        </p>
+
+        <a
+          class="btn"
+          href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
+        >
           Termin vereinbaren
         </a>
+
       </div>
     </section>
 
   </main>
+
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -396,82 +650,236 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       summaryText: document.getElementById("summaryText"),
       headline: document.getElementById("headline"),
       calculateBtn: document.getElementById("calculateBtn"),
-      leadForm: document.getElementById("leadForm"),
-      brochureForm: document.getElementById("brochureForm")
+      leadForm: document.getElementById("leadForm")
     };
 
     let chart;
 
     const tooltipTexts = {
-      sparrate: "Ihr monatlicher Eigenbeitrag. Jeder andere Betrag kann frei eingetragen werden.",
-      income: "Das Bruttojahreseinkommen dient der späteren steuerlichen Einordnung. In dieser Version wird es noch nicht steuerlich optimiert.",
-      birthyear: "Aus dem Geburtsjahr wird der Zeitraum bis zum Renteneintritt abgeleitet. Die Berechnung startet modellhaft mit 2027.",
-      retirement: "Standardmäßig wird mit Renteneintritt 67 gerechnet. Sie können den Wert anpassen.",
-      return: "Angenommene jährliche Rendite nach Kosten. Die Berechnung erfolgt modellhaft mit monatlicher Verzinsung.",
-      inflation: "Inflation reduziert die Kaufkraft des späteren Vermögens. Standardwert: 2 % pro Jahr.",
-      children: "Für Kinder wird modellhaft eine Kinderzulage von bis zu 300 € pro Kind und Jahr berücksichtigt."
+      sparrate:
+        "Ihr monatlicher Eigenbeitrag. Jeder andere Betrag kann frei eingetragen werden.",
+
+      income:
+        "Das Bruttojahreseinkommen dient der späteren steuerlichen Einordnung. In dieser Version wird es noch nicht steuerlich optimiert.",
+
+      birthyear:
+        "Aus dem Geburtsjahr wird der Zeitraum bis zum Renteneintritt abgeleitet. Die Berechnung startet modellhaft mit 2027.",
+
+      retirement:
+        "Standardmäßig wird mit Renteneintritt 67 gerechnet. Sie können den Wert anpassen.",
+
+      return:
+        "Angenommene jährliche Rendite nach Kosten. Die Berechnung erfolgt modellhaft mit monatlicher Verzinsung.",
+
+      inflation:
+        "Inflation reduziert die Kaufkraft des späteren Vermögens. Standardwert: 2 % pro Jahr.",
+
+      children:
+        "Für Kinder wird modellhaft eine Kinderzulage von bis zu 300 € pro Kind und Jahr berücksichtigt."
     };
 
     const tooltip = document.getElementById("tooltip");
 
+
     function annualSubsidy(monthly, children) {
       const yearly = monthly * 12;
-      const stage1 = Math.min(yearly, 360) * 0.5;
-      const stage2 = Math.max(0, Math.min(yearly, 1800) - 360) * 0.25;
-      const childSubsidy = Math.min(monthly * 12, children * 300);
+
+      const stage1 =
+        Math.min(yearly, 360) * 0.5;
+
+      const stage2 =
+        Math.max(
+          0,
+          Math.min(yearly, 1800) - 360
+        ) * 0.25;
+
+      const childSubsidy =
+        Math.min(
+          monthly * 12,
+          children * 300
+        );
+
       return stage1 + stage2 + childSubsidy;
     }
 
-    function compoundMonthly(monthlyContribution, yearlySubsidy, years, annualReturn) {
+
+    function compoundMonthly(
+      monthlyContribution,
+      yearlySubsidy,
+      years,
+      annualReturn
+    ) {
       const r = annualReturn / 100 / 12;
+
       let capital = 0;
+
       const labels = [];
       const deposits = [];
       const subsidies = [];
       const total = [];
 
+
       for (let y = 0; y <= years; y++) {
+
         labels.push(String(2027 + y));
-        deposits.push(monthlyContribution * 12 * y);
-        subsidies.push(yearlySubsidy * y);
+
+        deposits.push(
+          monthlyContribution * 12 * y
+        );
+
+        subsidies.push(
+          yearlySubsidy * y
+        );
+
         total.push(capital);
 
-        for (let m = 0; m < 12 && y < years; m++) {
-          capital = capital * (1 + r) + monthlyContribution + yearlySubsidy / 12;
+
+        for (
+          let m = 0;
+          m < 12 && y < years;
+          m++
+        ) {
+          capital =
+            capital * (1 + r)
+            + monthlyContribution
+            + yearlySubsidy / 12;
         }
       }
 
-      return { final: capital, labels, deposits, subsidies, total };
+
+      return {
+        final: capital,
+        labels,
+        deposits,
+        subsidies,
+        total
+      };
     }
 
+
     function calculate() {
-      const monthly = Number(els.monthly.value || 0);
-      const birthyear = Number(els.birthyear.value || 1990);
-      const retirementAge = Number(els.retirementAge.value || 67);
-      const children = Number(els.children.value || 0);
-      const returnRate = Number(els.returnRate.value || 5);
-      const inflation = Number(els.inflationRate.value || 2);
+
+      const monthly =
+        Number(els.monthly.value || 0);
+
+      const birthyear =
+        Number(els.birthyear.value || 1990);
+
+      const retirementAge =
+        Number(els.retirementAge.value || 67);
+
+      const children =
+        Number(els.children.value || 0);
+
+      const returnRate =
+        Number(els.returnRate.value || 5);
+
+      const inflation =
+        Number(els.inflationRate.value || 2);
+
 
       const currentYear = 2027;
-      const age = currentYear - birthyear;
-      const years = Math.max(0, retirementAge - age);
 
-      const subsidy = annualSubsidy(monthly, children);
-      const avd = compoundMonthly(monthly, subsidy, years, returnRate);
-      const etf = compoundMonthly(monthly, 0, years, returnRate);
+      const age =
+        currentYear - birthyear;
 
-      const realValue = avd.final / Math.pow(1 + inflation / 100, years);
-      const advantage = avd.final - etf.final;
+      const years =
+        Math.max(
+          0,
+          retirementAge - age
+        );
 
-      els.returnLabel.textContent = returnRate.toFixed(1).replace(".", ",") + " %";
-      els.inflationLabel.textContent = inflation.toFixed(1).replace(".", ",") + " %";
-      els.headline.textContent = `Brutto-Vermögen mit ${retirementAge}`;
-      els.totalSubsidy.textContent = euro.format(subsidy * years);
-      els.avdFinal.textContent = euro.format(avd.final);
-      els.realValue.textContent = euro.format(realValue);
-      els.compareAvd.textContent = euro.format(avd.final);
-      els.compareEtf.textContent = euro.format(etf.final);
-      els.advantage.textContent = euro.format(advantage);
+
+      const subsidy =
+        annualSubsidy(
+          monthly,
+          children
+        );
+
+
+      const avd =
+        compoundMonthly(
+          monthly,
+          subsidy,
+          years,
+          returnRate
+        );
+
+
+      const etf =
+        compoundMonthly(
+          monthly,
+          0,
+          years,
+          returnRate
+        );
+
+
+      const realValue =
+        avd.final /
+        Math.pow(
+          1 + inflation / 100,
+          years
+        );
+
+
+      const advantage =
+        avd.final - etf.final;
+
+
+      els.returnLabel.textContent =
+        returnRate
+          .toFixed(1)
+          .replace(".", ",")
+        + " %";
+
+
+      els.inflationLabel.textContent =
+        inflation
+          .toFixed(1)
+          .replace(".", ",")
+        + " %";
+
+
+      els.headline.textContent =
+        `Brutto-Vermögen mit ${retirementAge}`;
+
+
+      els.totalSubsidy.textContent =
+        euro.format(
+          subsidy * years
+        );
+
+
+      els.avdFinal.textContent =
+        euro.format(
+          avd.final
+        );
+
+
+      els.realValue.textContent =
+        euro.format(
+          realValue
+        );
+
+
+      els.compareAvd.textContent =
+        euro.format(
+          avd.final
+        );
+
+
+      els.compareEtf.textContent =
+        euro.format(
+          etf.final
+        );
+
+
+      els.advantage.textContent =
+        euro.format(
+          advantage
+        );
+
 
       els.summaryText.innerHTML =
         `Bei Renteneintritt mit <strong>${retirementAge}</strong> und ` +
@@ -481,105 +889,268 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         `<strong>${inflation.toFixed(1).replace(".", ",")} %</strong> Inflation entspricht dies ` +
         `einer heutigen Kaufkraft von <strong>${euro.format(realValue)}</strong>.`;
 
-      drawChart(avd.labels, avd.deposits, avd.subsidies, avd.total);
+
+      drawChart(
+        avd.labels,
+        avd.deposits,
+        avd.subsidies,
+        avd.total
+      );
     }
 
-    function drawChart(labels, deposits, subsidies, total) {
-      const ctx = document.getElementById("growthChart");
-      if (chart) chart.destroy();
 
-      chart = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels,
-          datasets: [
-            {
-              label: "Einzahlungen",
-              data: deposits,
-              borderColor: "#8d969d",
-              backgroundColor: "rgba(141,150,157,.15)",
-              fill: true,
-              tension: 0.25
-            },
-            {
-              label: "Förderung",
-              data: subsidies,
-              borderColor: "#1e88c8",
-              backgroundColor: "rgba(30,136,200,.18)",
-              fill: true,
-              tension: 0.25
-            },
-            {
-              label: "Gesamtvermögen",
-              data: total,
-              borderColor: "#1f6b3a",
-              backgroundColor: "rgba(31,107,58,.18)",
-              fill: true,
-              tension: 0.25
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          plugins: { legend: { position: "bottom" } },
-          scales: {
-            y: { ticks: { callback: value => euro.format(value) } }
-          }
-        }
-      });
-    }
+    function drawChart(
+      labels,
+      deposits,
+      subsidies,
+      total
+    ) {
 
-    document.querySelectorAll("input").forEach(input => {
-      input.addEventListener("input", calculate);
-    });
+      const ctx =
+        document.getElementById("growthChart");
 
-    document.querySelectorAll(".quickButtons button").forEach((button) => {
-      button.addEventListener("click", () => {
-        document.querySelectorAll(".quickButtons button").forEach((b) => b.classList.remove("active"));
-        button.classList.add("active");
-        els.monthly.value = button.dataset.value;
-        calculate();
-      });
-    });
 
-    els.monthly.addEventListener("input", () => {
-      document.querySelectorAll(".quickButtons button").forEach((b) => {
-        b.classList.toggle("active", b.dataset.value === els.monthly.value);
-      });
-    });
-
-    document.querySelectorAll(".infoBtn").forEach((btn) => {
-      btn.addEventListener("click", (event) => {
-        event.stopPropagation();
-        tooltip.textContent = tooltipTexts[btn.dataset.tip] || "";
-        tooltip.hidden = false;
-        const rect = btn.getBoundingClientRect();
-        const parentRect = document.querySelector(".input-card").getBoundingClientRect();
-        tooltip.style.left = `${rect.left - parentRect.left - 10}px`;
-        tooltip.style.top = `${rect.bottom - parentRect.top + 10}px`;
-      });
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest(".infoBtn") && !e.target.closest(".tooltip")) {
-        tooltip.hidden = true;
+      if (chart) {
+        chart.destroy();
       }
-    });
 
-    els.calculateBtn.addEventListener("click", calculate);
 
-    els.leadForm.addEventListener("submit", e => {
-      e.preventDefault();
-      alert("Platzhalter: Hier wird später Zoho CRM / Zoho Flow angebunden.");
-    });
+      chart =
+        new Chart(ctx, {
 
-    els.brochureForm.addEventListener("submit", e => {
-      e.preventDefault();
-      alert("Platzhalter: Hier wird später Zoho CRM angebunden und die Broschüre per E-Mail versendet.");
-    });
+          type: "line",
+
+          data: {
+
+            labels,
+
+            datasets: [
+
+              {
+                label: "Einzahlungen",
+                data: deposits,
+                borderColor: "#8d969d",
+                backgroundColor:
+                  "rgba(141,150,157,.15)",
+                fill: true,
+                tension: 0.25
+              },
+
+              {
+                label: "Förderung",
+                data: subsidies,
+                borderColor: "#1e88c8",
+                backgroundColor:
+                  "rgba(30,136,200,.18)",
+                fill: true,
+                tension: 0.25
+              },
+
+              {
+                label: "Gesamtvermögen",
+                data: total,
+                borderColor: "#1f6b3a",
+                backgroundColor:
+                  "rgba(31,107,58,.18)",
+                fill: true,
+                tension: 0.25
+              }
+
+            ]
+          },
+
+          options: {
+
+            responsive: true,
+
+            plugins: {
+              legend: {
+                position: "bottom"
+              }
+            },
+
+            scales: {
+              y: {
+                ticks: {
+                  callback:
+                    value =>
+                      euro.format(value)
+                }
+              }
+            }
+          }
+        });
+    }
+
+
+    document
+      .querySelectorAll(
+        "#rechner input"
+      )
+      .forEach(input => {
+
+        input.addEventListener(
+          "input",
+          calculate
+        );
+
+      });
+
+
+    document
+      .querySelectorAll(
+        ".quickButtons button"
+      )
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            document
+              .querySelectorAll(
+                ".quickButtons button"
+              )
+              .forEach(
+                b =>
+                  b.classList.remove(
+                    "active"
+                  )
+              );
+
+
+            button
+              .classList.add(
+                "active"
+              );
+
+
+            els.monthly.value =
+              button.dataset.value;
+
+
+            calculate();
+          }
+        );
+      });
+
+
+    els.monthly.addEventListener(
+      "input",
+      () => {
+
+        document
+          .querySelectorAll(
+            ".quickButtons button"
+          )
+          .forEach(b => {
+
+            b.classList.toggle(
+              "active",
+              b.dataset.value
+                === els.monthly.value
+            );
+
+          });
+      }
+    );
+
+
+    document
+      .querySelectorAll(
+        ".infoBtn"
+      )
+      .forEach(btn => {
+
+        btn.addEventListener(
+          "click",
+          event => {
+
+            event.stopPropagation();
+
+
+            tooltip.textContent =
+              tooltipTexts[
+                btn.dataset.tip
+              ] || "";
+
+
+            tooltip.hidden =
+              false;
+
+
+            const rect =
+              btn.getBoundingClientRect();
+
+
+            const parentRect =
+              document
+                .querySelector(
+                  ".input-card"
+                )
+                .getBoundingClientRect();
+
+
+            tooltip.style.left =
+              `${
+                rect.left
+                - parentRect.left
+                - 10
+              }px`;
+
+
+            tooltip.style.top =
+              `${
+                rect.bottom
+                - parentRect.top
+                + 10
+              }px`;
+          }
+        );
+      });
+
+
+    document.addEventListener(
+      "click",
+      e => {
+
+        if (
+          !e.target.closest(
+            ".infoBtn"
+          )
+          &&
+          !e.target.closest(
+            ".tooltip"
+          )
+        ) {
+          tooltip.hidden = true;
+        }
+      }
+    );
+
+
+    els.calculateBtn.addEventListener(
+      "click",
+      calculate
+    );
+
+
+    els.leadForm.addEventListener(
+      "submit",
+      e => {
+
+        e.preventDefault();
+
+        alert(
+          "Die persönliche PDF-Auswertung wird im nächsten Schritt mit Zoho Forms und Zoho Writer verbunden."
+        );
+      }
+    );
+
 
     calculate();
   </script>
+
 
   <style>
     :root {
@@ -590,106 +1161,881 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       --card: #ffffff;
       --muted: #6d7582;
       --line: #dfe6ec;
-      --shadow: 0 18px 45px rgba(30,47,74,.12);
+      --shadow:
+        0 18px 45px
+        rgba(30, 47, 74, .12);
     }
 
-    .avd-page { background: var(--light); color: var(--blue); }
-    .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
-    .section { padding: 64px 0; }
-    .avd-hero { padding: 72px 0 56px; background: linear-gradient(180deg, #fff 0%, #eef6fb 100%); }
 
-    .hero-grid, .two-col, .expert-grid {
+    .avd-page {
+      background: var(--light);
+      color: var(--blue);
+    }
+
+
+    .container {
+      width:
+        min(
+          1180px,
+          calc(100% - 32px)
+        );
+
+      margin: 0 auto;
+    }
+
+
+    .section {
+      padding: 64px 0;
+    }
+
+
+    .avd-hero {
+      padding:
+        72px 0 56px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #fff 0%,
+          #eef6fb 100%
+        );
+    }
+
+
+    .hero-grid,
+    .two-col,
+    .expert-grid {
+
       display: grid;
-      grid-template-columns: 1fr .9fr;
+
+      grid-template-columns:
+        1fr .9fr;
+
       gap: 36px;
+
       align-items: center;
     }
 
-    .calculator-grid { display: grid; grid-template-columns: 1.18fr .82fr; gap: 32px; align-items: start; }
-    .chart-grid { display: grid; grid-template-columns: 1.4fr .8fr; gap: 32px; align-items: start; margin-top: 32px; }
-    .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 
-    .logo { max-width: 260px; margin-bottom: 28px; }
-    .eyebrow { color: #2588c4; text-transform: uppercase; letter-spacing: .18em; font-weight: 800; font-size: .85rem; margin-bottom: 10px; }
-    h1, h2 { margin: 0 0 18px; line-height: 1.05; color: #111827; }
-    h1 { font-size: clamp(2.7rem, 5vw, 5.4rem); max-width: 850px; }
-    h2 { font-size: clamp(1.8rem, 3vw, 2.7rem); }
-    p, li { line-height: 1.65; }
-    .lead { font-size: 1.45rem; color: var(--blue); font-weight: 800; }
-    .heroText { font-size: 1.08rem; color: var(--muted); max-width: 720px; }
-    .heroActions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+    .calculator-grid {
 
-    .card, .quoteCard, .miniCard, .brochureBox, .ctaBox {
+      display: grid;
+
+      grid-template-columns:
+        1.18fr .82fr;
+
+      gap: 32px;
+
+      align-items: start;
+    }
+
+
+    .chart-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        1.4fr .8fr;
+
+      gap: 32px;
+
+      align-items: start;
+
+      margin-top: 32px;
+    }
+
+
+    .cards-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 18px;
+    }
+
+
+    .logo {
+      max-width: 260px;
+      margin-bottom: 28px;
+    }
+
+
+    .eyebrow {
+
+      color: #2588c4;
+
+      text-transform:
+        uppercase;
+
+      letter-spacing:
+        .18em;
+
+      font-weight: 800;
+
+      font-size: .85rem;
+
+      margin-bottom: 10px;
+    }
+
+
+    h1,
+    h2 {
+
+      margin:
+        0 0 18px;
+
+      line-height: 1.05;
+
+      color: #111827;
+    }
+
+
+    h1 {
+
+      font-size:
+        clamp(
+          2.7rem,
+          5vw,
+          5.4rem
+        );
+
+      max-width: 850px;
+    }
+
+
+    h2 {
+
+      font-size:
+        clamp(
+          1.8rem,
+          3vw,
+          2.7rem
+        );
+    }
+
+
+    p,
+    li {
+      line-height: 1.65;
+    }
+
+
+    .lead {
+
+      font-size: 1.45rem;
+
+      color: var(--blue);
+
+      font-weight: 800;
+    }
+
+
+    .heroText {
+
+      font-size: 1.08rem;
+
+      color: var(--muted);
+
+      max-width: 720px;
+    }
+
+
+    .heroActions {
+
+      display: flex;
+
+      gap: 14px;
+
+      flex-wrap: wrap;
+
+      margin-top: 28px;
+    }
+
+
+    .card,
+    .quoteCard,
+    .miniCard,
+    .brochureBox,
+    .ctaBox {
+
       background: var(--card);
-      border: 1px solid var(--line);
+
+      border:
+        1px solid
+        var(--line);
+
       border-radius: 28px;
-      box-shadow: var(--shadow);
+
+      box-shadow:
+        var(--shadow);
+
       padding: 32px;
     }
 
-    .mediaCard, .portraitCard { padding: 0; overflow: hidden; border-radius: 28px; box-shadow: var(--shadow); border: 1px solid var(--line); background: #fff; }
-    .mediaCard img, .portraitCard img { width: 100%; display: block; border-radius: 28px; }
-    .mediaCard--soft { background: #f8faf8; }
 
-    .quoteCard { border-left: 8px solid var(--gold); }
-    .quoteCard span { display: block; color: #2588c4; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; margin-bottom: 12px; }
-    .quoteCard strong { display: block; font-size: 1.65rem; line-height: 1.2; color: #111827; }
+    .mediaCard,
+    .portraitCard {
 
-    .input-card { position: relative; }
-    label { display: block; font-weight: 800; margin: 24px 0 8px; color: #111827; }
-    .fieldLabel { display: flex; align-items: center; gap: 8px; }
-    input { width: 100%; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; font-size: 1.1rem; margin-top: 8px; background: #fff; }
-    input[type="range"] { accent-color: #2588c4; }
-    .moneyInput { display: flex; align-items: center; border: 1px solid var(--line); border-radius: 14px; background: #fff; padding-right: 18px; }
-    .moneyInput input { border: 0; margin: 0; }
-    .moneyInput span { font-size: 1.2rem; font-weight: 800; color: #111827; }
-    .helpText, .muted, .small { color: var(--muted); line-height: 1.6; }
-    .quickButtons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 28px; }
-    .quickButtons button { border: 1px solid var(--line); border-radius: 14px; padding: 14px; background: #f4f4f4; font-weight: 900; font-size: 1.1rem; cursor: pointer; }
-    .quickButtons small { display: block; font-weight: 500; color: var(--muted); margin-top: 6px; }
-    .quickButtons button.active { border-color: #2588c4; background: #eaf6fc; box-shadow: 0 0 0 3px rgba(37,136,196,.12); }
+      padding: 0;
 
-    .infoBtn { width: 20px; height: 20px; border: 2px solid #2588c4; color: #2588c4; background: #fff; border-radius: 999px; font-size: 12px; font-weight: 800; cursor: pointer; line-height: 1; }
-    .pillValue { margin-left: auto; background: #0f73b7; color: #fff; padding: 8px 14px; border-radius: 999px; font-weight: 900; }
-    .rangeEnds { display: flex; justify-content: space-between; color: var(--muted); margin-top: 6px; }
-    .tooltip { position: absolute; z-index: 20; max-width: 340px; background: #0f73b7; color: #fff; padding: 14px 18px; border-radius: 14px; font-size: .95rem; line-height: 1.45; box-shadow: 0 14px 30px rgba(15,115,183,.25); }
+      overflow: hidden;
 
-    .btn { display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 999px; background: #2588c4; color: #fff; font-weight: 800; padding: 16px 24px; cursor: pointer; text-decoration: none; font-size: 1rem; }
-    .btn:hover { background: #126ca3; }
-    .btn--ghost { background: #fff; color: #2588c4; border: 1px solid #2588c4; }
-    .btn--ghost:hover { background: #eaf6fc; }
+      border-radius: 28px;
 
-    .results-column { display: grid; gap: 28px; }
-    .result-tiles, .comparison { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 24px 0; }
-    .result-tiles div, .comparison div { border: 1px solid var(--line); border-radius: 18px; padding: 18px; background: #fff; }
-    .result-tiles span, .comparison span { display: block; text-transform: uppercase; color: var(--muted); font-size: .8rem; font-weight: 800; margin-bottom: 8px; }
-    .result-tiles strong, .comparison strong { font-size: 1.6rem; color: #111827; }
-    .highlight { background: #2588c4 !important; color: #fff; border-color: #2588c4 !important; }
-    .highlight span, .highlight strong { color: #fff; }
+      box-shadow:
+        var(--shadow);
 
-    .lead-card form { display: grid; gap: 12px; }
-    .privacyCheck { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; color: var(--muted); }
-    .privacyCheck input { width: auto; margin-top: 4px; }
+      border:
+        1px solid
+        var(--line);
 
-    .sectionHeader { max-width: 820px; margin-bottom: 32px; }
-    .miniCard strong { font-size: 1.25rem; color: #111827; }
-    .tableCard { display: grid; gap: 12px; }
-    .tableCard div { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
-    .tableCard span { color: var(--muted); }
-    .tableCard .accent strong { color: #2588c4; }
-    .brochureBox ul { padding-left: 20px; }
-    .proofBox { margin-top: 24px; padding: 22px; border-radius: 22px; background: #f4f8fb; }
-    .stars { color: var(--gold); font-size: 1.6rem; letter-spacing: .08em; }
-    .ctaBox { text-align: center; max-width: 880px; }
-    .final-cta { background: #fff; }
+      background: #fff;
+    }
+
+
+    .mediaCard img,
+    .portraitCard img {
+
+      width: 100%;
+
+      display: block;
+
+      border-radius: 28px;
+    }
+
+
+    .mediaCard--soft {
+      background: #f8faf8;
+    }
+
+
+    .quoteCard {
+      border-left:
+        8px solid
+        var(--gold);
+    }
+
+
+    .quoteCard span {
+
+      display: block;
+
+      color: #2588c4;
+
+      font-weight: 800;
+
+      text-transform:
+        uppercase;
+
+      letter-spacing:
+        .12em;
+
+      font-size: .8rem;
+
+      margin-bottom: 12px;
+    }
+
+
+    .quoteCard strong {
+
+      display: block;
+
+      font-size: 1.65rem;
+
+      line-height: 1.2;
+
+      color: #111827;
+    }
+
+
+    .input-card {
+      position: relative;
+    }
+
+
+    label {
+
+      display: block;
+
+      font-weight: 800;
+
+      margin:
+        24px 0 8px;
+
+      color: #111827;
+    }
+
+
+    .fieldLabel {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+    }
+
+
+    input {
+
+      width: 100%;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 14px;
+
+      padding:
+        16px 18px;
+
+      font-size: 1.1rem;
+
+      margin-top: 8px;
+
+      background: #fff;
+    }
+
+
+    input[type="range"] {
+      accent-color: #2588c4;
+    }
+
+
+    .moneyInput {
+
+      display: flex;
+
+      align-items: center;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 14px;
+
+      background: #fff;
+
+      padding-right: 18px;
+    }
+
+
+    .moneyInput input {
+      border: 0;
+      margin: 0;
+    }
+
+
+    .moneyInput span {
+
+      font-size: 1.2rem;
+
+      font-weight: 800;
+
+      color: #111827;
+    }
+
+
+    .helpText,
+    .muted,
+    .small {
+
+      color: var(--muted);
+
+      line-height: 1.6;
+    }
+
+
+    .quickButtons {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 12px;
+
+      margin-bottom: 28px;
+    }
+
+
+    .quickButtons button {
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 14px;
+
+      padding: 14px;
+
+      background: #f4f4f4;
+
+      font-weight: 900;
+
+      font-size: 1.1rem;
+
+      cursor: pointer;
+    }
+
+
+    .quickButtons small {
+
+      display: block;
+
+      font-weight: 500;
+
+      color: var(--muted);
+
+      margin-top: 6px;
+    }
+
+
+    .quickButtons button.active {
+
+      border-color: #2588c4;
+
+      background: #eaf6fc;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(37,136,196,.12);
+    }
+
+
+    .infoBtn {
+
+      width: 20px;
+
+      height: 20px;
+
+      border:
+        2px solid
+        #2588c4;
+
+      color: #2588c4;
+
+      background: #fff;
+
+      border-radius: 999px;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      cursor: pointer;
+
+      line-height: 1;
+    }
+
+
+    .pillValue {
+
+      margin-left: auto;
+
+      background: #0f73b7;
+
+      color: #fff;
+
+      padding:
+        8px 14px;
+
+      border-radius: 999px;
+
+      font-weight: 900;
+    }
+
+
+    .rangeEnds {
+
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      color: var(--muted);
+
+      margin-top: 6px;
+    }
+
+
+    .tooltip {
+
+      position: absolute;
+
+      z-index: 20;
+
+      max-width: 340px;
+
+      background: #0f73b7;
+
+      color: #fff;
+
+      padding:
+        14px 18px;
+
+      border-radius: 14px;
+
+      font-size: .95rem;
+
+      line-height: 1.45;
+
+      box-shadow:
+        0 14px 30px
+        rgba(15,115,183,.25);
+    }
+
+
+    .btn {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border: 0;
+
+      border-radius: 999px;
+
+      background: #2588c4;
+
+      color: #fff;
+
+      font-weight: 800;
+
+      padding:
+        16px 24px;
+
+      cursor: pointer;
+
+      text-decoration: none;
+
+      font-size: 1rem;
+    }
+
+
+    .btn:hover {
+      background: #126ca3;
+    }
+
+
+    .btn--ghost {
+
+      background: #fff;
+
+      color: #2588c4;
+
+      border:
+        1px solid
+        #2588c4;
+    }
+
+
+    .btn--ghost:hover {
+      background: #eaf6fc;
+    }
+
+
+    .results-column {
+
+      display: grid;
+
+      gap: 28px;
+    }
+
+
+    .result-tiles,
+    .comparison {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 14px;
+
+      margin:
+        24px 0;
+    }
+
+
+    .result-tiles div,
+    .comparison div {
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 18px;
+
+      padding: 18px;
+
+      background: #fff;
+    }
+
+
+    .result-tiles span,
+    .comparison span {
+
+      display: block;
+
+      text-transform:
+        uppercase;
+
+      color: var(--muted);
+
+      font-size: .8rem;
+
+      font-weight: 800;
+
+      margin-bottom: 8px;
+    }
+
+
+    .result-tiles strong,
+    .comparison strong {
+
+      font-size: 1.6rem;
+
+      color: #111827;
+    }
+
+
+    .highlight {
+
+      background:
+        #2588c4 !important;
+
+      color: #fff;
+
+      border-color:
+        #2588c4 !important;
+    }
+
+
+    .highlight span,
+    .highlight strong {
+      color: #fff;
+    }
+
+
+    .lead-card form {
+
+      display: grid;
+
+      gap: 12px;
+    }
+
+
+    .privacyCheck {
+
+      display: flex;
+
+      gap: 10px;
+
+      align-items:
+        flex-start;
+
+      font-weight: 500;
+
+      color: var(--muted);
+    }
+
+
+    .privacyCheck input {
+
+      width: auto;
+
+      margin-top: 4px;
+    }
+
+
+    .sectionHeader {
+
+      max-width: 820px;
+
+      margin-bottom: 32px;
+    }
+
+
+    .miniCard strong {
+
+      font-size: 1.25rem;
+
+      color: #111827;
+    }
+
+
+    .tableCard {
+
+      display: grid;
+
+      gap: 12px;
+    }
+
+
+    .tableCard div {
+
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      gap: 16px;
+
+      border-bottom:
+        1px solid
+        var(--line);
+
+      padding-bottom: 12px;
+    }
+
+
+    .tableCard span {
+      color: var(--muted);
+    }
+
+
+    .tableCard .accent strong {
+      color: #2588c4;
+    }
+
+
+    .brochureBox ul {
+      padding-left: 20px;
+    }
+
+
+    .brochureNote {
+
+      margin-top: 24px;
+
+      padding-top: 20px;
+
+      border-top:
+        1px solid
+        var(--line);
+
+      color: var(--muted);
+    }
+
+
+    .zoho-form-card {
+      align-self: start;
+    }
+
+
+    .zohoIntro {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+
+    .zohoFormWrapper {
+
+      width: 100%;
+
+      min-height: 620px;
+
+      overflow: hidden;
+
+      border-radius: 20px;
+
+      background: #fff;
+    }
+
+
+    .zohoFormWrapper iframe {
+
+      display: block;
+
+      width: 100%;
+
+      height: 620px;
+
+      border: 0;
+
+      background: #fff;
+    }
+
+
+    .proofBox {
+
+      margin-top: 24px;
+
+      padding: 22px;
+
+      border-radius: 22px;
+
+      background: #f4f8fb;
+    }
+
+
+    .stars {
+
+      color: var(--gold);
+
+      font-size: 1.6rem;
+
+      letter-spacing: .08em;
+    }
+
+
+    .ctaBox {
+
+      text-align: center;
+
+      max-width: 880px;
+    }
+
+
+    .final-cta {
+      background: #fff;
+    }
+
 
     @media (max-width: 900px) {
-      .hero-grid, .two-col, .expert-grid, .calculator-grid, .chart-grid, .cards-grid {
+
+      .hero-grid,
+      .two-col,
+      .expert-grid,
+      .calculator-grid,
+      .chart-grid,
+      .cards-grid {
+
         grid-template-columns: 1fr;
       }
-      .result-tiles, .comparison { grid-template-columns: 1fr; }
-      .heroActions { flex-direction: column; }
-      .btn { width: 100%; }
+
+
+      .result-tiles,
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+
+
+      .heroActions {
+        flex-direction: column;
+      }
+
+
+      .btn {
+        width: 100%;
+      }
+
+
+      .zohoFormWrapper {
+        min-height: 700px;
+      }
+
+
+      .zohoFormWrapper iframe {
+        height: 700px;
+      }
     }
+
   </style>
+
 </BaseLayout>

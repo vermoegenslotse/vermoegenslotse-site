@@ -44,7 +44,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
         </div>
 
-
         <div class="coverHeroCard">
           <img
             src="/images/Altersvorsorgedepot_Cover.png"
@@ -85,7 +84,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <strong>Was passt zu Ihrer persönlichen Situation?</strong>
           </p>
         </div>
-
 
         <div class="quoteCard">
           <span>Vermögenslotsen-Merksatz</span>
@@ -1060,7 +1058,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       <!-- =======================================================
-           PERSÖNLICHE PDF-AUSWERTUNG – ZOHO FORM
+           PERSÖNLICHE PDF-AUSWERTUNG
       ======================================================== -->
 
       <div class="container pdfSection" id="pdf-auswertung">
@@ -1260,7 +1258,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     <!-- =========================================================
-         BROSCHÜRE
+         BROSCHÜRENANFORDERUNG
     ========================================================== -->
 
     <section
@@ -1268,22 +1266,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       id="broschuere"
     >
 
-      <div class="container two-col brochureSectionGrid">
+      <div class="container brochureSectionGrid">
+
+        <!-- LINKE KARTE -->
 
         <div class="brochureBox">
 
           <div class="brochureContentGrid">
 
             <div class="brochureCoverSmall">
+
               <img
                 src="/images/Altersvorsorgedepot_Cover.png"
                 alt="Broschüre zum Altersvorsorgedepot"
                 loading="lazy"
               />
+
             </div>
 
 
-            <div>
+            <div class="brochureText">
 
               <p class="eyebrow">
                 Kostenloser Leitfaden
@@ -1330,6 +1332,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </div>
 
 
+        <!-- RECHTE KARTE -->
+
         <div class="card zoho-form-card">
 
           <p class="eyebrow">
@@ -1337,12 +1341,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
 
           <h2>
-            PDF-Broschüre erhalten
+            Broschüre per E-Mail erhalten
           </h2>
 
           <p class="zohoIntro">
-            Tragen Sie Ihre Kontaktdaten ein.
-            Anschließend erhalten Sie die Download-Links bequem per E-Mail.
+            Tragen Sie kurz Ihre Kontaktdaten ein.
           </p>
 
 
@@ -1822,14 +1825,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
   <!-- =========================================================
-       RECHNER + ZOHO PDF-PREFILL
+       RECHNER + ZOHO PDF PREFILL
   ========================================================== -->
 
   <script is:inline>
-
-    /* =========================================================
-       ZOHO PDF FORM
-    ========================================================== */
 
     const zohoCalculationBase =
       "https://forms.zohopublic.eu/christiangradtconsulting1/form/AltersvorsorgedepotBerechnung/formperma/2lza9HuTGCkPr3wQMKak8HIgwP1lXtO6hGQvT_hxuvE";
@@ -1994,10 +1993,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         new URLSearchParams();
 
 
-      /* ---------------------------------------------
-         STEUERFELDER
-      ---------------------------------------------- */
-
       params.set(
         "leadquelle",
         "Altersvorsorgedepot-Rechner"
@@ -2015,10 +2010,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         getLandingPage()
       );
 
-
-      /* ---------------------------------------------
-         EINGABEN
-      ---------------------------------------------- */
 
       params.set(
         "eigenbeitrag_monatlich",
@@ -2098,10 +2089,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       );
 
 
-      /* ---------------------------------------------
-         ANNAHMEN
-      ---------------------------------------------- */
-
       params.set(
         "avd_rendite",
         numberPlain(
@@ -2174,10 +2161,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       );
 
 
-      /* ---------------------------------------------
-         FÖRDERUNG JAHR 1
-      ---------------------------------------------- */
-
       params.set(
         "grundzulage_jahr1",
         numberPlain(
@@ -2226,10 +2209,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         )
       );
 
-
-      /* ---------------------------------------------
-         AVD ERGEBNISSE
-      ---------------------------------------------- */
 
       params.set(
         "eigene_beitraege_gesamt",
@@ -2303,10 +2282,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       );
 
 
-      /* ---------------------------------------------
-         FONDS-VERGLEICH
-      ---------------------------------------------- */
-
       params.set(
         "fonds_vermoegen",
         numberPlain(
@@ -2338,17 +2313,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         )
       );
 
-
-      /* ---------------------------------------------
-         AUSWERTUNGSFELDER
-      ---------------------------------------------- */
-
-      /*
-       * Bei den beiden Entscheidungsfeldern senden wir true/false.
-       * Falls Zoho bei Deinem konkreten Decision-Box-Feld einen
-       * anderen Prefill-Wert erwartet, müssen später nur diese
-       * beiden Zeilen angepasst werden.
-       */
 
       params.set(
         "riester_vorhanden",
@@ -2412,12 +2376,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         );
 
 
-      /*
-       * Kleiner Zeitpuffer:
-       * Der Rechner reagiert sofort,
-       * Zoho wird erst nach kurzer Eingabepause neu geladen.
-       */
-
       clearTimeout(
         zohoUpdateTimer
       );
@@ -2437,10 +2395,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* =========================================================
-       FORMATIERUNG
-    ========================================================== */
-
     const euro =
       new Intl.NumberFormat(
         "de-DE",
@@ -2451,10 +2405,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         }
       );
 
-
-    /* =========================================================
-       ELEMENTE
-    ========================================================== */
 
     const el = {
 
@@ -2768,10 +2718,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       null;
 
 
-    /* =========================================================
-       TOOLTIP-TEXTE
-    ========================================================== */
-
     const tooltipTexts = {
 
       monthly:
@@ -2791,10 +2737,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     };
 
-
-    /* =========================================================
-       KINDER
-    ========================================================== */
 
     function addChild(
       birthYear = 2015
@@ -2966,10 +2908,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* =========================================================
-       FÖRDERUNG
-    ========================================================== */
-
     function basicAllowance(
       yearlyContribution
     ) {
@@ -3071,24 +3009,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    function totalAllowance(
-      yearlyContribution,
-      year
-    ) {
-
-      return (
-        basicAllowance(
-          yearlyContribution
-        ) +
-        childAllowance(
-          yearlyContribution,
-          year
-        )
-      );
-
-    }
-
-
     function taxBenefit(
       yearlyContribution,
       allowance,
@@ -3123,10 +3043,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     }
 
-
-    /* =========================================================
-       FONDS-DEPOT STEUERMODELL
-    ========================================================== */
 
     function applyFundYearTax(
       capitalBeforeGain,
@@ -3168,10 +3084,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     }
 
-
-    /* =========================================================
-       AUSZAHLUNGSPLAN
-    ========================================================== */
 
     function annuityPayment(
       capital,
@@ -3221,10 +3133,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     }
 
-
-    /* =========================================================
-       MODELL
-    ========================================================== */
 
     function calculateModel() {
 
@@ -3535,10 +3443,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         });
 
 
-        /* -------------------------------------------
-           AVD: GEFÖRDERTER TOPF
-        -------------------------------------------- */
-
         avdFunded +=
           fundedOwn +
           allowance;
@@ -3550,10 +3454,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             avdNetReturn
           );
 
-
-        /* -------------------------------------------
-           AVD: UNGEFÖRDERTER ANTEIL
-        -------------------------------------------- */
 
         avdUnfunded +=
           unfundedOwn +
@@ -3571,10 +3471,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             avdNetReturn
           );
 
-
-        /* -------------------------------------------
-           FREIES FONDS-DEPOT
-        -------------------------------------------- */
 
         const fundBeforeGain =
           fundCapital +
@@ -3612,10 +3508,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           yearsToRetirement
         );
 
-
-      /* -------------------------------------------
-         AVD NETTO-AUSZAHLUNG
-      -------------------------------------------- */
 
       const fundedNetCapital =
         avdFunded *
@@ -3659,10 +3551,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           payoutReturnInput
         );
 
-
-      /* -------------------------------------------
-         FONDS-AUSZAHLUNG
-      -------------------------------------------- */
 
       const fundPayoutReturn =
         payoutReturnInput *
@@ -3810,10 +3698,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     }
 
-
-    /* =========================================================
-       UI
-    ========================================================== */
 
     function updateUI(
       result
@@ -4127,21 +4011,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       );
 
 
-      /*
-       * Alle aktuellen Werte an
-       * das Zoho-PDF-Formular übergeben.
-       */
-
       updateZohoFrame(
         result
       );
 
     }
 
-
-    /* =========================================================
-       CHART
-    ========================================================== */
 
     function drawChart(
       result
@@ -4321,10 +4196,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* =========================================================
-       BERECHNUNG STARTEN
-    ========================================================== */
-
     function calculate() {
 
       const result =
@@ -4337,10 +4208,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     }
 
-
-    /* =========================================================
-       EVENTS
-    ========================================================== */
 
     [
       el.monthly,
@@ -4580,10 +4447,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       }
     );
 
-
-    /* =========================================================
-       START
-    ========================================================== */
 
     renderChildren();
 
@@ -5692,7 +5555,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     /* ========================================================
-       PDF / ZOHO
+       PDF AUSWERTUNG
     ========================================================= */
 
 
@@ -5701,11 +5564,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       grid-template-columns: .9fr 1.1fr;
       gap: 38px;
       align-items: start;
-    }
-
-
-    .pdfIntro {
-      align-self: start;
     }
 
 
@@ -5762,7 +5620,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     /* ========================================================
-       REST
+       SONSTIGE KARTEN
     ========================================================= */
 
 
@@ -5797,9 +5655,36 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
+    /* ========================================================
+       BROSCHÜRENSEKTION – NEUES LAYOUT
+    ========================================================= */
+
+
+    .download-section {
+      overflow: hidden;
+    }
+
+
+    .brochureSectionGrid {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(420px, .95fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+
+    .brochureBox {
+      min-width: 0;
+    }
+
+
     .brochureContentGrid {
       display: grid;
-      grid-template-columns: 170px 1fr;
+      grid-template-columns:
+        150px
+        minmax(0, 1fr);
       gap: 24px;
       align-items: start;
     }
@@ -5808,14 +5693,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     .brochureCoverSmall {
       display: flex;
       justify-content: center;
+      align-items: flex-start;
     }
 
 
     .brochureCoverSmall img {
       width: 100%;
-      max-width: 170px;
+      max-width: 150px;
       height: auto;
       display: block;
+      object-fit: contain;
       filter: drop-shadow(
         0 12px 18px
         rgba(30,47,74,.16)
@@ -5823,8 +5710,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
+    .brochureText {
+      min-width: 0;
+    }
+
+
+    .brochureText h2 {
+      overflow-wrap: normal;
+      word-break: normal;
+      hyphens: auto;
+    }
+
+
     .brochureBox ul {
       padding-left: 20px;
+      margin-bottom: 0;
     }
 
 
@@ -5837,19 +5737,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .zoho-form-card {
+      min-width: 0;
+      width: 100%;
       align-self: start;
+      padding: 30px;
     }
 
 
     .zohoIntro {
       color: var(--muted);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
 
     .zohoFormWrapper {
       width: 100%;
-      overflow: hidden;
+      min-width: 0;
+      overflow: visible;
       border-radius: 20px;
       background: #fff;
     }
@@ -5857,14 +5761,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     #zf_div_FCXvjeX7zWdEo3JIQ7xOG0qTW-KBMx-6ej11xdpqS7M {
       width: 100%;
+      min-width: 0;
     }
 
 
     #zf_div_FCXvjeX7zWdEo3JIQ7xOG0qTW-KBMx-6ej11xdpqS7M iframe {
       display: block;
       width: 100% !important;
+      min-width: 0;
+      max-width: 100%;
       margin: 0 auto;
     }
+
+
+    /* ========================================================
+       EXPERTE / CTA
+    ========================================================= */
 
 
     .proofBox {
@@ -5894,8 +5806,27 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     /* ========================================================
-       MOBILE
+       TABLET
     ========================================================= */
+
+
+    @media (max-width: 980px) {
+
+      .brochureSectionGrid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .zoho-form-card {
+        width: 100%;
+      }
+
+
+      .zohoFormWrapper {
+        width: 100%;
+      }
+
+    }
 
 
     @media (max-width: 900px) {
@@ -5973,6 +5904,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
+    /* ========================================================
+       MOBILE
+    ========================================================= */
+
+
     @media (max-width: 620px) {
 
       .section {
@@ -6039,6 +5975,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       }
 
 
+      .brochureSectionGrid {
+        gap: 22px;
+      }
+
+
       .brochureContentGrid {
         grid-template-columns: 1fr;
       }
@@ -6046,7 +5987,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       .brochureCoverSmall img {
         max-width: 220px;
-        margin-bottom: 8px;
+        margin: 0 auto 8px;
+      }
+
+
+      .zoho-form-card {
+        padding: 22px;
       }
 
 

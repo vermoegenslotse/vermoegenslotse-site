@@ -1060,14 +1060,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       <!-- =======================================================
-           PDF AUSWERTUNG
+           PERSÖNLICHE PDF-AUSWERTUNG – ZOHO FORM
       ======================================================== -->
 
-      <div class="container pdfSection">
+      <div class="container pdfSection" id="pdf-auswertung">
 
         <div class="card pdfCard">
 
-          <div>
+          <div class="pdfIntro">
+
             <p class="eyebrow">
               Persönliche PDF-Auswertung
             </p>
@@ -1081,72 +1082,38 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               bequem per E-Mail zusenden.
             </p>
 
-            <p class="small">
-              Die automatische PDF-Auswertung wird im nächsten Schritt
-              mit Zoho Forms und Zoho Writer verbunden.
-            </p>
+            <ul class="pdfBenefits">
+              <li>Ihre persönlichen Rechner-Eingaben</li>
+              <li>Förderung und modellhafter Steuervorteil</li>
+              <li>Vermögen zum Rentenbeginn</li>
+              <li>Vergleich mit einem ungeförderten Fonds-Depot</li>
+              <li>Ihre modellhafte monatliche Auszahlung</li>
+            </ul>
+
+            <div class="pdfDataNotice">
+              <strong>Ihre Berechnung wird automatisch übernommen.</strong>
+
+              <p>
+                Sie müssen die Werte aus dem Rechner nicht noch einmal eingeben.
+                Ergänzen Sie nur noch Ihre Kontaktdaten.
+              </p>
+            </div>
+
           </div>
 
 
-          <form id="leadForm" class="pdfForm">
+          <div class="pdfOptinForm">
 
-            <div class="inputTwoCol">
+            <iframe
+              id="avdZohoFrame"
+              aria-label="Altersvorsorgedepot persönliche Berechnung"
+              frameborder="0"
+              scrolling="no"
+              style="width:100%;height:900px;border:none;overflow:hidden;"
+              src="https://forms.zohopublic.eu/christiangradtconsulting1/form/AltersvorsorgedepotBerechnung/formperma/2lza9HuTGCkPr3wQMKak8HIgwP1lXtO6hGQvT_hxuvE"
+            ></iframe>
 
-              <input
-                type="text"
-                name="firstname"
-                placeholder="Vorname"
-                required
-              />
-
-              <input
-                type="text"
-                name="lastname"
-                placeholder="Nachname"
-                required
-              />
-
-            </div>
-
-
-            <input
-              type="email"
-              name="email"
-              placeholder="Ihre E-Mail-Adresse"
-              required
-            />
-
-
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Telefon optional"
-            />
-
-
-            <label class="privacyCheck">
-
-              <input
-                type="checkbox"
-                required
-              />
-
-              <span>
-                Ich stimme der Verarbeitung meiner Angaben gemäß
-                Datenschutzerklärung zu.
-              </span>
-
-            </label>
-
-
-            <button
-              class="btn"
-              type="submit"
-            >
-              PDF-Auswertung anfordern
-            </button>
-
-          </form>
+          </div>
 
         </div>
 
@@ -1189,21 +1156,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <div class="miniCard">
           <strong>Berufseinsteiger</strong>
-          <p>Früh starten, lange Laufzeiten nutzen und Förderung mitnehmen.</p>
+
+          <p>
+            Früh starten, lange Laufzeiten nutzen und Förderung mitnehmen.
+          </p>
         </div>
+
 
         <div class="miniCard">
           <strong>Familien</strong>
-          <p>Kinderzulagen können den Vermögensaufbau deutlich unterstützen.</p>
+
+          <p>
+            Kinderzulagen können den Vermögensaufbau deutlich unterstützen.
+          </p>
         </div>
+
 
         <div class="miniCard">
           <strong>Berufstätige</strong>
-          <p>Bestehende Vorsorge prüfen und Versorgungslücken erkennen.</p>
+
+          <p>
+            Bestehende Vorsorge prüfen und Versorgungslücken erkennen.
+          </p>
         </div>
+
 
         <div class="miniCard">
           <strong>Selbstständige</strong>
+
           <p>
             Staatlich geförderte private Vorsorge kann künftig auch
             für viele Selbstständige relevant werden.
@@ -1842,10 +1822,624 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
   <!-- =========================================================
-       RECHNER
+       RECHNER + ZOHO PDF-PREFILL
   ========================================================== -->
 
   <script is:inline>
+
+    /* =========================================================
+       ZOHO PDF FORM
+    ========================================================== */
+
+    const zohoCalculationBase =
+      "https://forms.zohopublic.eu/christiangradtconsulting1/form/AltersvorsorgedepotBerechnung/formperma/2lza9HuTGCkPr3wQMKak8HIgwP1lXtO6hGQvT_hxuvE";
+
+
+    const CALCULATOR_VERSION =
+      "AVD-2026-08-v1";
+
+
+    let zohoUpdateTimer =
+      null;
+
+
+    function numberPlain(
+      value,
+      digits = 2
+    ) {
+
+      const number =
+        Number(value);
+
+
+      if (
+        !Number.isFinite(number)
+      ) {
+        return (
+          0
+        ).toFixed(
+          digits
+        );
+      }
+
+
+      return number.toFixed(
+        digits
+      );
+
+    }
+
+
+    function integerPlain(
+      value
+    ) {
+
+      const number =
+        Number(value);
+
+
+      if (
+        !Number.isFinite(number)
+      ) {
+        return "0";
+      }
+
+
+      return String(
+        Math.round(
+          number
+        )
+      );
+
+    }
+
+
+    function getLandingPage() {
+
+      try {
+
+        return (
+          window.location.origin +
+          window.location.pathname
+        );
+
+      } catch (e) {
+
+        return "";
+
+      }
+
+    }
+
+
+    function buildZohoUrl(
+      result
+    ) {
+
+      const capitalDiff =
+        result.avdCapital -
+        result.fundCapital;
+
+
+      const pensionDiff =
+        result.avdMonthlyNet -
+        result.fundMonthlyNet;
+
+
+      const comparisonBase =
+        Math.max(
+          result.avdCapital,
+          result.fundCapital,
+          1
+        );
+
+
+      const differenceRate =
+        Math.abs(
+          capitalDiff
+        ) /
+        comparisonBase;
+
+
+      let comparisonStatus =
+        "Nahezu gleich";
+
+
+      let shortAssessment =
+        "Unter den gewählten Modellannahmen liegen Altersvorsorgedepot und Fonds-Depot beim Vermögen zum Rentenbeginn relativ nah beieinander.";
+
+
+      if (
+        differenceRate >
+        0.02
+      ) {
+
+        if (
+          capitalDiff >
+          0
+        ) {
+
+          comparisonStatus =
+            "AVD rechnerisch höher";
+
+
+          shortAssessment =
+            "Unter den gewählten Modellannahmen liegt das Vermögen des Altersvorsorgedepots zum Rentenbeginn über dem Vergleichswert des ungeförderten Fonds-Depots.";
+
+        } else {
+
+          comparisonStatus =
+            "Fonds-Depot rechnerisch höher";
+
+
+          shortAssessment =
+            "Unter den gewählten Modellannahmen liegt das Vermögen des ungeförderten Fonds-Depots zum Rentenbeginn über dem Vergleichswert des Altersvorsorgedepots.";
+
+        }
+
+      }
+
+
+      const modelNotice =
+        "Vereinfachte Prognoserechnung. Keine Anlage-, Steuer-, Rechts- oder Versicherungsberatung. Tatsächliche Ergebnisse können abweichen.";
+
+
+      const childYears =
+        result.childBirthYears.join(
+          ", "
+        );
+
+
+      const params =
+        new URLSearchParams();
+
+
+      /* ---------------------------------------------
+         STEUERFELDER
+      ---------------------------------------------- */
+
+      params.set(
+        "leadquelle",
+        "Altersvorsorgedepot-Rechner"
+      );
+
+
+      params.set(
+        "rechner_version",
+        CALCULATOR_VERSION
+      );
+
+
+      params.set(
+        "landingpage",
+        getLandingPage()
+      );
+
+
+      /* ---------------------------------------------
+         EINGABEN
+      ---------------------------------------------- */
+
+      params.set(
+        "eigenbeitrag_monatlich",
+        numberPlain(
+          result.monthly
+        )
+      );
+
+
+      params.set(
+        "eigenbeitrag_jaehrlich",
+        numberPlain(
+          result.yearlyContribution
+        )
+      );
+
+
+      params.set(
+        "riester_startkapital",
+        numberPlain(
+          result.riesterTransfer
+        )
+      );
+
+
+      params.set(
+        "alter_2027",
+        integerPlain(
+          result.currentAge
+        )
+      );
+
+
+      params.set(
+        "renteneintrittsalter",
+        integerPlain(
+          result.retirementAge
+        )
+      );
+
+
+      params.set(
+        "auszahlung_bis_alter",
+        integerPlain(
+          result.payoutUntil
+        )
+      );
+
+
+      params.set(
+        "jahre_bis_rente",
+        integerPlain(
+          result.yearsToRetirement
+        )
+      );
+
+
+      params.set(
+        "auszahlungsdauer",
+        integerPlain(
+          result.payoutYears
+        )
+      );
+
+
+      params.set(
+        "anzahl_kinder",
+        integerPlain(
+          result.childCount
+        )
+      );
+
+
+      params.set(
+        "geburtsjahre_kinder",
+        childYears
+      );
+
+
+      /* ---------------------------------------------
+         ANNAHMEN
+      ---------------------------------------------- */
+
+      params.set(
+        "avd_rendite",
+        numberPlain(
+          result.avdReturnInput
+        )
+      );
+
+
+      params.set(
+        "avd_kosten",
+        numberPlain(
+          result.avdCostsInput
+        )
+      );
+
+
+      params.set(
+        "fonds_rendite",
+        numberPlain(
+          result.fundReturnInput
+        )
+      );
+
+
+      params.set(
+        "fonds_kosten",
+        numberPlain(
+          result.fundCostsInput
+        )
+      );
+
+
+      params.set(
+        "steuersatz_heute",
+        numberPlain(
+          result.taxNowInput
+        )
+      );
+
+
+      params.set(
+        "steuersatz_ruhestand",
+        numberPlain(
+          result.taxRetirementInput
+        )
+      );
+
+
+      params.set(
+        "inflation",
+        numberPlain(
+          result.inflationInput
+        )
+      );
+
+
+      params.set(
+        "rendite_auszahlung",
+        numberPlain(
+          result.payoutReturnInput
+        )
+      );
+
+
+      params.set(
+        "sparer_pauschbetrag",
+        numberPlain(
+          result.taxAllowanceInput
+        )
+      );
+
+
+      /* ---------------------------------------------
+         FÖRDERUNG JAHR 1
+      ---------------------------------------------- */
+
+      params.set(
+        "grundzulage_jahr1",
+        numberPlain(
+          result.firstYearBasicAllowance
+        )
+      );
+
+
+      params.set(
+        "kinderzulage_jahr1",
+        numberPlain(
+          result.firstYearChildAllowance
+        )
+      );
+
+
+      params.set(
+        "zulagen_jahr1",
+        numberPlain(
+          result.firstYearAllowance
+        )
+      );
+
+
+      params.set(
+        "steuervorteil_jahr1",
+        numberPlain(
+          result.firstYearTaxBenefit
+        )
+      );
+
+
+      params.set(
+        "foerderung_jahr1",
+        numberPlain(
+          result.firstYearAllowance +
+          result.firstYearTaxBenefit
+        )
+      );
+
+
+      params.set(
+        "foerderquote_jahr1",
+        numberPlain(
+          result.firstYearSupportRate
+        )
+      );
+
+
+      /* ---------------------------------------------
+         AVD ERGEBNISSE
+      ---------------------------------------------- */
+
+      params.set(
+        "eigene_beitraege_gesamt",
+        numberPlain(
+          result.totalOwn
+        )
+      );
+
+
+      params.set(
+        "zulagen_gesamt",
+        numberPlain(
+          result.totalAllowances
+        )
+      );
+
+
+      params.set(
+        "steuervorteile_gesamt",
+        numberPlain(
+          result.totalTaxBenefits
+        )
+      );
+
+
+      params.set(
+        "riester_gesamt",
+        numberPlain(
+          result.riesterTransfer
+        )
+      );
+
+
+      params.set(
+        "wertzuwachs_avd",
+        numberPlain(
+          result.investmentGrowth
+        )
+      );
+
+
+      params.set(
+        "avd_vermoegen",
+        numberPlain(
+          result.avdCapital
+        )
+      );
+
+
+      params.set(
+        "avd_kaufkraft_heute",
+        numberPlain(
+          result.realCapital
+        )
+      );
+
+
+      params.set(
+        "avd_auszahlung_monatlich",
+        numberPlain(
+          result.avdMonthlyNet
+        )
+      );
+
+
+      params.set(
+        "belastung_nach_foerderung",
+        numberPlain(
+          result.effectiveOwnCost
+        )
+      );
+
+
+      /* ---------------------------------------------
+         FONDS-VERGLEICH
+      ---------------------------------------------- */
+
+      params.set(
+        "fonds_vermoegen",
+        numberPlain(
+          result.fundCapital
+        )
+      );
+
+
+      params.set(
+        "fonds_auszahlung_monatlich",
+        numberPlain(
+          result.fundMonthlyNet
+        )
+      );
+
+
+      params.set(
+        "vermoegensunterschied",
+        numberPlain(
+          capitalDiff
+        )
+      );
+
+
+      params.set(
+        "auszahlungsunterschied",
+        numberPlain(
+          pensionDiff
+        )
+      );
+
+
+      /* ---------------------------------------------
+         AUSWERTUNGSFELDER
+      ---------------------------------------------- */
+
+      /*
+       * Bei den beiden Entscheidungsfeldern senden wir true/false.
+       * Falls Zoho bei Deinem konkreten Decision-Box-Feld einen
+       * anderen Prefill-Wert erwartet, müssen später nur diese
+       * beiden Zeilen angepasst werden.
+       */
+
+      params.set(
+        "riester_vorhanden",
+        result.riesterTransfer > 0
+          ? "true"
+          : "false"
+      );
+
+
+      params.set(
+        "kinderfoerderung",
+        result.totalChildAllowances > 0
+          ? "true"
+          : "false"
+      );
+
+
+      params.set(
+        "vergleich_status",
+        comparisonStatus
+      );
+
+
+      params.set(
+        "kurz_einordnung",
+        shortAssessment
+      );
+
+
+      params.set(
+        "modellhinweis",
+        modelNotice
+      );
+
+
+      return (
+        zohoCalculationBase +
+        "?" +
+        params.toString()
+      );
+
+    }
+
+
+    function updateZohoFrame(
+      result
+    ) {
+
+      const frame =
+        document.getElementById(
+          "avdZohoFrame"
+        );
+
+
+      if (!frame) return;
+
+
+      const nextUrl =
+        buildZohoUrl(
+          result
+        );
+
+
+      /*
+       * Kleiner Zeitpuffer:
+       * Der Rechner reagiert sofort,
+       * Zoho wird erst nach kurzer Eingabepause neu geladen.
+       */
+
+      clearTimeout(
+        zohoUpdateTimer
+      );
+
+
+      zohoUpdateTimer =
+        setTimeout(
+          () => {
+
+            frame.src =
+              nextUrl;
+
+          },
+          350
+        );
+
+    }
+
+
+    /* =========================================================
+       FORMATIERUNG
+    ========================================================== */
 
     const euro =
       new Intl.NumberFormat(
@@ -1858,195 +2452,325 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       );
 
 
+    /* =========================================================
+       ELEMENTE
+    ========================================================== */
+
     const el = {
 
       monthly:
-        document.getElementById("monthly"),
+        document.getElementById(
+          "monthly"
+        ),
 
       monthlyLabel:
-        document.getElementById("monthlyLabel"),
+        document.getElementById(
+          "monthlyLabel"
+        ),
 
       monthlyContributionDisplay:
-        document.getElementById("monthlyContributionDisplay"),
+        document.getElementById(
+          "monthlyContributionDisplay"
+        ),
 
       riesterTransfer:
-        document.getElementById("riesterTransfer"),
+        document.getElementById(
+          "riesterTransfer"
+        ),
 
       riesterLabel:
-        document.getElementById("riesterLabel"),
+        document.getElementById(
+          "riesterLabel"
+        ),
 
       riesterNotice:
-        document.getElementById("riesterNotice"),
+        document.getElementById(
+          "riesterNotice"
+        ),
 
       currentAge:
-        document.getElementById("currentAge"),
+        document.getElementById(
+          "currentAge"
+        ),
 
       retirementAge:
-        document.getElementById("retirementAge"),
+        document.getElementById(
+          "retirementAge"
+        ),
 
       payoutUntil:
-        document.getElementById("payoutUntil"),
+        document.getElementById(
+          "payoutUntil"
+        ),
 
       payoutLabel:
-        document.getElementById("payoutLabel"),
+        document.getElementById(
+          "payoutLabel"
+        ),
 
       childrenList:
-        document.getElementById("childrenList"),
+        document.getElementById(
+          "childrenList"
+        ),
 
       addChildBtn:
-        document.getElementById("addChildBtn"),
+        document.getElementById(
+          "addChildBtn"
+        ),
 
       avdReturn:
-        document.getElementById("avdReturn"),
+        document.getElementById(
+          "avdReturn"
+        ),
 
       avdCosts:
-        document.getElementById("avdCosts"),
+        document.getElementById(
+          "avdCosts"
+        ),
 
       fundReturn:
-        document.getElementById("fundReturn"),
+        document.getElementById(
+          "fundReturn"
+        ),
 
       fundCosts:
-        document.getElementById("fundCosts"),
+        document.getElementById(
+          "fundCosts"
+        ),
 
       taxRateNow:
-        document.getElementById("taxRateNow"),
+        document.getElementById(
+          "taxRateNow"
+        ),
 
       taxRateRetirement:
-        document.getElementById("taxRateRetirement"),
+        document.getElementById(
+          "taxRateRetirement"
+        ),
 
       inflationRate:
-        document.getElementById("inflationRate"),
+        document.getElementById(
+          "inflationRate"
+        ),
 
       payoutReturn:
-        document.getElementById("payoutReturn"),
+        document.getElementById(
+          "payoutReturn"
+        ),
 
       taxAllowance:
-        document.getElementById("taxAllowance"),
+        document.getElementById(
+          "taxAllowance"
+        ),
 
       netMonthlyPension:
-        document.getElementById("netMonthlyPension"),
+        document.getElementById(
+          "netMonthlyPension"
+        ),
 
       effectiveOwnCost:
-        document.getElementById("effectiveOwnCost"),
+        document.getElementById(
+          "effectiveOwnCost"
+        ),
 
       heroCapital:
-        document.getElementById("heroCapital"),
+        document.getElementById(
+          "heroCapital"
+        ),
 
       heroRealCapital:
-        document.getElementById("heroRealCapital"),
+        document.getElementById(
+          "heroRealCapital"
+        ),
 
       heroRetirementAge:
-        document.getElementById("heroRetirementAge"),
+        document.getElementById(
+          "heroRetirementAge"
+        ),
 
       heroSummary:
-        document.getElementById("heroSummary"),
+        document.getElementById(
+          "heroSummary"
+        ),
 
       annualSupport:
-        document.getElementById("annualSupport"),
+        document.getElementById(
+          "annualSupport"
+        ),
 
       annualOwn:
-        document.getElementById("annualOwn"),
+        document.getElementById(
+          "annualOwn"
+        ),
 
       annualAllowance:
-        document.getElementById("annualAllowance"),
+        document.getElementById(
+          "annualAllowance"
+        ),
 
       annualTaxBenefit:
-        document.getElementById("annualTaxBenefit"),
+        document.getElementById(
+          "annualTaxBenefit"
+        ),
 
       supportOwnBar:
-        document.getElementById("supportOwnBar"),
+        document.getElementById(
+          "supportOwnBar"
+        ),
 
       supportSubsidyBar:
-        document.getElementById("supportSubsidyBar"),
+        document.getElementById(
+          "supportSubsidyBar"
+        ),
 
       supportTaxBar:
-        document.getElementById("supportTaxBar"),
+        document.getElementById(
+          "supportTaxBar"
+        ),
 
       supportExplanation:
-        document.getElementById("supportExplanation"),
+        document.getElementById(
+          "supportExplanation"
+        ),
 
       totalOwnContributions:
-        document.getElementById("totalOwnContributions"),
+        document.getElementById(
+          "totalOwnContributions"
+        ),
 
       totalAllowances:
-        document.getElementById("totalAllowances"),
+        document.getElementById(
+          "totalAllowances"
+        ),
 
       totalTaxBenefits:
-        document.getElementById("totalTaxBenefits"),
+        document.getElementById(
+          "totalTaxBenefits"
+        ),
 
       totalRiester:
-        document.getElementById("totalRiester"),
+        document.getElementById(
+          "totalRiester"
+        ),
 
       investmentGrowth:
-        document.getElementById("investmentGrowth"),
+        document.getElementById(
+          "investmentGrowth"
+        ),
 
       compositionTotal:
-        document.getElementById("compositionTotal"),
+        document.getElementById(
+          "compositionTotal"
+        ),
 
       capitalDifference:
-        document.getElementById("capitalDifference"),
+        document.getElementById(
+          "capitalDifference"
+        ),
 
       pensionDifference:
-        document.getElementById("pensionDifference"),
+        document.getElementById(
+          "pensionDifference"
+        ),
 
       avdCapitalCompare:
-        document.getElementById("avdCapitalCompare"),
+        document.getElementById(
+          "avdCapitalCompare"
+        ),
 
       fundCapitalCompare:
-        document.getElementById("fundCapitalCompare"),
+        document.getElementById(
+          "fundCapitalCompare"
+        ),
 
       avdCapitalBar:
-        document.getElementById("avdCapitalBar"),
+        document.getElementById(
+          "avdCapitalBar"
+        ),
 
       fundCapitalBar:
-        document.getElementById("fundCapitalBar"),
+        document.getElementById(
+          "fundCapitalBar"
+        ),
 
       tableAvdCapital:
-        document.getElementById("tableAvdCapital"),
+        document.getElementById(
+          "tableAvdCapital"
+        ),
 
       tableFundCapital:
-        document.getElementById("tableFundCapital"),
+        document.getElementById(
+          "tableFundCapital"
+        ),
 
       tableAvdPension:
-        document.getElementById("tableAvdPension"),
+        document.getElementById(
+          "tableAvdPension"
+        ),
 
       tableFundPension:
-        document.getElementById("tableFundPension"),
+        document.getElementById(
+          "tableFundPension"
+        ),
 
       tableAvdSubsidies:
-        document.getElementById("tableAvdSubsidies"),
+        document.getElementById(
+          "tableAvdSubsidies"
+        ),
 
       saveScenarioBtn:
-        document.getElementById("saveScenarioBtn"),
+        document.getElementById(
+          "saveScenarioBtn"
+        ),
 
       savedScenarioBox:
-        document.getElementById("savedScenarioBox"),
+        document.getElementById(
+          "savedScenarioBox"
+        ),
 
       savedCapital:
-        document.getElementById("savedCapital"),
+        document.getElementById(
+          "savedCapital"
+        ),
 
       savedPension:
-        document.getElementById("savedPension"),
+        document.getElementById(
+          "savedPension"
+        ),
 
       clearScenarioBtn:
-        document.getElementById("clearScenarioBtn"),
+        document.getElementById(
+          "clearScenarioBtn"
+        ),
 
       resetCalculatorBtn:
-        document.getElementById("resetCalculatorBtn"),
-
-      leadForm:
-        document.getElementById("leadForm"),
+        document.getElementById(
+          "resetCalculatorBtn"
+        ),
 
       tooltip:
-        document.getElementById("tooltip")
+        document.getElementById(
+          "tooltip"
+        )
 
     };
 
 
-    let children = [];
-    let chart = null;
-    let latestResult = null;
+    let children =
+      [];
 
+
+    let chart =
+      null;
+
+
+    let latestResult =
+      null;
+
+
+    /* =========================================================
+       TOOLTIP-TEXTE
+    ========================================================== */
 
     const tooltipTexts = {
 
@@ -2086,12 +2810,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       renderChildren();
+
       calculate();
 
     }
 
 
-    function removeChild(id) {
+    function removeChild(
+      id
+    ) {
 
       children =
         children.filter(
@@ -2101,6 +2828,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       renderChildren();
+
       calculate();
 
     }
@@ -2109,7 +2837,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     function renderChildren() {
 
       if (
-        children.length === 0
+        children.length ===
+        0
       ) {
 
         el.childrenList.innerHTML =
@@ -2246,7 +2975,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     ) {
 
       if (
-        yearlyContribution < 120
+        yearlyContribution <
+        120
       ) {
         return 0;
       }
@@ -2313,7 +3043,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     ) {
 
       if (
-        yearlyContribution < 120
+        yearlyContribution <
+        120
       ) {
         return 0;
       }
@@ -2463,7 +3194,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       if (
-        monthlyRate <= 0
+        monthlyRate <=
+        0
       ) {
 
         return (
@@ -2553,16 +3285,66 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         );
 
 
+      const avdReturnInput =
+        Number(
+          el.avdReturn.value
+        );
+
+
+      const avdCostsInput =
+        Number(
+          el.avdCosts.value
+        );
+
+
+      const fundReturnInput =
+        Number(
+          el.fundReturn.value
+        );
+
+
+      const fundCostsInput =
+        Number(
+          el.fundCosts.value
+        );
+
+
+      const taxNowInput =
+        Number(
+          el.taxRateNow.value
+        );
+
+
+      const taxRetirementInput =
+        Number(
+          el.taxRateRetirement.value
+        );
+
+
+      const inflationInput =
+        Number(
+          el.inflationRate.value
+        );
+
+
+      const payoutReturnInput =
+        Number(
+          el.payoutReturn.value
+        );
+
+
+      const taxAllowanceInput =
+        Number(
+          el.taxAllowance.value
+        );
+
+
       const avdNetReturn =
         Math.max(
           -0.99,
           (
-            Number(
-              el.avdReturn.value
-            ) -
-            Number(
-              el.avdCosts.value
-            )
+            avdReturnInput -
+            avdCostsInput
           ) /
           100
         );
@@ -2572,47 +3354,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         Math.max(
           -0.99,
           (
-            Number(
-              el.fundReturn.value
-            ) -
-            Number(
-              el.fundCosts.value
-            )
+            fundReturnInput -
+            fundCostsInput
           ) /
           100
         );
 
 
       const inflation =
-        Number(
-          el.inflationRate.value
-        ) /
+        inflationInput /
         100;
-
-
-      const taxNow =
-        Number(
-          el.taxRateNow.value
-        );
 
 
       const taxRetirement =
-        Number(
-          el.taxRateRetirement.value
-        ) /
+        taxRetirementInput /
         100;
-
-
-      const payoutReturn =
-        Number(
-          el.payoutReturn.value
-        );
-
-
-      const taxAllowance =
-        Number(
-          el.taxAllowance.value
-        );
 
 
       let avdFunded =
@@ -2636,6 +3392,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       let totalAllowances =
+        0;
+
+
+      let totalBasicAllowances =
+        0;
+
+
+      let totalChildAllowances =
         0;
 
 
@@ -2676,7 +3440,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
         labels.push(
-          String(age)
+          String(
+            age
+          )
         );
 
 
@@ -2714,23 +3480,42 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           );
 
 
-        const allowance =
-          totalAllowance(
+        const basic =
+          basicAllowance(
+            fundedOwn
+          );
+
+
+        const child =
+          childAllowance(
             fundedOwn,
             calendarYear
           );
+
+
+        const allowance =
+          basic +
+          child;
 
 
         const taxRefund =
           taxBenefit(
             fundedOwn,
             allowance,
-            taxNow
+            taxNowInput
           );
 
 
         totalOwn +=
           yearlyContribution;
+
+
+        totalBasicAllowances +=
+          basic;
+
+
+        totalChildAllowances +=
+          child;
 
 
         totalAllowances +=
@@ -2743,12 +3528,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         annualRows.push({
           calendarYear,
+          basic,
+          child,
           allowance,
           taxRefund
         });
 
 
-        /* Geförderter AVD-Topf */
+        /* -------------------------------------------
+           AVD: GEFÖRDERTER TOPF
+        -------------------------------------------- */
 
         avdFunded +=
           fundedOwn +
@@ -2762,7 +3551,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           );
 
 
-        /* Ungeförderter Anteil innerhalb des Modells */
+        /* -------------------------------------------
+           AVD: UNGEFÖRDERTER ANTEIL
+        -------------------------------------------- */
 
         avdUnfunded +=
           unfundedOwn +
@@ -2781,7 +3572,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           );
 
 
-        /* Freies Fonds-Depot */
+        /* -------------------------------------------
+           FREIES FONDS-DEPOT
+        -------------------------------------------- */
 
         const fundBeforeGain =
           fundCapital +
@@ -2800,7 +3593,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           applyFundYearTax(
             fundBeforeGain,
             fundAfterGain,
-            taxAllowance
+            taxAllowanceInput
           );
 
       }
@@ -2820,7 +3613,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         );
 
 
-      /* AVD Netto */
+      /* -------------------------------------------
+         AVD NETTO-AUSZAHLUNG
+      -------------------------------------------- */
 
       const fundedNetCapital =
         avdFunded *
@@ -2861,14 +3656,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         annuityPayment(
           avdNetCapitalForPayout,
           payoutYears,
-          payoutReturn
+          payoutReturnInput
         );
 
 
-      /* Fonds-Auszahlung */
+      /* -------------------------------------------
+         FONDS-AUSZAHLUNG
+      -------------------------------------------- */
 
       const fundPayoutReturn =
-        payoutReturn *
+        payoutReturnInput *
         (
           1 -
           effectiveCapitalGainTax
@@ -2886,6 +3683,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       const firstYear =
         annualRows[0] ||
         {
+          basic: 0,
+          child: 0,
           allowance: 0,
           taxRefund: 0
         };
@@ -2911,19 +3710,67 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         riesterTransfer;
 
 
+      const firstYearSupport =
+        firstYear.allowance +
+        firstYear.taxRefund;
+
+
+      const firstYearSupportRate =
+        yearlyContribution >
+        0
+          ? (
+              firstYearSupport /
+              yearlyContribution
+            ) *
+            100
+          : 0;
+
+
+      const childBirthYears =
+        children.map(
+          child =>
+            Number(
+              child.birthYear
+            )
+        );
+
+
       return {
 
         monthly,
         yearlyContribution,
+
         riesterTransfer,
+
         currentAge,
         retirementAge,
         payoutUntil,
+
         yearsToRetirement,
         payoutYears,
 
+        childCount:
+          children.length,
+
+        childBirthYears,
+
+        avdReturnInput,
+        avdCostsInput,
+
+        fundReturnInput,
+        fundCostsInput,
+
+        taxNowInput,
+        taxRetirementInput,
+
+        inflationInput,
+        payoutReturnInput,
+
+        taxAllowanceInput,
+
         avdCapital,
         fundCapital,
+
         realCapital,
 
         avdMonthlyNet,
@@ -2932,16 +3779,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         effectiveOwnCost,
 
         totalOwn,
+
+        totalBasicAllowances,
+        totalChildAllowances,
         totalAllowances,
+
         totalTaxBenefits,
 
         investmentGrowth,
+
+        firstYearBasicAllowance:
+          firstYear.basic,
+
+        firstYearChildAllowance:
+          firstYear.child,
 
         firstYearAllowance:
           firstYear.allowance,
 
         firstYearTaxBenefit:
           firstYear.taxRefund,
+
+        firstYearSupportRate,
 
         labels,
         avdSeries,
@@ -2987,7 +3846,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       el.riesterNotice.hidden =
-        result.riesterTransfer <= 0;
+        result.riesterTransfer <=
+        0;
 
 
       el.netMonthlyPension.textContent =
@@ -3091,16 +3951,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         "%";
 
 
-      const supportRate =
-        result.yearlyContribution > 0
-          ? firstYearSupport /
-            result.yearlyContribution *
-            100
-          : 0;
-
-
       el.supportExplanation.textContent =
-        `Zulagen und modellhafter zusätzlicher Steuervorteil entsprechen im ersten Jahr rund ${supportRate.toFixed(0)} % Ihres Eigenbeitrags.`;
+        `Zulagen und modellhafter zusätzlicher Steuervorteil entsprechen im ersten Jahr rund ${result.firstYearSupportRate.toFixed(0)} % Ihres Eigenbeitrags.`;
 
 
       el.totalOwnContributions.textContent =
@@ -3151,7 +4003,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       el.capitalDifference.textContent =
         (
-          capitalDiff >= 0
+          capitalDiff >=
+          0
             ? "+"
             : ""
         ) +
@@ -3162,7 +4015,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       el.pensionDifference.textContent =
         (
-          pensionDiff >= 0
+          pensionDiff >=
+          0
             ? "+"
             : ""
         ) +
@@ -3174,25 +4028,29 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       el.capitalDifference.classList.toggle(
         "positiveValue",
-        capitalDiff >= 0
+        capitalDiff >=
+        0
       );
 
 
       el.capitalDifference.classList.toggle(
         "negativeValue",
-        capitalDiff < 0
+        capitalDiff <
+        0
       );
 
 
       el.pensionDifference.classList.toggle(
         "positiveValue",
-        pensionDiff >= 0
+        pensionDiff >=
+        0
       );
 
 
       el.pensionDifference.classList.toggle(
         "negativeValue",
-        pensionDiff < 0
+        pensionDiff <
+        0
       );
 
 
@@ -3265,6 +4123,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
       drawChart(
+        result
+      );
+
+
+      /*
+       * Alle aktuellen Werte an
+       * das Zoho-PDF-Formular übergeben.
+       */
+
+      updateZohoFrame(
         result
       );
 
@@ -3453,6 +4321,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
+    /* =========================================================
+       BERECHNUNG STARTEN
+    ========================================================== */
+
     function calculate() {
 
       const result =
@@ -3497,6 +4369,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             calculate
           );
 
+
           input.addEventListener(
             "change",
             calculate
@@ -3522,7 +4395,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       "click",
       () => {
 
-        if (!latestResult) return;
+        if (
+          !latestResult
+        ) return;
 
 
         el.savedCapital.textContent =
@@ -3560,29 +4435,55 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       "click",
       () => {
 
-        el.monthly.value = 150;
-        el.riesterTransfer.value = 0;
-        el.currentAge.value = 40;
-        el.retirementAge.value = 67;
-        el.payoutUntil.value = 85;
+        el.monthly.value =
+          150;
 
-        el.avdReturn.value = 6;
-        el.avdCosts.value = 1;
+        el.riesterTransfer.value =
+          0;
 
-        el.fundReturn.value = 6;
-        el.fundCosts.value = 1;
+        el.currentAge.value =
+          40;
 
-        el.taxRateNow.value = 30;
-        el.taxRateRetirement.value = 22;
-        el.inflationRate.value = 2;
-        el.payoutReturn.value = 2;
-        el.taxAllowance.value = 1000;
+        el.retirementAge.value =
+          67;
+
+        el.payoutUntil.value =
+          85;
+
+        el.avdReturn.value =
+          6;
+
+        el.avdCosts.value =
+          1;
+
+        el.fundReturn.value =
+          6;
+
+        el.fundCosts.value =
+          1;
+
+        el.taxRateNow.value =
+          30;
+
+        el.taxRateRetirement.value =
+          22;
+
+        el.inflationRate.value =
+          2;
+
+        el.payoutReturn.value =
+          2;
+
+        el.taxAllowance.value =
+          1000;
 
 
-        children = [];
+        children =
+          [];
 
 
         renderChildren();
+
         calculate();
 
       }
@@ -3601,13 +4502,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             event => {
 
               event.preventDefault();
+
               event.stopPropagation();
 
 
               el.tooltip.textContent =
                 tooltipTexts[
                   button.dataset.tip
-                ] || "";
+                ] ||
+                "";
 
 
               el.tooltip.hidden =
@@ -3678,26 +4581,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     );
 
 
-    if (el.leadForm) {
-
-      el.leadForm.addEventListener(
-        "submit",
-        event => {
-
-          event.preventDefault();
-
-
-          alert(
-            "Die Zoho-Forms-/Writer-Anbindung für die persönliche PDF-Auswertung richten wir jetzt im nächsten Schritt ein."
-          );
-
-        }
-      );
-
-    }
-
+    /* =========================================================
+       START
+    ========================================================== */
 
     renderChildren();
+
     calculate();
 
   </script>
@@ -3803,7 +4692,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       max-height: 620px;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 22px 28px rgba(30,47,74,.18));
+      filter: drop-shadow(
+        0 22px 28px
+        rgba(30,47,74,.18)
+      );
     }
 
 
@@ -3832,13 +4724,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     h1 {
-      font-size: clamp(2.7rem, 5vw, 5.4rem);
+      font-size: clamp(
+        2.7rem,
+        5vw,
+        5.4rem
+      );
       max-width: 850px;
     }
 
 
     h2 {
-      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      font-size: clamp(
+        1.8rem,
+        3vw,
+        2.7rem
+      );
     }
 
 
@@ -3936,7 +4836,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* BUTTONS */
+    /* ========================================================
+       BUTTONS
+    ========================================================= */
+
 
     .btn {
       display: inline-flex;
@@ -4003,7 +4906,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* RESULT HERO */
+    /* ========================================================
+       RESULT HERO
+    ========================================================= */
+
 
     .resultHero {
       padding: 38px;
@@ -4029,7 +4935,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     .resultMain > strong {
       display: block;
-      font-size: clamp(3.2rem, 8vw, 6rem);
+      font-size: clamp(
+        3.2rem,
+        8vw,
+        6rem
+      );
       color: var(--dark);
       line-height: 1;
       margin: 12px 0 8px;
@@ -4134,7 +5044,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* INPUT */
+    /* ========================================================
+       INPUT
+    ========================================================= */
+
 
     .input-card {
       position: relative;
@@ -4246,7 +5159,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       border-radius: 14px;
       font-size: .92rem;
       line-height: 1.45;
-      box-shadow: 0 14px 30px rgba(15,115,183,.25);
+      box-shadow:
+        0 14px 30px
+        rgba(15,115,183,.25);
     }
 
 
@@ -4310,7 +5225,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* ANNAHMEN */
+    /* ========================================================
+       ANNAHMEN
+    ========================================================= */
+
 
     .assumptions {
       margin-top: 30px;
@@ -4379,7 +5297,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* NOTICE */
+    /* ========================================================
+       NOTICE
+    ========================================================= */
+
 
     .notice {
       margin-top: 24px;
@@ -4414,7 +5335,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* RESULTS */
+    /* ========================================================
+       RESULTS
+    ========================================================= */
+
 
     .results-column {
       display: grid;
@@ -4554,7 +5478,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* CHART */
+    /* ========================================================
+       CHART
+    ========================================================= */
+
 
     .chartSection,
     .comparisonSection,
@@ -4613,7 +5540,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* VERGLEICH */
+    /* ========================================================
+       VERGLEICH
+    ========================================================= */
+
 
     .comparisonIntro {
       max-width: 850px;
@@ -4737,7 +5667,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* METHODIK */
+    /* ========================================================
+       METHODIK
+    ========================================================= */
+
 
     .methodDetails {
       background: #fff;
@@ -4758,7 +5691,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* PDF */
+    /* ========================================================
+       PDF / ZOHO
+    ========================================================= */
+
 
     .pdfCard {
       display: grid;
@@ -4768,25 +5704,53 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    .pdfForm {
-      display: grid;
-      gap: 12px;
+    .pdfIntro {
+      align-self: start;
     }
 
 
-    .privacyCheck {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
+    .pdfBenefits {
+      margin: 24px 0;
+      padding-left: 21px;
+    }
+
+
+    .pdfBenefits li {
+      margin: 7px 0;
+    }
+
+
+    .pdfDataNotice {
+      margin-top: 26px;
+      padding: 18px 20px;
+      border-radius: 16px;
+      background: #eef7f2;
+      border-left: 5px solid var(--green);
+    }
+
+
+    .pdfDataNotice strong {
+      color: var(--dark);
+    }
+
+
+    .pdfDataNotice p {
       color: var(--muted);
-      font-weight: 500;
-      margin: 5px 0;
+      margin-bottom: 0;
     }
 
 
-    .privacyCheck input {
-      width: auto;
-      margin-top: 5px;
+    .pdfOptinForm {
+      min-width: 0;
+    }
+
+
+    .pdfOptinForm iframe {
+      width: 100%;
+      min-height: 900px;
+      border: none;
+      border-radius: 16px;
+      background: #fff;
     }
 
 
@@ -4797,7 +5761,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* REST */
+    /* ========================================================
+       REST
+    ========================================================= */
+
 
     .miniCard strong {
       font-size: 1.25rem;
@@ -4849,7 +5816,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       max-width: 170px;
       height: auto;
       display: block;
-      filter: drop-shadow(0 12px 18px rgba(30,47,74,.16));
+      filter: drop-shadow(
+        0 12px 18px
+        rgba(30,47,74,.16)
+      );
     }
 
 
@@ -4923,7 +5893,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    /* MOBILE */
+    /* ========================================================
+       MOBILE
+    ========================================================= */
+
 
     @media (max-width: 900px) {
 
@@ -4990,6 +5963,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       .heroActions .btn {
         width: 100%;
+      }
+
+
+      .pdfOptinForm iframe {
+        min-height: 1050px;
       }
 
     }
@@ -5069,6 +6047,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       .brochureCoverSmall img {
         max-width: 220px;
         margin-bottom: 8px;
+      }
+
+
+      .pdfOptinForm iframe {
+        min-height: 1200px;
       }
 
     }

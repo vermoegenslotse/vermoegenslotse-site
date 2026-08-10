@@ -5,6 +5,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <BaseLayout title="Altersvorsorgedepot | Vermögenslotse">
   <main class="avd-page">
 
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
     <section class="avd-hero">
       <div class="container hero-grid">
         <div>
@@ -50,6 +54,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
 
 
+    <!-- =========================================================
+         EINLEITUNG
+    ========================================================== -->
+
     <section class="section intro-section">
       <div class="container two-col">
         <div>
@@ -85,6 +93,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
 
 
+    <!-- =========================================================
+         RECHNER
+    ========================================================== -->
+
     <section class="section calculator-section" id="rechner">
       <div class="container sectionHeader">
         <p class="eyebrow">Interaktiver Rechner</p>
@@ -97,12 +109,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </p>
       </div>
 
+
       <div class="container calculator-grid">
+
+        <!-- Eingaben -->
 
         <div class="card input-card">
           <p class="eyebrow">Rechner</p>
 
           <h2>Ihre Eingaben</h2>
+
 
           <label class="fieldLabel">
             Monatliche Sparrate
@@ -125,6 +141,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             Die maximale Kinderzulage wird ab 25 € monatlich pro Kind erreicht.
             Die volle Grundzulage wird bei 150 € monatlicher Sparrate ausgeschöpft.
           </p>
+
 
           <div class="quickButtons">
             <button type="button" data-value="10">
@@ -246,13 +263,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             step="0.1"
           />
 
-          <button class="btn" id="calculateBtn" type="button">
+
+          <button
+            class="btn"
+            id="calculateBtn"
+            type="button"
+          >
             Berechnung aktualisieren
           </button>
 
-          <div id="tooltip" class="tooltip" hidden></div>
+
+          <div
+            id="tooltip"
+            class="tooltip"
+            hidden
+          ></div>
         </div>
 
+
+        <!-- Ergebnisse -->
 
         <div class="results-column">
 
@@ -282,7 +311,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
             </div>
 
-            <p class="muted" id="summaryText"></p>
+            <p
+              class="muted"
+              id="summaryText"
+            ></p>
           </div>
 
 
@@ -315,6 +347,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
 
 
+      <!-- Chart + spätere PDF-Auswertung -->
+
       <div class="container chart-grid">
 
         <div class="card chart-card">
@@ -337,6 +371,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
 
           <form id="leadForm">
+
             <input
               type="text"
               name="name"
@@ -357,17 +392,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               placeholder="Telefon optional"
             />
 
+
             <label class="privacyCheck">
-              <input type="checkbox" required />
+              <input
+                type="checkbox"
+                required
+              />
 
               <span>
                 Ich stimme der Verarbeitung meiner Angaben gemäß Datenschutzerklärung zu.
               </span>
             </label>
 
-            <button class="btn" type="submit">
+
+            <button
+              class="btn"
+              type="submit"
+            >
               PDF-Auswertung anfordern
             </button>
+
           </form>
 
           <p class="small">
@@ -380,6 +424,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
 
 
+    <!-- =========================================================
+         ZIELGRUPPEN
+    ========================================================== -->
+
     <section class="section audience-section">
       <div class="container sectionHeader">
         <p class="eyebrow">Für wen?</p>
@@ -388,6 +436,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           Für wen das Altersvorsorgedepot interessant sein kann
         </h2>
       </div>
+
 
       <div class="container cards-grid">
 
@@ -399,6 +448,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
         </div>
 
+
         <div class="miniCard">
           <strong>Familien</strong>
 
@@ -407,6 +457,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
         </div>
 
+
         <div class="miniCard">
           <strong>Berufstätige</strong>
 
@@ -414,6 +465,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             Bestehende Vorsorge prüfen und Versorgungslücken erkennen.
           </p>
         </div>
+
 
         <div class="miniCard">
           <strong>Selbstständige</strong>
@@ -426,6 +478,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </section>
 
+
+    <!-- =========================================================
+         PERSPEKTIVEN
+    ========================================================== -->
 
     <section class="section perspectives-section">
       <div class="container two-col">
@@ -481,11 +537,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
 
 
-    <section class="section download-section" id="broschuere">
+    <!-- =========================================================
+         BROSCHÜRE + ZOHO FORM
+    ========================================================== -->
+
+    <section
+      class="section download-section"
+      id="broschuere"
+    >
       <div class="container two-col">
 
         <div class="brochureBox">
-          <p class="eyebrow">Kostenloser Leitfaden</p>
+          <p class="eyebrow">
+            Kostenloser Leitfaden
+          </p>
 
           <h2>
             Broschüre zum Altersvorsorgedepot anfordern
@@ -495,6 +560,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             Verständlich erklärt. Chancen und Risiken eingeordnet.
             Ohne Produktverkauf.
           </p>
+
 
           <ul>
             <li>
@@ -514,6 +580,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </li>
           </ul>
 
+
           <p class="brochureNote">
             Nach dem Absenden erhalten Sie per E-Mail sowohl den Leitfaden
             als auch den ergänzenden Experten-Anhang.
@@ -522,40 +589,48 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
         <div class="card zoho-form-card">
+          <p class="eyebrow">
+            Download
+          </p>
 
-          <p class="eyebrow">Download</p>
-
-          <h2>PDF-Broschüre erhalten</h2>
+          <h2>
+            PDF-Broschüre erhalten
+          </h2>
 
           <p class="zohoIntro">
             Tragen Sie Ihre Kontaktdaten ein. Anschließend erhalten Sie
-            die Download-Links per E-Mail.
+            die Download-Links bequem per E-Mail.
           </p>
 
 
           <div class="zohoFormWrapper">
-            <iframe
-              src="https://forms.zohopublic.eu/christiangradtconsulting1/form/AltersvorsorgedepotBroschrenanforderung/formperma/FCXvjeX7zWdEo3JIQ7xOG0qTW-KBMx-6ej11xdpqS7M"
-              title="Altersvorsorgedepot Broschürenanforderung"
-              frameborder="0"
-              loading="lazy"
-              scrolling="yes"
-            ></iframe>
-          </div>
 
+            <div
+              id="zf_div_FCXvjeX7zWdEo3JIQ7xOG0qTW-KBMx-6ej11xdpqS7M"
+            ></div>
+
+          </div>
         </div>
 
       </div>
     </section>
 
 
+    <!-- =========================================================
+         ÜBER CHRISTIAN
+    ========================================================== -->
+
     <section class="section expert-section">
       <div class="container expert-grid">
 
         <div>
-          <p class="eyebrow">Ihr Vermögenslotse</p>
+          <p class="eyebrow">
+            Ihr Vermögenslotse
+          </p>
 
-          <h2>Christian Gradt</h2>
+          <h2>
+            Christian Gradt
+          </h2>
 
           <p>
             Diplom-Betriebswirt, Sachverständiger für das Versicherungswesen (BVSV)
@@ -567,8 +642,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             Entscheidungen mit System.
           </p>
 
+
           <div class="proofBox">
-            <div class="stars">★★★★★</div>
+            <div class="stars">
+              ★★★★★
+            </div>
 
             <strong>
               Bewertungen auf ProvenExpert
@@ -593,6 +671,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
 
 
+    <!-- =========================================================
+         CTA
+    ========================================================== -->
+
     <section class="section final-cta">
       <div class="container ctaBox">
 
@@ -609,6 +691,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           welche nächsten Schritte für Ihre Situation sinnvoll sind.
         </p>
 
+
         <a
           class="btn"
           href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
@@ -622,40 +705,508 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </main>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- =========================================================
+       ZOHO FORM JAVASCRIPT
+  ========================================================== -->
 
-  <script>
-    const euro = new Intl.NumberFormat("de-DE", {
-      style: "currency",
-      currency: "EUR",
-      maximumFractionDigits: 0
-    });
+  <script is:inline>
+    (function() {
+      try {
+
+        var f = document.createElement("iframe");
+
+        var ifrmSrc =
+          "https://forms.zohopublic.eu/christiangradtconsulting1/form/AltersvorsorgedepotBroschrenanforderung/formperma/FCXvjeX7zWdEo3JIQ7xOG0qTW-KBMx-6ej11xdpqS7M?zf_rszfm=1";
+
+
+        try {
+
+          if (
+            typeof ZFAdvLead != "undefined" &&
+            typeof zfutm_zfAdvLead != "undefined"
+          ) {
+
+            for (
+              var prmIdx = 0;
+              prmIdx < ZFAdvLead.utmPNameArr.length;
+              prmIdx++
+            ) {
+
+              var utmPm =
+                ZFAdvLead.utmPNameArr[prmIdx];
+
+
+              utmPm =
+                (
+                  ZFAdvLead.isSameDomian &&
+                  ZFAdvLead.utmcustPNameArr.indexOf(utmPm) == -1
+                )
+                  ? "zf_" + utmPm
+                  : utmPm;
+
+
+              var utmVal =
+                zfutm_zfAdvLead.zfautm_gC_enc(
+                  ZFAdvLead.utmPNameArr[prmIdx]
+                );
+
+
+              if (
+                typeof utmVal !== "undefined" &&
+                utmVal != ""
+              ) {
+
+                if (
+                  ifrmSrc.indexOf("?") > 0
+                ) {
+
+                  ifrmSrc =
+                    ifrmSrc +
+                    "&" +
+                    utmPm +
+                    "=" +
+                    utmVal;
+
+                } else {
+
+                  ifrmSrc =
+                    ifrmSrc +
+                    "?" +
+                    utmPm +
+                    "=" +
+                    utmVal;
+
+                }
+              }
+            }
+          }
+
+
+          if (
+            typeof ZFLead !== "undefined" &&
+            typeof zfutm_zfLead !== "undefined"
+          ) {
+
+            for (
+              var prmIdx = 0;
+              prmIdx < ZFLead.utmPNameArr.length;
+              prmIdx++
+            ) {
+
+              var utmPm =
+                ZFLead.utmPNameArr[prmIdx];
+
+
+              var utmVal =
+                zfutm_zfLead.zfutm_gC_enc(
+                  ZFLead.utmPNameArr[prmIdx]
+                );
+
+
+              if (
+                typeof utmVal !== "undefined" &&
+                utmVal != ""
+              ) {
+
+                if (
+                  ifrmSrc.indexOf("?") > 0
+                ) {
+
+                  ifrmSrc =
+                    ifrmSrc +
+                    "&" +
+                    utmPm +
+                    "=" +
+                    utmVal;
+
+                } else {
+
+                  ifrmSrc =
+                    ifrmSrc +
+                    "?" +
+                    utmPm +
+                    "=" +
+                    utmVal;
+
+                }
+              }
+            }
+          }
+
+
+          if (
+            !(
+              new RegExp(
+                "[?&]referrername="
+              )
+            ).test(ifrmSrc)
+          ) {
+
+            var rfr =
+              window.location.href;
+
+
+            try {
+
+              rfr =
+                window.self !== window.top
+                  ? window.top.location.href
+                  : /^https?:\/\/[\w.-]+\.[a-zA-Z]{2,}/i.test(rfr)
+                    ? rfr
+                    : "";
+
+            } catch (e) {}
+
+
+            if (
+              rfr &&
+              rfr !== ""
+            ) {
+
+              if (
+                rfr.length > 1800
+              ) {
+
+                var queryIndex =
+                  rfr.indexOf("?");
+
+
+                if (
+                  queryIndex > -1
+                ) {
+
+                  rfr =
+                    rfr.substring(
+                      0,
+                      queryIndex
+                    );
+
+                }
+
+
+                if (
+                  rfr.length > 1800
+                ) {
+
+                  rfr =
+                    rfr.substring(
+                      0,
+                      1800
+                    );
+
+                }
+              }
+
+
+              ifrmSrc +=
+                (
+                  ifrmSrc.indexOf("?") > 0
+                    ? "&"
+                    : "?"
+                ) +
+                "referrername=" +
+                encodeURIComponent(rfr);
+            }
+          }
+
+        } catch (e) {}
+
+
+        f.src = ifrmSrc;
+
+        f.style.border =
+          "none";
+
+        f.style.height =
+          "810px";
+
+        f.style.width =
+          "100%";
+
+        f.style.transition =
+          "all 0.5s ease";
+
+        f.setAttribute(
+          "aria-label",
+          "Altersvorsorgedepot Broschürenanforderung"
+        );
+
+
+        var d =
+          document.getElementById(
+            "zf_div_FCXvjeX7zWdEo3JIQ7xOG0qTW-KBMx-6ej11xdpqS7M"
+          );
+
+
+        if (d) {
+
+          d.appendChild(f);
+
+        }
+
+
+        window.addEventListener(
+          "message",
+
+          function(event) {
+
+            var evntData =
+              event.data;
+
+
+            if (
+              evntData &&
+              evntData.constructor == String
+            ) {
+
+              var zf_ifrm_data =
+                evntData.split("|");
+
+
+              if (
+                zf_ifrm_data.length == 2 ||
+                zf_ifrm_data.length == 3
+              ) {
+
+                var zf_perma =
+                  zf_ifrm_data[0];
+
+
+                var zf_ifrm_ht_nw =
+                  (
+                    parseInt(
+                      zf_ifrm_data[1],
+                      10
+                    ) + 15
+                  ) +
+                  "px";
+
+
+                var formContainer =
+                  document.getElementById(
+                    "zf_div_FCXvjeX7zWdEo3JIQ7xOG0qTW-KBMx-6ej11xdpqS7M"
+                  );
+
+
+                if (!formContainer) {
+                  return;
+                }
+
+
+                var iframe =
+                  formContainer
+                    .getElementsByTagName(
+                      "iframe"
+                    )[0];
+
+
+                if (!iframe) {
+                  return;
+                }
+
+
+                if (
+                  iframe.src.indexOf(
+                    "formperma"
+                  ) > 0 &&
+                  iframe.src.indexOf(
+                    zf_perma
+                  ) > 0
+                ) {
+
+                  var prevIframeHeight =
+                    iframe.style.height;
+
+
+                  var zf_tout =
+                    false;
+
+
+                  if (
+                    zf_ifrm_data.length == 3
+                  ) {
+
+                    iframe.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start"
+                    });
+
+                    zf_tout =
+                      true;
+
+                  }
+
+
+                  if (
+                    prevIframeHeight !=
+                    zf_ifrm_ht_nw
+                  ) {
+
+                    if (
+                      zf_tout
+                    ) {
+
+                      setTimeout(
+                        function() {
+
+                          iframe.style.height =
+                            zf_ifrm_ht_nw;
+
+                        },
+                        500
+                      );
+
+                    } else {
+
+                      iframe.style.height =
+                        zf_ifrm_ht_nw;
+
+                    }
+                  }
+                }
+              }
+            }
+          },
+
+          false
+        );
+
+      } catch (e) {}
+    })();
+  </script>
+
+
+  <!-- =========================================================
+       CHART.JS
+  ========================================================== -->
+
+  <script
+    is:inline
+    src="https://cdn.jsdelivr.net/npm/chart.js"
+  ></script>
+
+
+  <!-- =========================================================
+       RECHNER JAVASCRIPT
+  ========================================================== -->
+
+  <script is:inline>
+
+    const euro =
+      new Intl.NumberFormat(
+        "de-DE",
+        {
+          style: "currency",
+          currency: "EUR",
+          maximumFractionDigits: 0
+        }
+      );
+
 
     const els = {
-      monthly: document.getElementById("monthly"),
-      income: document.getElementById("income"),
-      birthyear: document.getElementById("birthyear"),
-      retirementAge: document.getElementById("retirementAge"),
-      children: document.getElementById("children"),
-      returnRate: document.getElementById("returnRate"),
-      inflationRate: document.getElementById("inflationRate"),
-      returnLabel: document.getElementById("returnLabel"),
-      inflationLabel: document.getElementById("inflationLabel"),
-      totalSubsidy: document.getElementById("totalSubsidy"),
-      avdFinal: document.getElementById("avdFinal"),
-      realValue: document.getElementById("realValue"),
-      compareAvd: document.getElementById("compareAvd"),
-      compareEtf: document.getElementById("compareEtf"),
-      advantage: document.getElementById("advantage"),
-      summaryText: document.getElementById("summaryText"),
-      headline: document.getElementById("headline"),
-      calculateBtn: document.getElementById("calculateBtn"),
-      leadForm: document.getElementById("leadForm")
+
+      monthly:
+        document.getElementById(
+          "monthly"
+        ),
+
+      income:
+        document.getElementById(
+          "income"
+        ),
+
+      birthyear:
+        document.getElementById(
+          "birthyear"
+        ),
+
+      retirementAge:
+        document.getElementById(
+          "retirementAge"
+        ),
+
+      children:
+        document.getElementById(
+          "children"
+        ),
+
+      returnRate:
+        document.getElementById(
+          "returnRate"
+        ),
+
+      inflationRate:
+        document.getElementById(
+          "inflationRate"
+        ),
+
+      returnLabel:
+        document.getElementById(
+          "returnLabel"
+        ),
+
+      inflationLabel:
+        document.getElementById(
+          "inflationLabel"
+        ),
+
+      totalSubsidy:
+        document.getElementById(
+          "totalSubsidy"
+        ),
+
+      avdFinal:
+        document.getElementById(
+          "avdFinal"
+        ),
+
+      realValue:
+        document.getElementById(
+          "realValue"
+        ),
+
+      compareAvd:
+        document.getElementById(
+          "compareAvd"
+        ),
+
+      compareEtf:
+        document.getElementById(
+          "compareEtf"
+        ),
+
+      advantage:
+        document.getElementById(
+          "advantage"
+        ),
+
+      summaryText:
+        document.getElementById(
+          "summaryText"
+        ),
+
+      headline:
+        document.getElementById(
+          "headline"
+        ),
+
+      calculateBtn:
+        document.getElementById(
+          "calculateBtn"
+        ),
+
+      leadForm:
+        document.getElementById(
+          "leadForm"
+        )
     };
+
 
     let chart;
 
+
     const tooltipTexts = {
+
       sparrate:
         "Ihr monatlicher Eigenbeitrag. Jeder andere Betrag kann frei eingetragen werden.",
 
@@ -678,20 +1229,38 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         "Für Kinder wird modellhaft eine Kinderzulage von bis zu 300 € pro Kind und Jahr berücksichtigt."
     };
 
-    const tooltip = document.getElementById("tooltip");
+
+    const tooltip =
+      document.getElementById(
+        "tooltip"
+      );
 
 
-    function annualSubsidy(monthly, children) {
-      const yearly = monthly * 12;
+    function annualSubsidy(
+      monthly,
+      children
+    ) {
+
+      const yearly =
+        monthly * 12;
+
 
       const stage1 =
-        Math.min(yearly, 360) * 0.5;
+        Math.min(
+          yearly,
+          360
+        ) * 0.5;
+
 
       const stage2 =
         Math.max(
           0,
-          Math.min(yearly, 1800) - 360
+          Math.min(
+            yearly,
+            1800
+          ) - 360
         ) * 0.25;
+
 
       const childSubsidy =
         Math.min(
@@ -699,7 +1268,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           children * 300
         );
 
-      return stage1 + stage2 + childSubsidy;
+
+      return (
+        stage1 +
+        stage2 +
+        childSubsidy
+      );
     }
 
 
@@ -709,40 +1283,73 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       years,
       annualReturn
     ) {
-      const r = annualReturn / 100 / 12;
 
-      let capital = 0;
-
-      const labels = [];
-      const deposits = [];
-      const subsidies = [];
-      const total = [];
+      const r =
+        annualReturn /
+        100 /
+        12;
 
 
-      for (let y = 0; y <= years; y++) {
+      let capital =
+        0;
 
-        labels.push(String(2027 + y));
+
+      const labels =
+        [];
+
+      const deposits =
+        [];
+
+      const subsidies =
+        [];
+
+      const total =
+        [];
+
+
+      for (
+        let y = 0;
+        y <= years;
+        y++
+      ) {
+
+        labels.push(
+          String(
+            2027 + y
+          )
+        );
+
 
         deposits.push(
-          monthlyContribution * 12 * y
+          monthlyContribution *
+          12 *
+          y
         );
+
 
         subsidies.push(
-          yearlySubsidy * y
+          yearlySubsidy *
+          y
         );
 
-        total.push(capital);
+
+        total.push(
+          capital
+        );
 
 
         for (
           let m = 0;
-          m < 12 && y < years;
+          m < 12 &&
+          y < years;
           m++
         ) {
+
           capital =
-            capital * (1 + r)
-            + monthlyContribution
-            + yearlySubsidy / 12;
+            capital *
+            (1 + r) +
+            monthlyContribution +
+            yearlySubsidy / 12;
         }
       }
 
@@ -760,33 +1367,55 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     function calculate() {
 
       const monthly =
-        Number(els.monthly.value || 0);
+        Number(
+          els.monthly.value || 0
+        );
+
 
       const birthyear =
-        Number(els.birthyear.value || 1990);
+        Number(
+          els.birthyear.value || 1990
+        );
+
 
       const retirementAge =
-        Number(els.retirementAge.value || 67);
+        Number(
+          els.retirementAge.value || 67
+        );
+
 
       const children =
-        Number(els.children.value || 0);
+        Number(
+          els.children.value || 0
+        );
+
 
       const returnRate =
-        Number(els.returnRate.value || 5);
+        Number(
+          els.returnRate.value || 5
+        );
+
 
       const inflation =
-        Number(els.inflationRate.value || 2);
+        Number(
+          els.inflationRate.value || 2
+        );
 
 
-      const currentYear = 2027;
+      const currentYear =
+        2027;
+
 
       const age =
-        currentYear - birthyear;
+        currentYear -
+        birthyear;
+
 
       const years =
         Math.max(
           0,
-          retirementAge - age
+          retirementAge -
+          age
         );
 
 
@@ -818,27 +1447,35 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       const realValue =
         avd.final /
         Math.pow(
-          1 + inflation / 100,
+          1 +
+          inflation / 100,
           years
         );
 
 
       const advantage =
-        avd.final - etf.final;
+        avd.final -
+        etf.final;
 
 
       els.returnLabel.textContent =
         returnRate
           .toFixed(1)
-          .replace(".", ",")
-        + " %";
+          .replace(
+            ".",
+            ","
+          ) +
+        " %";
 
 
       els.inflationLabel.textContent =
         inflation
           .toFixed(1)
-          .replace(".", ",")
-        + " %";
+          .replace(
+            ".",
+            ","
+          ) +
+        " %";
 
 
       els.headline.textContent =
@@ -847,7 +1484,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       els.totalSubsidy.textContent =
         euro.format(
-          subsidy * years
+          subsidy *
+          years
         );
 
 
@@ -907,79 +1545,131 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     ) {
 
       const ctx =
-        document.getElementById("growthChart");
+        document.getElementById(
+          "growthChart"
+        );
 
 
       if (chart) {
+
         chart.destroy();
+
       }
 
 
       chart =
-        new Chart(ctx, {
+        new Chart(
+          ctx,
+          {
 
-          type: "line",
+            type: "line",
 
-          data: {
+            data: {
 
-            labels,
+              labels,
 
-            datasets: [
+              datasets: [
 
-              {
-                label: "Einzahlungen",
-                data: deposits,
-                borderColor: "#8d969d",
-                backgroundColor:
-                  "rgba(141,150,157,.15)",
-                fill: true,
-                tension: 0.25
-              },
+                {
+                  label:
+                    "Einzahlungen",
 
-              {
-                label: "Förderung",
-                data: subsidies,
-                borderColor: "#1e88c8",
-                backgroundColor:
-                  "rgba(30,136,200,.18)",
-                fill: true,
-                tension: 0.25
-              },
+                  data:
+                    deposits,
 
-              {
-                label: "Gesamtvermögen",
-                data: total,
-                borderColor: "#1f6b3a",
-                backgroundColor:
-                  "rgba(31,107,58,.18)",
-                fill: true,
-                tension: 0.25
-              }
+                  borderColor:
+                    "#8d969d",
 
-            ]
-          },
+                  backgroundColor:
+                    "rgba(141,150,157,.15)",
 
-          options: {
+                  fill:
+                    true,
 
-            responsive: true,
+                  tension:
+                    0.25
+                },
 
-            plugins: {
-              legend: {
-                position: "bottom"
-              }
+
+                {
+                  label:
+                    "Förderung",
+
+                  data:
+                    subsidies,
+
+                  borderColor:
+                    "#1e88c8",
+
+                  backgroundColor:
+                    "rgba(30,136,200,.18)",
+
+                  fill:
+                    true,
+
+                  tension:
+                    0.25
+                },
+
+
+                {
+                  label:
+                    "Gesamtvermögen",
+
+                  data:
+                    total,
+
+                  borderColor:
+                    "#1f6b3a",
+
+                  backgroundColor:
+                    "rgba(31,107,58,.18)",
+
+                  fill:
+                    true,
+
+                  tension:
+                    0.25
+                }
+
+              ]
             },
 
-            scales: {
-              y: {
-                ticks: {
-                  callback:
-                    value =>
-                      euro.format(value)
+
+            options: {
+
+              responsive:
+                true,
+
+
+              plugins: {
+
+                legend: {
+
+                  position:
+                    "bottom"
+
+                }
+              },
+
+
+              scales: {
+
+                y: {
+
+                  ticks: {
+
+                    callback:
+                      value =>
+                        euro.format(
+                          value
+                        )
+                  }
                 }
               }
             }
           }
-        });
+        );
     }
 
 
@@ -987,52 +1677,55 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       .querySelectorAll(
         "#rechner input"
       )
-      .forEach(input => {
+      .forEach(
+        input => {
 
-        input.addEventListener(
-          "input",
-          calculate
-        );
+          input.addEventListener(
+            "input",
+            calculate
+          );
 
-      });
+        }
+      );
 
 
     document
       .querySelectorAll(
         ".quickButtons button"
       )
-      .forEach(button => {
+      .forEach(
+        button => {
 
-        button.addEventListener(
-          "click",
-          () => {
+          button.addEventListener(
+            "click",
+            () => {
 
-            document
-              .querySelectorAll(
-                ".quickButtons button"
-              )
-              .forEach(
-                b =>
-                  b.classList.remove(
-                    "active"
-                  )
-              );
+              document
+                .querySelectorAll(
+                  ".quickButtons button"
+                )
+                .forEach(
+                  b =>
+                    b.classList.remove(
+                      "active"
+                    )
+                );
 
 
-            button
-              .classList.add(
+              button.classList.add(
                 "active"
               );
 
 
-            els.monthly.value =
-              button.dataset.value;
+              els.monthly.value =
+                button.dataset.value;
 
 
-            calculate();
-          }
-        );
-      });
+              calculate();
+            }
+          );
+        }
+      );
 
 
     els.monthly.addEventListener(
@@ -1043,15 +1736,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           .querySelectorAll(
             ".quickButtons button"
           )
-          .forEach(b => {
+          .forEach(
+            b => {
 
-            b.classList.toggle(
-              "active",
-              b.dataset.value
-                === els.monthly.value
-            );
+              b.classList.toggle(
+                "active",
+                b.dataset.value ===
+                els.monthly.value
+              );
 
-          });
+            }
+          );
       }
     );
 
@@ -1060,54 +1755,57 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       .querySelectorAll(
         ".infoBtn"
       )
-      .forEach(btn => {
+      .forEach(
+        btn => {
 
-        btn.addEventListener(
-          "click",
-          event => {
+          btn.addEventListener(
+            "click",
+            event => {
 
-            event.stopPropagation();
-
-
-            tooltip.textContent =
-              tooltipTexts[
-                btn.dataset.tip
-              ] || "";
+              event.stopPropagation();
 
 
-            tooltip.hidden =
-              false;
+              tooltip.textContent =
+                tooltipTexts[
+                  btn.dataset.tip
+                ] || "";
 
 
-            const rect =
-              btn.getBoundingClientRect();
+              tooltip.hidden =
+                false;
 
 
-            const parentRect =
-              document
-                .querySelector(
-                  ".input-card"
-                )
-                .getBoundingClientRect();
+              const rect =
+                btn
+                  .getBoundingClientRect();
 
 
-            tooltip.style.left =
-              `${
-                rect.left
-                - parentRect.left
-                - 10
-              }px`;
+              const parentRect =
+                document
+                  .querySelector(
+                    ".input-card"
+                  )
+                  .getBoundingClientRect();
 
 
-            tooltip.style.top =
-              `${
-                rect.bottom
-                - parentRect.top
-                + 10
-              }px`;
-          }
-        );
-      });
+              tooltip.style.left =
+                `${
+                  rect.left -
+                  parentRect.left -
+                  10
+                }px`;
+
+
+              tooltip.style.top =
+                `${
+                  rect.bottom -
+                  parentRect.top +
+                  10
+                }px`;
+            }
+          );
+        }
+      );
 
 
     document.addEventListener(
@@ -1117,13 +1815,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         if (
           !e.target.closest(
             ".infoBtn"
-          )
-          &&
+          ) &&
           !e.target.closest(
             ".tooltip"
           )
         ) {
-          tooltip.hidden = true;
+
+          tooltip.hidden =
+            true;
+
         }
       }
     );
@@ -1135,24 +1835,35 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     );
 
 
-    els.leadForm.addEventListener(
-      "submit",
-      e => {
+    if (els.leadForm) {
 
-        e.preventDefault();
+      els.leadForm.addEventListener(
+        "submit",
+        e => {
 
-        alert(
-          "Die persönliche PDF-Auswertung wird im nächsten Schritt mit Zoho Forms und Zoho Writer verbunden."
-        );
-      }
-    );
+          e.preventDefault();
+
+
+          alert(
+            "Die persönliche PDF-Auswertung wird im nächsten Schritt mit Zoho Forms und Zoho Writer verbunden."
+          );
+
+        }
+      );
+    }
 
 
     calculate();
+
   </script>
 
 
+  <!-- =========================================================
+       CSS
+  ========================================================== -->
+
   <style>
+
     :root {
       --blue: #1e2f4a;
       --green: #1f5b35;
@@ -1161,9 +1872,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       --card: #ffffff;
       --muted: #6d7582;
       --line: #dfe6ec;
-      --shadow:
-        0 18px 45px
-        rgba(30, 47, 74, .12);
+      --shadow: 0 18px 45px rgba(30,47,74,.12);
     }
 
 
@@ -1174,12 +1883,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .container {
-      width:
-        min(
-          1180px,
-          calc(100% - 32px)
-        );
-
+      width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
     }
 
@@ -1190,8 +1894,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .avd-hero {
-      padding:
-        72px 0 56px;
+      padding: 72px 0 56px;
 
       background:
         linear-gradient(
@@ -1205,53 +1908,33 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     .hero-grid,
     .two-col,
     .expert-grid {
-
       display: grid;
-
-      grid-template-columns:
-        1fr .9fr;
-
+      grid-template-columns: 1fr .9fr;
       gap: 36px;
-
       align-items: center;
     }
 
 
     .calculator-grid {
-
       display: grid;
-
-      grid-template-columns:
-        1.18fr .82fr;
-
+      grid-template-columns: 1.18fr .82fr;
       gap: 32px;
-
       align-items: start;
     }
 
 
     .chart-grid {
-
       display: grid;
-
-      grid-template-columns:
-        1.4fr .8fr;
-
+      grid-template-columns: 1.4fr .8fr;
       gap: 32px;
-
       align-items: start;
-
       margin-top: 32px;
     }
 
 
     .cards-grid {
-
       display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
+      grid-template-columns: repeat(4, 1fr);
       gap: 18px;
     }
 
@@ -1263,56 +1946,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .eyebrow {
-
       color: #2588c4;
-
-      text-transform:
-        uppercase;
-
-      letter-spacing:
-        .18em;
-
+      text-transform: uppercase;
+      letter-spacing: .18em;
       font-weight: 800;
-
       font-size: .85rem;
-
       margin-bottom: 10px;
     }
 
 
     h1,
     h2 {
-
-      margin:
-        0 0 18px;
-
+      margin: 0 0 18px;
       line-height: 1.05;
-
       color: #111827;
     }
 
 
     h1 {
-
-      font-size:
-        clamp(
-          2.7rem,
-          5vw,
-          5.4rem
-        );
-
+      font-size: clamp(2.7rem, 5vw, 5.4rem);
       max-width: 850px;
     }
 
 
     h2 {
-
-      font-size:
-        clamp(
-          1.8rem,
-          3vw,
-          2.7rem
-        );
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
     }
 
 
@@ -1323,33 +1981,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .lead {
-
       font-size: 1.45rem;
-
       color: var(--blue);
-
       font-weight: 800;
     }
 
 
     .heroText {
-
       font-size: 1.08rem;
-
       color: var(--muted);
-
       max-width: 720px;
     }
 
 
     .heroActions {
-
       display: flex;
-
       gap: 14px;
-
       flex-wrap: wrap;
-
       margin-top: 28px;
     }
 
@@ -1359,49 +2007,29 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     .miniCard,
     .brochureBox,
     .ctaBox {
-
       background: var(--card);
-
-      border:
-        1px solid
-        var(--line);
-
+      border: 1px solid var(--line);
       border-radius: 28px;
-
-      box-shadow:
-        var(--shadow);
-
+      box-shadow: var(--shadow);
       padding: 32px;
     }
 
 
     .mediaCard,
     .portraitCard {
-
       padding: 0;
-
       overflow: hidden;
-
       border-radius: 28px;
-
-      box-shadow:
-        var(--shadow);
-
-      border:
-        1px solid
-        var(--line);
-
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
       background: #fff;
     }
 
 
     .mediaCard img,
     .portraitCard img {
-
       width: 100%;
-
       display: block;
-
       border-radius: 28px;
     }
 
@@ -1412,40 +2040,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .quoteCard {
-      border-left:
-        8px solid
-        var(--gold);
+      border-left: 8px solid var(--gold);
     }
 
 
     .quoteCard span {
-
       display: block;
-
       color: #2588c4;
-
       font-weight: 800;
-
-      text-transform:
-        uppercase;
-
-      letter-spacing:
-        .12em;
-
+      text-transform: uppercase;
+      letter-spacing: .12em;
       font-size: .8rem;
-
       margin-bottom: 12px;
     }
 
 
     .quoteCard strong {
-
       display: block;
-
       font-size: 1.65rem;
-
       line-height: 1.2;
-
       color: #111827;
     }
 
@@ -1456,45 +2069,27 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     label {
-
       display: block;
-
       font-weight: 800;
-
-      margin:
-        24px 0 8px;
-
+      margin: 24px 0 8px;
       color: #111827;
     }
 
 
     .fieldLabel {
-
       display: flex;
-
       align-items: center;
-
       gap: 8px;
     }
 
 
     input {
-
       width: 100%;
-
-      border:
-        1px solid
-        var(--line);
-
+      border: 1px solid var(--line);
       border-radius: 14px;
-
-      padding:
-        16px 18px;
-
+      padding: 16px 18px;
       font-size: 1.1rem;
-
       margin-top: 8px;
-
       background: #fff;
     }
 
@@ -1505,19 +2100,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .moneyInput {
-
       display: flex;
-
       align-items: center;
-
-      border:
-        1px solid
-        var(--line);
-
+      border: 1px solid var(--line);
       border-radius: 14px;
-
       background: #fff;
-
       padding-right: 18px;
     }
 
@@ -1529,11 +2116,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .moneyInput span {
-
       font-size: 1.2rem;
-
       font-weight: 800;
-
       color: #111827;
     }
 
@@ -1541,62 +2125,40 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     .helpText,
     .muted,
     .small {
-
       color: var(--muted);
-
       line-height: 1.6;
     }
 
 
     .quickButtons {
-
       display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-
       margin-bottom: 28px;
     }
 
 
     .quickButtons button {
-
-      border:
-        1px solid
-        var(--line);
-
+      border: 1px solid var(--line);
       border-radius: 14px;
-
       padding: 14px;
-
       background: #f4f4f4;
-
       font-weight: 900;
-
       font-size: 1.1rem;
-
       cursor: pointer;
     }
 
 
     .quickButtons small {
-
       display: block;
-
       font-weight: 500;
-
       color: var(--muted);
-
       margin-top: 6px;
     }
 
 
     .quickButtons button.active {
-
       border-color: #2588c4;
-
       background: #eaf6fc;
 
       box-shadow:
@@ -1606,80 +2168,46 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .infoBtn {
-
       width: 20px;
-
       height: 20px;
-
-      border:
-        2px solid
-        #2588c4;
-
+      border: 2px solid #2588c4;
       color: #2588c4;
-
       background: #fff;
-
       border-radius: 999px;
-
       font-size: 12px;
-
       font-weight: 800;
-
       cursor: pointer;
-
       line-height: 1;
     }
 
 
     .pillValue {
-
       margin-left: auto;
-
       background: #0f73b7;
-
       color: #fff;
-
-      padding:
-        8px 14px;
-
+      padding: 8px 14px;
       border-radius: 999px;
-
       font-weight: 900;
     }
 
 
     .rangeEnds {
-
       display: flex;
-
-      justify-content:
-        space-between;
-
+      justify-content: space-between;
       color: var(--muted);
-
       margin-top: 6px;
     }
 
 
     .tooltip {
-
       position: absolute;
-
       z-index: 20;
-
       max-width: 340px;
-
       background: #0f73b7;
-
       color: #fff;
-
-      padding:
-        14px 18px;
-
+      padding: 14px 18px;
       border-radius: 14px;
-
       font-size: .95rem;
-
       line-height: 1.45;
 
       box-shadow:
@@ -1689,30 +2217,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .btn {
-
       display: inline-flex;
-
       align-items: center;
-
       justify-content: center;
-
       border: 0;
-
       border-radius: 999px;
-
       background: #2588c4;
-
       color: #fff;
-
       font-weight: 800;
-
-      padding:
-        16px 24px;
-
+      padding: 16px 24px;
       cursor: pointer;
-
       text-decoration: none;
-
       font-size: 1rem;
     }
 
@@ -1723,14 +2238,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .btn--ghost {
-
       background: #fff;
-
       color: #2588c4;
-
-      border:
-        1px solid
-        #2588c4;
+      border: 1px solid #2588c4;
     }
 
 
@@ -1740,79 +2250,51 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .results-column {
-
       display: grid;
-
       gap: 28px;
     }
 
 
     .result-tiles,
     .comparison {
-
       display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
+      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
-
-      margin:
-        24px 0;
+      margin: 24px 0;
     }
 
 
     .result-tiles div,
     .comparison div {
-
-      border:
-        1px solid
-        var(--line);
-
+      border: 1px solid var(--line);
       border-radius: 18px;
-
       padding: 18px;
-
       background: #fff;
     }
 
 
     .result-tiles span,
     .comparison span {
-
       display: block;
-
-      text-transform:
-        uppercase;
-
+      text-transform: uppercase;
       color: var(--muted);
-
       font-size: .8rem;
-
       font-weight: 800;
-
       margin-bottom: 8px;
     }
 
 
     .result-tiles strong,
     .comparison strong {
-
       font-size: 1.6rem;
-
       color: #111827;
     }
 
 
     .highlight {
-
-      background:
-        #2588c4 !important;
-
+      background: #2588c4 !important;
       color: #fff;
-
-      border-color:
-        #2588c4 !important;
+      border-color: #2588c4 !important;
     }
 
 
@@ -1823,73 +2305,49 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .lead-card form {
-
       display: grid;
-
       gap: 12px;
     }
 
 
     .privacyCheck {
-
       display: flex;
-
       gap: 10px;
-
-      align-items:
-        flex-start;
-
+      align-items: flex-start;
       font-weight: 500;
-
       color: var(--muted);
     }
 
 
     .privacyCheck input {
-
       width: auto;
-
       margin-top: 4px;
     }
 
 
     .sectionHeader {
-
       max-width: 820px;
-
       margin-bottom: 32px;
     }
 
 
     .miniCard strong {
-
       font-size: 1.25rem;
-
       color: #111827;
     }
 
 
     .tableCard {
-
       display: grid;
-
       gap: 12px;
     }
 
 
     .tableCard div {
-
       display: flex;
-
-      justify-content:
-        space-between;
-
+      justify-content: space-between;
       gap: 16px;
-
-      border-bottom:
-        1px solid
-        var(--line);
-
+      border-bottom: 1px solid var(--line);
       padding-bottom: 12px;
     }
 
@@ -1910,15 +2368,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .brochureNote {
-
       margin-top: 24px;
-
       padding-top: 20px;
-
-      border-top:
-        1px solid
-        var(--line);
-
+      border-top: 1px solid var(--line);
       color: var(--muted);
     }
 
@@ -1935,59 +2387,42 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .zohoFormWrapper {
-
       width: 100%;
-
-      min-height: 620px;
-
       overflow: hidden;
-
       border-radius: 20px;
-
       background: #fff;
     }
 
 
-    .zohoFormWrapper iframe {
-
-      display: block;
-
+    #zf_div_FCXvjeX7zWdEo3JIQ7xOG0qTW-KBMx-6ej11xdpqS7M {
       width: 100%;
+    }
 
-      height: 620px;
 
-      border: 0;
-
-      background: #fff;
+    #zf_div_FCXvjeX7zWdEo3JIQ7xOG0qTW-KBMx-6ej11xdpqS7M iframe {
+      display: block;
+      width: 100% !important;
+      margin: 0 auto;
     }
 
 
     .proofBox {
-
       margin-top: 24px;
-
       padding: 22px;
-
       border-radius: 22px;
-
       background: #f4f8fb;
     }
 
 
     .stars {
-
       color: var(--gold);
-
       font-size: 1.6rem;
-
       letter-spacing: .08em;
     }
 
 
     .ctaBox {
-
       text-align: center;
-
       max-width: 880px;
     }
 
@@ -2005,7 +2440,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       .calculator-grid,
       .chart-grid,
       .cards-grid {
-
         grid-template-columns: 1fr;
       }
 
@@ -2026,13 +2460,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       }
 
 
-      .zohoFormWrapper {
-        min-height: 700px;
+      .zoho-form-card {
+        padding: 24px 18px;
       }
 
 
-      .zohoFormWrapper iframe {
-        height: 700px;
+      #zf_div_FCXvjeX7zWdEo3JIQ7xOG0qTW-KBMx-6ej11xdpqS7M iframe {
+        width: 100% !important;
       }
     }
 

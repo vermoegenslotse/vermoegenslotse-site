@@ -2,14 +2,14 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Altersvorsorgedepot | Vermögenslotse">
+<BaseLayout title="Riester 2027: Was passiert mit bestehenden Riester-Verträgen? | Vermögenslotse">
   <main class="avd-page">
 
     <!-- =========================================================
          HERO
     ========================================================== -->
 
-    <section class="avd-hero">
+    <section class="avd-hero riester-hero">
       <div class="container hero-grid">
 
         <div>
@@ -19,29 +19,33 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             class="logo"
           />
 
-          <p class="eyebrow">Unabhängiger Vermögenslotsen-Leitfaden</p>
+          <p class="eyebrow">RIESTER 2027 · ALTERSVORSORGEDEPOT</p>
 
-          <h1>Das Altersvorsorgedepot</h1>
+          <h1>Riester 2027: Was bedeutet die Reform für Ihren bestehenden Vertrag?</h1>
 
           <p class="lead">
-            Chancen verstehen. Förderung nutzen. Entscheidungen mit System treffen.
+            Bestehenden Riester-Vertrag behalten, übertragen oder neu einordnen?
           </p>
 
           <p class="heroText">
-            Was die neue staatlich geförderte Altersvorsorge für Ihren Vermögensaufbau
-            bedeuten kann – verständlich erklärt, unabhängig eingeordnet und ergänzt
-            um einen interaktiven Prognoserechner.
+            Verstehen Sie zuerst, was sich ab 2027 verändert – und prüfen Sie dann,
+            welche Lösung zu Ihrer persönlichen Situation passt. Mit unabhängiger
+            Einordnung, interaktivem Prognoserechner und einem klaren Blick auf Ihren Bestand.
           </p>
 
           <div class="heroActions">
-            <a class="btn" href="#broschuere">
-              Broschüre kostenlos anfordern
+            <a class="btn" href="#riester-bestand">
+              Ich habe bereits einen Riester-Vertrag
             </a>
 
             <a class="btn btn--ghost" href="#rechner">
-              Rechner starten
+              Altersvorsorgedepot berechnen
             </a>
           </div>
+
+          <a class="heroBrochureLink" href="#broschuere">
+            Broschüre & Experten-Anhang kostenlos anfordern →
+          </a>
         </div>
 
         <div class="coverHeroCard">
@@ -50,6 +54,78 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             alt="Broschüre: Das neue Altersvorsorgedepot ab 2027"
             loading="eager"
           />
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         RIESTER-BESTAND: ERST PRÜFEN, DANN ENTSCHEIDEN
+    ========================================================== -->
+
+    <section class="section riester-entry-section" id="riester-bestand">
+      <div class="container">
+
+        <div class="riesterEntryIntro">
+          <p class="eyebrow">Sie haben bereits einen Riester-Vertrag?</p>
+
+          <h2>Dann ist die wichtigste Frage nicht, was neu ist – sondern was Sie heute besitzen.</h2>
+
+          <p class="riesterEntryLead">
+            Ein bestehender Riester-Vertrag sollte nicht allein deshalb verändert werden,
+            weil ab 2027 neue Möglichkeiten hinzukommen. Entscheidend sind die konkreten
+            Vertragswerte und die Frage, welche Rolle der Vertrag in Ihrer Altersvorsorge spielt.
+          </p>
+        </div>
+
+        <div class="riesterEntryGrid">
+
+          <article class="riesterEntryCard">
+            <span class="riesterEntryNo">01</span>
+            <p class="eyebrow">VERSTEHEN</p>
+            <h3>Was ändert sich ab 2027?</h3>
+            <p>
+              Ordnen Sie ein, wie das neue Altersvorsorgedepot funktioniert,
+              welche Förderlogik vorgesehen ist und welche neuen Wahlmöglichkeiten entstehen.
+            </p>
+            <a href="#broschuere">Broschüre & Expertenwissen ansehen →</a>
+          </article>
+
+          <article class="riesterEntryCard">
+            <span class="riesterEntryNo">02</span>
+            <p class="eyebrow">MODELLIEREN</p>
+            <h3>Was könnte die neue Förderung bedeuten?</h3>
+            <p>
+              Der Prognoserechner zeigt modellhaft, wie Förderung, Eigenbeitrag,
+              Kapitalentwicklung und spätere Auszahlung zusammenspielen können.
+            </p>
+            <a href="#rechner">Altersvorsorgedepot berechnen →</a>
+          </article>
+
+          <article class="riesterEntryCard riesterEntryCard--accent">
+            <span class="riesterEntryNo">03</span>
+            <p class="eyebrow">PRÜFEN</p>
+            <h3>Was ist mein bestehender Vertrag tatsächlich wert?</h3>
+            <p>
+              Garantien, Rentenfaktor, Kosten, Restlaufzeit und Vertragsrechte
+              lassen sich nicht seriös mit einem einfachen Rechner bewerten.
+            </p>
+            <a
+              href="https://riesterapp.de/a/6AGQYBL"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Bestehenden Riester-Vertrag prüfen ↗
+            </a>
+            <small>Externer Riester-Check</small>
+          </article>
+
+        </div>
+
+        <div class="riesterEntryRule">
+          <strong>Vermögenslotsen-Prinzip:</strong>
+          <span>Verstehen. Prüfen. Erst dann entscheiden.</span>
         </div>
 
       </div>
@@ -1134,18 +1210,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     <!-- =========================================================
-         ZIELGRUPPEN
+         ENTSCHEIDUNGSSITUATIONEN
     ========================================================== -->
 
     <section class="section audience-section">
 
       <div class="container sectionHeader">
 
-        <p class="eyebrow">Für wen?</p>
+        <p class="eyebrow">Welche Situation trifft auf Sie zu?</p>
 
         <h2>
-          Für wen das Altersvorsorgedepot interessant sein kann
+          Vier typische Ausgangslagen – vier unterschiedliche Fragen
         </h2>
+
+        <p>
+          Nicht das Produkt entscheidet über den nächsten Schritt,
+          sondern Ihre persönliche Ausgangssituation.
+        </p>
 
       </div>
 
@@ -1153,38 +1234,41 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="container cards-grid">
 
         <div class="miniCard">
-          <strong>Berufseinsteiger</strong>
+          <strong>Bestehender Riester-Vertrag</strong>
 
           <p>
-            Früh starten, lange Laufzeiten nutzen und Förderung mitnehmen.
+            Welche Garantien, Kosten, Rentenfaktoren und Vertragsrechte
+            sind bereits vorhanden – und was wäre bei einer Veränderung zu beachten?
           </p>
         </div>
 
 
         <div class="miniCard">
-          <strong>Familien</strong>
+          <strong>Neu in der geförderten Vorsorge</strong>
 
           <p>
-            Kinderzulagen können den Vermögensaufbau deutlich unterstützen.
+            Welche Förderung könnte erreichbar sein und wie lässt sich
+            das Altersvorsorgedepot sinnvoll in die eigene Vorsorgestruktur einordnen?
           </p>
         </div>
 
 
         <div class="miniCard">
-          <strong>Berufstätige</strong>
+          <strong>Familie mit Kindern</strong>
 
           <p>
-            Bestehende Vorsorge prüfen und Versorgungslücken erkennen.
+            Welche Rolle können Kinderzulagen spielen – und wie verändert
+            sich die Förderwirkung über die Jahre?
           </p>
         </div>
 
 
         <div class="miniCard">
-          <strong>Selbstständige</strong>
+          <strong>Selbstständig</strong>
 
           <p>
-            Staatlich geförderte private Vorsorge kann künftig auch
-            für viele Selbstständige relevant werden.
+            Könnte die neue Förderwelt künftig relevant sein und welche
+            anderen Vorsorgebausteine müssen dabei mitgedacht werden?
           </p>
         </div>
 
@@ -1440,20 +1524,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </p>
 
         <h2>
-          Welche Rolle kann das Altersvorsorgedepot
-          in Ihrer Strategie spielen?
+          Riester behalten, übertragen oder neu vorsorgen?
         </h2>
 
         <p>
-          Besprechen Sie Ihre Ergebnisse persönlich und prüfen Sie,
-          welche nächsten Schritte für Ihre Situation sinnvoll sind.
+          Wenn Rechner, Broschüre und Vertragsprüfung noch Fragen offenlassen,
+          ordnen wir gemeinsam ein, welcher nächste Schritt für Ihre Situation sinnvoll ist.
         </p>
 
         <a
           class="btn"
           href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
         >
-          Termin vereinbaren
+          Orientierungsgespräch vereinbaren
         </a>
 
       </div>
@@ -6002,6 +6085,141 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     }
 
+
+
+    /* =========================================================
+       RIESTER 2027 – NEUE EINSTIEGSLOGIK
+    ========================================================== */
+
+    .riester-hero h1 {
+      max-width: 780px;
+    }
+
+    .heroBrochureLink {
+      display: inline-block;
+      margin-top: 16px;
+      color: var(--green, #284830);
+      font-weight: 700;
+      font-size: .92rem;
+    }
+
+    .heroBrochureLink:hover {
+      text-decoration: underline;
+    }
+
+    .riester-entry-section {
+      position: relative;
+      background:
+        radial-gradient(700px 260px at 100% 0%, rgba(216,120,8,.10), transparent 62%),
+        linear-gradient(180deg, #ffffff 0%, #f7f9f7 100%);
+      border-top: 1px solid rgba(40,72,48,.08);
+      border-bottom: 1px solid rgba(40,72,48,.08);
+    }
+
+    .riesterEntryIntro {
+      max-width: 850px;
+      margin-bottom: 28px;
+    }
+
+    .riesterEntryIntro h2 {
+      max-width: 820px;
+      margin-bottom: 14px;
+    }
+
+    .riesterEntryLead {
+      max-width: 820px;
+      font-size: 1.05rem;
+      line-height: 1.72;
+      color: rgba(20,35,24,.76);
+    }
+
+    .riesterEntryGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .riesterEntryCard {
+      display: flex;
+      flex-direction: column;
+      min-height: 300px;
+      padding: 24px;
+      border-radius: 20px;
+      background: #ffffff;
+      border: 1px solid rgba(40,72,48,.12);
+      border-top: 4px solid rgba(40,72,48,.25);
+      box-shadow: 0 14px 36px rgba(0,0,0,.045);
+    }
+
+    .riesterEntryCard--accent {
+      border-top-color: #D87808;
+      box-shadow: 0 16px 42px rgba(0,0,0,.065);
+    }
+
+    .riesterEntryNo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 15px;
+      border-radius: 50%;
+      background: rgba(216,120,8,.11);
+      color: #284830;
+      font-size: .76rem;
+      font-weight: 800;
+    }
+
+    .riesterEntryCard h3 {
+      margin: 0 0 10px;
+      color: #284830;
+      font-size: 1.15rem;
+      line-height: 1.35;
+    }
+
+    .riesterEntryCard > p:not(.eyebrow) {
+      margin-bottom: 18px;
+      color: rgba(20,35,24,.70);
+      line-height: 1.65;
+    }
+
+    .riesterEntryCard a {
+      margin-top: auto;
+      color: #284830;
+      font-weight: 800;
+    }
+
+    .riesterEntryCard small {
+      margin-top: 7px;
+      color: rgba(40,72,48,.52);
+      font-size: .72rem;
+    }
+
+    .riesterEntryRule {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      padding: 15px 18px;
+      border-radius: 14px;
+      background: #284830;
+      color: rgba(255,255,255,.86);
+    }
+
+    .riesterEntryRule strong {
+      color: #ffffff;
+    }
+
+    @media (max-width: 900px) {
+      .riesterEntryGrid {
+        grid-template-columns: 1fr;
+      }
+
+      .riesterEntryCard {
+        min-height: 0;
+      }
+    }
   </style>
 
 </BaseLayout>

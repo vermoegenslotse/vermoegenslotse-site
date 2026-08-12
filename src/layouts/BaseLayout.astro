@@ -6,132 +6,1518 @@ type Props = {
 const { title = "Vermögenslotse" } = Astro.props;
 
 const path = Astro.url.pathname;
-const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
+
+const isActive = (href: string) =>
+  href === "/" ? path === "/" : path.startsWith(href);
+
+const isToolboxActive = path.startsWith("/toolbox");
+const isRiesterActive = path.startsWith("/altersvorsorgedepot");
+const isContactActive = path.startsWith("/kontakt");
 ---
 
 <!DOCTYPE html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+
     <title>{title}</title>
-<meta
-  name="description"
-  content="Strategische Vermögensarchitektur für Unternehmer und anspruchsvolle Privatanleger. Struktur statt Produktlogik – für planbare Entscheidungen und langfristige Vermögensentwicklung."
-/>
 
-<meta property="og:title" content="Vermögenslotse – Strategische Vermögensarchitektur" />
-<meta property="og:description" content="Struktur statt Produktlogik – für planbare Entscheidungen und langfristige Vermögensentwicklung." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://vermoegenslotse.de" />
-<!-- Optional, sobald du ein Preview-Bild hast -->
-<!-- <meta property="og:image" content="https://vermoegenslotse.de/images/og-image.jpg" /> -->
+    <meta
+      name="description"
+      content="Strategische Vermögensarchitektur für Unternehmer und anspruchsvolle Privatanleger. Struktur statt Produktlogik – für planbare Entscheidungen und langfristige Vermögensentwicklung."
+    />
 
-    <link rel="stylesheet" href="/styles/tokens.css" />
+    <meta
+      property="og:title"
+      content="Vermögenslotse – Strategische Vermögensarchitektur"
+    />
+
+    <meta
+      property="og:description"
+      content="Struktur statt Produktlogik – für planbare Entscheidungen und langfristige Vermögensentwicklung."
+    />
+
+    <meta
+      property="og:type"
+      content="website"
+    />
+
+    <meta
+      property="og:url"
+      content="https://vermoegenslotse.de"
+    />
+
+    <!--
+    Optional, sobald ein Preview-Bild vorhanden ist:
+
+    <meta
+      property="og:image"
+      content="https://vermoegenslotse.de/images/og-image.jpg"
+    />
+    -->
+
+    <link
+      rel="stylesheet"
+      href="/styles/tokens.css"
+    />
   </head>
 
-  <body>
-    <header class="siteHeader">
-      <div class="container headerInner">
-        <div class="logo">
-  <a href="/" class="logoLink" aria-label="Vermögenslotse – Start">
-    <img src="/images/vermoegenslotse-logo.png" alt="Vermögenslotse" class="logoImg" />
-  </a>
-</div>
 
-<nav class="site-nav" aria-label="Hauptnavigation">
-  <a class={isActive("/") ? "active" : ""} href="/">Start</a>
-  <a class={isActive("/ueber-mich") ? "active" : ""} href="/ueber-mich">So denke ich</a>
-  <a class={isActive("/so-arbeite-ich") ? "active" : ""} href="/so-arbeite-ich">So arbeite ich</a>
-  <a class={isActive("/vermoegenscheck") ? "active" : ""} href="/vermoegenscheck">Vermögenscheck</a>
-</nav>
+  <body>
+
+    <!-- ===================================================== -->
+    <!-- HEADER / HAUPTNAVIGATION                              -->
+    <!-- ===================================================== -->
+
+    <header class="siteHeader">
+
+      <div class="container headerInner">
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+          <a
+            href="/"
+            class="logoLink"
+            aria-label="Vermögenslotse – Startseite"
+          >
+            <img
+              src="/images/vermoegenslotse-logo.png"
+              alt="Vermögenslotse"
+              class="logoImg"
+            />
+          </a>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav
+          class="site-nav"
+          aria-label="Hauptnavigation"
+        >
+
+          <!-- START -->
+
+          <a
+            class:list={[
+              "navLink",
+              { active: isActive("/") }
+            ]}
+            href="/"
+          >
+            Start
+          </a>
+
+
+          <!-- SO DENKE ICH -->
+
+          <a
+            class:list={[
+              "navLink",
+              { active: isActive("/ueber-mich") }
+            ]}
+            href="/ueber-mich"
+          >
+            So denke ich
+          </a>
+
+
+          <!-- SO ARBEITE ICH -->
+
+          <a
+            class:list={[
+              "navLink",
+              { active: isActive("/so-arbeite-ich") }
+            ]}
+            href="/so-arbeite-ich"
+          >
+            So arbeite ich
+          </a>
+
+
+          <!-- ================================================= -->
+          <!-- TOOLBOX DROPDOWN                                  -->
+          <!-- ================================================= -->
+
+          <div
+            class:list={[
+              "navDropdown",
+              "navDropdownToolbox",
+              { active: isToolboxActive }
+            ]}
+            data-dropdown
+          >
+
+            <button
+              class="navDropdownTrigger"
+              type="button"
+              aria-expanded="false"
+              aria-haspopup="true"
+              data-dropdown-trigger
+            >
+              <span>Toolbox</span>
+
+              <span
+                class="navChevron"
+                aria-hidden="true"
+              >
+                ▾
+              </span>
+            </button>
+
+
+            <div
+              class="navDropdownPanel toolboxDropdownPanel"
+              data-dropdown-panel
+            >
+
+              <div class="dropdownIntro">
+
+                <p class="dropdownEyebrow">
+                  VERMÖGENSLOTSE TOOLBOX
+                </p>
+
+                <h2>
+                  Selbst prüfen.<br />
+                  Besser einordnen.
+                </h2>
+
+                <p>
+                  Rechner, Checks und Fachinformationen
+                  für bessere finanzielle Entscheidungen.
+                </p>
+
+              </div>
+
+
+              <div class="toolboxDropdownContent">
+
+                <p class="dropdownSectionLabel">
+                  RECHNEN & PRÜFEN
+                </p>
+
+
+                <a
+                  class="dropdownTool"
+                  href="/vermoegenscheck"
+                >
+                  <span class="dropdownToolTitle">
+                    Vermögenscheck
+                  </span>
+
+                  <span class="dropdownToolText">
+                    Vermögen und Gesamtstruktur einordnen
+                  </span>
+                </a>
+
+
+                <a
+                  class="dropdownTool"
+                  href="/depotblindfleckencheck"
+                >
+                  <span class="dropdownToolTitle">
+                    Depotblindfleckencheck
+                  </span>
+
+                  <span class="dropdownToolText">
+                    Strukturelle Schwachstellen erkennen
+                  </span>
+                </a>
+
+
+                <a
+                  class="dropdownTool"
+                  href="/ruhestands-navigator"
+                >
+                  <span class="dropdownToolTitle">
+                    Ruhestands-Navigator
+                  </span>
+
+                  <span class="dropdownToolText">
+                    Kapitalbedarf und Reichweite modellieren
+                  </span>
+                </a>
+
+
+                <a
+                  class="dropdownTool"
+                  href="/altersvorsorgedepot"
+                >
+                  <span class="dropdownToolTitle">
+                    Altersvorsorgedepot-Rechner
+                  </span>
+
+                  <span class="dropdownToolText">
+                    Förderung und Szenarien berechnen
+                  </span>
+                </a>
+
+
+                <div class="dropdownKnowledge">
+
+                  <p class="dropdownSectionLabel">
+                    WISSEN & VERTIEFEN
+                  </p>
+
+                  <p>
+                    Leitfäden, Broschüren und Checklisten
+                    ergänzen die digitalen Werkzeuge.
+                  </p>
+
+                </div>
+
+
+                <a
+                  class="dropdownMainLink"
+                  href="/toolbox"
+                >
+                  Gesamte Toolbox öffnen
+                  <span aria-hidden="true">→</span>
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- ================================================= -->
+          <!-- RIESTER 2027                                      -->
+          <!-- ================================================= -->
+
+          <a
+            class:list={[
+              "navLink",
+              "navRiester",
+              { active: isRiesterActive }
+            ]}
+            href="/altersvorsorgedepot"
+          >
+
+            <span
+              class="riesterDot"
+              aria-hidden="true"
+            ></span>
+
+            <span>
+              Riester 2027
+            </span>
+
+          </a>
+
+
+          <!-- ================================================= -->
+          <!-- KONTAKT DROPDOWN                                  -->
+          <!-- ================================================= -->
+
+          <div
+            class:list={[
+              "navDropdown",
+              "navDropdownContact",
+              { active: isContactActive }
+            ]}
+            data-dropdown
+          >
+
+            <button
+              class="navDropdownTrigger contactTrigger"
+              type="button"
+              aria-expanded="false"
+              aria-haspopup="true"
+              data-dropdown-trigger
+            >
+
+              <span>Kontakt</span>
+
+              <span
+                class="navChevron"
+                aria-hidden="true"
+              >
+                ▾
+              </span>
+
+            </button>
+
+
+            <div
+              class="navDropdownPanel contactDropdownPanel"
+              data-dropdown-panel
+            >
+
+              <p class="dropdownEyebrow">
+                DIREKTER KONTAKT
+              </p>
+
+              <h2>
+                Sprechen wir darüber.
+              </h2>
+
+
+              <div class="contactPerson">
+
+                <strong>
+                  Christian Gradt
+                </strong>
+
+                <span>
+                  Diplom-Betriebswirt
+                </span>
+
+                <span>
+                  Sachverständiger für das
+                  Versicherungswesen (BVSV)
+                </span>
+
+              </div>
+
+
+              <a
+                class="contactMail"
+                href="mailto:ch.gradt@gradt-consulting.de"
+              >
+                ch.gradt@gradt-consulting.de
+              </a>
+
+
+              <div class="contactDivider"></div>
+
+
+              <p class="contactBookingText">
+                Sie möchten Ihre Situation zunächst
+                unverbindlich einordnen?
+              </p>
+
+
+              <a
+                class="contactBookingButton"
+                href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Orientierungsgespräch vereinbaren
+              </a>
+
+
+              <p class="contactHint">
+                20 Minuten · kostenlos & unverbindlich
+              </p>
+
+
+              <a
+                class="dropdownMainLink contactAllLink"
+                href="/kontakt"
+              >
+                Alle Kontaktmöglichkeiten
+                <span aria-hidden="true">→</span>
+              </a>
+
+            </div>
+
+          </div>
+
+        </nav>
+
       </div>
+
     </header>
+
+
+    <!-- ===================================================== -->
+    <!-- SEITENINHALT                                         -->
+    <!-- ===================================================== -->
 
     <main class="container">
       <slot />
     </main>
 
+
+    <!-- ===================================================== -->
+    <!-- FOOTER                                               -->
+    <!-- ===================================================== -->
+
     <footer class="siteFooter">
-  <div class="container footerGrid">
 
-    <div>
-      <strong>Vermögenslotse</strong><br />
-      Christian Gradt Consulting
-      <p class="muted" style="margin-top:8px;">
-        Strategische Vermögensarchitektur für Unternehmer und Privatanleger.
-      </p>
-    </div>
+      <div class="container footerGrid">
 
-    <div>
-      <strong>Navigation</strong>
-      <ul class="footerLinks">
-        <li><a href="/">Start</a></li>
-        <li><a href="/ueber-mich">So denke ich</a></li>
-        <li><a href="/so-arbeite-ich">So arbeite ich</a></li>
-        <li><a href="/vermoegenscheck">Vermögenscheck</a></li>
-      </ul>
-    </div>
+        <div>
 
-    <div>
-      <strong>Rechtliches</strong>
-      <ul class="footerLinks">
-        <li><a href="/recht/impressum">Impressum</a></li>
-        <li><a href="/recht/datenschutz">Datenschutz</a></li>
-        <li><a href="/recht/transparenz">Transparenz</a></li>
-        <li><a href="/recht/nachhaltigkeit">Nachhaltigkeit</a></li>
-      </ul>
-    </div>
+          <strong>
+            Vermögenslotse
+          </strong>
 
-  </div>
+          <br />
 
-  <div class="footerBottom">
-    © {new Date().getFullYear()} Christian Gradt Consulting
-  </div>
-</footer>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+          Christian Gradt Consulting
 
-  const reveals = document.querySelectorAll(".reveal");
+          <p
+            class="muted"
+            style="margin-top:8px;"
+          >
+            Strategische Vermögensarchitektur
+            für Unternehmer und Privatanleger.
+          </p>
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("revealVisible");
-          observer.unobserve(entry.target);
+        </div>
+
+
+        <div>
+
+          <strong>
+            Navigation
+          </strong>
+
+          <ul class="footerLinks">
+
+            <li>
+              <a href="/">
+                Start
+              </a>
+            </li>
+
+            <li>
+              <a href="/ueber-mich">
+                So denke ich
+              </a>
+            </li>
+
+            <li>
+              <a href="/so-arbeite-ich">
+                So arbeite ich
+              </a>
+            </li>
+
+            <li>
+              <a href="/toolbox">
+                Toolbox
+              </a>
+            </li>
+
+            <li>
+              <a href="/altersvorsorgedepot">
+                Riester 2027
+              </a>
+            </li>
+
+            <li>
+              <a href="/kontakt">
+                Kontakt
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <div>
+
+          <strong>
+            Rechtliches
+          </strong>
+
+          <ul class="footerLinks">
+
+            <li>
+              <a href="/recht/impressum">
+                Impressum
+              </a>
+            </li>
+
+            <li>
+              <a href="/recht/datenschutz">
+                Datenschutz
+              </a>
+            </li>
+
+            <li>
+              <a href="/recht/transparenz">
+                Transparenz
+              </a>
+            </li>
+
+            <li>
+              <a href="/recht/nachhaltigkeit">
+                Nachhaltigkeit
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <div class="footerBottom">
+        © {new Date().getFullYear()} Christian Gradt Consulting
+      </div>
+
+    </footer>
+
+
+    <!-- ===================================================== -->
+    <!-- NAVIGATION STYLES                                    -->
+    <!-- ===================================================== -->
+
+    <style>
+
+      /* ----------------------------------------------------- */
+      /* HEADER                                                */
+      /* ----------------------------------------------------- */
+
+      .siteHeader {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        overflow: visible;
+      }
+
+      .headerInner {
+        position: relative;
+      }
+
+
+      /* ----------------------------------------------------- */
+      /* HAUPTNAVIGATION                                       */
+      /* ----------------------------------------------------- */
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 4px;
+      }
+
+
+      .navLink,
+      .navDropdownTrigger {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+
+        min-height: 42px;
+
+        padding: 9px 10px;
+
+        border: 0;
+        border-radius: 11px;
+
+        background: transparent;
+
+        color: var(--c-primary);
+
+        font: inherit;
+        font-size: .94rem;
+        font-weight: 700;
+
+        line-height: 1;
+
+        white-space: nowrap;
+
+        cursor: pointer;
+
+        transition:
+          background .15s ease,
+          color .15s ease,
+          transform .15s ease;
+      }
+
+
+      .navLink:hover,
+      .navDropdownTrigger:hover {
+        text-decoration: none;
+
+        background: rgba(40,72,48,.07);
+      }
+
+
+      .navLink.active,
+      .navDropdown.active > .navDropdownTrigger {
+        background: rgba(40,72,48,.09);
+
+        color: var(--c-primary);
+      }
+
+
+      /* ----------------------------------------------------- */
+      /* DROPDOWN BASIS                                        */
+      /* ----------------------------------------------------- */
+
+      .navDropdown {
+        position: relative;
+      }
+
+
+      .navChevron {
+        display: inline-block;
+
+        margin-top: -1px;
+
+        font-size: .72rem;
+
+        transition: transform .18s ease;
+      }
+
+
+      .navDropdown.isOpen .navChevron,
+      .navDropdown:focus-within .navChevron {
+        transform: rotate(180deg);
+      }
+
+
+      .navDropdownPanel {
+        position: absolute;
+
+        top: calc(100% + 10px);
+        right: 0;
+
+        visibility: hidden;
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transform: translateY(-5px);
+
+        transition:
+          opacity .16s ease,
+          transform .16s ease,
+          visibility .16s ease;
+      }
+
+
+      /*
+       * Kleiner unsichtbarer Übergangsbereich.
+       * Dadurch schließt sich das Menü nicht,
+       * wenn der Cursor vom Button zum Panel bewegt wird.
+       */
+
+      .navDropdownPanel::before {
+        content: "";
+
+        position: absolute;
+
+        top: -12px;
+        left: 0;
+        right: 0;
+
+        height: 14px;
+      }
+
+
+      .navDropdown:hover > .navDropdownPanel,
+      .navDropdown:focus-within > .navDropdownPanel,
+      .navDropdown.isOpen > .navDropdownPanel {
+        visibility: visible;
+
+        opacity: 1;
+
+        pointer-events: auto;
+
+        transform: translateY(0);
+      }
+
+
+      /* ----------------------------------------------------- */
+      /* TOOLBOX DROPDOWN                                      */
+      /* ----------------------------------------------------- */
+
+      .toolboxDropdownPanel {
+        display: grid;
+
+        grid-template-columns: 235px 1fr;
+
+        width: min(680px, calc(100vw - 40px));
+
+        overflow: hidden;
+
+        border: 1px solid rgba(40,72,48,.13);
+        border-radius: 20px;
+
+        background: #ffffff;
+
+        box-shadow:
+          0 22px 65px rgba(0,0,0,.13);
+      }
+
+
+      .dropdownIntro {
+        padding: 26px 24px;
+
+        background:
+          radial-gradient(
+            340px 180px at 0% 0%,
+            rgba(216,120,8,.18),
+            transparent 65%
+          ),
+          linear-gradient(
+            160deg,
+            #284830 0%,
+            #1d3725 100%
+          );
+
+        color: #ffffff;
+      }
+
+
+      .dropdownEyebrow {
+        margin: 0 0 10px;
+
+        font-size: .68rem;
+
+        font-weight: 800;
+
+        letter-spacing: .1em;
+
+        color: var(--c-accent);
+      }
+
+
+      .dropdownIntro h2 {
+        margin: 0 0 12px;
+
+        font-size: 1.35rem;
+
+        line-height: 1.2;
+
+        color: #ffffff;
+      }
+
+
+      .dropdownIntro p:last-child {
+        margin: 0;
+
+        font-size: .88rem;
+
+        line-height: 1.55;
+
+        color: rgba(255,255,255,.76);
+      }
+
+
+      .toolboxDropdownContent {
+        padding: 22px;
+      }
+
+
+      .dropdownSectionLabel {
+        margin: 0 0 10px;
+
+        font-size: .68rem;
+
+        font-weight: 800;
+
+        letter-spacing: .1em;
+
+        color: rgba(40,72,48,.60);
+      }
+
+
+      .dropdownTool {
+        display: block;
+
+        margin-bottom: 4px;
+
+        padding: 9px 10px;
+
+        border-radius: 10px;
+
+        transition:
+          background .15s ease,
+          transform .15s ease;
+      }
+
+
+      .dropdownTool:hover {
+        text-decoration: none;
+
+        background: rgba(40,72,48,.055);
+
+        transform: translateX(2px);
+      }
+
+
+      .dropdownToolTitle {
+        display: block;
+
+        margin-bottom: 2px;
+
+        color: var(--c-primary);
+
+        font-size: .9rem;
+
+        font-weight: 800;
+      }
+
+
+      .dropdownToolText {
+        display: block;
+
+        color: rgba(40,72,48,.65);
+
+        font-size: .78rem;
+
+        line-height: 1.35;
+      }
+
+
+      .dropdownKnowledge {
+        margin-top: 12px;
+        padding-top: 13px;
+
+        border-top:
+          1px solid rgba(40,72,48,.09);
+      }
+
+
+      .dropdownKnowledge p:last-child {
+        margin: 0;
+
+        color: rgba(40,72,48,.67);
+
+        font-size: .8rem;
+
+        line-height: 1.45;
+      }
+
+
+      .dropdownMainLink {
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+
+        margin-top: 14px;
+
+        padding: 10px 12px;
+
+        border-radius: 11px;
+
+        background: rgba(216,120,8,.10);
+
+        color: var(--c-primary);
+
+        font-size: .86rem;
+
+        font-weight: 800;
+      }
+
+
+      .dropdownMainLink:hover {
+        text-decoration: none;
+
+        background: rgba(216,120,8,.16);
+      }
+
+
+      /* ----------------------------------------------------- */
+      /* RIESTER 2027                                          */
+      /* ----------------------------------------------------- */
+
+      .navRiester {
+        position: relative;
+
+        gap: 7px;
+      }
+
+
+      .riesterDot {
+        width: 7px;
+        height: 7px;
+
+        flex: 0 0 auto;
+
+        border-radius: 50%;
+
+        background: var(--c-accent);
+
+        box-shadow:
+          0 0 0 3px rgba(216,120,8,.12);
+      }
+
+
+      .navRiester:hover {
+        background: rgba(216,120,8,.08);
+      }
+
+
+      .navRiester.active {
+        background: rgba(216,120,8,.11);
+      }
+
+
+      /* ----------------------------------------------------- */
+      /* KONTAKT TRIGGER                                       */
+      /* ----------------------------------------------------- */
+
+      .contactTrigger {
+        margin-left: 3px;
+
+        padding-left: 14px;
+        padding-right: 14px;
+
+        border:
+          1px solid rgba(40,72,48,.25);
+
+        background:
+          rgba(255,255,255,.80);
+      }
+
+
+      .contactTrigger:hover {
+        background:
+          rgba(40,72,48,.06);
+      }
+
+
+      /* ----------------------------------------------------- */
+      /* KONTAKT DROPDOWN                                      */
+      /* ----------------------------------------------------- */
+
+      .contactDropdownPanel {
+        width: 330px;
+
+        padding: 24px;
+
+        border:
+          1px solid rgba(40,72,48,.13);
+
+        border-radius: 20px;
+
+        background: #ffffff;
+
+        box-shadow:
+          0 22px 65px rgba(0,0,0,.13);
+      }
+
+
+      .contactDropdownPanel h2 {
+        margin: 0 0 16px;
+
+        font-size: 1.28rem;
+
+        color: var(--c-primary);
+      }
+
+
+      .contactPerson {
+        display: grid;
+
+        gap: 2px;
+
+        margin-bottom: 14px;
+      }
+
+
+      .contactPerson strong {
+        color: var(--c-primary);
+
+        font-size: .95rem;
+      }
+
+
+      .contactPerson span {
+        color: rgba(40,72,48,.65);
+
+        font-size: .78rem;
+
+        line-height: 1.4;
+      }
+
+
+      .contactMail {
+        display: inline-block;
+
+        color: var(--c-primary);
+
+        font-size: .84rem;
+
+        font-weight: 700;
+      }
+
+
+      .contactDivider {
+        height: 1px;
+
+        margin: 18px 0;
+
+        background:
+          rgba(40,72,48,.10);
+      }
+
+
+      .contactBookingText {
+        margin: 0 0 12px;
+
+        color: rgba(40,72,48,.73);
+
+        font-size: .84rem;
+
+        line-height: 1.5;
+      }
+
+
+      .contactBookingButton {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        padding: 11px 14px;
+
+        border-radius: 12px;
+
+        background: var(--c-accent);
+
+        color: #ffffff;
+
+        font-size: .84rem;
+
+        font-weight: 800;
+
+        box-shadow:
+          0 10px 26px rgba(216,120,8,.20);
+      }
+
+
+      .contactBookingButton:hover {
+        text-decoration: none;
+
+        transform: translateY(-1px);
+      }
+
+
+      .contactHint {
+        margin: 8px 0 0;
+
+        text-align: center;
+
+        color: rgba(40,72,48,.55);
+
+        font-size: .72rem;
+      }
+
+
+      .contactAllLink {
+        margin-top: 16px;
+
+        background:
+          rgba(40,72,48,.055);
+      }
+
+
+      .contactAllLink:hover {
+        background:
+          rgba(40,72,48,.09);
+      }
+
+
+      /* ----------------------------------------------------- */
+      /* TABLET / KLEINER DESKTOP                              */
+      /* ----------------------------------------------------- */
+
+      @media (max-width: 1080px) {
+
+        .site-nav {
+          gap: 1px;
         }
-      });
-    },
-    {
-      threshold: 0.12
-    }
-  );
 
-  reveals.forEach((el) => {
-    observer.observe(el);
-  });
+        .navLink,
+        .navDropdownTrigger {
+          padding-left: 7px;
+          padding-right: 7px;
 
-});
-</script>
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", function () {
-    const reveals = document.querySelectorAll(".reveal");
+          font-size: .87rem;
+        }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("revealVisible");
-            observer.unobserve(entry.target);
+      }
+
+
+      /* ----------------------------------------------------- */
+      /* MOBILE                                                */
+      /* ----------------------------------------------------- */
+
+      @media (max-width: 900px) {
+
+        .headerInner {
+          align-items: flex-start;
+
+          flex-wrap: wrap;
+        }
+
+
+        .logoImg {
+          height: 42px;
+        }
+
+
+        .site-nav {
+          width: 100%;
+
+          justify-content: flex-start;
+
+          flex-wrap: wrap;
+
+          padding-top: 4px;
+        }
+
+
+        .navLink,
+        .navDropdownTrigger {
+          min-height: 38px;
+
+          font-size: .84rem;
+        }
+
+
+        .toolboxDropdownPanel,
+        .contactDropdownPanel {
+          position: fixed;
+
+          z-index: 2000;
+
+          top: 108px;
+
+          left: 16px;
+          right: 16px;
+
+          width: auto;
+
+          max-height:
+            calc(100vh - 125px);
+
+          overflow-y: auto;
+
+          transform: translateY(-5px);
+        }
+
+
+        .toolboxDropdownPanel {
+          grid-template-columns: 1fr;
+        }
+
+
+        .dropdownIntro {
+          padding: 20px;
+        }
+
+
+        .toolboxDropdownContent {
+          padding: 18px;
+        }
+
+      }
+
+
+      /* ----------------------------------------------------- */
+      /* SEHR KLEINE DISPLAYS                                  */
+      /* ----------------------------------------------------- */
+
+      @media (max-width: 560px) {
+
+        .siteHeader {
+          position: sticky;
+        }
+
+
+        .site-nav {
+          gap: 2px;
+        }
+
+
+        .navLink,
+        .navDropdownTrigger {
+          padding:
+            8px 7px;
+
+          font-size: .78rem;
+        }
+
+
+        .contactTrigger {
+          margin-left: 0;
+        }
+
+
+        .toolboxDropdownPanel,
+        .contactDropdownPanel {
+          top: 116px;
+        }
+
+      }
+
+    </style>
+
+
+    <!-- ===================================================== -->
+    <!-- REVEAL ANIMATION                                      -->
+    <!-- ===================================================== -->
+
+    <script is:inline>
+
+      document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+          const reveals =
+            document.querySelectorAll(".reveal");
+
+
+          if (
+            "IntersectionObserver" in window
+          ) {
+
+            const observer =
+              new IntersectionObserver(
+                (entries) => {
+
+                  entries.forEach(
+                    (entry) => {
+
+                      if (
+                        entry.isIntersecting
+                      ) {
+
+                        entry.target.classList.add(
+                          "revealVisible"
+                        );
+
+                        observer.unobserve(
+                          entry.target
+                        );
+
+                      }
+
+                    }
+                  );
+
+                },
+                {
+                  threshold: 0.12
+                }
+              );
+
+
+            reveals.forEach(
+              (element) => {
+
+                observer.observe(
+                  element
+                );
+
+              }
+            );
+
           }
-        });
-      },
-      { threshold: 0.12 }
-    );
 
-    reveals.forEach((el) => observer.observe(el));
-  });
-</script>
+          else {
+
+            reveals.forEach(
+              (element) => {
+
+                element.classList.add(
+                  "revealVisible"
+                );
+
+              }
+            );
+
+          }
+
+        }
+      );
+
+    </script>
+
+
+    <!-- ===================================================== -->
+    <!-- DROPDOWN INTERAKTION                                  -->
+    <!-- ===================================================== -->
+
+    <script is:inline>
+
+      document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+          const dropdowns =
+            document.querySelectorAll(
+              "[data-dropdown]"
+            );
+
+
+          function closeDropdown(
+            dropdown
+          ) {
+
+            dropdown.classList.remove(
+              "isOpen"
+            );
+
+
+            const trigger =
+              dropdown.querySelector(
+                "[data-dropdown-trigger]"
+              );
+
+
+            if (trigger) {
+
+              trigger.setAttribute(
+                "aria-expanded",
+                "false"
+              );
+
+            }
+
+          }
+
+
+          function closeAllDropdowns(
+            exception = null
+          ) {
+
+            dropdowns.forEach(
+              (dropdown) => {
+
+                if (
+                  dropdown !== exception
+                ) {
+
+                  closeDropdown(
+                    dropdown
+                  );
+
+                }
+
+              }
+            );
+
+          }
+
+
+          dropdowns.forEach(
+            (dropdown) => {
+
+              const trigger =
+                dropdown.querySelector(
+                  "[data-dropdown-trigger]"
+                );
+
+
+              if (!trigger) {
+                return;
+              }
+
+
+              trigger.addEventListener(
+                "click",
+                function (event) {
+
+                  event.stopPropagation();
+
+
+                  const isOpen =
+                    dropdown.classList.contains(
+                      "isOpen"
+                    );
+
+
+                  closeAllDropdowns(
+                    dropdown
+                  );
+
+
+                  if (isOpen) {
+
+                    closeDropdown(
+                      dropdown
+                    );
+
+                  }
+
+                  else {
+
+                    dropdown.classList.add(
+                      "isOpen"
+                    );
+
+
+                    trigger.setAttribute(
+                      "aria-expanded",
+                      "true"
+                    );
+
+                  }
+
+                }
+              );
+
+            }
+          );
+
+
+          document.addEventListener(
+            "click",
+            function (event) {
+
+              const clickedInsideDropdown =
+                event.target.closest(
+                  "[data-dropdown]"
+                );
+
+
+              if (
+                !clickedInsideDropdown
+              ) {
+
+                closeAllDropdowns();
+
+              }
+
+            }
+          );
+
+
+          document.addEventListener(
+            "keydown",
+            function (event) {
+
+              if (
+                event.key === "Escape"
+              ) {
+
+                closeAllDropdowns();
+
+              }
+
+            }
+          );
+
+
+          window.addEventListener(
+            "resize",
+            function () {
+
+              closeAllDropdowns();
+
+            }
+          );
+
+        }
+      );
+
+    </script>
+
   </body>
 </html>

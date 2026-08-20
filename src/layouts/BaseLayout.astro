@@ -1278,7 +1278,28 @@ const isContactActive = path.startsWith("/kontakt");
         .contactDropdownPanel {
           top: 116px;
         }
+/* ----------------------------------------------------- */
+/* FIX: HEADER UND DROPDOWNS ÜBER STARTSEITEN-INHALT     */
+/* ----------------------------------------------------- */
 
+.siteHeader {
+  z-index: 9999;
+}
+
+.headerInner,
+.site-nav,
+.navDropdown {
+  overflow: visible;
+}
+
+.navDropdownPanel {
+  z-index: 10000;
+}
+
+.contactDropdownPanel,
+.toolboxDropdownPanel {
+  z-index: 10001;
+}
       }
 
     </style>

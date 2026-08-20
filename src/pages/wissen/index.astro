@@ -1,1 +1,1897 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
+
+const featuredItems = [
+
+  {
+    category: "RUHESTAND & ENTNAHME",
+    badge: "NEU",
+    title: "Die Ruhestands-Strategie 50+",
+    subtitle:
+      "Wie Sie ab 50 die richtigen Weichen für Ihren Ruhestand stellen.",
+    description:
+      "Ein umfassender Ratgeber für Menschen, die Vermögen, Einkommen, Risiken, steuerliche Aspekte und persönliche Ziele vor dem Ruhestand in eine nachvollziehbare Gesamtstrategie bringen möchten.",
+    meta: "Broschüre · 18 Seiten",
+    href: "/kontakt",
+    cta: "Broschüre anfragen",
+    anchor: "ruhestand"
+  },
+
+  {
+    category: "ALTERSVORSORGE & RIESTER",
+    badge: "AKTUELL",
+    title: "Das neue Altersvorsorgedepot ab 2027",
+    subtitle:
+      "Was aus bestehenden Riester-Verträgen werden kann.",
+    description:
+      "Der Leitfaden erklärt die neue Förderwelt, zeigt mögliche Wege für bestehende Verträge und hilft dabei, Garantien, Kosten, Förderung und Kapitalanlage gemeinsam zu betrachten.",
+    meta: "Leitfaden · 15 Seiten",
+    href: "/altersvorsorgedepot",
+    cta: "Riester 2027 verstehen",
+    anchor: "altersvorsorge"
+  }
+
+];
+
+
+const knowledgeItems = [
+
+  {
+    category: "Vermögen & Kapitalanlage",
+    categoryKey: "vermoegen",
+    type: "LEITFADEN",
+    title: "Kapital-Guide für Privatanleger",
+    question:
+      "Warum sehen viele Depots besser aus, als sie tatsächlich strukturiert sind?",
+    description:
+      "Der kompakte Leitfaden zeigt typische Strukturfehler in Wertpapierdepots – von zu vielen Positionen über fehlende Rollen bis zur Frage, wie greifbar das tatsächliche Verlustrisiko ist.",
+    meta: "PDF · 8 Seiten",
+    href: "/kapital-guide",
+    cta: "Kapital-Guide ansehen"
+  },
+
+  {
+    category: "Unternehmer & Vermögensschutz",
+    categoryKey: "unternehmer",
+    type: "LEITFADEN",
+    title: "Kapital-Guide für Unternehmer",
+    question:
+      "Welche strategischen Kapitalfehler können langfristig teuer werden?",
+    description:
+      "Der Unternehmer-Guide betrachtet Vermögen breiter: Struktur, Liquidität, steuerliche Zusammenhänge, strategische Kontrolle, Familie, Exit und laufende Finanzplanung.",
+    meta: "PDF · 16 Seiten",
+    href: "/kontakt",
+    cta: "Leitfaden anfragen"
+  },
+
+  {
+    category: "Altersvorsorge & Riester",
+    categoryKey: "altersvorsorge",
+    type: "EXPERTENWISSEN",
+    title: "Experten-Anhang Altersvorsorgedepot",
+    question:
+      "Wie funktioniert die Reform im Detail?",
+    description:
+      "Vertiefende Informationen zu Förderung, Garantien, Kosten, Anlageoptionen, Auszahlung, Besteuerung und dem Umgang mit bestehenden Riester-Verträgen.",
+    meta: "PDF · 14 Seiten",
+    href: "/altersvorsorgedepot#broschuere",
+    cta: "Zum Themenbereich"
+  },
+
+  {
+    category: "Ruhestand & Entnahme",
+    categoryKey: "ruhestand",
+    type: "FACHBEITRAG",
+    title: "Renditereihenfolgerisiko",
+    question:
+      "Warum kann dieselbe Durchschnittsrendite zu völlig unterschiedlichen Ergebnissen führen?",
+    description:
+      "Gerade in der Entnahmephase entscheidet nicht nur die durchschnittliche Rendite. Die Reihenfolge guter und schlechter Börsenjahre kann erheblichen Einfluss auf die Kapitalreichweite haben.",
+    meta: "Fachthema",
+    href: null,
+    cta: null
+  },
+
+  {
+    category: "Trends & Entwicklungen",
+    categoryKey: "trends",
+    type: "WHITEPAPER",
+    title: "Open Finance",
+    question:
+      "Wie verändert der digitale Zugriff auf Finanzdaten die Finanzwelt?",
+    description:
+      "Das Whitepaper gibt einen Überblick über Open Finance, FiDA, APIs, Datenschutz und die Frage, wie sich Finanzdienstleistungen durch stärker vernetzte Daten verändern können.",
+    meta: "Whitepaper · 4 Seiten",
+    href: "/kontakt",
+    cta: "Whitepaper anfragen"
+  }
+
+];
+---
+
+<BaseLayout title="Wissen & Orientierung | Vermögenslotse">
+
+  <!-- ===================================================== -->
+  <!-- HERO                                                  -->
+  <!-- ===================================================== -->
+
+  <section class="wissenHero">
+
+    <div class="wissenHeroGrid">
+
+      <div>
+
+        <p class="wissenEyebrow">
+          WISSEN & ORIENTIERUNG
+        </p>
+
+        <h1>
+          Gute Finanzentscheidungen<br />
+          beginnen mit Verständnis.
+        </h1>
+
+        <p class="wissenLead">
+          Nicht jedes finanzielle Thema braucht sofort eine Beratung.
+          Manchmal braucht es zunächst die richtigen Informationen
+          und die richtigen Fragen.
+        </p>
+
+        <p class="wissenIntro">
+          Hier finden Sie meine Leitfäden, Broschüren und Fachinformationen
+          zu Vermögensstruktur, Ruhestand, Altersvorsorge
+          und unternehmerischen Finanzfragen.
+        </p>
+
+      </div>
+
+
+      <aside class="wissenHeroPanel">
+
+        <p class="wissenPanelLabel">
+          DIREKT ZUM THEMA
+        </p>
+
+        <nav
+          class="wissenQuickLinks"
+          aria-label="Themenbereiche Wissen"
+        >
+
+          <a href="#vermoegen">
+            Vermögen & Kapitalanlage
+          </a>
+
+          <a href="#ruhestand">
+            Ruhestand & Entnahme
+          </a>
+
+          <a href="#altersvorsorge">
+            Altersvorsorge & Riester
+          </a>
+
+          <a href="#unternehmer">
+            Unternehmer & Vermögensschutz
+          </a>
+
+          <a href="#trends">
+            Trends & Entwicklungen
+          </a>
+
+        </nav>
+
+      </aside>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================== -->
+  <!-- GRUNDSATZ                                             -->
+  <!-- ===================================================== -->
+
+  <section class="wissenPrinciple reveal">
+
+    <div>
+
+      <p class="wissenEyebrow">
+        DER VERMÖGENSLOTSE-ANSATZ
+      </p>
+
+      <h2>
+        Erst verstehen. Dann prüfen. Erst danach entscheiden.
+      </h2>
+
+    </div>
+
+    <p>
+      Die Inhalte auf dieser Seite sollen Ihnen helfen,
+      finanzielle Fragestellungen selbst besser einzuordnen.
+      Sie ersetzen keine individuelle Beratung –
+      aber sie schaffen eine bessere Grundlage für Entscheidungen.
+    </p>
+
+  </section>
+
+
+  <!-- ===================================================== -->
+  <!-- HERVORGEHOBENE INHALTE                                -->
+  <!-- ===================================================== -->
+
+  <section class="wissenSection reveal">
+
+    <div class="sectionHeading">
+
+      <div>
+
+        <p class="wissenEyebrow">
+          EMPFOHLENE EINSTIEGE
+        </p>
+
+        <h2>
+          Aktuell besonders relevant
+        </h2>
+
+      </div>
+
+      <p>
+        Zwei Themen, bei denen in den kommenden Jahren
+        besonders viele finanzielle Entscheidungen anstehen.
+      </p>
+
+    </div>
+
+
+    <div class="featuredGrid">
+
+      {
+        featuredItems.map((item) => (
+
+          <article
+            class="featuredCard"
+            id={item.anchor}
+          >
+
+            <div class="featuredTop">
+
+              <span class="contentCategory">
+                {item.category}
+              </span>
+
+              <span class="contentBadge">
+                {item.badge}
+              </span>
+
+            </div>
+
+
+            <h3>
+              {item.title}
+            </h3>
+
+            <p class="contentQuestion">
+              {item.subtitle}
+            </p>
+
+            <p class="contentDescription">
+              {item.description}
+            </p>
+
+
+            <div class="featuredFooter">
+
+              <span class="contentMeta">
+                {item.meta}
+              </span>
+
+              <a
+                class="wissenButton"
+                href={item.href}
+              >
+                {item.cta}
+                <span aria-hidden="true">
+                  →
+                </span>
+              </a>
+
+            </div>
+
+          </article>
+
+        ))
+      }
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================== -->
+  <!-- THEMENWELTEN                                          -->
+  <!-- ===================================================== -->
+
+  <section class="wissenSection wissenLibrary reveal">
+
+    <div class="sectionHeading">
+
+      <div>
+
+        <p class="wissenEyebrow">
+          FACHINFORMATIONEN
+        </p>
+
+        <h2>
+          Wissen nach Themen
+        </h2>
+
+      </div>
+
+      <p>
+        Die Bibliothek wird laufend ergänzt.
+        Entscheidend ist dabei nicht die Menge,
+        sondern der konkrete Nutzen für Ihre Entscheidungen.
+      </p>
+
+    </div>
+
+
+    <!-- =================================================== -->
+    <!-- VERMÖGEN                                            -->
+    <!-- =================================================== -->
+
+    <div
+      class="topicSection"
+      id="vermoegen"
+    >
+
+      <div class="topicHeading">
+
+        <span class="topicNumber">
+          01
+        </span>
+
+        <div>
+
+          <p class="wissenEyebrow">
+            VERMÖGEN & KAPITALANLAGE
+          </p>
+
+          <h3>
+            Struktur hinter den Positionen verstehen
+          </h3>
+
+          <p>
+            Nicht das einzelne Produkt entscheidet über die Qualität
+            einer Vermögensstruktur, sondern das Zusammenspiel
+            von Rollen, Risiken, Liquidität und Anlagezielen.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="knowledgeGrid">
+
+        {
+          knowledgeItems
+            .filter(
+              (item) =>
+                item.categoryKey === "vermoegen"
+            )
+            .map(
+              (item) => (
+
+                <article class="knowledgeCard">
+
+                  <span class="contentType">
+                    {item.type}
+                  </span>
+
+                  <h4>
+                    {item.title}
+                  </h4>
+
+                  <p class="contentQuestion">
+                    {item.question}
+                  </p>
+
+                  <p class="contentDescription">
+                    {item.description}
+                  </p>
+
+
+                  <div class="knowledgeFooter">
+
+                    <span class="contentMeta">
+                      {item.meta}
+                    </span>
+
+                    {
+                      item.href && item.cta
+                        ? (
+                            <a
+                              class="knowledgeLink"
+                              href={item.href}
+                            >
+                              {item.cta} →
+                            </a>
+                          )
+                        : (
+                            <span class="knowledgeComing">
+                              Vertiefung folgt
+                            </span>
+                          )
+                    }
+
+                  </div>
+
+                </article>
+
+              )
+            )
+        }
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================== -->
+    <!-- RUHESTAND                                           -->
+    <!-- =================================================== -->
+
+    <div
+      class="topicSection"
+      id="ruhestand"
+    >
+
+      <div class="topicHeading">
+
+        <span class="topicNumber">
+          02
+        </span>
+
+        <div>
+
+          <p class="wissenEyebrow">
+            RUHESTAND & ENTNAHME
+          </p>
+
+          <h3>
+            Vermögen in der zweiten Lebensphase steuern
+          </h3>
+
+          <p>
+            Im Ruhestand verändert sich die Perspektive:
+            Kapitalaufbau wird zunehmend zu Kapitalsteuerung.
+            Entnahmen, Sicherheit, Inflation und zeitliche Reihenfolgen
+            gewinnen an Bedeutung.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="knowledgeGrid">
+
+        <article class="knowledgeCard knowledgeCardFeatured">
+
+          <div class="knowledgeFeaturedLabel">
+            NEUER RATGEBER
+          </div>
+
+          <span class="contentType">
+            BROSCHÜRE
+          </span>
+
+          <h4>
+            Die Ruhestands-Strategie 50+
+          </h4>
+
+          <p class="contentQuestion">
+            Wie stellen Sie heute die richtigen Weichen
+            für finanzielle Freiheit im Ruhestand?
+          </p>
+
+          <p class="contentDescription">
+            Ziele, Bestandsaufnahme, Vermögensarchitektur,
+            Risiko, Kapitalanlage, steuerliche Fragen und
+            langfristige Begleitung werden zu einem
+            nachvollziehbaren Fahrplan verbunden.
+          </p>
+
+
+          <div class="knowledgeFooter">
+
+            <span class="contentMeta">
+              PDF · 18 Seiten
+            </span>
+
+            <a
+              class="knowledgeLink"
+              href="/kontakt"
+            >
+              Broschüre anfragen →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        {
+          knowledgeItems
+            .filter(
+              (item) =>
+                item.categoryKey === "ruhestand"
+            )
+            .map(
+              (item) => (
+
+                <article class="knowledgeCard">
+
+                  <span class="contentType">
+                    {item.type}
+                  </span>
+
+                  <h4>
+                    {item.title}
+                  </h4>
+
+                  <p class="contentQuestion">
+                    {item.question}
+                  </p>
+
+                  <p class="contentDescription">
+                    {item.description}
+                  </p>
+
+
+                  <div class="knowledgeFooter">
+
+                    <span class="contentMeta">
+                      {item.meta}
+                    </span>
+
+                    {
+                      item.href && item.cta
+                        ? (
+                            <a
+                              class="knowledgeLink"
+                              href={item.href}
+                            >
+                              {item.cta} →
+                            </a>
+                          )
+                        : (
+                            <span class="knowledgeComing">
+                              Vertiefung folgt
+                            </span>
+                          )
+                    }
+
+                  </div>
+
+                </article>
+
+              )
+            )
+        }
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================== -->
+    <!-- ALTERSVORSORGE                                      -->
+    <!-- =================================================== -->
+
+    <div
+      class="topicSection"
+      id="altersvorsorge"
+    >
+
+      <div class="topicHeading">
+
+        <span class="topicNumber">
+          03
+        </span>
+
+        <div>
+
+          <p class="wissenEyebrow">
+            ALTERSVORSORGE & RIESTER
+          </p>
+
+          <h3>
+            Reformen verstehen, bevor Verträge verändert werden
+          </h3>
+
+          <p>
+            Neue Fördermodelle schaffen neue Möglichkeiten.
+            Bestehende Garantien, Kosten, Vertragsrechte und
+            persönliche Ziele bleiben trotzdem Teil der Entscheidung.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="knowledgeGrid">
+
+        <article class="knowledgeCard knowledgeCardRiester">
+
+          <div class="knowledgeFeaturedLabel">
+            RIESTER 2027
+          </div>
+
+          <span class="contentType">
+            LEITFADEN
+          </span>
+
+          <h4>
+            Das neue Altersvorsorgedepot ab 2027
+          </h4>
+
+          <p class="contentQuestion">
+            Behalten, umstellen oder neu aufstellen?
+          </p>
+
+          <p class="contentDescription">
+            Eine verständliche Einführung in die neue Vorsorgewelt
+            und die Fragen, die insbesondere Besitzer bestehender
+            Riester-Verträge vor einer Entscheidung prüfen sollten.
+          </p>
+
+
+          <div class="knowledgeFooter">
+
+            <span class="contentMeta">
+              PDF · 15 Seiten
+            </span>
+
+            <a
+              class="knowledgeLink"
+              href="/altersvorsorgedepot"
+            >
+              Riester 2027 einordnen →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        {
+          knowledgeItems
+            .filter(
+              (item) =>
+                item.categoryKey === "altersvorsorge"
+            )
+            .map(
+              (item) => (
+
+                <article class="knowledgeCard">
+
+                  <span class="contentType">
+                    {item.type}
+                  </span>
+
+                  <h4>
+                    {item.title}
+                  </h4>
+
+                  <p class="contentQuestion">
+                    {item.question}
+                  </p>
+
+                  <p class="contentDescription">
+                    {item.description}
+                  </p>
+
+
+                  <div class="knowledgeFooter">
+
+                    <span class="contentMeta">
+                      {item.meta}
+                    </span>
+
+                    <a
+                      class="knowledgeLink"
+                      href={item.href}
+                    >
+                      {item.cta} →
+                    </a>
+
+                  </div>
+
+                </article>
+
+              )
+            )
+        }
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================== -->
+    <!-- UNTERNEHMER                                         -->
+    <!-- =================================================== -->
+
+    <div
+      class="topicSection"
+      id="unternehmer"
+    >
+
+      <div class="topicHeading">
+
+        <span class="topicNumber">
+          04
+        </span>
+
+        <div>
+
+          <p class="wissenEyebrow">
+            UNTERNEHMER & VERMÖGENSSCHUTZ
+          </p>
+
+          <h3>
+            Private und unternehmerische Vermögensfragen verbinden
+          </h3>
+
+          <p>
+            Unternehmervermögen lässt sich selten sinnvoll
+            in isolierten Einzelthemen betrachten.
+            Liquidität, Beteiligungen, Familie, Exit,
+            Absicherung und Vermögensstrategie greifen ineinander.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="knowledgeGrid">
+
+        {
+          knowledgeItems
+            .filter(
+              (item) =>
+                item.categoryKey === "unternehmer"
+            )
+            .map(
+              (item) => (
+
+                <article class="knowledgeCard">
+
+                  <span class="contentType">
+                    {item.type}
+                  </span>
+
+                  <h4>
+                    {item.title}
+                  </h4>
+
+                  <p class="contentQuestion">
+                    {item.question}
+                  </p>
+
+                  <p class="contentDescription">
+                    {item.description}
+                  </p>
+
+
+                  <div class="knowledgeFooter">
+
+                    <span class="contentMeta">
+                      {item.meta}
+                    </span>
+
+                    <a
+                      class="knowledgeLink"
+                      href={item.href}
+                    >
+                      {item.cta} →
+                    </a>
+
+                  </div>
+
+                </article>
+
+              )
+            )
+        }
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================== -->
+    <!-- TRENDS                                              -->
+    <!-- =================================================== -->
+
+    <div
+      class="topicSection topicSectionMuted"
+      id="trends"
+    >
+
+      <div class="topicHeading">
+
+        <span class="topicNumber">
+          05
+        </span>
+
+        <div>
+
+          <p class="wissenEyebrow">
+            TRENDS & ENTWICKLUNGEN
+          </p>
+
+          <h3>
+            Was die Finanzwelt langfristig verändert
+          </h3>
+
+          <p>
+            Nicht jede Entwicklung verlangt sofort eine Entscheidung.
+            Einige Themen sollte man trotzdem frühzeitig verstehen,
+            weil sie die Finanzwelt strukturell verändern können.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="knowledgeGrid">
+
+        {
+          knowledgeItems
+            .filter(
+              (item) =>
+                item.categoryKey === "trends"
+            )
+            .map(
+              (item) => (
+
+                <article class="knowledgeCard">
+
+                  <span class="contentType">
+                    {item.type}
+                  </span>
+
+                  <h4>
+                    {item.title}
+                  </h4>
+
+                  <p class="contentQuestion">
+                    {item.question}
+                  </p>
+
+                  <p class="contentDescription">
+                    {item.description}
+                  </p>
+
+
+                  <div class="knowledgeFooter">
+
+                    <span class="contentMeta">
+                      {item.meta}
+                    </span>
+
+                    <a
+                      class="knowledgeLink"
+                      href={item.href}
+                    >
+                      {item.cta} →
+                    </a>
+
+                  </div>
+
+                </article>
+
+              )
+            )
+        }
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================== -->
+  <!-- TOOLBOX VERWEIS                                       -->
+  <!-- ===================================================== -->
+
+  <section class="wissenToolbox reveal">
+
+    <div>
+
+      <p class="wissenEyebrow">
+        NICHT NUR LESEN
+      </p>
+
+      <h2>
+        Sie möchten Ihre eigene Situation prüfen?
+      </h2>
+
+      <p>
+        In der Toolbox finden Sie Rechner und Checks,
+        mit denen Sie einzelne Fragestellungen
+        direkt auf Ihre persönliche Situation übertragen können.
+      </p>
+
+    </div>
+
+
+    <a
+      class="wissenToolboxButton"
+      href="/toolbox"
+    >
+      Zur Toolbox
+      <span aria-hidden="true">
+        →
+      </span>
+    </a>
+
+  </section>
+
+
+  <!-- ===================================================== -->
+  <!-- ABSCHLUSS                                             -->
+  <!-- ===================================================== -->
+
+  <section class="wissenClosing reveal">
+
+    <div class="wissenClosingInner">
+
+      <p class="wissenEyebrow">
+        EINE FRAGE BLEIBT OFFEN?
+      </p>
+
+      <h2>
+        Schreiben Sie mir einfach.
+      </h2>
+
+      <p>
+        Nicht jede Fragestellung braucht sofort ein Beratungsgespräch.
+        Wenn Sie zu einem Thema eine Frage haben oder wissen möchten,
+        welcher Inhalt für Ihre Situation sinnvoll ist,
+        können Sie mir Ihr Anliegen ganz formlos schildern.
+      </p>
+
+
+      <a
+        class="wissenButton"
+        href="/kontakt"
+      >
+        Nachricht senden
+        <span aria-hidden="true">
+          →
+        </span>
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================================================== -->
+  <!-- STYLES                                                -->
+  <!-- ===================================================== -->
+
+  <style>
+
+    /* ----------------------------------------------------- */
+    /* BASIS                                                 */
+    /* ----------------------------------------------------- */
+
+    .wissenEyebrow {
+      margin: 0 0 9px;
+
+      color: var(--c-accent);
+
+      font-size: .78rem;
+
+      font-weight: 800;
+
+      letter-spacing: .11em;
+    }
+
+
+    /* ----------------------------------------------------- */
+    /* HERO                                                  */
+    /* ----------------------------------------------------- */
+
+    .wissenHero {
+      position: relative;
+
+      overflow: hidden;
+
+      margin-bottom: 34px;
+
+      padding: 58px 44px;
+
+      border:
+        1px solid rgba(40,72,48,.11);
+
+      border-radius: 25px;
+
+      background:
+        radial-gradient(
+          800px 330px at 6% 0%,
+          rgba(216,120,8,.14),
+          transparent 58%
+        ),
+        radial-gradient(
+          700px 320px at 96% 20%,
+          rgba(40,72,48,.12),
+          transparent 62%
+        ),
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #f5f8f5 100%
+        );
+
+      box-shadow:
+        0 18px 58px rgba(0,0,0,.055);
+    }
+
+
+    .wissenHeroGrid {
+      display: grid;
+
+      grid-template-columns:
+        1.35fr .65fr;
+
+      align-items: center;
+
+      gap: 45px;
+    }
+
+
+    .wissenHero h1 {
+      margin: 0 0 19px;
+
+      color: var(--c-primary);
+
+      font-size:
+        clamp(38px, 5vw, 59px);
+
+      line-height: 1.05;
+
+      letter-spacing: -.8px;
+    }
+
+
+    .wissenLead {
+      max-width: 700px;
+
+      margin: 0 0 14px;
+
+      color: rgba(20,35,24,.87);
+
+      font-size: 1.18rem;
+
+      line-height: 1.65;
+    }
+
+
+    .wissenIntro {
+      max-width: 690px;
+
+      margin: 0;
+
+      color: rgba(40,72,48,.68);
+
+      line-height: 1.7;
+    }
+
+
+    .wissenHeroPanel {
+      padding: 23px;
+
+      border:
+        1px solid rgba(40,72,48,.11);
+
+      border-radius: 19px;
+
+      background:
+        rgba(255,255,255,.83);
+
+      box-shadow:
+        0 13px 38px rgba(0,0,0,.045);
+    }
+
+
+    .wissenPanelLabel {
+      margin: 0 0 11px;
+
+      color: rgba(40,72,48,.58);
+
+      font-size: .7rem;
+
+      font-weight: 800;
+
+      letter-spacing: .10em;
+    }
+
+
+    .wissenQuickLinks {
+      display: grid;
+
+      gap: 8px;
+    }
+
+
+    .wissenQuickLinks a {
+      padding: 10px 12px;
+
+      border-radius: 10px;
+
+      background:
+        rgba(40,72,48,.05);
+
+      color: var(--c-primary);
+
+      font-size: .88rem;
+
+      font-weight: 700;
+
+      transition:
+        background .15s ease,
+        transform .15s ease;
+    }
+
+
+    .wissenQuickLinks a:hover {
+      text-decoration: none;
+
+      background:
+        rgba(40,72,48,.095);
+
+      transform:
+        translateX(2px);
+    }
+
+
+    /* ----------------------------------------------------- */
+    /* PRINZIP                                               */
+    /* ----------------------------------------------------- */
+
+    .wissenPrinciple {
+      display: grid;
+
+      grid-template-columns:
+        .9fr 1.1fr;
+
+      align-items: center;
+
+      gap: 38px;
+
+      margin:
+        0 0 56px;
+
+      padding: 28px 31px;
+
+      border-left:
+        4px solid var(--c-accent);
+
+      border-radius: 0 18px 18px 0;
+
+      background:
+        rgba(40,72,48,.045);
+    }
+
+
+    .wissenPrinciple h2 {
+      margin: 0;
+
+      color: var(--c-primary);
+
+      font-size:
+        clamp(24px, 3vw, 32px);
+
+      line-height: 1.25;
+    }
+
+
+    .wissenPrinciple > p {
+      margin: 0;
+
+      color: rgba(20,35,24,.70);
+
+      line-height: 1.7;
+    }
+
+
+    /* ----------------------------------------------------- */
+    /* SECTIONS                                              */
+    /* ----------------------------------------------------- */
+
+    .wissenSection {
+      padding: 38px 0 56px;
+    }
+
+
+    .sectionHeading {
+      display: flex;
+
+      align-items: flex-end;
+      justify-content: space-between;
+
+      gap: 32px;
+
+      margin-bottom: 27px;
+    }
+
+
+    .sectionHeading > div {
+      max-width: 650px;
+    }
+
+
+    .sectionHeading h2 {
+      margin: 0;
+
+      color: var(--c-primary);
+
+      font-size:
+        clamp(28px, 3.3vw, 40px);
+
+      line-height: 1.18;
+    }
+
+
+    .sectionHeading > p {
+      max-width: 470px;
+
+      margin: 0;
+
+      color:
+        rgba(40,72,48,.66);
+
+      line-height: 1.65;
+    }
+
+
+    /* ----------------------------------------------------- */
+    /* FEATURED                                              */
+    /* ----------------------------------------------------- */
+
+    .featuredGrid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 20px;
+    }
+
+
+    .featuredCard {
+      display: flex;
+
+      flex-direction: column;
+
+      min-height: 370px;
+
+      padding: 30px;
+
+      border:
+        1px solid rgba(40,72,48,.13);
+
+      border-top:
+        4px solid var(--c-accent);
+
+      border-radius: 22px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 15px 42px rgba(0,0,0,.055);
+    }
+
+
+    .featuredTop {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 19px;
+    }
+
+
+    .contentCategory {
+      color:
+        rgba(40,72,48,.57);
+
+      font-size: .7rem;
+
+      font-weight: 800;
+
+      letter-spacing: .09em;
+    }
+
+
+    .contentBadge,
+    .knowledgeFeaturedLabel {
+      display: inline-flex;
+
+      align-items: center;
+
+      padding: 6px 9px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(216,120,8,.12);
+
+      color: var(--c-accent);
+
+      font-size: .68rem;
+
+      font-weight: 800;
+
+      letter-spacing: .08em;
+    }
+
+
+    .featuredCard h3 {
+      margin: 0 0 10px;
+
+      color: var(--c-primary);
+
+      font-size: 1.55rem;
+
+      line-height: 1.28;
+    }
+
+
+    .contentQuestion {
+      margin: 0 0 14px;
+
+      color:
+        rgba(20,35,24,.88);
+
+      font-size: 1rem;
+
+      font-weight: 700;
+
+      line-height: 1.55;
+    }
+
+
+    .contentDescription {
+      margin: 0 0 20px;
+
+      color:
+        rgba(20,35,24,.68);
+
+      line-height: 1.7;
+    }
+
+
+    .featuredFooter,
+    .knowledgeFooter {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-top: auto;
+    }
+
+
+    .contentMeta {
+      color:
+        rgba(40,72,48,.53);
+
+      font-size: .78rem;
+
+      font-weight: 700;
+    }
+
+
+    .wissenButton {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      padding: 12px 16px;
+
+      border-radius: 12px;
+
+      background: var(--c-accent);
+
+      color: #ffffff;
+
+      font-size: .86rem;
+
+      font-weight: 800;
+
+      box-shadow:
+        0 11px 28px rgba(216,120,8,.18);
+
+      transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+    }
+
+
+    .wissenButton:hover {
+      text-decoration: none;
+
+      transform: translateY(-1px);
+
+      box-shadow:
+        0 15px 33px rgba(216,120,8,.23);
+    }
+
+
+    /* ----------------------------------------------------- */
+    /* THEMEN                                                */
+    /* ----------------------------------------------------- */
+
+    .wissenLibrary {
+      padding-top: 58px;
+    }
+
+
+    .topicSection {
+      scroll-margin-top: 120px;
+
+      padding:
+        48px 0 55px;
+
+      border-top:
+        1px solid rgba(40,72,48,.09);
+    }
+
+
+    .topicHeading {
+      display: grid;
+
+      grid-template-columns:
+        65px 1fr;
+
+      gap: 18px;
+
+      max-width: 830px;
+
+      margin-bottom: 26px;
+    }
+
+
+    .topicNumber {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      width: 48px;
+      height: 48px;
+
+      border:
+        1px solid rgba(216,120,8,.26);
+
+      border-radius: 50%;
+
+      background:
+        rgba(216,120,8,.09);
+
+      color: var(--c-primary);
+
+      font-size: .82rem;
+
+      font-weight: 800;
+    }
+
+
+    .topicHeading h3 {
+      margin: 0 0 9px;
+
+      color: var(--c-primary);
+
+      font-size:
+        clamp(24px, 3vw, 32px);
+
+      line-height: 1.25;
+    }
+
+
+    .topicHeading p:not(.wissenEyebrow) {
+      margin: 0;
+
+      color:
+        rgba(20,35,24,.69);
+
+      line-height: 1.7;
+    }
+
+
+    .knowledgeGrid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 18px;
+    }
+
+
+    .knowledgeCard {
+      display: flex;
+
+      flex-direction: column;
+
+      min-height: 300px;
+
+      padding: 25px;
+
+      border:
+        1px solid rgba(40,72,48,.11);
+
+      border-radius: 19px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 11px 32px rgba(0,0,0,.045);
+    }
+
+
+    .knowledgeCardFeatured,
+    .knowledgeCardRiester {
+      background:
+        radial-gradient(
+          500px 180px at 0% 0%,
+          rgba(216,120,8,.09),
+          transparent 65%
+        ),
+        #ffffff;
+    }
+
+
+    .knowledgeFeaturedLabel {
+      align-self: flex-start;
+
+      margin-bottom: 12px;
+    }
+
+
+    .contentType {
+      align-self: flex-start;
+
+      margin-bottom: 12px;
+
+      padding: 5px 8px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(40,72,48,.065);
+
+      color: var(--c-primary);
+
+      font-size: .66rem;
+
+      font-weight: 800;
+
+      letter-spacing: .085em;
+    }
+
+
+    .knowledgeCard h4 {
+      margin: 0 0 9px;
+
+      color: var(--c-primary);
+
+      font-size: 1.28rem;
+
+      line-height: 1.3;
+    }
+
+
+    .knowledgeLink {
+      color: var(--c-primary);
+
+      font-size: .82rem;
+
+      font-weight: 800;
+
+      text-align: right;
+    }
+
+
+    .knowledgeComing {
+      color:
+        rgba(40,72,48,.50);
+
+      font-size: .78rem;
+
+      font-weight: 700;
+    }
+
+
+    .topicSectionMuted {
+      opacity: .94;
+    }
+
+
+    /* ----------------------------------------------------- */
+    /* TOOLBOX                                               */
+    /* ----------------------------------------------------- */
+
+    .wissenToolbox {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 35px;
+
+      margin:
+        28px 0 50px;
+
+      padding: 32px;
+
+      border-radius: 22px;
+
+      color: #ffffff;
+
+      background:
+        radial-gradient(
+          650px 240px at 100% 0%,
+          rgba(216,120,8,.22),
+          transparent 60%
+        ),
+        linear-gradient(
+          135deg,
+          #284830 0%,
+          #1d3725 100%
+        );
+
+      box-shadow:
+        0 18px 48px rgba(0,0,0,.10);
+    }
+
+
+    .wissenToolbox > div {
+      max-width: 740px;
+    }
+
+
+    .wissenToolbox h2 {
+      margin: 0 0 11px;
+
+      color: #ffffff;
+
+      font-size:
+        clamp(26px, 3vw, 35px);
+    }
+
+
+    .wissenToolbox p:not(.wissenEyebrow) {
+      margin: 0;
+
+      color:
+        rgba(255,255,255,.76);
+
+      line-height: 1.7;
+    }
+
+
+    .wissenToolboxButton {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 18px;
+
+      flex: 0 0 auto;
+
+      padding: 12px 17px;
+
+      border-radius: 12px;
+
+      background: #ffffff;
+
+      color: var(--c-primary);
+
+      font-weight: 800;
+    }
+
+
+    .wissenToolboxButton:hover {
+      text-decoration: none;
+
+      transform: translateY(-1px);
+    }
+
+
+    /* ----------------------------------------------------- */
+    /* ABSCHLUSS                                             */
+    /* ----------------------------------------------------- */
+
+    .wissenClosing {
+      margin:
+        20px 0 10px;
+
+      padding:
+        50px 28px;
+
+      border:
+        1px solid rgba(40,72,48,.11);
+
+      border-radius: 23px;
+
+      background:
+        radial-gradient(
+          650px 220px at 50% 0%,
+          rgba(216,120,8,.11),
+          transparent 64%
+        ),
+        #ffffff;
+
+      text-align: center;
+
+      box-shadow:
+        0 14px 42px rgba(0,0,0,.045);
+    }
+
+
+    .wissenClosingInner {
+      max-width: 720px;
+
+      margin: 0 auto;
+    }
+
+
+    .wissenClosing h2 {
+      margin: 0 0 12px;
+
+      color: var(--c-primary);
+
+      font-size:
+        clamp(27px, 3vw, 36px);
+    }
+
+
+    .wissenClosing p:not(.wissenEyebrow) {
+      margin:
+        0 auto 22px;
+
+      color:
+        rgba(20,35,24,.70);
+
+      line-height: 1.7;
+    }
+
+
+    /* ----------------------------------------------------- */
+    /* TABLET                                                */
+    /* ----------------------------------------------------- */
+
+    @media (max-width: 900px) {
+
+      .wissenHero {
+        padding:
+          39px 25px;
+      }
+
+
+      .wissenHeroGrid,
+      .wissenPrinciple {
+        grid-template-columns: 1fr;
+      }
+
+
+      .featuredGrid,
+      .knowledgeGrid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .sectionHeading {
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+
+      .wissenToolbox {
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+    }
+
+
+    /* ----------------------------------------------------- */
+    /* MOBILE                                                */
+    /* ----------------------------------------------------- */
+
+    @media (max-width: 600px) {
+
+      .wissenHero h1 {
+        font-size: 36px;
+      }
+
+
+      .wissenHero {
+        padding:
+          32px 20px;
+      }
+
+
+      .wissenPrinciple {
+        padding:
+          24px 21px;
+      }
+
+
+      .featuredCard,
+      .knowledgeCard {
+        min-height: 0;
+
+        padding: 22px;
+      }
+
+
+      .topicHeading {
+        grid-template-columns: 1fr;
+
+        gap: 9px;
+      }
+
+
+      .featuredFooter,
+      .knowledgeFooter {
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+
+      .knowledgeLink {
+        text-align: left;
+      }
+
+
+      .wissenToolbox {
+        padding: 25px 21px;
+      }
+
+
+      .wissenButton,
+      .wissenToolboxButton {
+        width: 100%;
+
+        justify-content: center;
+      }
+
+    }
+
+  </style>
+
+</BaseLayout>

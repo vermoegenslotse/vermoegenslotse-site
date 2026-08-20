@@ -14,8 +14,7 @@ const featuredItems = [
       "Ein umfassender Ratgeber für Menschen, die Vermögen, Einkommen, Risiken, steuerliche Aspekte und persönliche Ziele vor dem Ruhestand in eine nachvollziehbare Gesamtstrategie bringen möchten.",
     meta: "Broschüre · 18 Seiten",
     href: "/downloads/Ruhestands-Strategie-50+.pdf",
-cta: "Broschüre öffnen",
-    anchor: "ruhestand"
+    cta: "Broschüre öffnen"
   },
 
   {
@@ -26,10 +25,9 @@ cta: "Broschüre öffnen",
       "Was aus bestehenden Riester-Verträgen werden kann.",
     description:
       "Der Leitfaden erklärt die neue Förderwelt, zeigt mögliche Wege für bestehende Verträge und hilft dabei, Garantien, Kosten, Förderung und Kapitalanlage gemeinsam zu betrachten.",
-    meta: "Leitfaden · 15 Seiten",
-    href: "/altersvorsorgedepot",
-    cta: "Riester 2027 verstehen",
-    anchor: "altersvorsorge"
+    meta: "Broschüre · 15 Seiten",
+    href: "/downloads/Altersvorsorgedepot_Broschuere.pdf",
+    cta: "Broschüre öffnen"
   }
 
 ];
@@ -38,7 +36,6 @@ cta: "Broschüre öffnen",
 const knowledgeItems = [
 
   {
-    category: "Vermögen & Kapitalanlage",
     categoryKey: "vermoegen",
     type: "LEITFADEN",
     title: "Kapital-Guide für Privatanleger",
@@ -47,12 +44,11 @@ const knowledgeItems = [
     description:
       "Der kompakte Leitfaden zeigt typische Strukturfehler in Wertpapierdepots – von zu vielen Positionen über fehlende Rollen bis zur Frage, wie greifbar das tatsächliche Verlustrisiko ist.",
     meta: "PDF · 8 Seiten",
-    href: "/kapital-guide",
-    cta: "Kapital-Guide ansehen"
+    href: "/downloads/Kapital-Guide-Privatanleger.pdf",
+    cta: "Leitfaden öffnen"
   },
 
   {
-    category: "Unternehmer & Vermögensschutz",
     categoryKey: "unternehmer",
     type: "LEITFADEN",
     title: "Kapital-Guide für Unternehmer",
@@ -61,12 +57,11 @@ const knowledgeItems = [
     description:
       "Der Unternehmer-Guide betrachtet Vermögen breiter: Struktur, Liquidität, steuerliche Zusammenhänge, strategische Kontrolle, Familie, Exit und laufende Finanzplanung.",
     meta: "PDF · 16 Seiten",
-    href: "/kontakt",
-    cta: "Leitfaden anfragen"
+    href: "/downloads/Kapital-Guide-Unternehmer.pdf",
+    cta: "Leitfaden öffnen"
   },
 
   {
-    category: "Altersvorsorge & Riester",
     categoryKey: "altersvorsorge",
     type: "EXPERTENWISSEN",
     title: "Experten-Anhang Altersvorsorgedepot",
@@ -75,36 +70,21 @@ const knowledgeItems = [
     description:
       "Vertiefende Informationen zu Förderung, Garantien, Kosten, Anlageoptionen, Auszahlung, Besteuerung und dem Umgang mit bestehenden Riester-Verträgen.",
     meta: "PDF · 14 Seiten",
-    href: "/altersvorsorgedepot#broschuere",
-    cta: "Zum Themenbereich"
+    href: "/downloads/Altersvorsorgedepot_Expertenanhang.pdf",
+    cta: "Experten-Anhang öffnen"
   },
 
   {
-    category: "Ruhestand & Entnahme",
     categoryKey: "ruhestand",
-    type: "FACHBEITRAG",
+    type: "FACHWISSEN",
     title: "Renditereihenfolgerisiko",
     question:
       "Warum kann dieselbe Durchschnittsrendite zu völlig unterschiedlichen Ergebnissen führen?",
     description:
       "Gerade in der Entnahmephase entscheidet nicht nur die durchschnittliche Rendite. Die Reihenfolge guter und schlechter Börsenjahre kann erheblichen Einfluss auf die Kapitalreichweite haben.",
-    meta: "Fachthema",
+    meta: "Vertiefung in Vorbereitung",
     href: null,
     cta: null
-  },
-
-  {
-    category: "Trends & Entwicklungen",
-    categoryKey: "trends",
-    type: "WHITEPAPER",
-    title: "Open Finance",
-    question:
-      "Wie verändert der digitale Zugriff auf Finanzdaten die Finanzwelt?",
-    description:
-      "Das Whitepaper gibt einen Überblick über Open Finance, FiDA, APIs, Datenschutz und die Frage, wie sich Finanzdienstleistungen durch stärker vernetzte Daten verändern können.",
-    meta: "Whitepaper · 4 Seiten",
-    href: "/kontakt",
-    cta: "Whitepaper anfragen"
   }
 
 ];
@@ -171,10 +151,6 @@ const knowledgeItems = [
 
           <a href="#unternehmer">
             Unternehmer & Vermögensschutz
-          </a>
-
-          <a href="#trends">
-            Trends & Entwicklungen
           </a>
 
         </nav>
@@ -247,10 +223,7 @@ const knowledgeItems = [
       {
         featuredItems.map((item) => (
 
-          <article
-            class="featuredCard"
-            id={item.anchor}
-          >
+          <article class="featuredCard">
 
             <div class="featuredTop">
 
@@ -287,10 +260,13 @@ const knowledgeItems = [
               <a
                 class="wissenButton"
                 href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {item.cta}
+
                 <span aria-hidden="true">
-                  →
+                  ↗
                 </span>
               </a>
 
@@ -413,8 +389,10 @@ const knowledgeItems = [
                             <a
                               class="knowledgeLink"
                               href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
-                              {item.cta} →
+                              {item.cta} ↗
                             </a>
                           )
                         : (
@@ -510,13 +488,13 @@ const knowledgeItems = [
             </span>
 
             <a
-  class="knowledgeLink"
-  href="/downloads/Ruhestands-Strategie-50+.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Broschüre öffnen →
-</a>
+              class="knowledgeLink"
+              href="/downloads/Ruhestands-Strategie-50+.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Broschüre öffnen ↗
+            </a>
 
           </div>
 
@@ -563,8 +541,10 @@ const knowledgeItems = [
                             <a
                               class="knowledgeLink"
                               href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
                             >
-                              {item.cta} →
+                              {item.cta} ↗
                             </a>
                           )
                         : (
@@ -632,7 +612,7 @@ const knowledgeItems = [
           </div>
 
           <span class="contentType">
-            LEITFADEN
+            BROSCHÜRE
           </span>
 
           <h4>
@@ -658,9 +638,11 @@ const knowledgeItems = [
 
             <a
               class="knowledgeLink"
-              href="/altersvorsorgedepot"
+              href="/downloads/Altersvorsorgedepot_Broschuere.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Riester 2027 einordnen →
+              Broschüre öffnen ↗
             </a>
 
           </div>
@@ -705,8 +687,10 @@ const knowledgeItems = [
                     <a
                       class="knowledgeLink"
                       href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      {item.cta} →
+                      {item.cta} ↗
                     </a>
 
                   </div>
@@ -798,100 +782,10 @@ const knowledgeItems = [
                     <a
                       class="knowledgeLink"
                       href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      {item.cta} →
-                    </a>
-
-                  </div>
-
-                </article>
-
-              )
-            )
-        }
-
-      </div>
-
-    </div>
-
-
-    <!-- =================================================== -->
-    <!-- TRENDS                                              -->
-    <!-- =================================================== -->
-
-    <div
-      class="topicSection topicSectionMuted"
-      id="trends"
-    >
-
-      <div class="topicHeading">
-
-        <span class="topicNumber">
-          05
-        </span>
-
-        <div>
-
-          <p class="wissenEyebrow">
-            TRENDS & ENTWICKLUNGEN
-          </p>
-
-          <h3>
-            Was die Finanzwelt langfristig verändert
-          </h3>
-
-          <p>
-            Nicht jede Entwicklung verlangt sofort eine Entscheidung.
-            Einige Themen sollte man trotzdem frühzeitig verstehen,
-            weil sie die Finanzwelt strukturell verändern können.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="knowledgeGrid">
-
-        {
-          knowledgeItems
-            .filter(
-              (item) =>
-                item.categoryKey === "trends"
-            )
-            .map(
-              (item) => (
-
-                <article class="knowledgeCard">
-
-                  <span class="contentType">
-                    {item.type}
-                  </span>
-
-                  <h4>
-                    {item.title}
-                  </h4>
-
-                  <p class="contentQuestion">
-                    {item.question}
-                  </p>
-
-                  <p class="contentDescription">
-                    {item.description}
-                  </p>
-
-
-                  <div class="knowledgeFooter">
-
-                    <span class="contentMeta">
-                      {item.meta}
-                    </span>
-
-                    <a
-                      class="knowledgeLink"
-                      href={item.href}
-                    >
-                      {item.cta} →
+                      {item.cta} ↗
                     </a>
 
                   </div>
@@ -939,6 +833,7 @@ const knowledgeItems = [
       href="/toolbox"
     >
       Zur Toolbox
+
       <span aria-hidden="true">
         →
       </span>
@@ -976,6 +871,7 @@ const knowledgeItems = [
         href="/kontakt"
       >
         Nachricht senden
+
         <span aria-hidden="true">
           →
         </span>
@@ -1188,7 +1084,8 @@ const knowledgeItems = [
       border-left:
         4px solid var(--c-accent);
 
-      border-radius: 0 18px 18px 0;
+      border-radius:
+        0 18px 18px 0;
 
       background:
         rgba(40,72,48,.045);
@@ -1221,7 +1118,8 @@ const knowledgeItems = [
     /* ----------------------------------------------------- */
 
     .wissenSection {
-      padding: 38px 0 56px;
+      padding:
+        38px 0 56px;
     }
 
 
@@ -1441,7 +1339,8 @@ const knowledgeItems = [
     .wissenButton:hover {
       text-decoration: none;
 
-      transform: translateY(-1px);
+      transform:
+        translateY(-1px);
 
       box-shadow:
         0 15px 33px rgba(216,120,8,.23);
@@ -1508,14 +1407,17 @@ const knowledgeItems = [
 
 
     .topicHeading h3 {
-      margin: 0 0 9px;
+      margin:
+        0 0 9px;
 
-      color: var(--c-primary);
+      color:
+        var(--c-primary);
 
       font-size:
         clamp(24px, 3vw, 32px);
 
-      line-height: 1.25;
+      line-height:
+        1.25;
     }
 
 
@@ -1525,7 +1427,8 @@ const knowledgeItems = [
       color:
         rgba(20,35,24,.69);
 
-      line-height: 1.7;
+      line-height:
+        1.7;
     }
 
 
@@ -1591,7 +1494,8 @@ const knowledgeItems = [
       background:
         rgba(40,72,48,.065);
 
-      color: var(--c-primary);
+      color:
+        var(--c-primary);
 
       font-size: .66rem;
 
@@ -1602,24 +1506,32 @@ const knowledgeItems = [
 
 
     .knowledgeCard h4 {
-      margin: 0 0 9px;
+      margin:
+        0 0 9px;
 
-      color: var(--c-primary);
+      color:
+        var(--c-primary);
 
-      font-size: 1.28rem;
+      font-size:
+        1.28rem;
 
-      line-height: 1.3;
+      line-height:
+        1.3;
     }
 
 
     .knowledgeLink {
-      color: var(--c-primary);
+      color:
+        var(--c-primary);
 
-      font-size: .82rem;
+      font-size:
+        .82rem;
 
-      font-weight: 800;
+      font-weight:
+        800;
 
-      text-align: right;
+      text-align:
+        right;
     }
 
 
@@ -1627,14 +1539,11 @@ const knowledgeItems = [
       color:
         rgba(40,72,48,.50);
 
-      font-size: .78rem;
+      font-size:
+        .78rem;
 
-      font-weight: 700;
-    }
-
-
-    .topicSectionMuted {
-      opacity: .94;
+      font-weight:
+        700;
     }
 
 
@@ -1682,7 +1591,8 @@ const knowledgeItems = [
 
 
     .wissenToolbox h2 {
-      margin: 0 0 11px;
+      margin:
+        0 0 11px;
 
       color: #ffffff;
 
@@ -1697,7 +1607,8 @@ const knowledgeItems = [
       color:
         rgba(255,255,255,.76);
 
-      line-height: 1.7;
+      line-height:
+        1.7;
     }
 
 
@@ -1711,22 +1622,29 @@ const knowledgeItems = [
 
       flex: 0 0 auto;
 
-      padding: 12px 17px;
+      padding:
+        12px 17px;
 
-      border-radius: 12px;
+      border-radius:
+        12px;
 
-      background: #ffffff;
+      background:
+        #ffffff;
 
-      color: var(--c-primary);
+      color:
+        var(--c-primary);
 
-      font-weight: 800;
+      font-weight:
+        800;
     }
 
 
     .wissenToolboxButton:hover {
-      text-decoration: none;
+      text-decoration:
+        none;
 
-      transform: translateY(-1px);
+      transform:
+        translateY(-1px);
     }
 
 
@@ -1744,7 +1662,8 @@ const knowledgeItems = [
       border:
         1px solid rgba(40,72,48,.11);
 
-      border-radius: 23px;
+      border-radius:
+        23px;
 
       background:
         radial-gradient(
@@ -1754,7 +1673,8 @@ const knowledgeItems = [
         ),
         #ffffff;
 
-      text-align: center;
+      text-align:
+        center;
 
       box-shadow:
         0 14px 42px rgba(0,0,0,.045);
@@ -1762,16 +1682,20 @@ const knowledgeItems = [
 
 
     .wissenClosingInner {
-      max-width: 720px;
+      max-width:
+        720px;
 
-      margin: 0 auto;
+      margin:
+        0 auto;
     }
 
 
     .wissenClosing h2 {
-      margin: 0 0 12px;
+      margin:
+        0 0 12px;
 
-      color: var(--c-primary);
+      color:
+        var(--c-primary);
 
       font-size:
         clamp(27px, 3vw, 36px);
@@ -1785,7 +1709,8 @@ const knowledgeItems = [
       color:
         rgba(20,35,24,.70);
 
-      line-height: 1.7;
+      line-height:
+        1.7;
     }
 
 
@@ -1803,27 +1728,33 @@ const knowledgeItems = [
 
       .wissenHeroGrid,
       .wissenPrinciple {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          1fr;
       }
 
 
       .featuredGrid,
       .knowledgeGrid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          1fr;
       }
 
 
       .sectionHeading {
-        align-items: flex-start;
+        align-items:
+          flex-start;
 
-        flex-direction: column;
+        flex-direction:
+          column;
       }
 
 
       .wissenToolbox {
-        align-items: flex-start;
+        align-items:
+          flex-start;
 
-        flex-direction: column;
+        flex-direction:
+          column;
       }
 
     }
@@ -1836,7 +1767,8 @@ const knowledgeItems = [
     @media (max-width: 600px) {
 
       .wissenHero h1 {
-        font-size: 36px;
+        font-size:
+          36px;
       }
 
 
@@ -1854,42 +1786,52 @@ const knowledgeItems = [
 
       .featuredCard,
       .knowledgeCard {
-        min-height: 0;
+        min-height:
+          0;
 
-        padding: 22px;
+        padding:
+          22px;
       }
 
 
       .topicHeading {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          1fr;
 
-        gap: 9px;
+        gap:
+          9px;
       }
 
 
       .featuredFooter,
       .knowledgeFooter {
-        align-items: flex-start;
+        align-items:
+          flex-start;
 
-        flex-direction: column;
+        flex-direction:
+          column;
       }
 
 
       .knowledgeLink {
-        text-align: left;
+        text-align:
+          left;
       }
 
 
       .wissenToolbox {
-        padding: 25px 21px;
+        padding:
+          25px 21px;
       }
 
 
       .wissenButton,
       .wissenToolboxButton {
-        width: 100%;
+        width:
+          100%;
 
-        justify-content: center;
+        justify-content:
+          center;
       }
 
     }

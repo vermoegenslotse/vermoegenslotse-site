@@ -1,6 +1,6 @@
 ---
 type Props = {
-  title?: string;
+ title?: string;
 };
 
 const { title = "Vermögenslotse" } = Astro.props;
@@ -8,7 +8,7 @@ const { title = "Vermögenslotse" } = Astro.props;
 const path = Astro.url.pathname;
 
 const isActive = (href: string) =>
-  href === "/" ? path === "/" : path.startsWith(href);
+ href === "/" ? path === "/" : path.startsWith(href);
 
 const isToolboxActive = path.startsWith("/toolbox");
 const isRiesterActive = path.startsWith("/altersvorsorgedepot");
@@ -17,302 +17,303 @@ const isContactActive = path.startsWith("/kontakt");
 
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+<meta charset="UTF-8" />
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1"
+/>
 
-    <title>{title}</title>
+<title>{title}</title>
 
-    <meta
-      name="description"
-      content="Strategische Vermögensarchitektur für Unternehmer und anspruchsvolle Privatanleger. Struktur statt Produktlogik – für planbare Entscheidungen und langfristige Vermögensentwicklung."
-    />
+<meta
+name="description"
+content="Strategische Vermögensarchitektur für Unternehmer und anspruchsvolle Privatanleger. Struktur statt Produktlogik – für planbare Entscheidungen und langfristige Vermögensentwicklung."
+/>
 
-    <meta
-      property="og:title"
-      content="Vermögenslotse – Strategische Vermögensarchitektur"
-    />
+<meta
+property="og:title"
+content="Vermögenslotse – Strategische Vermögensarchitektur"
+/>
 
-    <meta
-      property="og:description"
-      content="Struktur statt Produktlogik – für planbare Entscheidungen und langfristige Vermögensentwicklung."
-    />
+<meta
+property="og:description"
+content="Struktur statt Produktlogik – für planbare Entscheidungen und langfristige Vermögensentwicklung."
+/>
 
-    <meta
-      property="og:type"
-      content="website"
-    />
+<meta
+property="og:type"
+content="website"
+/>
 
-    <meta
-      property="og:url"
-      content="https://vermoegenslotse.de"
-    />
+<meta
+property="og:url"
+content="https://vermoegenslotse.de"
+/>
 
-    <!--
-    Optional, sobald ein Preview-Bild vorhanden ist:
+<!--
+   Optional, sobald ein Preview-Bild vorhanden ist:
 
-    <meta
-      property="og:image"
-      content="https://vermoegenslotse.de/images/og-image.jpg"
-    />
-    -->
+   <meta
+     property="og:image"
+     content="https://vermoegenslotse.de/images/og-image.jpg"
+   />
+   -->
 
-    <link
-      rel="stylesheet"
-      href="/styles/tokens.css"
-    />
-  </head>
-
-
-  <body>
-
-    <!-- ===================================================== -->
-    <!-- HEADER / HAUPTNAVIGATION                              -->
-    <!-- ===================================================== -->
-
-    <header class="siteHeader">
-
-      <div class="container headerInner">
-
-        <!-- LOGO -->
-
-        <div class="logo">
-
-          <a
-            href="/"
-            class="logoLink"
-            aria-label="Vermögenslotse – Startseite"
-          >
-            <img
-              src="/images/vermoegenslotse-logo.png"
-              alt="Vermögenslotse"
-              class="logoImg"
-            />
-          </a>
-
-        </div>
+<link
+rel="stylesheet"
+href="/styles/tokens.css"
+/>
+</head>
 
 
-        <!-- NAVIGATION -->
+<body>
 
-        <nav
-          class="site-nav"
-          aria-label="Hauptnavigation"
-        >
+<!-- ===================================================== -->
+<!-- HEADER / HAUPTNAVIGATION                              -->
+<!-- ===================================================== -->
 
-          <!-- START -->
+<header class="siteHeader">
 
-          <a
-            class:list={[
-              "navLink",
-              { active: isActive("/") }
-            ]}
-            href="/"
-          >
-            Start
-          </a>
+<div class="container headerInner">
 
+<!-- LOGO -->
 
-          <!-- SO DENKE ICH -->
+<div class="logo">
 
-          <a
-            class:list={[
-              "navLink",
-              { active: isActive("/ueber-mich") }
-            ]}
-            href="/ueber-mich"
-          >
-            So denke ich
-          </a>
+<a
+href="/"
+class="logoLink"
+aria-label="Vermögenslotse – Startseite"
+>
+<img
+src="/images/vermoegenslotse-logo.png"
+alt="Vermögenslotse"
+class="logoImg"
+/>
+</a>
+
+</div>
 
 
-          <!-- SO ARBEITE ICH -->
+<!-- NAVIGATION -->
 
-          <a
-            class:list={[
-              "navLink",
-              { active: isActive("/so-arbeite-ich") }
-            ]}
-            href="/so-arbeite-ich"
-          >
-            So arbeite ich
-          </a>
+<nav
+class="site-nav"
+aria-label="Hauptnavigation"
+>
 
+<!-- START -->
 
-          <!-- ================================================= -->
-          <!-- TOOLBOX DROPDOWN                                  -->
-          <!-- ================================================= -->
-
-          <div
-            class:list={[
-              "navDropdown",
-              "navDropdownToolbox",
-              { active: isToolboxActive }
-            ]}
-            data-dropdown
-          >
-
-            <button
-              class="navDropdownTrigger"
-              type="button"
-              aria-expanded="false"
-              aria-haspopup="true"
-              data-dropdown-trigger
-            >
-              <span>Toolbox</span>
-
-              <span
-                class="navChevron"
-                aria-hidden="true"
-              >
-                ▾
-              </span>
-            </button>
+<a
+class:list={[
+"navLink",
+{ active: isActive("/") }
+]}
+href="/"
+>
+Start
+</a>
 
 
-            <div
-              class="navDropdownPanel toolboxDropdownPanel"
-              data-dropdown-panel
-            >
+<!-- SO DENKE ICH -->
 
-              <div class="dropdownIntro">
-
-                <p class="dropdownEyebrow">
-                  VERMÖGENSLOTSE TOOLBOX
-                </p>
-
-                <h2>
-                  Selbst prüfen.<br />
-                  Besser einordnen.
-                </h2>
-
-                <p>
-                  Rechner, Checks und Fachinformationen
-                  für bessere finanzielle Entscheidungen.
-                </p>
-
-              </div>
+<a
+class:list={[
+"navLink",
+{ active: isActive("/ueber-mich") }
+]}
+href="/ueber-mich"
+>
+So denke ich
+</a>
 
 
-              <div class="toolboxDropdownContent">
+<!-- SO ARBEITE ICH -->
 
-                <p class="dropdownSectionLabel">
-                  RECHNEN & PRÜFEN
-                </p>
-
-
-                <a
-                  class="dropdownTool"
-                  href="/vermoegenscheck"
-                >
-                  <span class="dropdownToolTitle">
-                    Vermögenscheck
-                  </span>
-
-                  <span class="dropdownToolText">
-                    Vermögen und Gesamtstruktur einordnen
-                  </span>
-                </a>
+<a
+class:list={[
+"navLink",
+{ active: isActive("/so-arbeite-ich") }
+]}
+href="/so-arbeite-ich"
+>
+So arbeite ich
+</a>
 
 
-                <a
-                  class="dropdownTool"
+<!-- ================================================= -->
+<!-- TOOLBOX DROPDOWN                                  -->
+<!-- ================================================= -->
+
+<div
+class:list={[
+"navDropdown",
+"navDropdownToolbox",
+{ active: isToolboxActive }
+]}
+data-dropdown
+>
+
+<button
+class="navDropdownTrigger"
+type="button"
+aria-expanded="false"
+aria-haspopup="true"
+data-dropdown-trigger
+>
+<span>Toolbox</span>
+
+<span
+class="navChevron"
+aria-hidden="true"
+>
+▾
+</span>
+</button>
+
+
+<div
+class="navDropdownPanel toolboxDropdownPanel"
+data-dropdown-panel
+>
+
+<div class="dropdownIntro">
+
+<p class="dropdownEyebrow">
+VERMÖGENSLOTSE TOOLBOX
+</p>
+
+<h2>
+Selbst prüfen.<br />
+Besser einordnen.
+</h2>
+
+<p>
+Rechner, Checks und Fachinformationen
+für bessere finanzielle Entscheidungen.
+</p>
+
+</div>
+
+
+<div class="toolboxDropdownContent">
+
+<p class="dropdownSectionLabel">
+RECHNEN & PRÜFEN
+</p>
+
+
+<a
+class="dropdownTool"
+href="/vermoegenscheck"
+>
+<span class="dropdownToolTitle">
+Vermögenscheck
+</span>
+
+<span class="dropdownToolText">
+Vermögen und Gesamtstruktur einordnen
+</span>
+</a>
+
+
+<a
+class="dropdownTool"
+                  href="/depotblindfleckencheck"
                   href="/depot-blindflecken-check"
-                >
-                  <span class="dropdownToolTitle">
-                    Depotblindfleckencheck
-                  </span>
+>
+<span class="dropdownToolTitle">
+Depotblindfleckencheck
+</span>
 
-                  <span class="dropdownToolText">
-                    Strukturelle Schwachstellen erkennen
-                  </span>
-                </a>
-
-
-                <a
-                  class="dropdownTool"
-                  href="/ruhestands-navigator"
-                >
-                  <span class="dropdownToolTitle">
-                    Ruhestands-Navigator
-                  </span>
-
-                  <span class="dropdownToolText">
-                    Kapitalbedarf und Reichweite modellieren
-                  </span>
-                </a>
+<span class="dropdownToolText">
+Strukturelle Schwachstellen erkennen
+</span>
+</a>
 
 
-                <a
-                  class="dropdownTool"
-                  href="/altersvorsorgedepot"
-                >
-                  <span class="dropdownToolTitle">
-                    Altersvorsorgedepot-Rechner
-                  </span>
+<a
+class="dropdownTool"
+href="/ruhestands-navigator"
+>
+<span class="dropdownToolTitle">
+Ruhestands-Navigator
+</span>
 
-                  <span class="dropdownToolText">
-                    Förderung und Szenarien berechnen
-                  </span>
-                </a>
-
-
-                <div class="dropdownKnowledge">
-
-                  <p class="dropdownSectionLabel">
-                    WISSEN & VERTIEFEN
-                  </p>
-
-                  <p>
-                    Leitfäden, Broschüren und Checklisten
-                    ergänzen die digitalen Werkzeuge.
-                  </p>
-
-                </div>
+<span class="dropdownToolText">
+Kapitalbedarf und Reichweite modellieren
+</span>
+</a>
 
 
-                <a
-                  class="dropdownMainLink"
-                  href="/toolbox"
-                >
-                  Gesamte Toolbox öffnen
-                  <span aria-hidden="true">→</span>
-                </a>
+<a
+class="dropdownTool"
+href="/altersvorsorgedepot"
+>
+<span class="dropdownToolTitle">
+Altersvorsorgedepot-Rechner
+</span>
 
-              </div>
+<span class="dropdownToolText">
+Förderung und Szenarien berechnen
+</span>
+</a>
 
-            </div>
 
-          </div>
+<div class="dropdownKnowledge">
+
+<p class="dropdownSectionLabel">
+WISSEN & VERTIEFEN
+</p>
+
+<p>
+Leitfäden, Broschüren und Checklisten
+ergänzen die digitalen Werkzeuge.
+</p>
+
+</div>
 
 
-          <!-- ================================================= -->
-          <!-- RIESTER 2027                                      -->
-          <!-- ================================================= -->
+<a
+class="dropdownMainLink"
+href="/toolbox"
+>
+Gesamte Toolbox öffnen
+<span aria-hidden="true">→</span>
+</a>
 
-          <a
-            class:list={[
-              "navLink",
-              "navRiester",
-              { active: isRiesterActive }
-            ]}
-            href="/altersvorsorgedepot"
-          >
+</div>
 
-            <span
-              class="riesterDot"
-              aria-hidden="true"
-            ></span>
+</div>
 
-            <span>
-              Riester 2027
-            </span>
+</div>
 
-          </a>
+
+<!-- ================================================= -->
+<!-- RIESTER 2027                                      -->
+<!-- ================================================= -->
+
+<a
+class:list={[
+"navLink",
+"navRiester",
+{ active: isRiesterActive }
+]}
+href="/altersvorsorgedepot"
+>
+
+<span
+class="riesterDot"
+aria-hidden="true"
+></span>
+
+<span>
+Riester 2027
+</span>
+
+</a>
 
 
 <!-- ================================================= -->
@@ -320,657 +321,664 @@ const isContactActive = path.startsWith("/kontakt");
 <!-- ================================================= -->
 
 <div
-  class:list={[
-    "navDropdown",
-    "navDropdownContact",
-    { active: isContactActive }
-  ]}
-  data-dropdown
+class:list={[
+"navDropdown",
+"navDropdownContact",
+{ active: isContactActive }
+]}
+data-dropdown
 >
-  <button
-    class="navDropdownTrigger contactTrigger"
-    type="button"
-    aria-expanded="false"
-    aria-haspopup="true"
-    data-dropdown-trigger
-  >
-    <span>Kontakt</span>
 
-    <span
-      class="navChevron"
-      aria-hidden="true"
-    >
-      ▾
-    </span>
-  </button>
+<button
+class="navDropdownTrigger contactTrigger"
+type="button"
+aria-expanded="false"
+aria-haspopup="true"
+data-dropdown-trigger
+>
 
-  <div
-    class="navDropdownPanel contactDropdownPanel"
-    data-dropdown-panel
-  >
-    <p class="dropdownEyebrow">
-      DIREKTER KONTAKT
-    </p>
+<span>Kontakt</span>
 
-    <h2>
-      Wie kann ich Sie unterstützen?
-    </h2>
+<span
+class="navChevron"
+aria-hidden="true"
+>
+▾
+</span>
 
-    <p class="contactIntroText">
-      Sie haben eine Frage zu Ihrer Vermögenssituation oder möchten Ihr Anliegen
-      zunächst formlos schildern? Schreiben Sie mir. Ich melde mich persönlich
-      bei Ihnen.
-    </p>
+</button>
 
-    <div class="contactFormEmbed">
-      <iframe
-        title="Kontaktformular"
-        aria-label="Kontaktformular"
-        frameborder="0"
-        loading="lazy"
-        src="https://forms.zohopublic.eu/christiangradtconsulting1/form/KontaktformularWebseite/formperma/z_qlpRbnytGmlwB7RQ0mBGYk-cGr-aMSjsLx5HnM2pI"
-      ></iframe>
-    </div>
 
-    <div class="contactPersonCompact">
-      <strong>Christian Gradt</strong>
-      <span>Dipl.-Betriebswirt</span>
-      <span>Ich melde mich persönlich bei Ihnen.</span>
-    </div>
+<div
+class="navDropdownPanel contactDropdownPanel"
+data-dropdown-panel
+>
 
-    <div class="contactDivider"></div>
+<p class="dropdownEyebrow">
+DIREKTER KONTAKT
+</p>
 
-    <div class="contactAlternative">
-      <p>
-        Sie möchten direkt schreiben?
-      </p>
+<h2>
+Sprechen wir darüber.
+</h2>
 
-      <a
-        class="contactMail"
-        href="mailto:ch.gradt@gradt-consulting.de"
-      >
-        E-Mail schreiben
-      </a>
-    </div>
 
-    <div class="contactBookingBlock">
-      <p class="contactBookingText">
-        Sie möchten Ihre Situation direkt und unverbindlich einordnen?
-      </p>
+<div class="contactPerson">
 
-      <a
-        class="contactBookingButton"
-        href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Orientierungsgespräch vereinbaren
-      </a>
+<strong>
+Christian Gradt
+</strong>
 
-      <p class="contactHint">
-        20 Minuten · kostenlos & unverbindlich
-      </p>
-    </div>
+<span>
+Diplom-Betriebswirt
+</span>
 
-    <a
-      class="dropdownMainLink contactAllLink"
-      href="/kontakt"
-    >
-      Alle Kontaktmöglichkeiten
-      <span aria-hidden="true">→</span>
-    </a>
-  </div>
+<span>
+Sachverständiger für das
+Versicherungswesen (BVSV)
+</span>
+
+</div>
+
+
+<a
+class="contactMail"
+href="mailto:ch.gradt@gradt-consulting.de"
+>
+ch.gradt@gradt-consulting.de
+</a>
+
+
+<div class="contactDivider"></div>
+
+
+<p class="contactBookingText">
+Sie möchten Ihre Situation zunächst
+unverbindlich einordnen?
+</p>
+
+
+<a
+class="contactBookingButton"
+href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
+target="_blank"
+rel="noopener noreferrer"
+>
+Orientierungsgespräch vereinbaren
+</a>
+
+
+<p class="contactHint">
+20 Minuten · kostenlos & unverbindlich
+</p>
+
+
+<a
+class="dropdownMainLink contactAllLink"
+href="/kontakt"
+>
+Alle Kontaktmöglichkeiten
+<span aria-hidden="true">→</span>
+</a>
+
+</div>
+
 </div>
 
 </nav>
 
-    <!-- ===================================================== -->
-    <!-- SEITENINHALT                                         -->
-    <!-- ===================================================== -->
+</div>
 
-    <main class="container">
-      <slot />
-    </main>
+</header>
 
 
-    <!-- ===================================================== -->
-    <!-- FOOTER                                               -->
-    <!-- ===================================================== -->
+<!-- ===================================================== -->
+<!-- SEITENINHALT                                         -->
+<!-- ===================================================== -->
 
-    <footer class="siteFooter">
+<main class="container">
+<slot />
+</main>
 
-      <div class="container footerGrid">
 
-        <div>
+<!-- ===================================================== -->
+<!-- FOOTER                                               -->
+<!-- ===================================================== -->
 
-          <strong>
-            Vermögenslotse
-          </strong>
+<footer class="siteFooter">
 
-          <br />
+<div class="container footerGrid">
 
-          Christian Gradt Consulting
+<div>
 
-          <p
-            class="muted"
-            style="margin-top:8px;"
-          >
-            Strategische Vermögensarchitektur
-            für Unternehmer und Privatanleger.
-          </p>
+<strong>
+Vermögenslotse
+</strong>
 
-        </div>
+<br />
 
+Christian Gradt Consulting
 
-        <div>
+<p
+class="muted"
+style="margin-top:8px;"
+>
+Strategische Vermögensarchitektur
+für Unternehmer und Privatanleger.
+</p>
 
-          <strong>
-            Navigation
-          </strong>
+</div>
 
-          <ul class="footerLinks">
 
-            <li>
-              <a href="/">
-                Start
-              </a>
-            </li>
+<div>
 
-            <li>
-              <a href="/ueber-mich">
-                So denke ich
-              </a>
-            </li>
+<strong>
+Navigation
+</strong>
 
-            <li>
-              <a href="/so-arbeite-ich">
-                So arbeite ich
-              </a>
-            </li>
+<ul class="footerLinks">
 
-            <li>
-              <a href="/toolbox">
-                Toolbox
-              </a>
-            </li>
+<li>
+<a href="/">
+Start
+</a>
+</li>
 
-            <li>
-              <a href="/altersvorsorgedepot">
-                Riester 2027
-              </a>
-            </li>
+<li>
+<a href="/ueber-mich">
+So denke ich
+</a>
+</li>
 
-            <li>
-              <a href="/kontakt">
-                Kontakt
-              </a>
-            </li>
+<li>
+<a href="/so-arbeite-ich">
+So arbeite ich
+</a>
+</li>
 
-          </ul>
+<li>
+<a href="/toolbox">
+Toolbox
+</a>
+</li>
 
-        </div>
+<li>
+<a href="/altersvorsorgedepot">
+Riester 2027
+</a>
+</li>
 
+<li>
+<a href="/kontakt">
+Kontakt
+</a>
+</li>
 
-        <div>
+</ul>
 
-          <strong>
-            Rechtliches
-          </strong>
+</div>
 
-          <ul class="footerLinks">
 
-            <li>
-              <a href="/recht/impressum">
-                Impressum
-              </a>
-            </li>
+<div>
 
-            <li>
-              <a href="/recht/datenschutz">
-                Datenschutz
-              </a>
-            </li>
+<strong>
+Rechtliches
+</strong>
 
-            <li>
-              <a href="/recht/transparenz">
-                Transparenz
-              </a>
-            </li>
+<ul class="footerLinks">
 
-            <li>
-              <a href="/recht/nachhaltigkeit">
-                Nachhaltigkeit
-              </a>
-            </li>
+<li>
+<a href="/recht/impressum">
+Impressum
+</a>
+</li>
 
-          </ul>
+<li>
+<a href="/recht/datenschutz">
+Datenschutz
+</a>
+</li>
 
-        </div>
+<li>
+<a href="/recht/transparenz">
+Transparenz
+</a>
+</li>
 
-      </div>
+<li>
+<a href="/recht/nachhaltigkeit">
+Nachhaltigkeit
+</a>
+</li>
 
+</ul>
 
-      <div class="footerBottom">
-        © {new Date().getFullYear()} Christian Gradt Consulting
-      </div>
+</div>
 
-    </footer>
+</div>
 
 
-    <!-- ===================================================== -->
-    <!-- NAVIGATION STYLES                                    -->
-    <!-- ===================================================== -->
+<div class="footerBottom">
+© {new Date().getFullYear()} Christian Gradt Consulting
+</div>
 
-    <style>
+</footer>
 
-      /* ----------------------------------------------------- */
-      /* HEADER                                                */
-      /* ----------------------------------------------------- */
 
-      .siteHeader {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        overflow: visible;
-      }
+<!-- ===================================================== -->
+<!-- NAVIGATION STYLES                                    -->
+<!-- ===================================================== -->
 
-      .headerInner {
-        position: relative;
-      }
+<style>
 
+/* ----------------------------------------------------- */
+/* HEADER                                                */
+/* ----------------------------------------------------- */
 
-      /* ----------------------------------------------------- */
-      /* HAUPTNAVIGATION                                       */
-      /* ----------------------------------------------------- */
+.siteHeader {
+position: sticky;
+top: 0;
+z-index: 1000;
+overflow: visible;
+}
 
-      .site-nav {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 4px;
-      }
+.headerInner {
+position: relative;
+}
 
 
-      .navLink,
-      .navDropdownTrigger {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
+/* ----------------------------------------------------- */
+/* HAUPTNAVIGATION                                       */
+/* ----------------------------------------------------- */
 
-        min-height: 42px;
+.site-nav {
+display: flex;
+align-items: center;
+justify-content: flex-end;
+gap: 4px;
+}
 
-        padding: 9px 10px;
 
-        border: 0;
-        border-radius: 11px;
+.navLink,
+.navDropdownTrigger {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
 
-        background: transparent;
+min-height: 42px;
 
-        color: var(--c-primary);
+padding: 9px 10px;
 
-        font: inherit;
-        font-size: .94rem;
-        font-weight: 700;
+border: 0;
+border-radius: 11px;
 
-        line-height: 1;
+background: transparent;
 
-        white-space: nowrap;
+color: var(--c-primary);
 
-        cursor: pointer;
+font: inherit;
+font-size: .94rem;
+font-weight: 700;
 
-        transition:
-          background .15s ease,
-          color .15s ease,
-          transform .15s ease;
-      }
+line-height: 1;
 
+white-space: nowrap;
 
-      .navLink:hover,
-      .navDropdownTrigger:hover {
-        text-decoration: none;
+cursor: pointer;
 
-        background: rgba(40,72,48,.07);
-      }
+transition:
+background .15s ease,
+color .15s ease,
+transform .15s ease;
+}
 
 
-      .navLink.active,
-      .navDropdown.active > .navDropdownTrigger {
-        background: rgba(40,72,48,.09);
+.navLink:hover,
+.navDropdownTrigger:hover {
+text-decoration: none;
 
-        color: var(--c-primary);
-      }
+background: rgba(40,72,48,.07);
+}
 
 
-      /* ----------------------------------------------------- */
-      /* DROPDOWN BASIS                                        */
-      /* ----------------------------------------------------- */
+.navLink.active,
+.navDropdown.active > .navDropdownTrigger {
+background: rgba(40,72,48,.09);
 
-      .navDropdown {
-        position: relative;
-      }
+color: var(--c-primary);
+}
 
 
-      .navChevron {
-        display: inline-block;
+/* ----------------------------------------------------- */
+/* DROPDOWN BASIS                                        */
+/* ----------------------------------------------------- */
 
-        margin-top: -1px;
+.navDropdown {
+position: relative;
+}
 
-        font-size: .72rem;
 
-        transition: transform .18s ease;
-      }
+.navChevron {
+display: inline-block;
 
+margin-top: -1px;
 
-      .navDropdown.isOpen .navChevron,
-      .navDropdown:focus-within .navChevron {
-        transform: rotate(180deg);
-      }
+font-size: .72rem;
 
+transition: transform .18s ease;
+}
 
-      .navDropdownPanel {
-        position: absolute;
 
-        top: calc(100% + 10px);
-        right: 0;
+.navDropdown.isOpen .navChevron,
+.navDropdown:focus-within .navChevron {
+transform: rotate(180deg);
+}
 
-        visibility: hidden;
 
-        opacity: 0;
+.navDropdownPanel {
+position: absolute;
 
-        pointer-events: none;
+top: calc(100% + 10px);
+right: 0;
 
-        transform: translateY(-5px);
+visibility: hidden;
 
-        transition:
-          opacity .16s ease,
-          transform .16s ease,
-          visibility .16s ease;
-      }
+opacity: 0;
 
+pointer-events: none;
 
-      /*
-       * Kleiner unsichtbarer Übergangsbereich.
-       * Dadurch schließt sich das Menü nicht,
-       * wenn der Cursor vom Button zum Panel bewegt wird.
-       */
+transform: translateY(-5px);
 
-      .navDropdownPanel::before {
-        content: "";
+transition:
+opacity .16s ease,
+transform .16s ease,
+visibility .16s ease;
+}
 
-        position: absolute;
 
-        top: -12px;
-        left: 0;
-        right: 0;
+/*
+* Kleiner unsichtbarer Übergangsbereich.
+* Dadurch schließt sich das Menü nicht,
+* wenn der Cursor vom Button zum Panel bewegt wird.
+*/
 
-        height: 14px;
-      }
+.navDropdownPanel::before {
+content: "";
 
+position: absolute;
 
-      .navDropdown:hover > .navDropdownPanel,
-      .navDropdown:focus-within > .navDropdownPanel,
-      .navDropdown.isOpen > .navDropdownPanel {
-        visibility: visible;
+top: -12px;
+left: 0;
+right: 0;
 
-        opacity: 1;
+height: 14px;
+}
 
-        pointer-events: auto;
 
-        transform: translateY(0);
-      }
+.navDropdown:hover > .navDropdownPanel,
+.navDropdown:focus-within > .navDropdownPanel,
+.navDropdown.isOpen > .navDropdownPanel {
+visibility: visible;
 
+opacity: 1;
 
-      /* ----------------------------------------------------- */
-      /* TOOLBOX DROPDOWN                                      */
-      /* ----------------------------------------------------- */
+pointer-events: auto;
 
-      .toolboxDropdownPanel {
-        display: grid;
+transform: translateY(0);
+}
 
-        grid-template-columns: 235px 1fr;
 
-        width: min(680px, calc(100vw - 40px));
+/* ----------------------------------------------------- */
+/* TOOLBOX DROPDOWN                                      */
+/* ----------------------------------------------------- */
 
-        overflow: hidden;
+.toolboxDropdownPanel {
+display: grid;
 
-        border: 1px solid rgba(40,72,48,.13);
-        border-radius: 20px;
+grid-template-columns: 235px 1fr;
 
-        background: #ffffff;
+width: min(680px, calc(100vw - 40px));
 
-        box-shadow:
-          0 22px 65px rgba(0,0,0,.13);
-      }
+overflow: hidden;
 
+border: 1px solid rgba(40,72,48,.13);
+border-radius: 20px;
 
-      .dropdownIntro {
-        padding: 26px 24px;
+background: #ffffff;
 
-        background:
-          radial-gradient(
-            340px 180px at 0% 0%,
-            rgba(216,120,8,.18),
-            transparent 65%
-          ),
-          linear-gradient(
-            160deg,
-            #284830 0%,
-            #1d3725 100%
-          );
+box-shadow:
+0 22px 65px rgba(0,0,0,.13);
+}
 
-        color: #ffffff;
-      }
 
+.dropdownIntro {
+padding: 26px 24px;
 
-      .dropdownEyebrow {
-        margin: 0 0 10px;
+background:
+radial-gradient(
+340px 180px at 0% 0%,
+rgba(216,120,8,.18),
+transparent 65%
+),
+linear-gradient(
+160deg,
+#284830 0%,
+#1d3725 100%
+);
 
-        font-size: .68rem;
+color: #ffffff;
+}
 
-        font-weight: 800;
 
-        letter-spacing: .1em;
+.dropdownEyebrow {
+margin: 0 0 10px;
 
-        color: var(--c-accent);
-      }
+font-size: .68rem;
 
+font-weight: 800;
 
-      .dropdownIntro h2 {
-        margin: 0 0 12px;
+letter-spacing: .1em;
 
-        font-size: 1.35rem;
+color: var(--c-accent);
+}
 
-        line-height: 1.2;
 
-        color: #ffffff;
-      }
+.dropdownIntro h2 {
+margin: 0 0 12px;
 
+font-size: 1.35rem;
 
-      .dropdownIntro p:last-child {
-        margin: 0;
+line-height: 1.2;
 
-        font-size: .88rem;
+color: #ffffff;
+}
 
-        line-height: 1.55;
 
-        color: rgba(255,255,255,.76);
-      }
+.dropdownIntro p:last-child {
+margin: 0;
 
+font-size: .88rem;
 
-      .toolboxDropdownContent {
-        padding: 22px;
-      }
+line-height: 1.55;
 
+color: rgba(255,255,255,.76);
+}
 
-      .dropdownSectionLabel {
-        margin: 0 0 10px;
 
-        font-size: .68rem;
+.toolboxDropdownContent {
+padding: 22px;
+}
 
-        font-weight: 800;
 
-        letter-spacing: .1em;
+.dropdownSectionLabel {
+margin: 0 0 10px;
 
-        color: rgba(40,72,48,.60);
-      }
+font-size: .68rem;
 
+font-weight: 800;
 
-      .dropdownTool {
-        display: block;
+letter-spacing: .1em;
 
-        margin-bottom: 4px;
+color: rgba(40,72,48,.60);
+}
 
-        padding: 9px 10px;
 
-        border-radius: 10px;
+.dropdownTool {
+display: block;
 
-        transition:
-          background .15s ease,
-          transform .15s ease;
-      }
+margin-bottom: 4px;
 
+padding: 9px 10px;
 
-      .dropdownTool:hover {
-        text-decoration: none;
+border-radius: 10px;
 
-        background: rgba(40,72,48,.055);
+transition:
+background .15s ease,
+transform .15s ease;
+}
 
-        transform: translateX(2px);
-      }
 
+.dropdownTool:hover {
+text-decoration: none;
 
-      .dropdownToolTitle {
-        display: block;
+background: rgba(40,72,48,.055);
 
-        margin-bottom: 2px;
+transform: translateX(2px);
+}
 
-        color: var(--c-primary);
 
-        font-size: .9rem;
+.dropdownToolTitle {
+display: block;
 
-        font-weight: 800;
-      }
+margin-bottom: 2px;
 
+color: var(--c-primary);
 
-      .dropdownToolText {
-        display: block;
+font-size: .9rem;
 
-        color: rgba(40,72,48,.65);
+font-weight: 800;
+}
 
-        font-size: .78rem;
 
-        line-height: 1.35;
-      }
+.dropdownToolText {
+display: block;
 
+color: rgba(40,72,48,.65);
 
-      .dropdownKnowledge {
-        margin-top: 12px;
-        padding-top: 13px;
+font-size: .78rem;
 
-        border-top:
-          1px solid rgba(40,72,48,.09);
-      }
+line-height: 1.35;
+}
 
 
-      .dropdownKnowledge p:last-child {
-        margin: 0;
+.dropdownKnowledge {
+margin-top: 12px;
+padding-top: 13px;
 
-        color: rgba(40,72,48,.67);
+border-top:
+1px solid rgba(40,72,48,.09);
+}
 
-        font-size: .8rem;
 
-        line-height: 1.45;
-      }
+.dropdownKnowledge p:last-child {
+margin: 0;
 
+color: rgba(40,72,48,.67);
 
-      .dropdownMainLink {
-        display: flex;
+font-size: .8rem;
 
-        align-items: center;
-        justify-content: space-between;
+line-height: 1.45;
+}
 
-        margin-top: 14px;
 
-        padding: 10px 12px;
+.dropdownMainLink {
+display: flex;
 
-        border-radius: 11px;
+align-items: center;
+justify-content: space-between;
 
-        background: rgba(216,120,8,.10);
+margin-top: 14px;
 
-        color: var(--c-primary);
+padding: 10px 12px;
 
-        font-size: .86rem;
+border-radius: 11px;
 
-        font-weight: 800;
-      }
+background: rgba(216,120,8,.10);
 
+color: var(--c-primary);
 
-      .dropdownMainLink:hover {
-        text-decoration: none;
+font-size: .86rem;
 
-        background: rgba(216,120,8,.16);
-      }
+font-weight: 800;
+}
 
 
-      /* ----------------------------------------------------- */
-      /* RIESTER 2027                                          */
-      /* ----------------------------------------------------- */
+.dropdownMainLink:hover {
+text-decoration: none;
 
-      .navRiester {
-        position: relative;
+background: rgba(216,120,8,.16);
+}
 
-        gap: 7px;
-      }
 
+/* ----------------------------------------------------- */
+/* RIESTER 2027                                          */
+/* ----------------------------------------------------- */
 
-      .riesterDot {
-        width: 7px;
-        height: 7px;
+.navRiester {
+position: relative;
 
-        flex: 0 0 auto;
+gap: 7px;
+}
 
-        border-radius: 50%;
 
-        background: var(--c-accent);
+.riesterDot {
+width: 7px;
+height: 7px;
 
-        box-shadow:
-          0 0 0 3px rgba(216,120,8,.12);
-      }
+flex: 0 0 auto;
 
+border-radius: 50%;
 
-      .navRiester:hover {
-        background: rgba(216,120,8,.08);
-      }
+background: var(--c-accent);
 
+box-shadow:
+0 0 0 3px rgba(216,120,8,.12);
+}
 
-      .navRiester.active {
-        background: rgba(216,120,8,.11);
-      }
 
+.navRiester:hover {
+background: rgba(216,120,8,.08);
+}
 
-      /* ----------------------------------------------------- */
-      /* KONTAKT TRIGGER                                       */
-      /* ----------------------------------------------------- */
 
-      .contactTrigger {
-        margin-left: 3px;
+.navRiester.active {
+background: rgba(216,120,8,.11);
+}
 
-        padding-left: 14px;
-        padding-right: 14px;
 
-        border:
-          1px solid rgba(40,72,48,.25);
+/* ----------------------------------------------------- */
+/* KONTAKT TRIGGER                                       */
+/* ----------------------------------------------------- */
 
-        background:
-          rgba(255,255,255,.80);
-      }
+.contactTrigger {
+margin-left: 3px;
 
+padding-left: 14px;
+padding-right: 14px;
 
-      .contactTrigger:hover {
-        background:
-          rgba(40,72,48,.06);
-      }
+border:
+1px solid rgba(40,72,48,.25);
+
+background:
+rgba(255,255,255,.80);
+}
+
+
+.contactTrigger:hover {
+background:
+rgba(40,72,48,.06);
+}
 
 
 /* ----------------------------------------------------- */
@@ -978,595 +986,539 @@ const isContactActive = path.startsWith("/kontakt");
 /* ----------------------------------------------------- */
 
 .contactDropdownPanel {
-  width: min(430px, calc(100vw - 32px));
+width: 330px;
 
-  padding: 22px;
+padding: 24px;
 
-  border: 1px solid rgba(40,72,48,.13);
-  border-radius: 20px;
+border:
+1px solid rgba(40,72,48,.13);
 
-  background: #ffffff;
+border-radius: 20px;
 
-  box-shadow:
-    0 22px 65px rgba(0,0,0,.13);
+background: #ffffff;
+
+box-shadow:
+0 22px 65px rgba(0,0,0,.13);
 }
+
 
 .contactDropdownPanel h2 {
-  margin: 0 0 10px;
+margin: 0 0 16px;
 
-  color: var(--c-primary);
+font-size: 1.28rem;
 
-  font-size: 1.3rem;
-  line-height: 1.2;
+color: var(--c-primary);
 }
 
-.contactIntroText {
-  margin: 0 0 14px;
 
-  color: rgba(40,72,48,.73);
+.contactPerson {
+display: grid;
 
-  font-size: .86rem;
-  line-height: 1.5;
+gap: 2px;
+
+margin-bottom: 14px;
 }
 
-.contactFormEmbed {
-  overflow: hidden;
 
-  border: 1px solid rgba(40,72,48,.12);
-  border-radius: 14px;
+.contactPerson strong {
+color: var(--c-primary);
 
-  background: #ffffff;
+font-size: .95rem;
 }
 
-.contactFormEmbed iframe {
-  display: block;
 
-  width: 100%;
-  height: 500px;
+.contactPerson span {
+color: rgba(40,72,48,.65);
 
-  border: 0;
+font-size: .78rem;
+
+line-height: 1.4;
 }
 
-.contactPersonCompact {
-  display: grid;
-
-  gap: 2px;
-
-  margin-top: 14px;
-}
-
-.contactPersonCompact strong {
-  color: var(--c-primary);
-
-  font-size: .9rem;
-}
-
-.contactPersonCompact span {
-  color: rgba(40,72,48,.62);
-
-  font-size: .76rem;
-  line-height: 1.4;
-}
-
-.contactDivider {
-  height: 1px;
-
-  margin: 16px 0;
-
-  background: rgba(40,72,48,.10);
-}
-
-.contactAlternative {
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 12px;
-}
-
-.contactAlternative p {
-  margin: 0;
-
-  color: rgba(40,72,48,.68);
-
-  font-size: .8rem;
-}
 
 .contactMail {
-  display: inline-flex;
+display: inline-block;
 
-  align-items: center;
+color: var(--c-primary);
 
-  color: var(--c-primary);
+font-size: .84rem;
 
-  font-size: .82rem;
-  font-weight: 800;
-
-  white-space: nowrap;
+font-weight: 700;
 }
 
-.contactBookingBlock {
-  margin-top: 16px;
-  padding-top: 15px;
 
-  border-top: 1px solid rgba(40,72,48,.10);
+.contactDivider {
+height: 1px;
+
+margin: 18px 0;
+
+background:
+rgba(40,72,48,.10);
 }
+
 
 .contactBookingText {
-  margin: 0 0 10px;
+margin: 0 0 12px;
 
-  color: rgba(40,72,48,.73);
+color: rgba(40,72,48,.73);
 
-  font-size: .82rem;
-  line-height: 1.45;
+font-size: .84rem;
+
+line-height: 1.5;
 }
+
 
 .contactBookingButton {
-  display: flex;
+display: flex;
 
-  align-items: center;
-  justify-content: center;
+align-items: center;
+justify-content: center;
 
-  padding: 11px 14px;
+padding: 11px 14px;
 
-  border-radius: 12px;
+border-radius: 12px;
 
-  background: var(--c-accent);
+background: var(--c-accent);
 
-  color: #ffffff;
+color: #ffffff;
 
-  font-size: .82rem;
-  font-weight: 800;
+font-size: .84rem;
 
-  box-shadow:
-    0 10px 26px rgba(216,120,8,.20);
+font-weight: 800;
+
+box-shadow:
+0 10px 26px rgba(216,120,8,.20);
 }
+
 
 .contactBookingButton:hover {
-  text-decoration: none;
+text-decoration: none;
 
-  transform: translateY(-1px);
+transform: translateY(-1px);
 }
+
 
 .contactHint {
-  margin: 7px 0 0;
+margin: 8px 0 0;
 
-  color: rgba(40,72,48,.55);
+text-align: center;
 
-  font-size: .7rem;
+color: rgba(40,72,48,.55);
 
-  text-align: center;
+font-size: .72rem;
 }
+
 
 .contactAllLink {
-  margin-top: 14px;
+margin-top: 16px;
 
-  background: rgba(40,72,48,.055);
+background:
+rgba(40,72,48,.055);
 }
+
 
 .contactAllLink:hover {
-  background: rgba(40,72,48,.09);
+background:
+rgba(40,72,48,.09);
 }
 
-      /* ----------------------------------------------------- */
-      /* TABLET / KLEINER DESKTOP                              */
-      /* ----------------------------------------------------- */
 
-      @media (max-width: 1080px) {
+/* ----------------------------------------------------- */
+/* TABLET / KLEINER DESKTOP                              */
+/* ----------------------------------------------------- */
 
-        .site-nav {
-          gap: 1px;
-        }
+@media (max-width: 1080px) {
 
-        .navLink,
-        .navDropdownTrigger {
-          padding-left: 7px;
-          padding-right: 7px;
-
-          font-size: .87rem;
-        }
-
-      }
-
-
-      /* ----------------------------------------------------- */
-      /* MOBILE                                                */
-      /* ----------------------------------------------------- */
-
-      @media (max-width: 900px) {
-
-        .headerInner {
-          align-items: flex-start;
-
-          flex-wrap: wrap;
-        }
-
-
-        .logoImg {
-          height: 42px;
-        }
-
-
-        .site-nav {
-          width: 100%;
-
-          justify-content: flex-start;
-
-          flex-wrap: wrap;
-
-          padding-top: 4px;
-        }
-
-
-        .navLink,
-        .navDropdownTrigger {
-          min-height: 38px;
-
-          font-size: .84rem;
-        }
-
-
-        .toolboxDropdownPanel,
-        .contactDropdownPanel {
-          position: fixed;
-
-          z-index: 2000;
-
-          top: 108px;
-
-          left: 16px;
-          right: 16px;
-
-          width: auto;
-
-          max-height:
-            calc(100vh - 125px);
-
-          overflow-y: auto;
-
-          transform: translateY(-5px);
-        }
-
-
-        .toolboxDropdownPanel {
-          grid-template-columns: 1fr;
-        }
-
-
-        .dropdownIntro {
-          padding: 20px;
-        }
-
-
-        .toolboxDropdownContent {
-          padding: 18px;
-        }
-
-      }
-
-
-      /* ----------------------------------------------------- */
-      /* SEHR KLEINE DISPLAYS                                  */
-      /* ----------------------------------------------------- */
-
-      @media (max-width: 560px) {
-
-        .siteHeader {
-          position: sticky;
-        }
-
-
-        .site-nav {
-          gap: 2px;
-        }
-
-
-        .navLink,
-        .navDropdownTrigger {
-          padding:
-            8px 7px;
-
-          font-size: .78rem;
-        }
-
-
-        .contactTrigger {
-          margin-left: 0;
-        }
-
-
-        .toolboxDropdownPanel,
-        .contactDropdownPanel {
-          top: 116px;
-        }
+.site-nav {
+gap: 1px;
 }
 
+.navLink,
+.navDropdownTrigger {
+padding-left: 7px;
+padding-right: 7px;
+
+font-size: .87rem;
+}
+
+}
+
+
 /* ----------------------------------------------------- */
-/* FIX: HEADER UND DROPDOWNS ÜBER STARTSEITEN-INHALT     */
+/* MOBILE                                                */
 /* ----------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+.headerInner {
+align-items: flex-start;
+
+flex-wrap: wrap;
+}
+
+
+.logoImg {
+height: 42px;
+}
+
+
+.site-nav {
+width: 100%;
+
+justify-content: flex-start;
+
+flex-wrap: wrap;
+
+padding-top: 4px;
+}
+
+
+.navLink,
+.navDropdownTrigger {
+min-height: 38px;
+
+font-size: .84rem;
+}
+
+
+.toolboxDropdownPanel,
+.contactDropdownPanel {
+position: fixed;
+
+z-index: 2000;
+
+top: 108px;
+
+left: 16px;
+right: 16px;
+
+width: auto;
+
+max-height:
+calc(100vh - 125px);
+
+overflow-y: auto;
+
+transform: translateY(-5px);
+}
+
+
+.toolboxDropdownPanel {
+grid-template-columns: 1fr;
+}
+
+
+.dropdownIntro {
+padding: 20px;
+}
+
+
+.toolboxDropdownContent {
+padding: 18px;
+}
+
+}
+
+
+/* ----------------------------------------------------- */
+/* SEHR KLEINE DISPLAYS                                  */
+/* ----------------------------------------------------- */
+
+@media (max-width: 560px) {
 
 .siteHeader {
-  z-index: 9999;
+position: sticky;
 }
 
-.headerInner,
-.site-nav,
-.navDropdown {
-  overflow: visible;
+
+.site-nav {
+gap: 2px;
 }
 
-.navDropdownPanel {
-  z-index: 10000;
+
+.navLink,
+.navDropdownTrigger {
+padding:
+8px 7px;
+
+font-size: .78rem;
 }
 
-.contactDropdownPanel,
-.toolboxDropdownPanel {
-  z-index: 10001;
+
+.contactTrigger {
+margin-left: 0;
 }
 
-    </style>
 
+.toolboxDropdownPanel,
+.contactDropdownPanel {
+top: 116px;
+}
 
-    <!-- ===================================================== -->
-    <!-- REVEAL ANIMATION                                      -->
-    <!-- ===================================================== -->
+}
 
-    <script is:inline>
+</style>
 
-      document.addEventListener(
-        "DOMContentLoaded",
-        function () {
 
-          const reveals =
-            document.querySelectorAll(".reveal");
+<!-- ===================================================== -->
+<!-- REVEAL ANIMATION                                      -->
+<!-- ===================================================== -->
 
+<script is:inline>
 
-          if (
-            "IntersectionObserver" in window
-          ) {
+document.addEventListener(
+"DOMContentLoaded",
+function () {
 
-            const observer =
-              new IntersectionObserver(
-                (entries) => {
+const reveals =
+document.querySelectorAll(".reveal");
 
-                  entries.forEach(
-                    (entry) => {
 
-                      if (
-                        entry.isIntersecting
-                      ) {
+if (
+"IntersectionObserver" in window
+) {
 
-                        entry.target.classList.add(
-                          "revealVisible"
-                        );
+const observer =
+new IntersectionObserver(
+(entries) => {
 
-                        observer.unobserve(
-                          entry.target
-                        );
+entries.forEach(
+(entry) => {
 
-                      }
+if (
+entry.isIntersecting
+) {
 
-                    }
-                  );
+entry.target.classList.add(
+"revealVisible"
+);
 
-                },
-                {
-                  threshold: 0.12
-                }
-              );
+observer.unobserve(
+entry.target
+);
 
+}
 
-            reveals.forEach(
-              (element) => {
+}
+);
 
-                observer.observe(
-                  element
-                );
+},
+{
+threshold: 0.12
+}
+);
 
-              }
-            );
 
-          }
+reveals.forEach(
+(element) => {
 
-          else {
+observer.observe(
+element
+);
 
-            reveals.forEach(
-              (element) => {
+}
+);
 
-                element.classList.add(
-                  "revealVisible"
-                );
+}
 
-              }
-            );
+else {
 
-          }
+reveals.forEach(
+(element) => {
 
-        }
-      );
+element.classList.add(
+"revealVisible"
+);
 
-    </script>
+}
+);
 
+}
 
-    <!-- ===================================================== -->
-    <!-- DROPDOWN INTERAKTION                                  -->
-    <!-- ===================================================== -->
+}
+);
 
-    <script is:inline>
+</script>
 
-      document.addEventListener(
-        "DOMContentLoaded",
-        function () {
 
-          const dropdowns =
-            document.querySelectorAll(
-              "[data-dropdown]"
-            );
+<!-- ===================================================== -->
+<!-- DROPDOWN INTERAKTION                                  -->
+<!-- ===================================================== -->
 
+<script is:inline>
 
-          function closeDropdown(
-            dropdown
-          ) {
+document.addEventListener(
+"DOMContentLoaded",
+function () {
 
-            dropdown.classList.remove(
-              "isOpen"
-            );
+const dropdowns =
+document.querySelectorAll(
+"[data-dropdown]"
+);
 
 
-            const trigger =
-              dropdown.querySelector(
-                "[data-dropdown-trigger]"
-              );
+function closeDropdown(
+dropdown
+) {
 
+dropdown.classList.remove(
+"isOpen"
+);
 
-            if (trigger) {
 
-              trigger.setAttribute(
-                "aria-expanded",
-                "false"
-              );
+const trigger =
+dropdown.querySelector(
+"[data-dropdown-trigger]"
+);
 
-            }
 
-          }
+if (trigger) {
 
+trigger.setAttribute(
+"aria-expanded",
+"false"
+);
 
-          function closeAllDropdowns(
-            exception = null
-          ) {
+}
 
-            dropdowns.forEach(
-              (dropdown) => {
+}
 
-                if (
-                  dropdown !== exception
-                ) {
 
-                  closeDropdown(
-                    dropdown
-                  );
+function closeAllDropdowns(
+exception = null
+) {
 
-                }
+dropdowns.forEach(
+(dropdown) => {
 
-              }
-            );
+if (
+dropdown !== exception
+) {
 
-          }
+closeDropdown(
+dropdown
+);
 
+}
 
-          dropdowns.forEach(
-            (dropdown) => {
+}
+);
 
-              const trigger =
-                dropdown.querySelector(
-                  "[data-dropdown-trigger]"
-                );
+}
 
 
-              if (!trigger) {
-                return;
-              }
+dropdowns.forEach(
+(dropdown) => {
 
+const trigger =
+dropdown.querySelector(
+"[data-dropdown-trigger]"
+);
 
-              trigger.addEventListener(
-                "click",
-                function (event) {
 
-                  event.stopPropagation();
+if (!trigger) {
+return;
+}
 
 
-                  const isOpen =
-                    dropdown.classList.contains(
-                      "isOpen"
-                    );
+trigger.addEventListener(
+"click",
+function (event) {
 
+event.stopPropagation();
 
-                  closeAllDropdowns(
-                    dropdown
-                  );
 
+const isOpen =
+dropdown.classList.contains(
+"isOpen"
+);
 
-                  if (isOpen) {
 
-                    closeDropdown(
-                      dropdown
-                    );
+closeAllDropdowns(
+dropdown
+);
 
-                  }
 
-                  else {
+if (isOpen) {
 
-                    dropdown.classList.add(
-                      "isOpen"
-                    );
+closeDropdown(
+dropdown
+);
 
+}
 
-                    trigger.setAttribute(
-                      "aria-expanded",
-                      "true"
-                    );
+else {
 
-                  }
+dropdown.classList.add(
+"isOpen"
+);
 
-                }
-              );
 
-            }
-          );
+trigger.setAttribute(
+"aria-expanded",
+"true"
+);
 
+}
 
-          document.addEventListener(
-            "click",
-            function (event) {
+}
+);
 
-              const clickedInsideDropdown =
-                event.target.closest(
-                  "[data-dropdown]"
-                );
+}
+);
 
 
-              if (
-                !clickedInsideDropdown
-              ) {
+document.addEventListener(
+"click",
+function (event) {
 
-                closeAllDropdowns();
+const clickedInsideDropdown =
+event.target.closest(
+"[data-dropdown]"
+);
 
-              }
 
-            }
-          );
+if (
+!clickedInsideDropdown
+) {
 
+closeAllDropdowns();
 
-          document.addEventListener(
-            "keydown",
-            function (event) {
+}
 
-              if (
-                event.key === "Escape"
-              ) {
+}
+);
 
-                closeAllDropdowns();
 
-              }
+document.addEventListener(
+"keydown",
+function (event) {
 
-            }
-          );
+if (
+event.key === "Escape"
+) {
 
+closeAllDropdowns();
 
-          window.addEventListener(
-            "resize",
-            function () {
+}
 
-              closeAllDropdowns();
+}
+);
 
-            }
-          );
 
-        }
-      );
+window.addEventListener(
+"resize",
+function () {
 
-    </script>
+closeAllDropdowns();
 
-  </body>
+}
+);
+
+}
+);
+
+</script>
+
+</body>
 </html>

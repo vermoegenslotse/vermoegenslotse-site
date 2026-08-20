@@ -316,120 +316,111 @@ const isContactActive = path.startsWith("/kontakt");
 
 
           <!-- ================================================= -->
-          <!-- KONTAKT DROPDOWN                                  -->
-          <!-- ================================================= -->
+<!-- KONTAKT DROPDOWN                                  -->
+<!-- ================================================= -->
 
-          <div
-            class:list={[
-              "navDropdown",
-              "navDropdownContact",
-              { active: isContactActive }
-            ]}
-            data-dropdown
-          >
+<div
+  class:list={[
+    "navDropdown",
+    "navDropdownContact",
+    { active: isContactActive }
+  ]}
+  data-dropdown
+>
+  <button
+    class="navDropdownTrigger contactTrigger"
+    type="button"
+    aria-expanded="false"
+    aria-haspopup="true"
+    data-dropdown-trigger
+  >
+    <span>Kontakt</span>
 
-            <button
-              class="navDropdownTrigger contactTrigger"
-              type="button"
-              aria-expanded="false"
-              aria-haspopup="true"
-              data-dropdown-trigger
-            >
+    <span
+      class="navChevron"
+      aria-hidden="true"
+    >
+      ▾
+    </span>
+  </button>
 
-              <span>Kontakt</span>
+  <div
+    class="navDropdownPanel contactDropdownPanel"
+    data-dropdown-panel
+  >
+    <p class="dropdownEyebrow">
+      DIREKTER KONTAKT
+    </p>
 
-              <span
-                class="navChevron"
-                aria-hidden="true"
-              >
-                ▾
-              </span>
+    <h2>
+      Wie kann ich Sie unterstützen?
+    </h2>
 
-            </button>
+    <p class="contactIntroText">
+      Sie haben eine Frage zu Ihrer Vermögenssituation oder möchten Ihr Anliegen
+      zunächst formlos schildern? Schreiben Sie mir. Ich melde mich persönlich
+      bei Ihnen.
+    </p>
 
+    <div class="contactFormEmbed">
+      <iframe
+        title="Kontaktformular"
+        aria-label="Kontaktformular"
+        frameborder="0"
+        loading="lazy"
+        src="https://forms.zohopublic.eu/christiangradtconsulting1/form/KontaktformularWebseite/formperma/z_qlpRbnytGmlwB7RQ0mBGYk-cGr-aMSjsLx5HnM2pI"
+      ></iframe>
+    </div>
 
-            <div
-              class="navDropdownPanel contactDropdownPanel"
-              data-dropdown-panel
-            >
+    <div class="contactPersonCompact">
+      <strong>Christian Gradt</strong>
+      <span>Dipl.-Betriebswirt</span>
+      <span>Ich melde mich persönlich bei Ihnen.</span>
+    </div>
 
-              <p class="dropdownEyebrow">
-                DIREKTER KONTAKT
-              </p>
+    <div class="contactDivider"></div>
 
-              <h2>
-                Sprechen wir darüber.
-              </h2>
+    <div class="contactAlternative">
+      <p>
+        Sie möchten direkt schreiben?
+      </p>
 
+      <a
+        class="contactMail"
+        href="mailto:ch.gradt@gradt-consulting.de"
+      >
+        E-Mail schreiben
+      </a>
+    </div>
 
-              <div class="contactPerson">
+    <div class="contactBookingBlock">
+      <p class="contactBookingText">
+        Sie möchten Ihre Situation direkt und unverbindlich einordnen?
+      </p>
 
-                <strong>
-                  Christian Gradt
-                </strong>
+      <a
+        class="contactBookingButton"
+        href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Orientierungsgespräch vereinbaren
+      </a>
 
-                <span>
-                  Diplom-Betriebswirt
-                </span>
+      <p class="contactHint">
+        20 Minuten · kostenlos & unverbindlich
+      </p>
+    </div>
 
-                <span>
-                  Sachverständiger für das
-                  Versicherungswesen (BVSV)
-                </span>
-
-              </div>
-
-
-              <a
-                class="contactMail"
-                href="mailto:ch.gradt@gradt-consulting.de"
-              >
-                ch.gradt@gradt-consulting.de
-              </a>
-
-
-              <div class="contactDivider"></div>
-
-
-              <p class="contactBookingText">
-                Sie möchten Ihre Situation zunächst
-                unverbindlich einordnen?
-              </p>
-
-
-              <a
-                class="contactBookingButton"
-                href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Orientierungsgespräch vereinbaren
-              </a>
-
-
-              <p class="contactHint">
-                20 Minuten · kostenlos & unverbindlich
-              </p>
-
-
-              <a
-                class="dropdownMainLink contactAllLink"
-                href="/kontakt"
-              >
-                Alle Kontaktmöglichkeiten
-                <span aria-hidden="true">→</span>
-              </a>
-
-            </div>
-
-          </div>
-
-        </nav>
-
-      </div>
-
-    </header>
-
+    <a
+      class="dropdownMainLink contactAllLink"
+      href="/kontakt"
+    >
+      Alle Kontaktmöglichkeiten
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</div>
 
     <!-- ===================================================== -->
     <!-- SEITENINHALT                                         -->
@@ -980,147 +971,181 @@ const isContactActive = path.startsWith("/kontakt");
       }
 
 
-      /* ----------------------------------------------------- */
-      /* KONTAKT DROPDOWN                                      */
-      /* ----------------------------------------------------- */
+     /* ----------------------------------------------------- */
+/* KONTAKT DROPDOWN                                      */
+/* ----------------------------------------------------- */
 
-      .contactDropdownPanel {
-        width: 330px;
+.contactDropdownPanel {
+  width: min(430px, calc(100vw - 32px));
 
-        padding: 24px;
+  padding: 22px;
 
-        border:
-          1px solid rgba(40,72,48,.13);
+  border: 1px solid rgba(40,72,48,.13);
+  border-radius: 20px;
 
-        border-radius: 20px;
+  background: #ffffff;
 
-        background: #ffffff;
+  box-shadow:
+    0 22px 65px rgba(0,0,0,.13);
+}
 
-        box-shadow:
-          0 22px 65px rgba(0,0,0,.13);
-      }
+.contactDropdownPanel h2 {
+  margin: 0 0 10px;
 
+  color: var(--c-primary);
 
-      .contactDropdownPanel h2 {
-        margin: 0 0 16px;
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
 
-        font-size: 1.28rem;
+.contactIntroText {
+  margin: 0 0 14px;
 
-        color: var(--c-primary);
-      }
+  color: rgba(40,72,48,.73);
 
+  font-size: .86rem;
+  line-height: 1.5;
+}
 
-      .contactPerson {
-        display: grid;
+.contactFormEmbed {
+  overflow: hidden;
 
-        gap: 2px;
+  border: 1px solid rgba(40,72,48,.12);
+  border-radius: 14px;
 
-        margin-bottom: 14px;
-      }
+  background: #ffffff;
+}
 
+.contactFormEmbed iframe {
+  display: block;
 
-      .contactPerson strong {
-        color: var(--c-primary);
+  width: 100%;
+  height: 500px;
 
-        font-size: .95rem;
-      }
+  border: 0;
+}
 
+.contactPersonCompact {
+  display: grid;
 
-      .contactPerson span {
-        color: rgba(40,72,48,.65);
+  gap: 2px;
 
-        font-size: .78rem;
+  margin-top: 14px;
+}
 
-        line-height: 1.4;
-      }
+.contactPersonCompact strong {
+  color: var(--c-primary);
 
+  font-size: .9rem;
+}
 
-      .contactMail {
-        display: inline-block;
+.contactPersonCompact span {
+  color: rgba(40,72,48,.62);
 
-        color: var(--c-primary);
+  font-size: .76rem;
+  line-height: 1.4;
+}
 
-        font-size: .84rem;
+.contactDivider {
+  height: 1px;
 
-        font-weight: 700;
-      }
+  margin: 16px 0;
 
+  background: rgba(40,72,48,.10);
+}
 
-      .contactDivider {
-        height: 1px;
+.contactAlternative {
+  display: flex;
 
-        margin: 18px 0;
+  align-items: center;
+  justify-content: space-between;
 
-        background:
-          rgba(40,72,48,.10);
-      }
+  gap: 12px;
+}
 
+.contactAlternative p {
+  margin: 0;
 
-      .contactBookingText {
-        margin: 0 0 12px;
+  color: rgba(40,72,48,.68);
 
-        color: rgba(40,72,48,.73);
+  font-size: .8rem;
+}
 
-        font-size: .84rem;
+.contactMail {
+  display: inline-flex;
 
-        line-height: 1.5;
-      }
+  align-items: center;
 
+  color: var(--c-primary);
 
-      .contactBookingButton {
-        display: flex;
+  font-size: .82rem;
+  font-weight: 800;
 
-        align-items: center;
-        justify-content: center;
+  white-space: nowrap;
+}
 
-        padding: 11px 14px;
+.contactBookingBlock {
+  margin-top: 16px;
+  padding-top: 15px;
 
-        border-radius: 12px;
+  border-top: 1px solid rgba(40,72,48,.10);
+}
 
-        background: var(--c-accent);
+.contactBookingText {
+  margin: 0 0 10px;
 
-        color: #ffffff;
+  color: rgba(40,72,48,.73);
 
-        font-size: .84rem;
+  font-size: .82rem;
+  line-height: 1.45;
+}
 
-        font-weight: 800;
+.contactBookingButton {
+  display: flex;
 
-        box-shadow:
-          0 10px 26px rgba(216,120,8,.20);
-      }
+  align-items: center;
+  justify-content: center;
 
+  padding: 11px 14px;
 
-      .contactBookingButton:hover {
-        text-decoration: none;
+  border-radius: 12px;
 
-        transform: translateY(-1px);
-      }
+  background: var(--c-accent);
 
+  color: #ffffff;
 
-      .contactHint {
-        margin: 8px 0 0;
+  font-size: .82rem;
+  font-weight: 800;
 
-        text-align: center;
+  box-shadow:
+    0 10px 26px rgba(216,120,8,.20);
+}
 
-        color: rgba(40,72,48,.55);
+.contactBookingButton:hover {
+  text-decoration: none;
 
-        font-size: .72rem;
-      }
+  transform: translateY(-1px);
+}
 
+.contactHint {
+  margin: 7px 0 0;
 
-      .contactAllLink {
-        margin-top: 16px;
+  color: rgba(40,72,48,.55);
 
-        background:
-          rgba(40,72,48,.055);
-      }
+  font-size: .7rem;
 
+  text-align: center;
+}
 
-      .contactAllLink:hover {
-        background:
-          rgba(40,72,48,.09);
-      }
+.contactAllLink {
+  margin-top: 14px;
 
+  background: rgba(40,72,48,.055);
+}
+
+.contactAllLink:hover {
+  background: rgba(40,72,48,.09);
+}
 
       /* ----------------------------------------------------- */
       /* TABLET / KLEINER DESKTOP                              */

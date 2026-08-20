@@ -11,6 +11,7 @@ const isActive = (href: string) =>
  href === "/" ? path === "/" : path.startsWith(href);
 
 const isToolboxActive = path.startsWith("/toolbox");
+const isWissenActive = path.startsWith("/wissen");
 const isRiesterActive = path.startsWith("/altersvorsorgedepot");
 const isContactActive = path.startsWith("/kontakt");
 ---
@@ -191,8 +192,8 @@ Besser einordnen.
 </h2>
 
 <p>
-Rechner, Checks und Fachinformationen
-für bessere finanzielle Entscheidungen.
+Rechner und Checks für bessere
+finanzielle Entscheidungen.
 </p>
 
 </div>
@@ -221,7 +222,6 @@ Vermögen und Gesamtstruktur einordnen
 
 <a
 class="dropdownTool"
-                  href="/depotblindfleckencheck"
                   href="/depot-blindflecken-check"
 >
 <span class="dropdownToolTitle">
@@ -262,20 +262,6 @@ Förderung und Szenarien berechnen
 </a>
 
 
-<div class="dropdownKnowledge">
-
-<p class="dropdownSectionLabel">
-WISSEN & VERTIEFEN
-</p>
-
-<p>
-Leitfäden, Broschüren und Checklisten
-ergänzen die digitalen Werkzeuge.
-</p>
-
-</div>
-
-
 <a
 class="dropdownMainLink"
 href="/toolbox"
@@ -290,6 +276,29 @@ Gesamte Toolbox öffnen
 
 </div>
 
+
+<!-- ================================================= -->
+<!-- WISSEN DROPDOWN                                   -->
+<!-- ================================================= -->
+
+<div class:list={["navDropdown","navDropdownWissen",{ active: isWissenActive }]} data-dropdown>
+<button class="navDropdownTrigger" type="button" aria-expanded="false" aria-haspopup="true" data-dropdown-trigger>
+<span>Wissen</span><span class="navChevron" aria-hidden="true">▾</span>
+</button>
+<div class="navDropdownPanel wissenDropdownPanel" data-dropdown-panel>
+<div class="dropdownIntro wissenDropdownIntro">
+<p class="dropdownEyebrow">WISSEN & VERTIEFEN</p>
+<h2>Erst verstehen.<br />Dann entscheiden.</h2>
+<p>Broschüren, Leitfäden, Whitepaper und künftig auch Videos für fundierte finanzielle Entscheidungen.</p>
+</div>
+<div class="wissenDropdownContent">
+<p class="dropdownSectionLabel">THEMENWELTEN</p>
+<a class="dropdownTool" href="/wissen#vermoegen"><span class="dropdownToolTitle">Vermögen & Kapitalanlage</span><span class="dropdownToolText">Struktur, Kapitalmärkte und Anlageentscheidungen</span></a>
+<a class="dropdownTool" href="/wissen#ruhestand"><span class="dropdownToolTitle">Ruhestand & Entnahme</span><span class="dropdownToolText">Vermögen im Ruhestand planbar steuern</span></a>
+<a class="dropdownTool" href="/wissen#altersvorsorge"><span class="dropdownToolTitle">Altersvorsorge & Riester</span><span class="dropdownToolText">Reform, Verträge und Vorsorgestrukturen</span></a>
+<a class="dropdownTool" href="/wissen#unternehmer"><span class="dropdownToolTitle">Unternehmer & Vermögensschutz</span><span class="dropdownToolText">Risiken, Nachfolge und unternehmerische Vermögensfragen</span></a>
+<a class="dropdownMainLink" href="/wissen">Alle Fachinformationen <span aria-hidden="true">→</span></a>
+</div></div></div>
 
 <!-- ================================================= -->
 <!-- RIESTER 2027                                      -->
@@ -349,78 +358,18 @@ aria-hidden="true"
 </button>
 
 
-<div
-class="navDropdownPanel contactDropdownPanel"
-data-dropdown-panel
->
-
-<p class="dropdownEyebrow">
-DIREKTER KONTAKT
-</p>
-
-<h2>
-Sprechen wir darüber.
-</h2>
-
-
-<div class="contactPerson">
-
-<strong>
-Christian Gradt
-</strong>
-
-<span>
-Diplom-Betriebswirt
-</span>
-
-<span>
-Sachverständiger für das
-Versicherungswesen (BVSV)
-</span>
-
-</div>
-
-
-<a
-class="contactMail"
-href="mailto:ch.gradt@gradt-consulting.de"
->
-ch.gradt@gradt-consulting.de
-</a>
-
-
+<div class="navDropdownPanel contactDropdownPanel" data-dropdown-panel>
+<p class="dropdownEyebrow">KONTAKT</p>
+<h2>Wie kann ich Sie unterstützen?</h2>
+<p class="contactIntro">Sie haben eine Frage oder möchten Ihr Anliegen zunächst ganz formlos schildern?</p>
+<p class="contactPromise">Schreiben Sie mir. Ich melde mich persönlich bei Ihnen.</p>
+<a class="contactMessageButton" href="/kontakt">Nachricht senden <span aria-hidden="true">→</span></a>
 <div class="contactDivider"></div>
-
-
-<p class="contactBookingText">
-Sie möchten Ihre Situation zunächst
-unverbindlich einordnen?
-</p>
-
-
-<a
-class="contactBookingButton"
-href="https://chgradt-gradt-consulting.zohobookings.eu/#/242656000000190002"
-target="_blank"
-rel="noopener noreferrer"
->
-Orientierungsgespräch vereinbaren
-</a>
-
-
-<p class="contactHint">
-20 Minuten · kostenlos & unverbindlich
-</p>
-
-
-<a
-class="dropdownMainLink contactAllLink"
-href="/kontakt"
->
-Alle Kontaktmöglichkeiten
-<span aria-hidden="true">→</span>
-</a>
-
+<div class="contactPerson contactPersonCompact"><strong>Christian Gradt</strong><span>Dipl.-Betriebswirt</span></div>
+<p class="contactAlternative">Alternativ direkt per E-Mail:</p>
+<a class="contactMail" href="mailto:ch.gradt@gradt-consulting.de">ch.gradt@gradt-consulting.de</a>
+<a class="contactOffersLink" href="/angebote">Angebote & Rahmen ansehen →</a>
+</div>
 </div>
 
 </div>
@@ -502,6 +451,8 @@ Toolbox
 </a>
 </li>
 
+<li><a href="/wissen">Wissen</a></li>
+
 <li>
 <a href="/altersvorsorgedepot">
 Riester 2027
@@ -513,6 +464,8 @@ Riester 2027
 Kontakt
 </a>
 </li>
+
+<li><a href="/angebote">Angebote & Rahmen</a></li>
 
 </ul>
 
@@ -921,6 +874,14 @@ background: rgba(216,120,8,.16);
 }
 
 
+.wissenDropdownPanel {
+display:grid; grid-template-columns:235px 1fr; width:min(680px,calc(100vw - 40px));
+overflow:hidden; border:1px solid rgba(40,72,48,.13); border-radius:20px;
+background:#fff; box-shadow:0 22px 65px rgba(0,0,0,.13);
+}
+.wissenDropdownIntro { background:radial-gradient(340px 180px at 0% 0%,rgba(216,120,8,.18),transparent 65%),linear-gradient(160deg,#284830 0%,#1d3725 100%); }
+.wissenDropdownContent { padding:22px; }
+
 /* ----------------------------------------------------- */
 /* RIESTER 2027                                          */
 /* ----------------------------------------------------- */
@@ -985,143 +946,20 @@ rgba(40,72,48,.06);
 /* KONTAKT DROPDOWN                                      */
 /* ----------------------------------------------------- */
 
-.contactDropdownPanel {
-width: 330px;
-
-padding: 24px;
-
-border:
-1px solid rgba(40,72,48,.13);
-
-border-radius: 20px;
-
-background: #ffffff;
-
-box-shadow:
-0 22px 65px rgba(0,0,0,.13);
-}
-
-
-.contactDropdownPanel h2 {
-margin: 0 0 16px;
-
-font-size: 1.28rem;
-
-color: var(--c-primary);
-}
-
-
-.contactPerson {
-display: grid;
-
-gap: 2px;
-
-margin-bottom: 14px;
-}
-
-
-.contactPerson strong {
-color: var(--c-primary);
-
-font-size: .95rem;
-}
-
-
-.contactPerson span {
-color: rgba(40,72,48,.65);
-
-font-size: .78rem;
-
-line-height: 1.4;
-}
-
-
-.contactMail {
-display: inline-block;
-
-color: var(--c-primary);
-
-font-size: .84rem;
-
-font-weight: 700;
-}
-
-
-.contactDivider {
-height: 1px;
-
-margin: 18px 0;
-
-background:
-rgba(40,72,48,.10);
-}
-
-
-.contactBookingText {
-margin: 0 0 12px;
-
-color: rgba(40,72,48,.73);
-
-font-size: .84rem;
-
-line-height: 1.5;
-}
-
-
-.contactBookingButton {
-display: flex;
-
-align-items: center;
-justify-content: center;
-
-padding: 11px 14px;
-
-border-radius: 12px;
-
-background: var(--c-accent);
-
-color: #ffffff;
-
-font-size: .84rem;
-
-font-weight: 800;
-
-box-shadow:
-0 10px 26px rgba(216,120,8,.20);
-}
-
-
-.contactBookingButton:hover {
-text-decoration: none;
-
-transform: translateY(-1px);
-}
-
-
-.contactHint {
-margin: 8px 0 0;
-
-text-align: center;
-
-color: rgba(40,72,48,.55);
-
-font-size: .72rem;
-}
-
-
-.contactAllLink {
-margin-top: 16px;
-
-background:
-rgba(40,72,48,.055);
-}
-
-
-.contactAllLink:hover {
-background:
-rgba(40,72,48,.09);
-}
-
+.contactDropdownPanel { width:360px; padding:24px; border:1px solid rgba(40,72,48,.13); border-radius:20px; background:#fff; box-shadow:0 22px 65px rgba(0,0,0,.13); }
+.contactDropdownPanel h2 { margin:0 0 12px; font-size:1.28rem; line-height:1.25; color:var(--c-primary); }
+.contactIntro { margin:0 0 8px; color:rgba(40,72,48,.72); font-size:.86rem; line-height:1.55; }
+.contactPromise { margin:0 0 16px; color:var(--c-primary); font-size:.88rem; font-weight:700; line-height:1.5; }
+.contactMessageButton { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:11px 14px; border-radius:12px; background:var(--c-accent); color:#fff; font-size:.86rem; font-weight:800; box-shadow:0 10px 26px rgba(216,120,8,.20); }
+.contactMessageButton:hover { text-decoration:none; transform:translateY(-1px); }
+.contactDivider { height:1px; margin:18px 0 15px; background:rgba(40,72,48,.10); }
+.contactPerson { display:grid; gap:2px; margin-bottom:13px; }
+.contactPerson strong { color:var(--c-primary); font-size:.92rem; }
+.contactPerson span { color:rgba(40,72,48,.62); font-size:.78rem; line-height:1.4; }
+.contactAlternative { margin:0 0 3px; color:rgba(40,72,48,.58); font-size:.76rem; }
+.contactMail { display:inline-block; color:var(--c-primary); font-size:.84rem; font-weight:700; }
+.contactOffersLink { display:block; margin-top:14px; padding-top:13px; border-top:1px solid rgba(40,72,48,.08); color:rgba(40,72,48,.72); font-size:.78rem; font-weight:700; }
+.contactOffersLink:hover { color:var(--c-primary); text-decoration:none; }
 
 /* ----------------------------------------------------- */
 /* TABLET / KLEINER DESKTOP                              */
@@ -1182,6 +1020,7 @@ font-size: .84rem;
 
 
 .toolboxDropdownPanel,
+.wissenDropdownPanel,
 .contactDropdownPanel {
 position: fixed;
 
@@ -1203,7 +1042,8 @@ transform: translateY(-5px);
 }
 
 
-.toolboxDropdownPanel {
+.toolboxDropdownPanel,
+.wissenDropdownPanel {
 grid-template-columns: 1fr;
 }
 
@@ -1251,6 +1091,7 @@ margin-left: 0;
 
 
 .toolboxDropdownPanel,
+.wissenDropdownPanel,
 .contactDropdownPanel {
 top: 116px;
 }

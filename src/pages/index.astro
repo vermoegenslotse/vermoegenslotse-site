@@ -1325,11 +1325,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .homeTrustGrid {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 22px;
-      align-items: stretch;
-    }
+  display: grid;
+  grid-template-columns: .72fr 1.28fr;
+  gap: 22px;
+  align-items: stretch;
+}
 
 
     .homeTrustQuotes {
@@ -1367,18 +1367,46 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 
     .homeProvenExpert {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      justify-content: flex-start;
-      min-height: 260px;
-      padding: 24px;
-      border-radius: 18px;
-      background: #ffffff;
-      border: 1px solid rgba(216,120,8,.18);
-      box-shadow:
-        0 12px 30px rgba(0,0,0,.04);
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  min-height: 340px;
+
+  padding: 24px;
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  border:
+    1px solid rgba(216,120,8,.18);
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.04);
+
+  overflow: visible;
+}
+
+
+.homeProvenExpertInner {
+  width: 100%;
+
+  overflow: visible;
+}
+
+
+.homeProvenExpertInner #pewl {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+
+.homeProvenExpertInner iframe,
+.homeProvenExpertInner > div {
+  max-width: 100% !important;
+}
 
 
     .homeTrustLabel {
@@ -1391,12 +1419,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     }
 
 
-    .homeProvenExpertInner {
-      width: 100%;
-      overflow: hidden;
-    }
-
-
+    
     /* ----------------------------------------------------- */
     /* ARCHITEKTUR                                           */
     /* ----------------------------------------------------- */

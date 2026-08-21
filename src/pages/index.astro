@@ -660,24 +660,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           sowie langfristige Vermögensziele nicht isoliert betrachtet werden.
         </p>
 
-        <a
-          class="homePrimaryButton"
-          href="/vermoegensstrategie-unternehmer"
-        >
-          Vermögensstrategie für Unternehmer
-          <span aria-hidden="true">
-            →
-          </span>
-        </a>
+        <div class="homeEntrepreneurActions">
 
-<a
-  class="homeEntrepreneurRiskLink"
-  href="/unternehmer"
->
-  Unternehmensrisiken & Privatvermögen verstehen →
-</a>
+  <a
+    class="homePrimaryButton"
+    href="/vermoegensstrategie-unternehmer"
+  >
+    Vermögensstrategie für Unternehmer
+    <span aria-hidden="true">→</span>
+  </a>
 
-      </div>
+  <a
+    class="homeEntrepreneurSecondaryButton"
+    href="/unternehmer"
+  >
+    Unternehmensrisiken & Privatvermögen
+    <span aria-hidden="true">→</span>
+  </a>
+
+</div>
 
 
       <div class="homeEntrepreneurPoints">
@@ -1827,20 +1828,48 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       line-height: 1.5 !important;
     }
 
-.homeEntrepreneurRiskLink {
-  display: block;
-  margin-top: 14px;
-
-  color: var(--c-primary);
-
-  font-size: .86rem;
-  font-weight: 800;
+.homeEntrepreneurActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 
-.homeEntrepreneurRiskLink:hover {
+.homeEntrepreneurSecondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 12px 17px;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+  color: var(--c-primary);
+
+  border: 1.5px solid var(--c-accent);
+
+  font-size: .86rem;
+  font-weight: 800;
+
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease,
+    background .15s ease;
+}
+
+
+.homeEntrepreneurSecondaryButton:hover {
   text-decoration: none;
-  color: var(--c-accent);
+
+  background: rgba(216,120,8,.055);
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 9px 22px rgba(216,120,8,.10);
 }
 
 
@@ -2203,6 +2232,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 }
 
+@media (max-width: 700px) {
+
+  .homeEntrepreneurActions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .homeEntrepreneurActions a {
+    width: 100%;
+  }
+
+}
   </style>
 
 </BaseLayout>
